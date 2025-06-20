@@ -1,0 +1,24 @@
+{
+  "name": "aepaints",
+  "version": "1.0.0",
+  "description": "Portfolio site for Alexis Elza",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anad-zeal/AEPaints.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/anad-zeal/AEPaints/issues"
+  },
+  "homepage": "https://github.com/anad-zeal/AEPaints#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "host": "74.220.219.204",
+  "username": "elzaliv1",
+  "remotePath": "/home/elzaliv1/public_html",
+  "privateKeyPath": "/Users/tal/.ssh/id_elzalive_new",
+  "protocol": "sftp",
+  "port": 22,
+  "uploadOnSave": true,
+  "ignore": [
+    ".vscode",
+    ".git",
+    ".DS_Store"
+  ]
+}

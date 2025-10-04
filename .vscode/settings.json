@@ -1,0 +1,80 @@
+{
+  // -----------------------------
+  // Global editor behavior
+  // -----------------------------
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Trim/clean whitespace on save
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "editor.trimAutoWhitespace": true,
+  "files.associations": { "*.php": "php" },
+
+  // -----------------------------
+  // Language-specific formatters
+  // -----------------------------
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "emmet.includeLanguages": { "php": "html" },
+
+  // PHP -> PHP CS Fixer
+  "[php]": { "editor.defaultFormatter": "junstyle.php-cs-fixer" },
+
+  // -----------------------------
+  // PHP CS Fixer config
+  // -----------------------------
+  // We downloaded the phar into .vscode, so point to the workspace copy:
+  "php-cs-fixer.executablePath": "/opt/homebrew/bin/php-cs-fixer",
+  "php-cs-fixer.rules": "@PSR12",
+  "php-cs-fixer.allowRisky": false,
+
+  // -----------------------------
+  // Format HTML embedded in PHP
+  // (rifi2k.format-html-in-php)
+  // -----------------------------
+  "format-html-in-php.enabled": true,
+  "format-html-in-php.defaultFormatter": "esbenp.prettier-vscode",
+
+  // -----------------------------
+  // Prettier project preferences
+  // -----------------------------
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 100,
+  "prettier.tabWidth": 2,
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "always",
+  "prettier.requireConfig": false,
+  "cSpell.words": [
+    "behance",
+    "blynken",
+    "bwimage",
+    "crossfade",
+    "Elza",
+    "exhibitons",
+    "extralight",
+    "Kinnicutt",
+    "morphean",
+    "Newburyport",
+    "Roseland",
+    "sidetable",
+    "Wynken"
+  ],
+
+  "folders": [
+    {
+      "path": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/AEPaints
+    }
+  ],
+  "settings": {
+    // Always set the root path for terminals/tasks
+    "terminal.integrated.cwd": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/AEPaints",
+
+    // Optional: default deploy tool path (example for sftp/ftp-deploy extension)
+    "ftp-simple.remote-workspace": "/Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/AEPaints"
+  }
+}

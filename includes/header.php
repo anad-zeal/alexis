@@ -14,7 +14,7 @@ function nav_item(string $slug, string $label, string $href): string
         htmlspecialchars($href, ENT_QUOTES, "UTF-8"),
         $class,
         $aria,
-        htmlspecialchars($label, ENT_QUOTES, "UTF-8")
+        htmlspecialchars($label, ENT_QUOTES, "UTF-8"),
     );
 }
 ?>
@@ -61,10 +61,22 @@ function nav_item(string $slug, string $label, string $href): string
         <h3 class="title">Alexis Elza</h3>
       </div>
       <div class="gallery-grid mid">
-        <?= nav_item("black-and-white", "Black & White", "/black-and-white") ?>
-        <?= nav_item("drips", "Drip Series", "/drips") ?>
-        <?= nav_item("encaustic", "Encaustic", "/encaustic") ?>
-        <?= nav_item("projects", "Project Series", "/projects") ?>
+        <class="mnu"><?= nav_item(
+            "black-and-white",
+            "Black & White",
+            "/black-and-white",
+        ) ?></mnu>
+        <class="mnu"><?= nav_item("drips", "Drip Series", "/drips") ?></mnu>
+            <class="mnu"> <?= nav_item(
+                "encaustic",
+                "Encaustic",
+                "/encaustic",
+            ) ?></mnu>
+                <class="mnu"> <?= nav_item(
+                    "projects",
+                    "Project Series",
+                    "/projects",
+                ) ?></mnu>
       </div>
       <div class="right"></div>
     </nav>

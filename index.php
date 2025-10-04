@@ -1,4 +1,5 @@
 <?php
+
 // index.php — central router with clean slugs + 404 handling
 
 $page = $_GET["page"] ?? "home";

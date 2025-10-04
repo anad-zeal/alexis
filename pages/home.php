@@ -5,8 +5,7 @@
 
     <p>
       <a href="/restoration?showSlideshow=true" class="dropcap" data-gallery="restoration" aria-label="Go to Restoration Projects">R</a>
-      estoration Projects —Almost instantaneous astral travel to any point in their universe is now possible via the implementation of hyperbolic sub-resonant variations, combined with isomorphic silicon overlays manifesting dolor sit abet connecter advising elia.
-    </p>
+      estoration Projects —Almost instantaneous astral travel to any point in our
 
     <p>
       <a href="/decorative?showSlideshow=true" class="dropcap" data-gallery="decorative" aria-label="Go to Decorative Painting">D</a>

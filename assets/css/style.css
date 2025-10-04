@@ -510,7 +510,7 @@ h3.title {
   display: flex;
   flex-wrap: wrap;
   font-family: var(--font-ui);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   justify-content: space-between;
   display: flex;
   gap: 0.5rem;
@@ -552,7 +552,7 @@ h3.title {
 }
 
 .gallery-grid .left {
-  width: 35vw;
+  width: auto;
   text-align: left;
   width: 11%;
   border: solid 1px blue;
@@ -562,6 +562,6 @@ h3.title {
 }
 
 .gallery-grid .right {
-  width: 35vw;
+  width: auto;
   text-align: right;
 }

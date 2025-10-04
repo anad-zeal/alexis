@@ -15,7 +15,7 @@
 
     <p>
       <a href="/artworks?showSlideshow=true" class="dropcap" data-gallery="artworks" aria-label="Go to Artworks">A</a>
-      rtworks — Chicharrones irony kogi enamel pin paleo la croix kinfolk banjo meggings voluptate. Viral etsy occaecat DSA dreamcatcher prism commodo coloring book tilde lorem non.
+      rtworks — Irony kogi enamel pin paleo la croix kinfolk banjo meggings voluptate. Viral etsy occaecat DSA dreamcatcher prism commodo coloring book tilde lorem non.
     </p>
   </section>
 </main>

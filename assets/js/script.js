@@ -294,7 +294,7 @@ function swapHeadersViaQueryParam() {
   const siteHeader = document.querySelector('.site-header');
   const slideshowHeader =
     document.querySelector('.slideshow-site-header') ||
-    document.querySelector('.slidesshow-site-header');
+    document.querySelector('.slideshow-site-header');
   if (siteHeader) siteHeader.style.visibility = 'hidden';
   if (slideshowHeader) slideshowHeader.style.visibility = 'visible';
   document.body.classList.add('is-slideshow');

@@ -1,5 +1,5 @@
 /* =========================================
-   Design Tokenss
+   Design Tokens
 ========================================= */
 :root {
   /* Colors */
@@ -440,6 +440,6 @@ h3.title {
 
 /* Optional hidden alt header */
 .slideshow-site-header,
-.slidesshow-site-header {
+.slideshow-site-header {
   visibility: hidden;
 }

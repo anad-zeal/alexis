@@ -413,7 +413,7 @@ h3.title {
 }
 
 .gallery-grid .left {
-  width: 201%;
+  width: 20%;
   text-align: left;
   display: flex;
   align-items: center;
@@ -438,7 +438,7 @@ h3.title {
 
 .gallery-grid .right {
   display: flex;
-  width: 2%;
+  width: 20%;
   border: solid 1px blue;
   justify-content: flex-end;
   align-items: center;

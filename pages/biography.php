@@ -1,6 +1,6 @@
 <main id="main" class="page-content-wrapper" tabindex="-1">
   <section class="body-paragraphs" aria-labelledby="bio-heading">
-    <h1 id="artworks-page-heading" class="page-title">Biography</h1>
+    <h1 id="bio-heading" class="page-title">Biography</h1>
 
     <p>As a child I spent many hours in my father’s wood shop. He was a master cabinet maker, restorer of antique furniture, and a wood sculptor. My mother was an inventor and patent holder. It is no surprise, given the talent I was exposed to at such an early age, that I made the decision to attend art school. It was at the School of the Worcester Art Museum in Worcester, Massachusetts that I began my formal education in the arts.</p>
 

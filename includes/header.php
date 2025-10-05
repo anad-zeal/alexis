@@ -54,7 +54,7 @@ function nav_item(string $slug, string $label, string $href): string
     <nav class="gallery-grid gallery-nav" aria-label="Galleries">
       <div class="left"><h3 class="title">Alexis Elza</h3></div>
       <div class="mid">
-        <div class="mnu">HOME</div>
+        <div class="mnu">HOMEr</div>
         <div class="mnu"><class="mnu"><?= nav_item(
             "black-and-white",
             "Black & White",

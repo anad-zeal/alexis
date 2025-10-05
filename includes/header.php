@@ -39,46 +39,5 @@ function nav_item(string $slug, string $label, string $href): string
 
 <body data-page="<?= htmlspecialchars($active_page, ENT_QUOTES, "UTF-8") ?>">
   <header class="site-header">
-    <!-- Primary nav -->
-    <div id="top-grid-wrapper">
-    <nav class="top-grid main-nav" aria-label="Primary Nav">
-        <div class="top-grid">
-                <div class="flex-item col-1">Alexis Elza</div>
-                <div class="flex-item col-2">HOME</div>
-                <div class="flex-item col-3">BIOGRAPHY</div>
-                <div class="flex-item col-4">CONTACT</div>
-                <div class="flex-item col-5">Gallery</div>
-            </div>
-    </nav>
-    </div>
-    <!-- Galleries nav section-->
-    <div id="gallery-grid-wrapper">
-    <nav class="gallery-grid gallery-nav" aria-label="Galleries">
-      <div class="left"><h3 class="title">Alexis Elza</h3></div>
-      <div class="mid">
-        <div class="mnu">HOME</div>
-        <div class="mnu"><class="mnu"><?= nav_item(
-            "black-and-white",
-            "Black & Whites",
-            "/black-and-white",
-        ) ?></div>
-        <div class="mnu"><class="mnu"><?= nav_item(
-            "drips",
-            "Drip Series",
-            "/drips",
-        ) ?></div>
-        <div class="mnu"><class="mnu"> <?= nav_item(
-            "encaustic",
-            "Encaustics",
-            "/encaustic",
-        ) ?></div>
-        <div class="mnu"><class="mnu"> <?= nav_item(
-            "projects",
-            "Project Series",
-            "/projects",
-        ) ?></div>
-      </div>
-      <div class="right">&nbsp;</div>
-    </nav>
-    </div>
+
   </header>

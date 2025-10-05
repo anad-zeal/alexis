@@ -59,11 +59,9 @@ function nav_item(string $slug, string $label, string $href): string
             "BLACK &amp; WHITE",
             "/black-and-white",
         ) ?>
-        <?= nav_item("drips", "DRIPS", "/drips") ?>
+        <?= nav_item("drips", "DRIP SERIES", "/drips") ?>
         <?= nav_item("encaustic", "ENCAUSTIC", "/encaustic") ?>
-        <?= nav_item("projects", "PROJECTS", "/projects") ?>
-        <?= nav_item("restoration", "RESTORATION", "/restoration") ?>
-        <?= nav_item("decorative", "DECORATIVE", "/decorative") ?>
+        <?= nav_item("projects", "PROJECT SERIES", "/projects") ?>
       </div>
 
     </nav>

@@ -41,7 +41,7 @@ function nav_item(string $slug, string $label, string $href): string
   <header class="site-header">
     <!-- Primary nav -->
     <section id="top-grid-wrapper">
-    <nav class="top-grid main-nav" aria-label="Primary">
+    <nav class="top-grid main-nav" aria-label="Primary Nav">
         <div class="top-grid">
                 <div class="flex-item col-1">Alexis Elza</div>
                 <div class="flex-item col-2">HOME</div>

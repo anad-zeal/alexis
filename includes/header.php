@@ -1,5 +1,5 @@
 <?php
-// include/header.php
+// include/header.php and more
 $page_title = $page_title ?? "aepaints";
 $active_page = $active_page ?? "home";
 

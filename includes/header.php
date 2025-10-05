@@ -52,27 +52,30 @@ function nav_item(string $slug, string $label, string $href): string
 
     <!-- Galleries nav -->
     <nav class="gallery-grid gallery-nav" aria-label="Galleries">
-      <div class="left">
-        <h3 class="title">Alexis Elza</h3>
-      </div>
-      <div class="gallery-grid mid">
-        <class="mnu"><?= nav_item(
+      <div class="left"><h3 class="title">Alexis Elza</h3></div>
+      <div class="mid">
+        <div class="mnu">HOME</div>
+        <div class="mnu"><class="mnu"><?= nav_item(
             "black-and-white",
             "Black & White",
             "/black-and-white",
-        ) ?></mnu>
-        <class="mnu"><?= nav_item("drips", "Drip Series", "/drips") ?></mnu>
-            <class="mnu"> <?= nav_item(
-                "encaustic",
-                "Encaustic",
-                "/encaustic",
-            ) ?></mnu>
-                <class="mnu"> <?= nav_item(
-                    "projects",
-                    "Project Series",
-                    "/projects",
-                ) ?></mnu>
+        ) ?></div>
+        <div class="mnu"><class="mnu"><?= nav_item(
+            "drips",
+            "Drip Series",
+            "/drips",
+        ) ?></div>
+        <div class="mnu"><class="mnu"> <?= nav_item(
+            "encaustic",
+            "Encaustic",
+            "/encaustic",
+        ) ?></div>
+        <div class="mnu"><class="mnu"> <?= nav_item(
+            "projects",
+            "Project Series",
+            "/projects",
+        ) ?></div>
       </div>
-      <div class="right f"></div>
+      <div class="right">&nbsp;</div>
     </nav>
   </header>

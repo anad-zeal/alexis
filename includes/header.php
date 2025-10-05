@@ -52,9 +52,7 @@ function nav_item(string $slug, string $label, string $href): string
 
     <!-- Galleries nav -->
     <nav class="top-grid main-nav" aria-label="Galleries">
-      <div class="left">
-        <h3 class="title">Alexis Elza</h3>
-      </div>
+
       <div class="mid">
         <?= nav_item(
             "black-and-white",
@@ -67,6 +65,6 @@ function nav_item(string $slug, string $label, string $href): string
         <?= nav_item("restoration", "RESTORATION", "/restoration") ?>
         <?= nav_item("decorative", "DECORATIVE", "/decorative") ?>
       </div>
-      <div class="right"></div>
+
     </nav>
   </header>

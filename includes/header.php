@@ -39,13 +39,13 @@ function nav_item(string $slug, string $label, string $href): string
 <body data-page="<?= htmlspecialchars($active_page, ENT_QUOTES, "UTF-8") ?>">
   <header class="site-header">
     <!-- Primary nav -->
-    <nav class="top-grid main-nav" aria-label="Primary">x
+    <nav class="top-grid main-nav" aria-label="Primary">
 
       <div class="mid">
         <?= nav_item("home", "HOME", "/home") ?>
         <?= nav_item("artworks", "ARTWORKS", "/artworks") ?>
         <?= nav_item("biography", "BIOGRAPHY", "/biography") ?>
-        <?= nav_item("contact", "CONTACT", "/contact") ?>x
+        <?= nav_item("contact", "CONTACT", "/contact") ?>
       </div>
 
     </nav>

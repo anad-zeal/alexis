@@ -1,4 +1,4 @@
-// assets/js/scripts.js
+// assets/js/script.js
 // Vanilla JS slideshows (ES module). ARIA-friendly and SPA-safe .
 
 function createEl(tag, dataRole) {

@@ -41,7 +41,7 @@ function nav_item(string $slug, string $label, string $href): string
 <!-- Primary nav -->
 <nav class="top-grid main-nav" aria-label="Primary">
 
-<div class="mine mid">
+<div class="mid">
 <?= nav_item("home", "HOME", "/home") ?>
 <?= nav_item("artworks", "ARTWORKS", "/artworks") ?>
 <?= nav_item("biography", "BIOGRAPHY", "/biography") ?>

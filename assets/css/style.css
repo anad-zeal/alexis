@@ -393,9 +393,9 @@ a:hover {
   transform: scale(1);
 }
 
-a:active {
+a:is-active {
   color: var(--nav-link-active);
-  transform: scale(2);
+  transform: scale(1.5);
 }
 
 .top-grid .right {

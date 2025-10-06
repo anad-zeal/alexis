@@ -14,7 +14,7 @@ Design Tokens
   --ivory-inspired: hsl(45, 30%, 94%);
 
   /* Typography */
-  --font-body: 'Spectral', serif;
+  --font-body: 'Montserrat', sans-serif;
   --font-ui: 'Montserrat', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: 'Montserrat', sans-serif;
   --font-title: 'Poiret One', sans-serif;

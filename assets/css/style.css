@@ -165,7 +165,7 @@ color: var(--ink); */
 
 h1.title {
   font-family: var(--font-title);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.25rem, 5.4vw, 3.5rem);
   font-weight: 500;
   text-align: center;
   color: var(--brand);

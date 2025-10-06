@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '/home': 'The life of an artist',
     '/artworks': 'Artwork Categories',
     '/biography': 'How I became an artist',
-    '/contact': 'CSend me a message',
+    '/contact': 'Send me a message',
   };
 
   // Function to update the sub-title and active class

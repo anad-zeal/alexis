@@ -393,7 +393,7 @@ a:hover {
   transform: scale(1);
 }
 
-a:is-active {
+a class='is-active' {
   color: var(--nav-link-active);
   transform: scale(1.5);
 }

@@ -183,11 +183,11 @@ h3.title {
   line-height: 1;
 }
 
-.sub-title {
+h1.the-life {
   position: relative;
   top: 1vh;
   font-family: var(--font-script);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(5rem, 12vw, 8rem);
   font-weight: 200;
   letter-spacing: -0.02em;
   text-align: center;

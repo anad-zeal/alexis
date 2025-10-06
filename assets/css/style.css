@@ -24,7 +24,7 @@ Design Tokens
   --gutter: 0.5rem;
   --gap: clamp(0.75rem, 2vw, 1.25rem);
   --wide: clamp(16rem, 90vw, 1200px);
-  --narrow-max: 90ch;
+  --narrow-max: 50ch;
 
   /*Navigation*/
   --nav-link: hsl(0, 100%, 27%);

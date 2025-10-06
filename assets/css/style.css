@@ -392,11 +392,6 @@ a:hover {
   color: var(--nav-link-hover);
   transform: scale(1.5);
 }
-/*
-a:active {
-  color: var(--nav-link-active);
-  transform: scale(1.5);
-} */
 
 .top-grid .right {
   width: 36vw;

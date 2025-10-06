@@ -437,5 +437,7 @@ Slideshow — Hardened Overrides
 }
 
 .mid a {
-    border: solid 1px red;
+    width: 20vw;
+    text-align: center;
+    border: solid 2px red;
 }

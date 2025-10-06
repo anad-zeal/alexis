@@ -219,7 +219,7 @@ h3.title {
   width: min(100%, var(--narrow-max));
   margin-inline: auto;
   font-family: var(--font-body);
-  border: 2px solid red; /* --- IGNORE --- */
+  border: 2px solid red;
 }
 
 .section-format p,

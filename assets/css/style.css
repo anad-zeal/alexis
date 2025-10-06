@@ -196,7 +196,7 @@ h3.title {
 
 .body-paragraphs {
   position: relative;
-  left: 12vw;
+  left: 0;
   top: 0;
   display: flex;
   flex-direction: column;

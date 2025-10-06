@@ -233,7 +233,7 @@ h3.title {
   color: var(--focus-ring);
 }
 .dropcap:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 1px solid var(--focus-ring);
   outline-offset: 3px;
   border-radius: 0.2rem;
 }

@@ -42,7 +42,7 @@ function nav_item(string $slug, string $label, string $href): string
 <body data-page="<?= htmlspecialchars($active_page, ENT_QUOTES, "UTF-8") ?>">
     <header class="site-header">
         <!-- Primary nav -->
-        <nav class="top-grid main-nav front-mnu" aria-label="Primary">
+        <nav class="top-grid main-nav" aria-label="Primary">
 
             <div class="mid">
                 <?= nav_item("home", "HOME", "/home") ?>
@@ -53,14 +53,10 @@ function nav_item(string $slug, string $label, string $href): string
         </nav>
 
         <!-- Galleries nav -->
-        <nav class="top-grid main-nav back-mnu" aria-label="Galleries">
+        <nav class="top-grid main-nav" aria-label="Galleries">
 
             <div class="mid">
-                <?= nav_item(
-                    "black-and-white",
-                    "BLACK and WHITE",
-                    "/black-and-white",
-                ) ?>
+                <?= nav_item("black-and-white", "BLACK and WHITE", "/black-and-white") ?>
                 <?= nav_item("drips", "DRIP SERIES", "/drips") ?>
                 <?= nav_item("encaustic", "ENCAUSTIC", "/encaustic") ?>
                 <?= nav_item("projects", "PROJECT SERIES", "/projects") ?>

@@ -399,6 +399,10 @@ a:hover {
   text-align: right;
 }
 
+.galleries {
+  max-height: 0px;
+}
+
 /* =========================================
 Slideshow — Hardened Overrides
 ========================================= */

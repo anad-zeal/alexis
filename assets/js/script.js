@@ -482,3 +482,17 @@ const navLinks = document.querySelectorAll('nav .mid a');
        if (!element) return { transitionDuration: '0s' };
        return window.getComputedStyle(element);
    }
+
+   // Helper to get transition duration from CSS
+   function getTransitionDuration(element) {
+       const style = getComputedStyle(element);
+       const duration = style.transitionDuration;
+       return parseFloat(duration) * 1000; // Convert to milliseconds
+   }
+
+   // Helper to get transition duration from CSS
+   function getTransitionDuration(element) {
+       const style = getComputedStyle(element);
+       const duration = style.transitionDuration;
+       return parseFloat(duration) * 1000; // Convert to milliseconds
+   }

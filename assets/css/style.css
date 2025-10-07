@@ -255,7 +255,7 @@ h3.title {
   color: var(--color-ink); /* Default to ink, or a specific sub-title color if desired */
 }
 
-h2portfolio-heading {
+h2.portfolio-heading {
   display: none;
 }
 

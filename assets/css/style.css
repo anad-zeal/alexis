@@ -166,7 +166,7 @@ video {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: auto;
   background-color: var(--color-primary);
   color: var(--color-soft);
   text-align: center;

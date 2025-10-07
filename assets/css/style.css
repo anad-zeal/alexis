@@ -444,6 +444,11 @@ h3.title {
   min-height: var(--header-height); /* Ensure min-height matches for consistency */
   padding-inline: var(--spacing-md); /* Add some padding to edges */
 }
+
+.galleries {
+  display: none;
+}
+
 .top-grid .left {
   width: 35vw; /* Consider fluid widths or flex-grow for better responsiveness */
   text-align: left;

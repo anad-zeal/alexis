@@ -15,7 +15,7 @@
 
             <div class="mid">
                 <?= nav_item(
-                    "black-and-white",
+                    "black-and-_hite",
                     "BLACK and WHITE",
                     "/black-and-white",
                 ) ?>

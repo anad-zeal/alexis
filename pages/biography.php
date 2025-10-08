@@ -1,4 +1,4 @@
-<section class="body-paragraphs" aria-labelledby="bio-heading-page-heading">
+<section class="body-paragraphs" aria-labelledby="">
     <h1 id="bio-heading" class="page-title"></h1>
 
     <p>As a child I spent many hours in my father’s wood shop. He was a master cabinet maker, restorer of antique
@@ -14,5 +14,5 @@
     <p>It was serendipity that brought me to my career in historic conservation and restoration. While visiting an
         1848 Gothic Revival house that was undergoing decorative painting and plaster restoration I realized what a
         joy it would be to apply my art training to such endeavors. That same day I convinced the project supervisor
-        to hire me, and so began my twenty-five year adventure in historic conservation and restoration.</p>
-</section>
+        to hire me, and so began my twenty-five year adventure in historic conservation and restoration. </p>
+    <p>bio-heading-page-heading</p>

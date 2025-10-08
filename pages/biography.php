@@ -15,4 +15,4 @@
         1848 Gothic Revival house that was undergoing decorative painting and plaster restoration I realized what a
         joy it would be to apply my art training to such endeavors. That same day I convinced the project supervisor
         to hire me, and so began my twenty-five year adventure in historic conservation and restoration. </p>
-    <p>bio-heading-page-heading</p>
+    <p>bio-heading-page-headingAs a child As a child As a child </p>

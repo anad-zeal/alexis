@@ -321,7 +321,7 @@ const pageTitles = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSlideshows();
+  // initSlideshows();
   swapHeadersViaQueryParam();
   const navLinks = document.querySelectorAll('nav a');
   const subTitleElement =

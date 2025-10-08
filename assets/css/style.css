@@ -43,7 +43,7 @@
   --font-size-portfolio-text: 1.2rem;
 
   /* Layout */
-  --spacing-xs: 0.5rem; /* Formerly --gutter */
+  --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1rem;
   --spacing-lg: 2rem;

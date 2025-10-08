@@ -1,9 +1,9 @@
-<main id="main" class="page-content-wrapper" tabindex="-1">
-  <section class="body-paragraphs" aria-labelledby="artworks-page-heading">
+<!--<main id="main" class="page-content-wrapper" tabindex="-1">-->
+<section class="body-paragraphs" aria-labelledby="artworks-page-heading">
     <h1 id="artworks-page-heading" class="page-title">Artworks</h1>
 
     <p>
-      <a href="/black-and-white?showSlideshow=true" class="dropcap mnu-change" data-gallery="black-and-white" aria-label="Go to the Black and White Gallery">B</a>
+        <!--<a href="/black-and-white?showSlideshow=true" class="dropcap mnu-change" data-gallery="black-and-white" aria-label="Go to the Black and White Gallery">B</a>
       lack and White — Chiaroscuro explorations, tonal balance, and rhythmic abstraction.
     </p>
 
@@ -20,6 +20,6 @@
     <p>
       <a href="/projects?showSlideshow=true" class="dropcap mnu-change" data-gallery="projects" aria-label="Go to the Project Series">P</a>
       roject Series — Seriality, grids, and conceptual practice, each work a fragment of an evolving atelier.
-    </p>
-  </section>
-</main>
+    </p>-->
+</section>
+<!--</main>-->

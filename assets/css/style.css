@@ -170,6 +170,8 @@ video {
   background-color: var(--color-primary);
   color: var(--color-soft);
   text-align: center;
+  position: relative;
+  z-index: 0;
 }
 
 .page-content-wrapper {

@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add click event listener to each navigation link
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
-      // Prevent the default link behavior (page reload)
+      event.preventDefault(); // Prevent the default link behavior (page reload)
       updatePageContent(link);
       // Optional: Update URL hash or use history.pushState if desired for deep linking
       // For example: history.pushState(null, '', link.href);

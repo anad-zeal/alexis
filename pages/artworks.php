@@ -3,7 +3,7 @@
     <!-- <h1 id="artworks-page-heading" class="page-title">Artworks</h1>
 
     <p>
-        <!--<a href="/black-and-white?showSlideshow=true" class="dropcap mnu-change" data-gallery="black-and-white" aria-label="Go to the Black and White Gallery">B</a>
+        <a href="/black-and-white?showSlideshow=true" class="dropcap mnu-change" data-gallery="black-and-white" aria-label="Go to the Black and White Gallery">B</a>
       lack and White — Chiaroscuro explorations, tonal balance, and rhythmic abstraction.
     </p>
 

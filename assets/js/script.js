@@ -446,3 +446,9 @@ window.addEventListener('app:navigate', () => initSlideshows());
 
 // Note: The previous mainMenu function and galleryNav variable are no longer present.
 // The navigation is now handled by the updatePageContent function within DOMContentLoaded.
+
+document.querySelectorAll('a').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    console.log('Clicked:', a.href);
+  });
+});

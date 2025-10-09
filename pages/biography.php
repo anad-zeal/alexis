@@ -17,4 +17,6 @@
     <strong>The Projects Series</strong>—trace an evolving artistic journey. Each explores material, mood, and meaning
     through distinct techniques: the purity of monochrome, the spontaneity of dripping paint, the luminous depth of
     encaustic wax, and the conceptual layers of ongoing projects. Together, they reveal experimentation, emotion, and
-    transformation.</p>
+    transformation.
+</p>
+</section>

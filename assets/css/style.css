@@ -586,7 +586,6 @@ p::first-letter {
     color: var(--color-ink);
     float: left;
     margin-right: 0.2em;
-    margin-bottom: -2em;
     line-height: 0.7; /* Adjusted line-height to pull it up slightly, allowing more open space below */
     padding-right: 5px;
     padding-bottom: 5px;

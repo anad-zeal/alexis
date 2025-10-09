@@ -282,22 +282,22 @@ h3.title {
 }
 .dropcap {
   float: left;
-  font-family: --font-family-script
+  font-family: var(--font-family-script);
   font-weight: 700;
   font-size: clamp(3.2rem, 8vw, 5rem);
   line-height: 0.9;
   margin-right: 0.25em;
   padding-top: 0.08em;
-  color: var(--brand);
+  color: var(--color-brand);
   min-width: 1ch;
   text-decoration: none;
   font-variant-ligatures: none;
 }
 .dropcap:hover {
-  color: var(--focus-ring);
+  color: var(--color-focus-ring);
 }
 .dropcap:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 3px;
   border-radius: 0.2rem;
 }
@@ -559,47 +559,47 @@ a.is-active {
   outline: 2px solid var(--color-primary); /* Use design token */
 }
 
- :root {
-    --color-ink: #333; /* Example color */
-    --max-width-wide: clamp(16rem, 90vw, 1200px);
-    --max-width-narrow: 80ch;
+:root {
+  --color-ink: #333; /* Example color */
+  --max-width-wide: clamp(16rem, 90vw, 1200px);
+  --max-width-narrow: 80ch;
 }
 
 section {
-    font-family: Arial, sans-serif;
-    color: var(--color-ink);
-    line-height: 1.6;
-    margin: 2rem;
-    max-width: var(--max-width-wide);
-    margin-left: auto;
-    margin-right: auto;
+  font-family: Arial, sans-serif;
+  color: var(--color-ink);
+  line-height: 1.6;
+  margin: 2rem;
+  max-width: var(--max-width-wide);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 p {
-    margin-bottom: 1em;
-    max-width: var(--max-width-narrow);
+  margin-bottom: 1em;
+  max-width: var(--max-width-narrow);
 }
 
 p::first-letter {
-    font-family: 'Bonheur Royale', cursive;
-    font-size: 5.5em; /* Increased size for more impact */
-    color: var(--color-ink);
-    float: left;
-    margin-right: 0.2em;
-    line-height: 0.5; /* Adjusted line-height to pull it up slightly, allowing more open space below */
-    padding-right: 5px;
-    padding-bottom: 5px;
-    /* Adding a slight top margin or vertical-align if further fine-tuning is needed */
-    position: relative; /* Allows for more precise positioning */
-    top: 5em; /* Nudge it down a little */
+  font-family: 'Bonheur Royale', cursive;
+  font-size: 5.5em; /* Increased size for more impact */
+  color: var(--color-ink);
+  float: left;
+  margin-right: 0.2em;
+  line-height: 0.5; /* Adjusted line-height to pull it up slightly, allowing more open space below */
+  padding-right: 5px;
+  padding-bottom: 5px;
+  /* Adding a slight top margin or vertical-align if further fine-tuning is needed */
+  position: relative; /* Allows for more precise positioning */
+  top: 5em; /* Nudge it down a little */
 }
 
 h2 {
-    font-family: 'Bonheur Royale', cursive;
-    color: var(--color-ink);
-    margin-top: 2em;
+  font-family: 'Bonheur Royale', cursive;
+  color: var(--color-ink);
+  margin-top: 2em;
 }
 
 strong {
-    font-weight: bold;
+  font-weight: bold;
 }

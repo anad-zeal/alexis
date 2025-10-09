@@ -579,6 +579,9 @@ section {
 p {
     margin-bottom: 1em;
     max-width: var(--max-width-narrow);
+    position: absolute; /* Allows for more precise positioning */
+    left: 25vw;
+    top: 2em; /* Nudge it down a little */
 }
 
 p::first-letter {
@@ -591,9 +594,7 @@ p::first-letter {
     padding-right: 15px;
     padding-bottom: 5px;
     /* Adding a slight top margin or vertical-align if further fine-tuning is needed */
-    position: absolute; /* Allows for more precise positioning */
-    left: 25vw;
-    top: 2em; /* Nudge it down a little */
+
 }
 
 h2 {

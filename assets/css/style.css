@@ -591,7 +591,7 @@ p::first-letter {
     padding-bottom: 1px;
     /* Adding a slight top margin or vertical-align if further fine-tuning is needed */
     position: relative; /* Allows for more precise positioning */
-    top: 0.155em; /* Nudge it down a little */
+    top: 0.5em; /* Nudge it down a little */
 }
 
 h2 {

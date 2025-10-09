@@ -2,24 +2,26 @@
     <h1 id="home-page-heading" class="page-title">Home</h1>
     <h2 id="portfolio-heading" class="visually-hidden">Portfolio</h2>
 
-    <p>
-        <a href="/restoration?showSlideshow=true" class="dropcap" data-gallery="restoration"
-            aria-label="Go to Restoration Projects">R</a>
-        estoration Projects — Almost instantaneous astral travel to any point in our universe is now possible via the
-        implementation of hyperbolic sub-resonant variations, combined with isomorphic silicon overlays manifesting
-        dolor sit abet connecter advising elia.
+    <p>Decorative painting is the art of transforming ordinary surfaces into visually captivating works that reflect
+        style,
+        history, and personality. Through techniques such as faux finishes, glazing, marbling, stenciling, and gilding,
+        artists create texture, depth, and illusion. Blending craftsmanship with creativity, decorative painting
+        enhances
+        architecture and interiors, enriching spaces with timeless elegance, warmth, and artistic character.</p>
+
+    <p>Historical restoration is the meticulous art of preserving and revitalizing buildings, artworks, and
+        architectural
+        details to their original beauty and integrity. It combines research, craftsmanship, and conservation science to
+        honor historical authenticity while ensuring structural stability. Through careful material selection and
+        period-accurate techniques, restoration protects cultural heritage and connects the past to future generations.
     </p>
 
-    <p>
-        <a href="/decorative?showSlideshow=true" class="dropcap" data-gallery="decorative"
-            aria-label="Go to Decorative Painting">D</a>
-        ecorative Painting — The woodsman saved the day by capturing the robber. Next time the orphan went for a stroll
-        in the forest they would call the small child first!
-    </p>
-
-    <p>
-        <a href="/artworks?showSlideshow=true" class="dropcap" data-gallery="artworks" aria-label="Go to Artworks">A</a>
-        rtworks — Irony Komi enamel pin paleo la clix kinfolk banjo leggings volute. Viral etsy occaecat DSA
-        dreamcatcher prism comodo coloring book tilde lorem non.
+    <p>These galleries—<strong>Black & White</strong>, <strong>The Drip Series</strong>, <strong>Encaustic</strong>, and
+        <strong>The Projects Series</strong>—trace an evolving artistic journey. Each explores material, mood, and
+        meaning
+        through distinct techniques: the purity of monochrome, the spontaneity of dripping paint, the luminous depth of
+        encaustic wax, and the conceptual layers of ongoing projects. Together, they reveal experimentation, emotion,
+        and
+        transformation.
     </p>
 </section>

@@ -592,7 +592,7 @@ p::first-letter {
     padding-bottom: 5px;
     /* Adding a slight top margin or vertical-align if further fine-tuning is needed */
     position: absolute; /* Allows for more precise positioning */
-    left: 25%;
+    left: 25vw;
     top: 2em; /* Nudge it down a little */
 }
 

@@ -565,7 +565,7 @@ a.is-active {
     --max-width-narrow: 80ch;
 }
 
-section {
+section:not(.spacer) {
     font-family: Arial, sans-serif;
     color: var(--color-ink);
     line-height: 1.6;
@@ -573,6 +573,10 @@ section {
     max-width: var(--max-width-wide);
     margin-left: auto;
     margin-right: auto;
+}
+
+section.spacer {
+  position: relative;
 }
 
 p {

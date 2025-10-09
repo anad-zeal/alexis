@@ -585,10 +585,10 @@ p::first-letter {
     font-size: 5.5em; /* Increased size for more impact */
     color: var(--color-ink);
     float: left;
-    margin-right: 0.15em;
+    margin-right: 0.1em;
     line-height: 0.7; /* Adjusted line-height to pull it up slightly, allowing more open space below */
-    padding-right: 5px;
-    padding-bottom: 5px;
+    padding-right: 19px;
+    padding-bottom: 1px;
     /* Adding a slight top margin or vertical-align if further fine-tuning is needed */
     position: relative; /* Allows for more precise positioning */
     top: 0.05em; /* Nudge it down a little */

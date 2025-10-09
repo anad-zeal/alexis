@@ -582,10 +582,10 @@ p {
 
 p::first-letter {
     font-family: 'Bonheur Royale', cursive;
-    font-size: 6em; /* Increased size for more impact */
+    font-size: 6.5em; /* Increased size for more impact */
     color: var(--color-ink);
     float: left;
-    margin-right: 0.1em;
+    margin-right: 0.2em;
     line-height: 0.7; /* Adjusted line-height to pull it up slightly, allowing more open space below */
     padding-right: 5px;
     padding-bottom: 5px;

@@ -575,9 +575,9 @@ section:not(.spacer) {
     margin-right: auto;
 }
 
-section.spacer {
+/* section.spacer {
   position: relative;
-}
+} */
 
 p {
     margin-bottom: 1em;

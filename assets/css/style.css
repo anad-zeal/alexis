@@ -167,6 +167,7 @@ video {
   align-items: center;
   justify-content: center;
   height: auto;
+  padding: 1em 0;
   background-color: var(--color-primary);
   color: var(--color-soft);
   text-align: center;

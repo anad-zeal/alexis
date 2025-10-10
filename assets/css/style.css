@@ -182,7 +182,7 @@ video {
   padding: var(--spacing-md) var(--spacing-lg); /* Use design tokens */
 }
 
-.mid {
+.site-header {
   position: relative;
   top: 0;
   z-index: 999;

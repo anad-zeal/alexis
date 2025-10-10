@@ -556,7 +556,7 @@ a.is-active {
   font-family: 'Bonheur Royale', sans-serif;
   font-weight: 300;
   font-size: clamp(6rem, 12vw, 8rem);
-  line-height: 1;
+  line-height: 1.5;
   margin-right: 0.25em;
   padding-top: 0.08em;
   color: var(--brand);

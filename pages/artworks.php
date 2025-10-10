@@ -1,5 +1,5 @@
+<h1 id="artworks-page-heading" class="page-title">Artworks</h1>
 <section class="body-paragraphs" aria-labelledby="artworks-page">
-    <h1 id="artworks-page-heading" class="page-title">Artworks</h1>
 
     <p>
         <a href="/black-and-white?showSlideshow=true" role="link" class="dropcap mnu-change"

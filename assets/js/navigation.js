@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // if link explicitly points to anchor on same page, allow default
     const pathname = normalizePath(href);
     ev.preventDefault();
-    updatePageContent(a, true).catch((e) => console.error(e));
+    updatePageContent(a, true).catch((e) => console.error(e));`
   });
 
   // initial load: pick matching nav link or default to /home

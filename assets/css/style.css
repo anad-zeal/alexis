@@ -22,7 +22,7 @@
   /* Typography */
   --font-family-base: 'Montserrat', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-family-display: 'Montserrat', sans-serif; /* If display needs distinct properties */
-  --font-family-title: 'Poiret One', sans-serif;
+  --font-family-title: 'Playfair Display', serif;
   --font-family-script: 'Bonheur Royale', cursive;
 
   /* Font Sizes */
@@ -282,7 +282,7 @@ h3.title {
 }
 .dropcap {
   float: left;
-  font-family: var(--font-family-script);
+  font-family: var(--font-family-heading);
   font-weight: 700;
   font-size: clamp(3.2rem, 8vw, 5rem);
   line-height: 0.9;

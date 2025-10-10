@@ -237,3 +237,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// End of navigation.js
+
+// The following code was moved to misc.js to avoid duplication and ensure it runs on every page load.
+// function swapHeadersViaQueryParam() {
+//   const params = new URLSearchParams(window.location.search);
+//   if (params.get('showSlideshow') !== 'true') return;
+//   const siteHeader = document.querySelector('.site-header');
+//   const slideshowHeader = document.querySelector('.slideshow-site-header');
+//   if (siteHeader) siteHeader.style.visibility = 'hidden';
+//   if (slideshowHeader) slideshowHeader.style.visibility = 'visible';
+//   document.body.classList.add('is-slideshow');
+// }

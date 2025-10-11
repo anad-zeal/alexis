@@ -221,7 +221,7 @@ h3 {
   margin-bottom: var(--spacing-sm); /* Consistent bottom margin */
 }
 
-h1.title {
+h1.page-title {
   font-family: var(--font-family-script);
   font-size: var(--font-size-h1-clamp);
   font-weight: 100;
@@ -231,7 +231,7 @@ h1.title {
   line-height: 1;
 }
 
-.hero h1 {
+h1.herotitle {
   font-family: var(--font-family-title);
 }
 

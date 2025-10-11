@@ -34,7 +34,7 @@
   --font-size-h2: 1.51rem; /* For .page-title-container h2 */
 
   /* Headings Clamp Values (scaled and rounded from your previous inputs) */
-  --font-size-h1-clamp: clamp(2.25rem, 5.4vw, 3.5rem); /* Scaled .9 from 2.5rem, 6vw, 4rem */
+  --font-size-h1-clamp: clamp(7rem, 10vw, 9rem); /* Scaled .9 from 2.5rem, 6vw, 4rem */
   --font-size-h3-clamp: clamp(
     2.25rem,
     5.4vw,
@@ -222,7 +222,7 @@ h3 {
 }
 
 h1.page-title {
-  font-family: var(--font-family-script);
+  font-family: var(--font-family-title);
   font-size: var(--font-size-h1-clamp);
   font-weight: 100;
   text-align: center;
@@ -231,7 +231,7 @@ h1.page-title {
   line-height: 1;
 }
 
-h1.herotitle {
+h1.hero-title {
   font-family: var(--font-family-title);
 }
 
@@ -244,15 +244,6 @@ h3.title {
   margin: 0;
   line-height: 1;
 }
-/* IMPORTANT: If you want h1.title and h3.title to share font-size,
-   you can consolidate them like:
-   h1.title, h3.title {
-       font-family: var(--font-family-title);
-       font-size: var(--font-size-heading-clamp); // Create a generic token
-       ...
-   }
-   If h3 should be smaller than h1, adjust its clamp values specifically.
-*/
 
 .sub-title {
   font-family: var(--font-family-title);

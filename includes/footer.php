@@ -10,7 +10,6 @@
 <!-- Script tags for your JavaScript files -->
 <script src="/assets/js/slideshow.js"></script>
 <script src="/assets/js/navigation.js"></script>
-<!-- <script src="/assets/js/misc.js"></script> -->
 </body>
 
 </html>

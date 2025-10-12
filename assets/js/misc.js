@@ -1,3 +1,5 @@
+//assets/js/misc.js
+
 function swapHeadersViaQueryParam() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('showSlideshow') !== 'true') return;

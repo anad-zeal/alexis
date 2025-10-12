@@ -1,4 +1,4 @@
-?php // /pages/biography.php
+<?php // /pages/biography.php
 ?>
 
 <section class="body-paragraphs" aria-labelledby="biography-page">

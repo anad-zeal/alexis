@@ -24,7 +24,7 @@ $map = [
 $file = $map[$page] ?? $map["home"];
 
 // Variables for header
-$page_title = ucfirst(str_replace("-", " ", $page)) . " | aepaintsaepaints";
+$page_title = ucfirst(str_replace("-", " ", $page)) . " | aepaints";
 $active_page = $page;
 
 require __DIR__ . "/includes/header.php";

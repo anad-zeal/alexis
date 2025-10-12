@@ -21,18 +21,10 @@ $map = [
 ];
 
 // Resolve file or default to home
-//$file = $map[$page] ?? $map["home"];
-$file = "<h1 id='contact-heading' class='page-title'>Contact</h1>
-<p>Decorative painting is the art of transforming ordinary surfaces into visually captivating works that reflect
-        style, history, and personality. Through techniques such as faux finishes, glazing, marbling, stenciling, and
-        gilding, artists create texture, depth, and illusion. Blending craftsmanship with creativity, decorative
-        painting
-        enhances architecture and interiors, enriching spaces with timeless elegance, warmth, and artistic character.
-    </p>
-";
+$file = $map[$page] ?? $map["home"];
 
 // Variables for header
-$page_title = ucfirst(str_replace("-", " ", $page)) . " | aepaints";
+$page_title = ucfirst(str_replace("-", " ", $page)) . " | aepaintsaepaints";
 $active_page = $page;
 
 require __DIR__ . "/includes/header.php";

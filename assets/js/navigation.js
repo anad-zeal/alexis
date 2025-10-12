@@ -1,4 +1,5 @@
-// Improved, drop-in replacement for your SPA navigation logic.
+//assets/js/navigation.js
+//Improved, drop-in replacement for your SPA navigation logic.
 
 function parseDurationValue(value) {
   // Accepts strings like "0.3s" or "150ms" and returns ms as number

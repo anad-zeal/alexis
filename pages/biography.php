@@ -38,7 +38,7 @@
             “Content here, content here”, making it look like readable English.
         </p>
 
-        <p><a href="/decorative-painting.php" class="dropcap" adata-gallery="decorative"
+        <p><a href="/decorative-painting.php" class="dropcap" data-gallery="decorative"
                 ria-label="Go to Decorative Painting">D</a>ecorative Painting —
             It is a long established fact that a reader will be distracted by the readable content of a page when
             looking at

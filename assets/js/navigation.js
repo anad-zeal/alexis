@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mainContentFadeArea) {
         const fadeDuration = getTransitionDuration(mainContentFadeArea);
         mainContentFadeArea.style.opacity = 1;
-        if (subTitleElement) subTitleElement.style.opacity = 0;
+        if (subTitleElement) subTitleElement.style.opacity = 1;
         await new Promise((r) => setTimeout(r, fadeDuration + 50));
       } else if (subTitleElement) {
         const fadeDuration = getTransitionDuration(subTitleElement);

@@ -13,7 +13,7 @@ require __DIR__ . "/includes/hero.php";
         the Worcester Art Museum in Worcester Massachusetts that I began my formal education in the arts</p>
     <p>While at that school I was honored to receive the Frances Kinnicutt Foreign Travel Award for Women, which gave me
         the opportunity to study Minoan and Mycenaean art history and architecture on the island of Crete. I went on to
-        earn a BA at Clark Universityin Worcester, Massachusetts.</p>
+        earn a BA at Clark University in Worcester, Massachusetts.</p>
 
     <p>It was serendipity that brought me to my career in historic conservation and restoration While visiting an 1848
         Gothic Revival house that was undergoing decorative painting and plaster restoration I realized what a joy it

@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = Array.from(document.querySelectorAll('nav a'));
   const heroTitleElement = document.querySelector('h1.title'); // The main, consistent title
   const subTitleElement = document.querySelector('p.sub-title'); // The dynamic subtitle
-  const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
+  const dynamicPageWrapper = document.getElementById('main-content-area');
   // Target the main content area for a full content fade during navigation
   const mainContentFadeArea = document.getElementById('main-content-area'); // Targets the <main> element
   const loadingSpinner = document.getElementById('loading-spinner');
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return navLinks.find((a) => normalizePath(a.getAttribute('href') || a.href) === norm);
   }
 
-  // extractFragmentFromHtml will now look for content within #dynamic-page-wrapper by default
-  async function extractFragmentFromHtml(html, selector = '#dynamic-page-wrapper') {
+  // extractFragmentFromHtml will now look for content within #main-content-area by default
+  async function extractFragmentFromHtml(html, selector = '#main-content-area') {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const fragmentRoot = doc.querySelector(selector);
     // Fallback to body or return empty if fragmentRoot is not found, to avoid errors
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadPageContent(path) {
     if (loadingSpinner) loadingSpinner.style.display = 'block';
     if (!dynamicPageWrapper) {
-      console.error('Dynamic page wrapper (#dynamic-page-wrapper) not found!');
+      console.error('Dynamic page wrapper (#main-content-area) not found!');
       return false;
     }
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error(`${response.status} ${response.statusText}`);
       }
       const html = await response.text();
-      const fragmentHtml = await extractFragmentFromHtml(html, '#dynamic-page-wrapper');
+      const fragmentHtml = await extractFragmentFromHtml(html, '#main-content-area');
       dynamicPageWrapper.innerHTML = fragmentHtml;
 
       executeScriptsFromNode(dynamicPageWrapper);

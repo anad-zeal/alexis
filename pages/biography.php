@@ -1,4 +1,32 @@
-<section class="body-paragraphs" aria-labelledby="biography-page-heading">
+<?php
+$page_title  = $page_title  ?? "Biography";
+$active_page = $active_page ?? "biography";
+
+// Canonical URL builder
+$host = $_SERVER['HTTP_HOST'] ?? 'example.com';
+$https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
+$scheme = $https ? 'https' : 'http';
+$canonicalPath = '/' . ltrim($active_page, '/');
+// If you prefer "/" for home, uncomment the next line
+// if ($active_page === 'home') { $canonicalPath = '/'; }
+$canonicalUrl = sprintf('%s://%s%s', $scheme, $host, $canonicalPath);
+$is404 = ($active_page === '404');
+
+function nav_item(string $slug, string $label, string $href): string
+{
+    global $active_page;
+    $isActive = ($active_page === $slug);
+    $class    = $isActive ? 'is-active' : '';
+    $aria     = $isActive ? ' aria-current="page"' : '';
+    return sprintf(
+        '<a href="%s" class="%s"%s>%s</a>',
+        htmlspecialchars($href, ENT_QUOTES, 'UTF-8'),
+        $class,
+        $aria,
+        htmlspecialchars($label, ENT_QUOTES, 'UTF-8')
+    );
+}
+?><section class="body-paragraphs" aria-labelledby="biography-page-heading">
 
     <p>As a child I spent many hours in my father&#39;s wood shop. He was a master cabinet maker, restorer of antique
         furniture, and a wood sculptor. My mother was an inventor and patent holder. It is no surprise, given the talent

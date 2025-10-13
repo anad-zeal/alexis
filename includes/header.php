@@ -36,7 +36,8 @@ function nav_item(string $slug, string $label, string $href): string
     <link rel="icon" href="/favicons/favicon.ico" sizes="any">
     <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
-
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/c-kick/mobileConsole/hnl.mobileconsole.min.js?ver=1.4.0" id="con-js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link

@@ -1,22 +1,16 @@
-<?php
-// footer.php
-?>
-</main>
-<footer class="site-footer">
-    <p>&copy; <?= date("Y") ?> Elza • All rights reserved.</p>
-</footer>
+ </div> <!-- Closes #dynamic-page-wrapper -->
+ <!-- Optional loading spinner -->
+ <div id="loading-spinner" style="display:none; text-align:center; padding:20px;">Loading content...</div>
+ </main>
 
-<!-- Reusable slideshow module -->
-<script type="module">
-import {
-    initSlideshows
-} from "/assets/js/script.js";
-document.addEventListener("DOMContentLoaded", () => initSlideshows());
+ <footer class="site-footer">
+     <p>&copy; <?= date("Y") ?> elzalive • All rights reserved.</p>
+ </footer>
 
-// If you later add SPA navigation, re-run initSlideshows after route changes:
-window.addEventListener("hashchange", () => initSlideshows());
-window.addEventListener("app:navigate", () => initSlideshows());
-</script>
-</body>
+ <!-- Script tags for your JavaScript files -->
+ <script src="/assets/js/slideshow.js"></script>
+ <script src="/assets/js/navigation.js"></script>
+ <script src="/assets/js/misc.js"></script>
+ </body>
 
-</html>
+ </html>

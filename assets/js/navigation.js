@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fade out the main content area (including hero)
       if (mainContentFadeArea) {
         const fadeDuration = getTransitionDuration(mainContentFadeArea);
-        mainContentFadeArea.style.opacity = 0;
+        mainContentFadeArea.style.opacity = 1;
         if (subTitleElement) subTitleElement.style.opacity = 0;
         await new Promise((r) => setTimeout(r, fadeDuration + 50));
       } else if (subTitleElement) {

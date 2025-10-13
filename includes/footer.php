@@ -12,8 +12,7 @@
 </footer>
 
 <script src="/assets/js/slideshow.js"></script>
-<!-- <script src="/assets/js/navigation.js"></script> -->
-<script src="<?php echo $jsFile . '?h=' . $jsV; ?>"></script>
+<script src="/assets/js/navigation.js"></script>
 <script src="/assets/js/misc.js"></script>
 </body>
 

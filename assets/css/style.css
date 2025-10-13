@@ -473,3 +473,6 @@ h3.title {
 main#main-content-area {
   transition: opacity var(--speed) var(--easing); /* Or any duration/easing you prefer */
 }
+main#main-content-area.fade-out {
+  opacity: 0;
+}

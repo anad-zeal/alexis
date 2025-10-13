@@ -14,10 +14,10 @@
   --ivory-inspired: hsl(45, 30%, 94%);
 
   /* Typography */
-  --font-body: 'Montserrat', ui-sans-serif;
-  --font-ui: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: 'Spectral', serif;
+  --font-ui: 'Montserrat', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: 'Montserrat', sans-serif;
-  --font-title: 'Playfair Display', serif;
+  --font-title: 'Poiret One', sans-serif;
   --font-script: 'Bonheur Royale', cursive;
 
   /* Layout */
@@ -29,6 +29,7 @@
   /* Motion */
   --speed: 280ms;
   --easing: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --slideshow-fade-ms: 1500ms; /* Added for slideshow transition duration */
 }
 
 /* =========================================
@@ -251,66 +252,91 @@ h3.title {
   margin: 0;
 }
 
-.slideshow-container {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/* --- Slideshow Core Styles (from slideshow.js) --- */
+.slideshow {
+  width: min(1200px, 90vw); /* Use --wide for consistency */
+  margin-inline: auto;
   position: relative;
-  width: var(--wide);
+  /* Remove redundant background, display, etc., as they are handled by [data-role="stage"] */
+  /* Remove max-height, aspect-ratio from here as data-role="stage" handles it */
 }
 
-.slideshow {
-  width: var(--wide);
-  height: auto;
-  aspect-ratio: 16/9;
-  max-height: 90vh;
-  background-color: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
+.slideshow [data-role='stage'] {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+  background: var(--paper); /* Use a token or specific color */
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  width: 100%; /* Ensure stage takes full width of slideshow container */
+  height: 100%; /* Ensure stage takes full height of slideshow container */
 }
-
-/* Prev/Next buttons (base) */
-.prev-next.circle {
-  background-color: var(--brand);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.5em;
-  padding: 0;
-  transition: background-color var(--speed) var(--easing);
+.slideshow [data-role='stage'] img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 1px;
+  min-height: 1px;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity var(--slideshow-fade-ms) ease-in-out;
+}
+.slideshow [data-role='caption-wrap'] {
+  position: static;
+  text-align: center;
+  padding: 0.75rem 0;
+  color: var(--ink-muted); /* Use a token */
+  font-style: italic;
+  opacity: 0; /* Initial state for fade-in */
+  transition: opacity 300ms ease-in-out; /* Caption specific transition */
+}
+.slideshow [data-role='previous'],
+.slideshow [data-role='next'] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 10;
 }
-
-.prev-next.circle:hover {
-  background-color: var(--focus-ring);
+.slideshow [data-role='previous'] {
+  left: 0.5rem;
+}
+.slideshow [data-role='next'] {
+  right: 0.5rem;
+}
+.slideshow button[data-action] {
+  background: var(--brand); /* Use a token */
+  color: #fff;
+  border: 0;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 1.5em; /* From your prev-next.circle */
+  transition: background-color var(--speed) var(--easing); /* Use tokens */
+}
+.slideshow button[data-action]:hover {
+  background: var(--focus-ring); /* Use a token */
+}
+.slideshow button[data-action]:focus {
+  outline: 2px solid var(--focus-ring); /* Use a token */
+  outline-offset: 2px;
 }
 
-.prev-next-icon {
-  width: 30px;
-  height: auto;
-  filter: invert(100%);
-}
-
-.caption {
-  text-align: center;
-  padding: 1rem 0;
-  font-style: italic;
-  color: var(--ink-muted);
-}
+/* --- Removed/Merged Legacy Slideshow Styles --- */
+/* .slideshow-container { ... } - Functionality absorbed or not needed */
+/* .slideshow { ... } - Merged into .slideshow and [data-role="stage"] */
+/* .prev-next.circle { ... } - Merged into .slideshow button[data-action] */
+/* .prev-next-icon { ... } - Not directly used, as JS injects text arrows */
+/* .caption { ... } - Merged into .slideshow [data-role="caption-wrap"] */
 
 .site-footer {
   padding-block: 3rem 2rem;
@@ -353,17 +379,14 @@ h3.title {
     gap: 0.5rem;
   }
 
-  .slideshow {
-    max-height: 50vh;
+  /* Adjust slideshow for smaller screens */
+  .slideshow [data-role='stage'] {
+    min-height: 240px; /* Smaller min-height for mobile */
   }
-
-  .prev-next.circle {
-    width: 50px;
-    height: 50px;
-  }
-
-  .prev-next-icon {
-    width: 25px;
+  .slideshow button[data-action] {
+    width: 48px; /* Smaller buttons */
+    height: 48px;
+    font-size: 1.2em;
   }
 }
 
@@ -374,8 +397,8 @@ h3.title {
   .main-menu ul {
     align-items: center;
   }
-  .slideshow {
-    max-height: 40vh;
+  .slideshow [data-role='stage'] {
+    min-height: 180px; /* Even smaller min-height */
   }
 }
 
@@ -417,6 +440,10 @@ h3.title {
   color: var(--brand);
   transition: color 250ms ease, transform 250ms ease;
 }
+.top-grid .mid a.is-active {
+  font-weight: bold;
+  color: var(--ink); /* Differentiate active link */
+}
 
 /* Link hover */
 .top-grid .mid a:hover {
@@ -430,43 +457,14 @@ h3.title {
 }
 
 /* =========================================
-   Slideshow — Hardened Overrides (put last)
-   Ensures stage has height and images never collapse to 0×0.
+   Slideshow header swap (for specific query param)
 ========================================= */
-.slideshow [data-role='stage'] {
-  position: relative;
-  /* keep height even if other CSS interferes */
-  aspect-ratio: 16 / 9;
-  min-height: 320px;
-  background: #c0ad97;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-  display: grid;
-  place-items: center;
-}
-
-.slideshow [data-role='stage'] img {
-  position: absolute !important;
-  inset: 0 !important;
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-width: 1px !important;
-  min-height: 1px !important;
-  object-fit: contain !important;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
-
-.slideshow [data-role='caption-wrap'] {
-  position: static;
-  text-align: center;
-  padding: 0.75rem 0;
-  color: #555;
-  font-style: italic;
-}
-
 .slideshow-site-header {
-  visibility: hidden;
+  visibility: hidden; /* This class is applied when the query param is present */
 }
+/* If you intend to have a *different* header visible when .is-slideshow is on body,
+   you'd need additional CSS here, for example:
+   body.is-slideshow .site-header { display: none; }
+   body.is-slideshow .slideshow-site-header { display: block; visibility: visible; }
+   But for now, visibility: hidden seems to be the intended behavior for this specific class.
+*/

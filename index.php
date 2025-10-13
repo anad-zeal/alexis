@@ -1,24 +1,47 @@
-<body>
-	<div class="container">
-		<div class="logo"> <img src="https://aepaints.com/wp-content/themes/AEPAuto_Check_it_Out/assets/images/logo-aepaints.svg" alt="AE Paints Logo" class="logo-img" height="50px"> </div>
-		<div class="slideshow"></div>
-		<div class="previous">
-			<button id="prev-slide" class="prev-next circle"><img src="https://aepaints.com/images/misc/prev-next.svg" class="prev-next" width="50" alt="Previous"> </button>
-		</div>
-		<div class="next">
-			<button id="next-slide" class="prev-next circle"><img src="https://aepaints.com/images/misc/next-prev.svg"  class="prev-next" width="50" alt="Next"></button>
-		</div>
-		<div class="caption">
-			<p id="caption-text"></p>
-		</div>
-		<div class="footer">
-			<footer>
-				<div class="copyright">
-					<p>©2025 Alexis Elza. All rights reserved.</p>
-				</div>
-			</footer>
-		</div>
-	</div>
-	<script src="js/script.js"></script>
-</body>
-</html>
+<?php
+
+// index.php — central router with clean slugs
+
+$page = $_GET["page"] ?? "home";
+
+$map = [
+    // Text-only pages
+    "home" => "pages/home.php",
+    "artworks" => "pages/artworks.php",
+    "biography" => "pages/biography.php",
+    "contact" => "pages/contact.php",
+
+    // Slideshow pages
+    "restoration" => "pages/restoration.php",
+    "decorative" => "pages/decorative.php",
+    "black-and-white" => "pages/black-and-white.php",
+    "drips" => "pages/drips.php",
+    "encaustic" => "pages/encaustic.php",
+    "projects" => "pages/projects.php",
+];
+
+// Resolve file or default to home
+$file = $map[$page] ?? $map["home"];
+
+// --- NEW LOGIC FOR SPA ---
+// Check if this is an AJAX request from our JavaScript
+$is_ajax_request = isset($_SERVER['HTTP_X_FETCHED_WITH']) && $_SERVER['HTTP_X_FETCHED_WITH'] === 'SPA-Fetch';
+
+if ($is_ajax_request) {
+    // If it's an AJAX request, only include the page content
+    // We assume pages like home.php, artworks.php etc. only contain the fragment HTML
+    require __DIR__ . "/$file";
+} else {
+    // If it's a regular browser request (initial load or direct URL access),
+    // build the full HTML page.
+
+    // Variables for header (only needed for full page requests)
+    $page_title = ucfirst(str_replace("-", " ", $page)); // Just the page title, no " | aepaints"
+    $full_page_title = $page_title . " | aepaints"; // Full title for browser tab
+    $active_page = $page;
+
+    require __DIR__ . "/includes/header.php"; // This will include <title> and start <main>
+    require __DIR__ . "/includes/hero.php";   // This will put the hero section
+    require __DIR__ . "/$file";               // This will put the initial page content into #dynamic-page-wrapper
+    require __DIR__ . "/includes/footer.php"; // This will close <main>, add spinner, footer, and scripts
+}

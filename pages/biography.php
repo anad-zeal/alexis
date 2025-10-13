@@ -1,4 +1,4 @@
-<section class="body-paragraphs">
+<section class="body-paragraphs" aria-labelledby="biography-page-heading">
 
     <p>As a child I spent many hours in my father&#39;s wood shop. He was a master cabinet maker, restorer of antique
         furniture, and a wood sculptor. My mother was an inventor and patent holder. It is no surprise, given the talent

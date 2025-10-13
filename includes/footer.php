@@ -1,7 +1,7 @@
  </div> <!-- Closes #dynamic-page-wrapper -->
  <!-- Optional loading spinner -->
  <div id="loading-spinner" style="display:none; text-align:center; padding:20px;">
-     <img src="/assets/images/misc-images/0800.jpg" alt="Loading..." style="width:40px; height:auto;" />
+     <img src="/assets/images/0800.jpg" alt="Loading..." style="width:40px; height:auto;" />
      <div>Loading content...</div>
  </div>
  </main>

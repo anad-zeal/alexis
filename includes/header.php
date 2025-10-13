@@ -32,7 +32,7 @@ function nav_item(string $slug, string $label, string $href): string
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $full_page_title ?></title> <!-- Use the full title here -->
+    <title><?= htmlspecialchars($full_page_title) ?></title>
     <link rel="icon" href="/favicons/favicon.ico" sizes="any">
     <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
@@ -63,5 +63,5 @@ function nav_item(string $slug, string $label, string $href): string
         </nav>
     </header>
 
-    <main id="dynamic-page-wrapper" tabindex="-1">
+    <main id="dynamic-page-wrapper" data-page="<?= htmlspecialchars($active_page) ?>" tabindex="-1">
         <!-- The hero section from includes/hero.php will go after this -->

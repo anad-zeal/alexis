@@ -468,3 +468,7 @@ h3.title {
    body.is-slideshow .slideshow-site-header { display: block; visibility: visible; }
    But for now, visibility: hidden seems to be the intended behavior for this specific class.
 */
+
+main#main-content-area {
+  transition: opacity var(--speed) var(--easing); /* Or any duration/easing you prefer */
+}

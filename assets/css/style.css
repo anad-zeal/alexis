@@ -150,10 +150,11 @@ h3 {
 }
 
 .page-title {
-  /* font-family: var(--font-title);
+  font-family: var(--font-title);
   font-size: clamp(2rem, 7vw, 4rem);
   line-height: 1;
-  text-align: center; */
+  text-align: center;
+  margin: 0;
   color: var(--ink);
 }
 

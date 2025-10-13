@@ -9,8 +9,7 @@
             aria-label="Go to Decorative Painting">D</a>ecorative Painting
     </p>
 
-    <p>
-        <a href="/artworks.php?showSlideshow=true" class="dropcap" data-gallery="artworks"
+    <p><a href="/artworks.php?showSlideshow=true" class="dropcap" data-gallery="artworks"
             aria-label="Go to Artworks">A</a>rtworks
     </p>
 </section>

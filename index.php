@@ -28,9 +28,15 @@ $file = $map[$page] ?? $map["home"];
 $is_ajax_request = isset($_SERVER['HTTP_X_FETCHED_WITH']) && $_SERVER['HTTP_X_FETCHED_WITH'] === 'SPA-Fetch';
 
 if ($is_ajax_request) {
-    // If it's an AJAX request, only include the page content
-    // We assume pages like home.php, artworks.php etc. only contain the fragment HTML
+    // If it's an AJAX request, wrap the page content in the expected structure
+    // so JavaScript can extract it properly
+    $page_title = ucfirst(str_replace("-", " ", $page));
+    $active_page = $page;
+
+    echo '<div id="dynamic-page-wrapper" data-page="' . htmlspecialchars($active_page) . '" tabindex="-1">';
+    require __DIR__ . "/includes/hero.php";
     require __DIR__ . "/$file";
+    echo '</div>';
 } else {
     // If it's a regular browser request (initial load or direct URL access),
     // build the full HTML page.

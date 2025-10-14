@@ -20,12 +20,12 @@
     </p>
 </section> -->
 
-<section class="body-paragraphs" aria-labelledby="home-page-heading">
+<section class="body-paragraphs" aria-labelledby="artworks-page-heading">
 
     <p>
-        <a href="/restoration.php" class="images" data-gallery="restoration"
-            aria-label="Go to Restoration Projects">R</a>estoration
-        Projects —
+        <estoration href="/black-white.php" class="images" data-gallery="black_and_white"
+            aria-label="Go to Restoration Projects">Restoration
+            Projects —
     </p>
 
     <p>

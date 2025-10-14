@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "src": "/assets/images/black-and-white-paintings/Tsunami.jpg",
+    "caption": "Tsunami"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/The Big Island.jpg",
+    "caption": "The Big Island"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/Spartobranchus tenuis.jpg",
+    "caption": "Spartobranchus tenuis"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/Serengeti.jpg",
+    "caption": "Serengeti"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/North by Northwest.jpg",
+    "caption": "North by Northwest"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/NM.jpg",
+    "caption": "NM"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/Low Tide-Somalian Shore.jpg",
+    "caption": "Low Tide-Somalian Shore"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/How I Imagine Minnesota.jpg",
+    "caption": "How I Imagine Minnesota"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/Green Pond.jpg",
+    "caption": "Green Pond"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/Evidence of an Iron Horse.jpg",
+    "caption": "Evidence of an Iron Horse"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/Earth, Wind and Fire.jpg",
+    "caption": "Earth, Wind and Fire"
+  },
+  {
+    "src": "/assets/images/black-and-white-paintings/Close Encounter.jpg",
+    "caption": "Close Encounter"
+  }
+]

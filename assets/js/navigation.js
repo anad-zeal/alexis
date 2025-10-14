@@ -42,15 +42,15 @@ function normalizePath(href) {
 
 const pageTitles = {
   '/home': 'Home',
-  '/artworks': 'Artwork Categories',
+  '/artworks': 'Artworks',
   '/biography': 'Biography',
   '/contact': 'Contact Me',
-  '/drips': 'Drip Series Collection',
+  '/drips': 'Drip Series',
   '/encaustic': 'Encaustic Works',
-  '/projects': 'Project Series Gallery',
-  '/restoration': 'Restoration Services',
+  '/projects': 'Project Series',
+  '/restoration': 'Restoration Projects',
   '/decorative': 'Decorative Art',
-  '/black-and-white': 'Black and White Gallery',
+  '/black-and-white': 'Black and White Series',
 };
 
 document.addEventListener('DOMContentLoaded', () => {

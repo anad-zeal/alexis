@@ -1,5 +1,5 @@
 <section class="hero">
-    <h1 class="sub-title">The Life of an Artist</h1>
+    <h2 class="sub-title">The Life of an Artist</h2>
     <p class="page-title"><?= $page_title ?></p>
 </section>
 <div id="main-content-area">

@@ -458,11 +458,9 @@ h3.title {
   position: relative;
   /* keep height even if other CSS interferes */
   aspect-ratio: 16 / 9;
-  min-height: 320px;
-  background: #c0ad97;
+  min-height: 640px;
+  background-color: var(--paper);
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
   display: grid;
   place-items: center;
 }

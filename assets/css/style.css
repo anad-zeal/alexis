@@ -443,6 +443,17 @@ h3.title {
    Slideshow — Hardened Overrides (put last)
    Ensures stage has height and images never collapse to 0×0.
 ========================================= */
+
+.slideshow-section {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgoldenrod;
+}
+
 .slideshow [data-role='stage'] {
   position: relative;
   /* keep height even if other CSS interferes */

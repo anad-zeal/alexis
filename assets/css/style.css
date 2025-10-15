@@ -485,6 +485,10 @@ h3.title {
   visibility: hidden;
 }
 
+.dynamic-page-wrapper [data-page='decorative'] .page-title {
+  font-size: 1rem;
+}
+
 .grid-wrapper {
   margin: 0;
   padding: 0;

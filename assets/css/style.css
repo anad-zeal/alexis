@@ -354,10 +354,6 @@ h3.title {
     gap: 0.5rem;
   }
 
-  .slideshow {
-    max-height: 50vh;
-  }
-
   .prev-next.circle {
     width: 50px;
     height: 50px;

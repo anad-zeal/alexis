@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault(); // Prevent default link behavior if desired
 
       if (subTitleElement) {
-        // Ensure the element exists
+        alert;
         subTitleElement.style.fontSize = '5vw';
       }
     });

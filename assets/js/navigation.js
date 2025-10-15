@@ -61,6 +61,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadingSpinner = document.getElementById('loading-spinner');
   let isTransitioning = false;
 
+  // Function to handle clicking on a.category
+  document.querySelectorAll('a.category').forEach(function (categoryLink) {
+    categoryLink.addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent default link behavior if desired
+      // Toggle the visibility of p.page-title-small
+      document.querySelector('p.page-title-small').classList.toggle('hidden');
+      // Or if you want to toggle 'display: none', use a class that sets display: none
+      // document.querySelector('p.page-title-small').classList.toggle('collapsed');
+    });
+  });
+
+  // Function to handle clicking on a.landing-mnu
+  document.querySelectorAll('a.landing-mnu').forEach(function (landingMenuLink) {
+    landingMenuLink.addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent default link behavior if desired
+      // Toggle the visibility of p.page-title
+      document.querySelector('p.page-title').classList.toggle('hidden');
+      // Or if you want to toggle 'display: none', use a class that sets display: none
+      // document.querySelector('p.page-title').classList.toggle('collapsed');
+    });
+  });
+
   // DEBUG: Verify elements exist
   console.log('Elements found:');
   console.log('- mainContentArea:', mainContentArea);

@@ -163,6 +163,15 @@ h3 {
   font-size: clamp(1.4rem, 5vw, 2.5rem);
 }
 
+.page-title,
+.page-title-small {
+  transition: opacity 0.3s ease-in-out;
+}
+.hidden {
+  opacity: 0;
+  pointer-events: none; // Prevents interaction when hidden
+}
+
 h1.title {
   font-family: var(--font-title);
   font-size: clamp(2.5rem, 6vw, 4rem);

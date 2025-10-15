@@ -485,7 +485,7 @@ h3.title {
   visibility: hidden;
 }
 
-.dynamic-page-wrapper [data-page='decorative'] {
+main {
   font-size: 10rem !important;
 }
 

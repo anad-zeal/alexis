@@ -1,6 +1,6 @@
 <section class="hero">
-    <h1 class="sub-title">The Life of an Artist</h1>
-    <p class="page-title"><?= $page_title ?></p>
+    <h2 class="sub-title">The Life of an Artist</h2>
+    <h1 class="page-title"><?= $page_title ?></h1>
 </section>
 <div id="main-content-area">
     <!-- Initial page content will be inserted here by index.php -->

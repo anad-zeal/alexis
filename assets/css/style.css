@@ -149,7 +149,7 @@ h3 {
   font-family: var(--font-display);
 }
 
-.page-title {
+h1.page-title {
   font-family: var(--font-title);
   font-size: clamp(2.88rem, 10.08vw, 5.76rem);
   line-height: 1;
@@ -178,7 +178,7 @@ h3.title {
   line-height: 1;
 }
 
-.sub-title {
+h2.sub-title {
   position: relative;
   top: 1vh;
   font-family: var(--font-script);

@@ -68,6 +68,22 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('- dynamicPageWrapper:', dynamicPageWrapper);
   console.log('- loadingSpinner:', loadingSpinner);
 
+  const pageTitle = document.querySelector('p.page-title');
+
+  // Shrink to 5vw when a.category is clicked
+  document.querySelectorAll('a.category').forEach((link) => {
+    link.addEventListener('click', () => {
+      pageTitle.style.fontSize = '5vw';
+    });
+  });
+
+  // Reset to 10vw when a.landing-mnu is clicked
+  document.querySelectorAll('a.landing-mnu').forEach((link) => {
+    link.addEventListener('click', () => {
+      pageTitle.style.fontSize = '10vw';
+    });
+  });
+
   // Add default transitions if not defined in CSS.
   if (mainContentArea && !getTransitionDuration(mainContentArea)) {
     mainContentArea.style.transition = `opacity 280ms ease-in-out`;

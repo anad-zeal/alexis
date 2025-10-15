@@ -302,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Shrink to 5vw when a.category is clicked
   document.querySelectorAll('a.category').forEach((link) => {
     link.addEventListener('click', () => {
+      alert('Category link clicked');
       pageTitle.style.fontSize = '5vw';
     });
   });

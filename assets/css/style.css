@@ -23,7 +23,7 @@
   /* Layout */
   --gutter: 0.5rem;
   --gap: clamp(0.75rem, 2vw, 1.25rem);
-  --wide: clamp(16rem, 90vw, 1200px);
+  --wide: 100vw;
   --narrow-max: 90ch;
 
   /* Motion */

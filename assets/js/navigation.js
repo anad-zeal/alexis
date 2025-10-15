@@ -5,7 +5,7 @@
 document.querySelectorAll('a.category').forEach((link) => {
   link.addEventListener('click', () => {
     alert('Category link clicked');
-    pageTitle.style.fontSize = '5vw';
+    pageTitle.style.fontSize = '1rem';
   });
 });
 

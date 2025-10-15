@@ -34,12 +34,19 @@ function nav_item(string $slug, string $label, string $href): string
 {
     global $active_page; // Access the global active_page variable
     $isActive = $active_page === $slug;
-    $class = $isActive ? "is-active" : "";
+
+    // Build the class string
+    $classes = "landing-mnu"; // Start with the desired class
+    if ($isActive) {
+        $classes .= " is-active"; // Add 'is-active' if the page is active
+    }
+
     $aria = $isActive ? ' aria-current="page"' : "";
+
     return sprintf(
         '<a href="%s" class="%s"%s>%s</a>',
         htmlspecialchars($href, ENT_QUOTES, "UTF-8"),
-        $class,
+        trim($classes), // Use trim to clean up any extra spaces if 'is-active' isn't added
         $aria,
         htmlspecialchars($label, ENT_QUOTES, "UTF-8"),
     );

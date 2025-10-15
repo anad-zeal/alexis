@@ -459,7 +459,7 @@ h3.title {
   /* keep height even if other CSS interferes */
   aspect-ratio: 16 / 9;
   min-height: 640px;
-  background-color: var(--paper);
+  background-color: transparent;
   overflow: hidden;
   display: grid;
   place-items: center;

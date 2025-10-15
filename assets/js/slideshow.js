@@ -1,6 +1,3 @@
-// assets/js/script.js
-// Vanilla JS slideshow (ES module). ARIA-friendly and SPA-safe.
-
 function createEl(tag, dataRole) {
   const el = document.createElement(tag);
   if (dataRole) el.setAttribute('data-role', dataRole);

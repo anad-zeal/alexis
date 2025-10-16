@@ -123,22 +123,14 @@ video {
   padding: 1rem 2rem;
 }
 
-.page-header {
+/* .page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-block-end: 2rem;
   padding-block-end: 1rem;
   border-block-end: 1px solid #eaeaea;
-}
-
-.page-title-container h2 {
-  margin: 0;
-  font-family: var(--font-display);
-  color: var(--ink-muted);
-  font-weight: 400;
-  font-size: 1.5rem;
-}
+} */
 
 /* =========================================
    Navigation

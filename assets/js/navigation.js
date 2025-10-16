@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- End of event listeners for font size changes ---
 
   // DEBUG: Verify elements exist
-  console.log('Elements found (post init):');
-  console.log('- mainContentArea:', mainContentArea);
-  console.log('- subTitleElement (global, post init):', subTitleElement);
-  console.log('- dynamicPageWrapper:', dynamicPageWrapper);
+  console.log('1 Elements found (post init):');
+  console.log(' 2 - mainContentArea:', mainContentArea);
+  console.log(' 3- subTitleElement (global, post init):', subTitleElement);
+  console.log('4- dynamicPageWrapper:', dynamicPageWrapper);
   // Removed: console.log('- loadingSpinner:', loadingSpinner);
 
   // Add default transitions if not defined in CSS.

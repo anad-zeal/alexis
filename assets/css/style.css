@@ -272,16 +272,6 @@ h2.sub-title {
    Main Layout & Components (Container, Slideshow, Footer)
 ========================================= */
 
-.slideshow-container {
-  flex-grow: 1;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: var(--wide);
-}
-
 .slideshow {
   width: var(--wide);
   height: auto;
@@ -296,6 +286,16 @@ h2.sub-title {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
+}
+
+.slideshow-container {
+  flex-grow: 1;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: var(--wide);
 }
 
 /* Prev/Next buttons (base) */

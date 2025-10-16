@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Event listeners for font size changes ---
   // Function to handle clicking on a.category
-  document.querySelectorAll('a.category').forEach(function (categoryLink) {
+  document.querySelectorAll('.category').forEach(function (categoryLink) {
     categoryLink.addEventListener('click', function (event) {
-      event.preventDefault(); // Prevent default link behavior if desired
+      //event.preventDefault(); // Prevent default link behavior if desired
 
       // CRITICAL DEBUG: Log subTitleElement here as well
       console.log('Category link clicked. subTitleElement:', subTitleElement);
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Function to handle clicking on a.landing-mnu
-  document.querySelectorAll('a.landing-mnu').forEach(function (landingMenuLink) {
+  document.querySelectorAll('.landing-mnu').forEach(function (landingMenuLink) {
     landingMenuLink.addEventListener('click', function (event) {
       //event.preventDefault(); // Prevent default link behavior if desired
 

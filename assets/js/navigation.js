@@ -4,7 +4,7 @@
 // Declare subTitleElement at a higher scope so all functions can access it
 let subTitleElement; // Use 'let' because it will be assigned later in DOMContentLoaded
 
-// --- Start of existing helper functions ---
+// --- Start of existing helper functions (loadingSpinner references removed) ---
 function parseDurationValue(value) {
   value = (value || '').trim();
   if (!value) return 0;
@@ -59,14 +59,15 @@ const pageTitles = {
 // --- End of existing helper functions ---
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Assign subTitleElement here, within DOMContentLoaded,
-  // where the element is guaranteed to exist.
+  // Assign subTitleElement here, within DOMContentLoaded.
+  // CRITICAL DEBUG: Log its value immediately after attempting to find it.
   subTitleElement = document.querySelector('p.page-title');
+  console.log('DOMContentLoaded: subTitleElement found:', subTitleElement);
 
   const navLinks = Array.from(document.querySelectorAll('nav a'));
   const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
   const mainContentArea = document.getElementById('main-content-area');
-  const loadingSpinner = document.getElementById('loading-spinner');
+  // Removed: const loadingSpinner = document.getElementById('loading-spinner');
   let isTransitioning = false;
 
   // --- Event listeners for font size changes ---
@@ -75,8 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
     categoryLink.addEventListener('click', function (event) {
       event.preventDefault(); // Prevent default link behavior if desired
 
+      // CRITICAL DEBUG: Log subTitleElement here as well
+      console.log('Category link clicked. subTitleElement:', subTitleElement);
       if (subTitleElement) {
-        console.log('Category link clicked. Setting font-size to 5vw.'); // Use console.log for debugging
         subTitleElement.style.fontSize = '5vw';
       } else {
         console.warn('Category link clicked, but p.page-title (subTitleElement) not found.');
@@ -87,17 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to handle clicking on a.landing-mnu
   document.querySelectorAll('a.landing-mnu').forEach(function (landingMenuLink) {
     landingMenuLink.addEventListener('click', function (event) {
-      //event.preventDefault(); // Prevent default link behavior if desired
+      event.preventDefault(); // Prevent default link behavior if desired
 
+      // CRITICAL DEBUG: Log subTitleElement here as well
+      console.log('Landing menu link clicked. subTitleElement:', subTitleElement);
       if (subTitleElement) {
-        // Check if the current font-size is 5vw
-        // Using getComputedStyle for robustness against browser differences,
-        // although direct style.fontSize should work if we're setting it programmatically.
         const currentFontSize = subTitleElement.style.fontSize;
         console.log('Landing menu link clicked. Current font-size:', currentFontSize);
 
         if (currentFontSize === '5vw') {
-          console.log('Font-size is 5vw, reverting to 10vw.');
           subTitleElement.style.fontSize = '10vw'; // Revert to 10vw
         } else {
           console.log('Font-size is not 5vw, no change.');
@@ -110,11 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- End of event listeners for font size changes ---
 
   // DEBUG: Verify elements exist
-  console.log('Elements found:');
+  console.log('Elements found (post init):');
   console.log('- mainContentArea:', mainContentArea);
-  console.log('- subTitleElement (global):', subTitleElement); // Now global
+  console.log('- subTitleElement (global, post init):', subTitleElement);
   console.log('- dynamicPageWrapper:', dynamicPageWrapper);
-  console.log('- loadingSpinner:', loadingSpinner);
+  // Removed: console.log('- loadingSpinner:', loadingSpinner);
 
   // Add default transitions if not defined in CSS.
   if (mainContentArea && !getTransitionDuration(mainContentArea)) {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function loadPageContent(path, targetElement) {
-    if (loadingSpinner) loadingSpinner.style.display = 'block';
+    // Removed: if (loadingSpinner) loadingSpinner.style.display = 'block';
     if (!targetElement) {
       console.error('Target element for content loading not found!');
       return false;
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return false;
     } finally {
-      if (loadingSpinner) loadingSpinner.style.display = 'none';
+      // Removed: if (loadingSpinner) loadingSpinner.style.display = 'none';
     }
   }
 

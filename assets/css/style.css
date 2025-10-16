@@ -283,26 +283,18 @@ h2.sub-title {
 } */
 
 .slideshow {
-  flex-grow: 1;
+  align-items: center;
+  aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: var(--wide);
-  width: var(--wide);
-  height: auto;
-  aspect-ratio: 16/9;
-  max-height: 90vh;
-  /* background-color: var(--paper); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-grow: 1;
   font-size: 2em;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: auto;
+  justify-content: center;
   position: relative;
+  width: var(--wide);
+  max-height: 90vh;
+  overflow: hidden;
 }
 
 /* Prev/Next buttons (base) */

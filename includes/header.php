@@ -81,8 +81,8 @@ function nav_item(string $slug, string $label, string $href): string
 
 <body>
     <header class="site-header">
-        <nav class="top-grid main-nav" aria-label="Primary">
-            <div class="mid flex">
+        <nav class="main-nav" aria-label="Primary">
+            <div class="home-main ">
                 <!-- Using the nav_item helper function for cleaner code -->
                 <?= nav_item("home", "HOME", "/home") ?>
                 <?= nav_item("artworks", "ARTWORKS", "/artworks") ?>

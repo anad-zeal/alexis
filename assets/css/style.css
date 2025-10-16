@@ -389,7 +389,7 @@ h2.sub-title {
   text-align: center;
   margin-bottom: 1vh;
 }
-.mid.flex {
+.home-main {
   display: flex;
   justify-content: space-between;
   width: 96vw;
@@ -423,19 +423,19 @@ h2.sub-title {
   }
 }
 /* Link styles */
-.top-grid .mid a {
+.main-nav .mid a {
   text-decoration: none;
   color: var(--brand);
   transition: color 250ms ease, transform 250ms ease;
 }
 
 /* Link hover */
-.top-grid .mid a:hover {
+.main-nav .mid a:hover {
   color: var(--ink-muted);
   transform: scale(1.05);
 }
 
-.top-grid .right {
+.main-nav .right {
   width: 35vw;
   text-align: right;
 }

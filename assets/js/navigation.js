@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Event listeners for font size changes ---
   // Function to handle clicking on a.category
-  document.querySelectorAll('.category').forEach(function (categoryLink) {
+  document.querySelectorAll('a.category').forEach(function (categoryLink) {
     categoryLink.addEventListener('click', function (event) {
-      //event.preventDefault(); // Prevent default link behavior if desired
+      event.preventDefault(); // Prevent default link behavior if desired
 
       // CRITICAL DEBUG: Log subTitleElement here as well
       console.log('Category link clicked. subTitleElement:', subTitleElement);
@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Function to handle clicking on a.landing-mnu
-  document.querySelectorAll('.landing-mnu').forEach(function (landingMenuLink) {
+  document.querySelectorAll('a.landing-mnu').forEach(function (landingMenuLink) {
     landingMenuLink.addEventListener('click', function (event) {
-      //event.preventDefault(); // Prevent default link behavior if desired
+      event.preventDefault(); // Prevent default link behavior if desired
 
       // CRITICAL DEBUG: Log subTitleElement here as well
       console.log('Landing menu link clicked. subTitleElement:', subTitleElement);
@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- End of event listeners for font size changes ---
 
   // DEBUG: Verify elements exist
-  console.log('1 Elements found (post init):');
-  console.log(' 2 - mainContentArea:', mainContentArea);
-  console.log(' 3- subTitleElement (global, post init):', subTitleElement);
-  console.log('4- dynamicPageWrapper:', dynamicPageWrapper);
+  console.log('Elements found (post init):');
+  console.log('- mainContentArea:', mainContentArea);
+  console.log('- subTitleElement (global, post init):', subTitleElement);
+  console.log('- dynamicPageWrapper:', dynamicPageWrapper);
   // Removed: console.log('- loadingSpinner:', loadingSpinner);
 
   // Add default transitions if not defined in CSS.

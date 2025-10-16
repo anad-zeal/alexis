@@ -277,6 +277,7 @@ h2.sub-title {
   grid-template-areas:
     'restoration-projects center-blank decorative-painting'
     'artworks artworks artworks';
+  min-height: 80vh;
 }
 
 .restoration-projects {

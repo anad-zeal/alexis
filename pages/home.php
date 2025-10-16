@@ -1,25 +1,19 @@
 <div class="container">
-  <div class="restoration-projects"></div>
-  <div class="center-blank"></div>
-  <div class="decorative-painting"></div>
-  <div class="artworks"></div>
-</div>
+    <div class="restoration-projects">
+        <a href="/restoration" class="category" data-gallery="restoration"
+            aria-label="Go to Restoration Projects">Restoration Projects</a>
+    </div>
+    <div class="center-blank"></div>
+    <div class="decorative-painting">
+        < <a href="/decorative" class="category" data-gallery="decorative" aria-label="Go to Decorative Painting">
+            Decorative
+            Painting</a>/div>
+            <div class="artworks">
+                <a href="/artworks" class="category" data-gallery="artworks" aria-label="Go to Artworks">Artworks</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="grid-wrapper">
+            </div>
+    </div>
+    <!-- <div class="grid-wrapper">
     <div class="menu-grid-container">
         <div class="menu-grid-item">
             <a href="/restoration" class="category" data-gallery="restoration"

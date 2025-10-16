@@ -268,6 +268,38 @@ h2.sub-title {
   border-radius: 0.2rem;
 }
 
+.container {
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'restoration-projects center-blank decorative-painting'
+    'artworks artworks artworks';
+}
+
+.restoration-projects {
+  justify-self: center;
+  align-self: center;
+  grid-area: restoration-projects;
+}
+
+.center-blank {
+  grid-area: center-blank;
+}
+
+.decorative-painting {
+  justify-self: center;
+  grid-area: decorative-painting;
+}
+
+.artworks {
+  justify-self: center;
+  align-self: center;
+  grid-area: artworks;
+}
+
 /* =========================================
    Main Layout & Components (Container, Slideshow, Footer)
 ========================================= */

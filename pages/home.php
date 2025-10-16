@@ -1,3 +1,24 @@
+<div class="container">
+  <div class="restoration-projects"></div>
+  <div class="center-blank"></div>
+  <div class="decorative-painting"></div>
+  <div class="artworks"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <div class="grid-wrapper">
     <div class="menu-grid-container">
         <div class="menu-grid-item">

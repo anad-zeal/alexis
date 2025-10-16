@@ -442,6 +442,11 @@ h2.sub-title {
   font-size: 1.2em;
 }
 
+.menu-grid-item a {
+  text-decoration: none;
+  color: var(--brand);
+}
+
 @media (max-width: 600px) {
   .menu-grid-container {
     grid-template-columns: 1fr;

@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       var tempo = categoryLink.getAttribute('data-gallery');
       // CRITICAL DEBUG: Log subTitleElement here as well
       console.log('Category link clicked. subTitleElement:', subTitleElement);
-      console.log('dataGallery:', tempo);
+      console.log('dataGallerydataGallerydataGallerydataGallerydataGallery:', tempo);
       if (subTitleElement) {
         subTitleElement.style.fontSize = '5vw';
       } else {

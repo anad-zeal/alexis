@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "src": "/assets/images/project-series-paintings/0800.jpg",
+    "caption": "0800"
+  },
+  {
+    "src": "/assets/images/project-series-paintings/calliope.jpg",
+    "caption": "calliope"
+  },
+  {
+    "src": "/assets/images/project-series-paintings/magic-flute.jpg",
+    "caption": "magic-flute"
+  },
+  {
+    "src": "/assets/images/project-series-paintings/morphen.jpg",
+    "caption": "morphen"
+  },
+  {
+    "src": "/assets/images/project-series-paintings/radish.jpg",
+    "caption": "radish"
+  },
+  {
+    "src": "/assets/images/project-series-paintings/tui.jpg",
+    "caption": "tui"
+  }
+]

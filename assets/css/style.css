@@ -280,40 +280,46 @@ h2.sub-title {
   border-radius: 0.2rem;
 }
 
-.container {
+.landing-menu {
+  width: 60vw;
+  height: 10vw;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 35% 30% 35%;
-  grid-template-rows: 10vh 2vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    'restoration-projects center-blank decorative-painting'
-    'artworks artworks artworks';
-  min-height: 20vh;
+    'black-and-white encaustic'
+    'project-series drips-series';
+  justify-items: center;
+  align-items: start;
 }
 
-.restoration-projects {
-  justify-self: flex-end;
-  align-self: center;
-  grid-area: restoration-projects;
+.black-and-white {
+  grid-area: black-and-white;
+}
+.encaustic {
+  grid-area: encaustic;
+}
+.project-series {
+  grid-area: project-series;
+}
+.drips-series {
+  grid-area: drips-series;
 }
 
-.center-blank {
-  justify-self: center;
-  align-self: center;
-  grid-area: center-blank;
+a.category {
+  text-decoration: none;
+  font-family: var(--font-ui);
+  color: #333; /* Default link color */
+  white-space: nowrap; /* Prevents text from wrapping within a link */
 }
 
-.decorative-painting {
-  justify-self: flex-start;
-  align-self: center;
-  grid-area: decorative-painting;
-}
-
-.artworks {
-  justify-self: center;
-  align-self: center;
-  grid-area: artworks;
+.landing-menu div {
+  width: 25vw;
+  height: 25vh;
+  border: solid 1px red;
 }
 
 /* =========================================

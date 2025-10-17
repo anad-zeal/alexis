@@ -1,20 +1,29 @@
-<div class="container">
-
-    <div class="restoration-projects">
-        <a href="/restoration" class="category" data-gallery="restoration"
-            aria-label="Go to Restoration Projects">Restoration Projects</a>
+<div class="landing-menu">
+    <div class="black-and-white"><a href="/black-and-white" class="category" data-gallery="black_and_white_paintings"
+            aria-label="Go to Black and White Paintings">Black and White Paintings</a>
+        <p>Bruschetta soufflé mango chutney pancetta. Tiramisu radicchio simmered gnocchi flambé. Umami croissant
+            drizzle saffron aioli, marinate biscotti. Poached truffle risotto, caramelized shallots, fig compote. Zest
+            roux paprika, seared scallops with crème fraîche. Baste tempura</p>
     </div>
 
-    <div class="center-blank">&nbsp;</div>
-
-    <div class="decorative-painting">
-        <a href="/decorative" class="category" data-gallery="decorative"
-            aria-label="Go to Decorative Painting">Decorative Painting</a>
+    <div class="encaustic"><a href="/encaustic" class="category" data-gallery="encaustic_paintings"
+            aria-label="Go to Encaustic Paintings">Encaustic Paintings</a>
+        <p>Baste tempura, fennel purée, cocoa nibs. Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused
+            gazpacho, heirloom tomatoes, miso broth. Pickled ramps, velvety mousse, charred leeks. Caviar quenelle,
+            pistachio brittle, braised lamb. Tarragon reduction, whipped mascarpone, blackberry coulis. </p>
     </div>
 
-    <div class="artworks">
-        <a href="/artworks" class="category" data-gallery="artworks" aria-label="Go to Artworks">Artworks</a>
-
+    <div class="project-series"><a href="/projects" class="category" data-gallery="project_series_paintings"
+            aria-label="Go to Project Series Paintings">Project Series Paintings</a>
+        <p> Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused gazpacho, heirloom tomatoes, miso broth.
+            Pickled ramps, velvety mousse, charred leeks. Caviar quenelle, pistachio brittle, braised lamb. Tarragon
+            reduction, whipped mascarpone, blackberry coulis. Smoked gouda, candied pecans, ginger syrup. </p>
     </div>
 
+    <div class="drips-series"><a href="/drips" class="category" data-gallery="drips_series_paintings"
+            aria-label="Go to Drips Series Paintings">Drips Series Paintings</a>
+        <p>Caviar quenelle, pistachio brittle, braised lamb. Tarragon reduction, Poached truffle risotto, caramelized
+            shallots, fig compote. Zest roux paprika, seared scallops with crème fraîche. Baste tempura, fennel purée,
+            cocoa nibs. Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused gazpacho. </p>
+    </div>
 </div>

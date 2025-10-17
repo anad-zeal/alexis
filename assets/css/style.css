@@ -334,6 +334,7 @@ a.category {
 }
 
 .category-menu p {
+  width: 25vw;
   background-color: var(--ink-muted);
 }
 

@@ -314,6 +314,12 @@ h2.sub-title {
   grid-area: drips-series;
 }
 
+.category-menu div {
+  width: 25vw;
+  height: 22vh;
+  border: solid 1px red;
+}
+
 a.category {
   text-decoration: none;
   font-family: sans-serif;
@@ -321,16 +327,6 @@ a.category {
   color: #333;
   white-space: nowrap;
   background-color: var(--ink-muted);
-  padding: 0;
-  margin: 0;
-}
-
-.category-menu div {
-  width: 25vw;
-  height: 26vh;
-  padding: 0;
-  margin: 0;
-  border: solid 1px red;
 }
 
 .category-menu p {

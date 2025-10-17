@@ -1,6 +1,6 @@
 <!-- <h2 id="artworks-heading" class="visually-hidden">Artworks</h2> -->
 <section class="body-paragraphs" aria-labelledby="artworks-page-heading">
-    <div class="landing-menu">
+    <div class="category-menu">
         <div class="black-and-white"><a href="/black-and-white" class="category"
                 data-gallery="black_and_white_paintings" aria-label="Go to Black and White Paintings">Black and White
                 Paintings</a>
@@ -35,7 +35,6 @@
             </p>
         </div>
     </div>
-
 
 
 </section>

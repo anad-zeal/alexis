@@ -284,6 +284,48 @@ h2.sub-title {
    Main Layout & Components (Container, Slideshow, Footer)
 ========================================= */
 
+.category-menu {
+  width: 60vw;
+  height: 10vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'black-and-white encaustic'
+    'project-series drips-series';
+  justify-items: center;
+  align-items: start;
+}
+
+.black-and-white {
+  grid-area: black-and-white;
+}
+.encaustic {
+  grid-area: encaustic;
+}
+.project-series {
+  grid-area: project-series;
+}
+.drips-series {
+  grid-area: drips-series;
+}
+
+a.category {
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: 600;
+  color: #333; /* Default link color */
+  white-space: nowrap; /* Prevents text from wrapping within a link */
+}
+
+.category-menu div {
+  width: 25vw;
+  height: 26vh;
+}
+
 /* =========================================
    Slideshow — Hardened Overrides (put last)
    Ensures stage has height and images never collapse to 0×0.

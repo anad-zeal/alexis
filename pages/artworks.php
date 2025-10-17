@@ -15,8 +15,7 @@
         <div class="encaustic"><a href="/encaustic" class="category" data-gallery="encaustic_paintings"
                 aria-label="Go to Encaustic Paintings">Encaustic Paintings</a>
             <p>Baste tempura, fennel purée, cocoa nibs. Sourdough béchamel, roasted chestnuts, lemon verbena glaze.
-                Infused gazpacho, heirloom tomatoes, miso broth. Pickled ramps, velvety mousse, charred leeks. Caviar
-                quenelle, pistachio brittle, braised lamb. Tarragon reduction, whipped mascarpone, blackberry coulis.
+                Infused gazpacho, heirloom tomatoes, miso broth. Pickled ramps, velvety mousse, charred leeks.
             </p>
         </div>
 
@@ -24,7 +23,7 @@
                 aria-label="Go to Project Series Paintings">Project Series Paintings</a>
             <p> Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused gazpacho, heirloom tomatoes, miso
                 broth. Pickled ramps, velvety mousse, charred leeks. Caviar quenelle, pistachio brittle, braised lamb.
-                Tarragon reduction, whipped mascarpone, blackberry coulis. Smoked gouda, candied pecans, ginger syrup.
+                Tarragon reduction.
             </p>
         </div>
 
@@ -32,7 +31,7 @@
                 aria-label="Go to Drips Series Paintings">Drips Series Paintings</a>
             <p>Caviar quenelle, pistachio brittle, braised lamb. Tarragon reduction, Poached truffle risotto,
                 caramelized shallots, fig compote. Zest roux paprika, seared scallops with crème fraîche. Baste tempura,
-                fennel purée, cocoa nibs. Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused gazpacho.
+                fennel purée.
             </p>
         </div>
     </div>

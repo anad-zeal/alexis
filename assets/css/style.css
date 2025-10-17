@@ -287,7 +287,7 @@ h2.sub-title {
 .category-menu {
   width: 60vw;
   height: 49vh;
-  margin: 0 auto;
+  margin: 2vh auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;

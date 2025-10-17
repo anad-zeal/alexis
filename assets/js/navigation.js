@@ -75,9 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a.category').forEach(function (categoryLink) {
     categoryLink.addEventListener('click', function (event) {
       event.preventDefault(); // Prevent default link behavior if desired
-
+      var tempo = categoryLink.getAttribute('data-gallery');
       // CRITICAL DEBUG: Log subTitleElement here as well
       console.log('Category link clicked. subTitleElement:', subTitleElement);
+      console.log('dataGallery:', tempo);
       if (subTitleElement) {
         subTitleElement.style.fontSize = '5vw';
       } else {

@@ -62,10 +62,10 @@ video {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
+* {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
   }
 }
 
@@ -280,7 +280,26 @@ h2.sub-title {
 /* =========================================
    Main Layout & Components (Container, Slideshow, Footer)
 /* ========================================= */
+.landing-menu {
+  width: 60vw;
+  height: 60vh;
+  margin: 2vh auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'restoration decorative'
+    'artworks landing-image';
+  justify-items: center;
+  align-items: start;
+}
 
+.landing-menu div {
+  width: 25vw;
+  height: 24vh;
+}
 
 .last-item p {
   width: 25vw;

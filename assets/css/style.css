@@ -150,7 +150,7 @@ video {
 .main-nav-menu a.is-active,
 .main-nav-menu a:hover {
   color: var(--ink-muted);
-  transform: scale(1.05);
+  transform: scale(1.25);
   transition: color 250ms ease, transform 250ms ease;
 }
 

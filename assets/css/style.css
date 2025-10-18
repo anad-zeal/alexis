@@ -228,16 +228,16 @@ h2.sub-title {
   text-align: center;
   margin: 0px;
 }
-
-.body-paragraphs[aria-labelledby='artworks-heading'] {
+/*
+.body-paragraphs {
   position: relative;
   left: 12vw;
   top: 0;
-}
+} */
 
 .body-paragraphs {
   position: relative;
-  left: 2vw;
+  left: 12vw;
   top: 0;
   display: flex;
   flex-direction: column;

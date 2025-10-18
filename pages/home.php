@@ -1,4 +1,4 @@
-<div class="landing-menu">
+<div class="category-menu ">
     <div class="landing-menu-item category"><a href="/decorative" class="category-link"
             data-gallery="decorative_painting" aria-label="Go to Decorative Painting">Decorative Painting</a>
         <p>Limit continuity differentiability derivative integral antiderivative chain rule product rule quotient rule

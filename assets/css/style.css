@@ -280,7 +280,7 @@ h2.sub-title {
 /* =========================================
    Main Layout & Components (Container, Slideshow, Footer)
 /* ========================================= */
-.landing-menu {
+.category-menu {
   width: 60vw;
   height: 60vh;
   margin: 2vh auto;
@@ -296,7 +296,7 @@ h2.sub-title {
   align-items: start;
 }
 
-.landing-menu div {
+.category-menu div {
   width: 25vw;
   height: 24vh;
 }

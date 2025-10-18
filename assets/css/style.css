@@ -127,7 +127,7 @@ video {
    Navigation
 ========================================= */
 
-.home-main-menu {
+.main-nav-menu {
   display: flex;
   justify-content: space-between;
   width: 80vw;

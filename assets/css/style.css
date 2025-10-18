@@ -133,7 +133,7 @@ video {
   white-space: nowrap; /* Prevents text from wrapping within a link */
 }
 
-.home-main {
+.home-main-menu {
   display: flex;
   justify-content: space-between;
   width: 80vw;

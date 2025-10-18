@@ -357,7 +357,7 @@ h2.sub-title {
   white-space: nowrap; /* Prevents text from wrapping within a link */
 }
 
-.category a.is-active,
+.category a:is-active,
 .category a:hover {
   color: var(--brand);
   transform: scale(1.25);

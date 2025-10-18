@@ -7,7 +7,7 @@
   --ink-muted: hsl(0 0% 45%);
   --paper: hsl(36, 21%, 65%);
   --soft: hsl(0 0% 96%);
-  --brand: darkred;
+  --brand: rgb(59, 0, 0);
   --focus-ring: hsl(0 72% 56%);
   --navajo-white-light: hsl(43, 40%, 92%);
   --navajo-white-dark: hsl(38, 45%, 75%);
@@ -15,7 +15,7 @@
 
   /* Typography */
   --font-body: 'Montserrat', ui-sans-serif;
-  --font-ui: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-ui: Inter, sans-serif;
   --font-display: 'Montserrat', sans-serif;
   --font-title: 'Playfair Display', sans-serif;
   --font-script: 'Bonheur Royale', cursive;

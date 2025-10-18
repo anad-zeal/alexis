@@ -221,7 +221,7 @@ h3.title {
 h2.sub-title {
   /* position: relative;
   top: 1vh; */
-  font-family: var(--font-script);
+  font-family: var(--font-title:);
   font-size: clamp(1.75rem, 4.5vw, 3rem);
   font-weight: 200;
   letter-spacing: -0.02em;

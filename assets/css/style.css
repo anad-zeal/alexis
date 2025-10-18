@@ -127,7 +127,7 @@ video {
    Navigation
 ========================================= */
 
-.landing-menu {
+.home-main-menu {
   display: flex;
   justify-content: space-between;
   width: 80vw;
@@ -140,32 +140,32 @@ video {
   min-height: 2.5rem;
 }
 
-.landing-menu a {
+.main-nav-menu a {
   padding: 10px 15px; /* Adjust padding as needed */
   text-decoration: none; /* Removes underline from links */
   color: #333; /* Default link color */
   white-space: nowrap; /* Prevents text from wrapping within a link */
 }
 
-.landing-menu a.is-active,
-.landing-menu a:hover {
+.main-nav-menu a.is-active,
+.main-nav-menu a:hover {
   color: var(--ink-muted);
   transform: scale(1.05);
 }
 
 /* Optional: Add media queries for even better responsiveness on very small screens */
 @media (max-width: 600px) {
-  .landing-menu {
+  .main-nav-menu {
     flex-direction: column; /* Stack items vertically on small screens */
     align-items: center; /* Center items when stacked vertically */
   }
 }
 /* Link styles */
-/* .landing-menu a {
+.main-nav-menu a {
   text-decoration: none;
   color: var(--brand);
   transition: color 250ms ease, transform 250ms ease;
-} */
+}
 
 /* =========================================
    Typography

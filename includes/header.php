@@ -75,18 +75,20 @@ function nav_item(string $slug, string $label, string $href): string
         href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
 
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 
 <body>
     <header class="site-header">
         <nav class="main-nav" aria-label="Primary">
-            <div class="landing-menu">
+            <div class="home-main ">
                 <!-- Using the nav_item helper function for cleaner code -->
                 <?= nav_item("home", "HOME", "/") ?>
                 <?= nav_item("artworks", "ARTWORKS", "/artworks") ?>
                 <?= nav_item("biography", "BIOGRAPHY", "/biography") ?>
                 <?= nav_item("contact", "CONTACT", "/contact") ?>
+                <!-- Add other navigation links if desired -->
             </div>
         </nav>
     </header>

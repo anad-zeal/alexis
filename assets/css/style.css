@@ -307,7 +307,7 @@ h2.sub-title {
 .last-item p {
   width: 25vw;
   justify-items: center;
-  align-items: center;
+  align-items: top;
   text-align: center;
 }
 

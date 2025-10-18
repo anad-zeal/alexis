@@ -583,7 +583,8 @@ h2.sub-title {
 	padding: 12px 25px;
 	cursor: pointer;
 	text-decoration: none;
-	font-weight:bold;
+	font-weight:400;
+  font-size: 5rem;
 }
 .ccbtn:hover{
 	background:var(--ink-muted);

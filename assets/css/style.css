@@ -136,7 +136,7 @@ video {
 .home-main {
   display: flex;
   justify-content: space-between;
-  width: 96vw;
+  width: 80vw;
   height: 2rem;
   margin: 0 auto;
   align-items: center;
@@ -309,20 +309,18 @@ h2.sub-title {
   text-align: center;
 }
 
-.img-home {
-  height: 30vw;
-  width: 30;
-}
-
 .restoration {
   grid-area: restoration;
 }
+
 .decorative {
   grid-area: decorative;
 }
+
 .artworks {
   grid-area: artworks;
 }
+
 .landing-image {
   grid-area: landing-image;
 }

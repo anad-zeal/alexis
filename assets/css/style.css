@@ -578,7 +578,7 @@ h2.sub-title {
 .ccbtn{
 	display:block;
 	border:none;
-	background:var(--paper);
+background:var(--navajo-white-dark);
 	color:var(--brand);
 	padding: 12px 25px;
 	cursor: pointer;
@@ -587,6 +587,5 @@ h2.sub-title {
   font-size: 1.5rem;
 }
 .ccbtn:hover{
-	background:var(--navajo-white-dark);
-
+  background:var(--paper);
 }

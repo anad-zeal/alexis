@@ -304,7 +304,7 @@ h2.sub-title {
   height: 24vh;
 }
 
-.landing-menu-item {
+.landing-menu-item a {
   justify-items: center;
   align-items: center;
 }

@@ -256,7 +256,7 @@ h2.sub-title {
   font-weight: 400;
   text-align: start;
   max-width: 80%;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 .dropcap {
@@ -371,7 +371,7 @@ h2.sub-title {
 .gallery-menu p {
   text-align: left;
   font-family: var(--font-body);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: var(--ink-muted);
   margin-top: 0.5rem;
 }

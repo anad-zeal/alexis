@@ -301,34 +301,6 @@ h2.sub-title {
   height: 24vh;
 }
 
-# css tempo
-#AEP_Website
-
-
-.page-menu {
-  width: 60vw;
-  height: 49vh;
-  margin: 2vh auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    'black-and-white encaustic'
-    'project-series drips-series';
-  justify-items: center;
-  align-items: center;
-}
-
-.gallery p {
-  text-align: left;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--ink-muted);
-  margin-top: 0.5rem;
-}
-
 .page-menu a {
   text-decoration: none;
   font-family: var(--font-ui);
@@ -345,8 +317,6 @@ h2.sub-title {
   transform: scale(1.25);
   transition: color 250ms ease, transform 250ms ease;
 }
-
-
 
 .last-item p {
   width: 25vw;
@@ -369,7 +339,6 @@ h2.sub-title {
   grid-area: landing-image;
 }
 
-
 .gallery-menu {
   width: 60vw;
   height: 49vh;
@@ -386,7 +355,7 @@ h2.sub-title {
   align-items: center;
 }
 
-.gallery p {
+.gallery-menu p {
   text-align: left;
   font-family: var(--font-body);
   font-size: 1rem;
@@ -425,15 +394,6 @@ h2.sub-title {
 
 .drips-series {
   grid-area: drips-series;
-}
-
-.category-menu div {
-  width: 25vw;
-  height: 22vh;
-}
-
-.category-menu p {
-  min-width: 25vw;
 }
 
 /* =========================================

@@ -286,7 +286,7 @@ h2.sub-title {
 .landing-menu {
   width: 60vw;
   height: 10vw;
-  margin: 0 auto;
+  margin: 2vh auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;

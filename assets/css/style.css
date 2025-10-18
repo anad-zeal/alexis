@@ -578,14 +578,14 @@ h2.sub-title {
 .ccbtn{
 	display:block;
 	border:none;
-	background:#f8ae45;
-	color:#FFFFFF;
-	padding:12px 25px;
-	cursor:pointer;
-	text-decoration:none;
+	background:var(--navajo-white-dark:)
+	color:var(var(--brand));
+	padding: 12px 25px;
+	cursor: pointer;
+	text-decoration: none;
 	font-weight:bold;
 }
 .ccbtn:hover{
-	background:#d8850e;
+	background:var(--ink);
 
 }

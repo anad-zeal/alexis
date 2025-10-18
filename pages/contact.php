@@ -1,9 +1,9 @@
 <section class="body-paragraphs" aria-labelledby="contact-page-heading">
-    <div class="wrapper">
+    <div class="contact-form-wrapper">
         <form method="post" action="" class="ccform">
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
-                <input class="ccformfield" type="text" placeholder="YourName" required>
+                <input class="ccformfield" type="text" placeholder="Your Name" required>
             </div>
             <div class="ccfield-prepend">
                 <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>

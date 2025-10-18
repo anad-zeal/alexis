@@ -161,11 +161,11 @@ video {
   }
 }
 /* Link styles */
-.landing-menu a {
+/* .landing-menu a {
   text-decoration: none;
   color: var(--brand);
   transition: color 250ms ease, transform 250ms ease;
-}
+} */
 
 /* =========================================
    Typography

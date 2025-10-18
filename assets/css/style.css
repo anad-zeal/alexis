@@ -126,7 +126,7 @@ video {
 /* =========================================
    Navigation
 ========================================= */
-.main-nav a {
+.main-nav-menu a {
   padding: 10px 15px; /* Adjust padding as needed */
   text-decoration: none; /* Removes underline from links */
   color: #333; /* Default link color */
@@ -146,30 +146,24 @@ video {
   min-height: 2.5rem;
 }
 
-.main-nav a.is-active,
-.main-nav a:hover {
-  background-color: #eee; /* Example active/hover background */
-  color: #007bff; /* Example active/hover text color */
+.main-nav-menu a.is-active,
+.main-nav-menu a:hover {
+  color: var(--ink-muted);
+  transform: scale(1.05);
 }
 
 /* Optional: Add media queries for even better responsiveness on very small screens */
 @media (max-width: 600px) {
-  .main-nav {
+  .main-nav-menu {
     flex-direction: column; /* Stack items vertically on small screens */
     align-items: center; /* Center items when stacked vertically */
   }
 }
 /* Link styles */
-.main-nav a {
+.main-nav-menu a {
   text-decoration: none;
   color: var(--brand);
   transition: color 250ms ease, transform 250ms ease;
-}
-
-/* Link hover */
-.main-nav a:hover {
-  color: var(--ink-muted);
-  transform: scale(1.05);
 }
 
 /* =========================================

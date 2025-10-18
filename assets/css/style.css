@@ -594,6 +594,6 @@ h2.sub-title {
 }
 .ccbtn:hover {
   background: hsl(60, 100%, 91%);
-  transform: scale(1.25);
+  transform: scale(1.125);
   transition: color 250ms ease, transform 250ms ease;
 }

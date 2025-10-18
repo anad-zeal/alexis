@@ -14,7 +14,7 @@
   --ivory-inspired: hsl(45, 30%, 94%);
 
   /* Typography */
-  --font-body: Montserrat, 'Bonheur Royale';
+  --font-body: 'Montserrat', sans-serif;
   --font-ui: 'Inter', sans-serif;
   --font-display: 'Montserrat', sans-serif;
   --font-title: 'Playfair Display', sans-serif;
@@ -308,7 +308,7 @@ h2.sub-title {
 
 .page-menu p {
   text-align: left;
-  font-family: Montserrat;
+  font-family: var(--font-body);
   font-size: 1rem;
   color: var(--ink-muted);
   margin-top: 0.5rem;

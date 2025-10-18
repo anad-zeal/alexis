@@ -593,5 +593,5 @@ h2.sub-title {
   border: none;
 }
 .ccbtn:hover {
-  background: var(--paper);
+  background: hsl(0, 67%, 87%);
 }

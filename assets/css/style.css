@@ -565,15 +565,15 @@ h2.sub-title {
 }
 
 .ccformfield {
-  color: #000000;
-  background: #ffffff;
+  color: var(--brand);
+  background: hsl(60, 100%, 100%);
   border: none;
   padding: 15.5px;
   width: 91.9%;
   display: block;
   font-family: var(--font-ui);
-  font: size 1.25rem;
-  border: none;
+  font-size: 1.25rem;
+  font-weight: 200;
 }
 
 .ccformfield {

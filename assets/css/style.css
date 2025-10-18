@@ -54,6 +54,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body p {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+}
+
 img,
 svg,
 video {

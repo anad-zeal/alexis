@@ -311,11 +311,11 @@ h2.sub-title {
 
 .page-menu a {
   text-decoration: none;
-   font-family: var(--font-title);
+  font-family: var(--font-title);
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1;
-  color: var(--ink)
+  color: var(--ink);
   white-space: nowrap; /* Prevents text from wrapping within a link */
 }
 

@@ -31,8 +31,5 @@
     <div class="landing-menu-item"><a href="/landing-image" class="category" data-item="landing-image"
             aria-label="Landing Image"><img src="https://elzalive.com/assets/images/misc-images/bama-sunset.jpg"
                 height="100" ;> </a>
-        <p>Caviar quenelle, pistachio brittle, braised lamb. Tarragon reduction, Poached truffle risotto, caramelized
-            shallots, fig compote. Zest roux paprika, seared scallops with crème fraîche. Baste tempura, fennel purée,
-            cocoa nibs. Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused gazpacho. </p>
     </div>
 </div>

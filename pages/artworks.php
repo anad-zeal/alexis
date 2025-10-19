@@ -17,7 +17,7 @@
         </div>
 
 
-        <div class="project-series gallery"><a href="/projects" class="gallery-link"
+        <div class="project-series gallery"><a href="/project-series" class="gallery-link"
                 data-gallery="project_series_paintings" aria-label="Go to Project Series Paintings">Project Series
                 Paintings</a>
             <p> Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused gazpacho, heirloom tomatoes, miso

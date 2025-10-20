@@ -667,6 +667,6 @@ q .slideshow-section {
   background: none;
 }
 
-.main-nav-menu::nth-child(1) {
+.main-nav-menu:nth-child(1) {
   display: none;
 }

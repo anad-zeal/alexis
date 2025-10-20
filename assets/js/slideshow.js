@@ -10,49 +10,77 @@ function injectCoreStylesOnce(fadeMs = 1500) {
   s.setAttribute('data-slideshow-core', '1');
   s.textContent = `
     .slideshow {
-      width: 100%; /* Take full width of its parent */
-      height: 100%; /* Take full height of its parent */
-      margin: 0; /* Remove auto margin */
-      position: relative;
-    }
-
-    .slideshow [data-role="stage"]{
-      position: relative;
-      aspect-ratio: unset; /* Remove aspect ratio */
-      min-height: unset; /* Remove min-height */
       width: 100%;
       height: 100%;
-      background:var(--slideshow-background); overflow:hidden; border-radius:0; /* No border-radius for full viewport */
-      box-shadow:none; /* No box-shadow for full viewport */
-      display:grid; place-items:center;
-      isolation:isolate;
+      margin: 0;
+      position: relative;
     }
-    .slideshow [data-role="stage"] img{
-      position:absolute; inset:0; margin:auto; display:block;
-      width:100%; height:100%; /* Fill the stage */
-      min-width:1px; min-height:1px;
-      object-fit:cover; /* Use cover to fill and maintain aspect ratio */
-      opacity:0; transition:opacity ${fadeMs}ms ease-in-out;
+    .slideshow [data-role="stage"] {
+      position: relative;
+      aspect-ratio: unset;
+      min-height: unset;
+      width: 100%;
+      height: 100%;
+      background: var(--slideshow-background);
+      overflow: hidden;
+      border-radius: 0;
+      box-shadow: none;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
     }
-    .slideshow [data-role="caption-wrap"]{
-      position:absolute; bottom:0; left:0; right:0; text-align:center;
-      padding:.75rem; color:#fff; font-style:italic;
-      background:rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-      z-index:10;
+    .slideshow [data-role="stage"] img {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-width: 1px;
+      min-height: 1px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity ${fadeMs}ms ease-in-out;
     }
-    .slideshow [data-role="previous"], .slideshow [data-role="next"]{
-      position:absolute; top:50%; transform:translateY(-50%); z-index:11;
+    .slideshow [data-role="caption-wrap"] {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: .75rem;
+      color: #fff;
+      font-style: italic;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10;
     }
-    .slideshow [data-role="previous"]{ left:1rem; } /* Adjust button position */
-    .slideshow [data-role="next"]{ right:1rem; } /* Adjust button position */
-    .slideshow button[data-action]{
-      background:#8b0000; color:#fff; border:0; border-radius:50%;
-      width:56px; height:56px; display:grid; place-items:center; cursor:pointer;
+    .slideshow [data-role="previous"],
+    .slideshow [data-role="next"] {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 11;
+    }
+    .slideshow [data-role="previous"] { left: 1rem; }
+    .slideshow [data-role="next"] { right: 1rem; }
+    .slideshow button[data-action] {
+      background: #8b0000;
+      color: #fff;
+      border: 0;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
       transition: background-color 0.2s ease;
-      box-shadow:0 2px 5px rgb(0 0 0 / 0.3); /* Add subtle shadow */
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.3);
     }
-    .slideshow button[data-action]:hover{ background:#c53030; }
-    .slideshow button[data-action]:focus{ outline:2px solid #c53030; outline-offset:2px; }
+    .slideshow button[data-action]:hover { background: #c53030; }
+    .slideshow button[data-action]:focus {
+      outline: 2px solid #c53030;
+      outline-offset: 2px;
+    }
   `;
   document.head.appendChild(s);
 }
@@ -82,10 +110,9 @@ class Slideshow {
       .then(() => {
         if (!this.slides.length) return;
         this._createSlides();
-        this._fadeInFirst(); // starts autoplay after first fade if enabled
+        this._fadeInFirst();
       })
       .catch((e) => {
-        console.error('Slideshow: failed to load slides JSON:', e);
         this.root.innerHTML = `<p style="text-align:center; padding:20px; color:#b00;">Failed to load slideshow. ${e.message}</p>`;
       });
   }
@@ -96,19 +123,23 @@ class Slideshow {
       this._resetAutoplay();
     }
   }
+
   prev() {
     if (this.slides.length) {
       this._show((this.current - 1 + this.slides.length) % this.slides.length);
       this._resetAutoplay();
     }
   }
+
   pause() {
     clearInterval(this.timer);
     this.timer = null;
   }
+
   resume() {
     if (this.opts.autoplay && !this.isPausedByHoverOrTouch && !this.timer) this._start();
   }
+
   destroy() {
     this.pause();
   }
@@ -128,13 +159,6 @@ class Slideshow {
 
     this.stage = this.root.querySelector('[data-role="stage"]') || createEl('div', 'stage');
     if (!this.stage.parentNode) this.root.appendChild(this.stage);
-    // Remove the explicit aspect-ratio and min-height setting here
-    // as it's handled by CSS and we want it to be dynamic
-    // const ar = getComputedStyle(this.stage).aspectRatio;
-    // if (!ar || ar === 'auto') {
-    //   this.stage.style.aspectRatio = '16 / 9';
-    //   if (!this.stage.style.minHeight) this.stage.style.minHeight = '320px';
-    // }
 
     let capWrap = this.root.querySelector('[data-role="caption-wrap"]');
     if (!capWrap) capWrap = createEl('div', 'caption-wrap');
@@ -231,14 +255,7 @@ class Slideshow {
     if (first.complete && first.naturalWidth > 0) requestAnimationFrame(reveal);
     else {
       first.addEventListener('load', () => requestAnimationFrame(reveal), { once: true });
-      first.addEventListener(
-        'error',
-        () => {
-          console.error('Slideshow: failed image', first.src);
-          this._setCaption(0);
-        },
-        { once: true }
-      );
+      first.addEventListener('error', () => this._setCaption(0), { once: true });
     }
   }
 
@@ -295,15 +312,13 @@ function initSlideshows(root = document) {
       try {
         return new Slideshow(el, { jsonUrl, interval, fadeMs, autoplay, pauseOnHover });
       } catch (e) {
-        console.error('Error initializing slideshow:', e);
-        el.innerHTML = `<p style="text-align:center; padding: 20px; color:#b00;">Failed to load slideshow: ${e.message}</p>`;
+        el.innerHTML = `<p style="text-align:center; padding:20px; color:#b00;">Failed to load slideshow: ${e.message}</p>`;
         return null;
       }
     })
     .filter(Boolean);
 }
 
-/* Optional header swap via ?showSlideshow=true */
 function swapHeadersViaQueryParam() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('showSlideshow') !== 'true') return;

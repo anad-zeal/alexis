@@ -1,10 +1,3 @@
-I can help you with that! To make the slideshow images display at their intrinsic dimensions and aspect ratios, scaling the longest dimension to fit the viewport if needed, we'll need to modify both the CSS and the JavaScript.
-
-Here are the updated files:
-
-**slideshow-style.css**
-
-```css
 /* =========================================
    Design Tokens
 ========================================= */
@@ -434,7 +427,7 @@ h2.sub-title {
 
 .slideshow {
   align-items: center;
-  /* aspect-ratio: 16/9; REMOVED to allow dynamic image sizing */
+  aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -515,16 +508,13 @@ h2.sub-title {
 
 .slideshow [data-role='stage'] img {
   position: absolute !important;
-  /* inset: 0 !important; REMOVED to allow intrinsic sizing */
-  margin: auto !important; /* Center the image */
+  inset: 0 !important;
   display: block !important;
-  max-width: 100% !important; /* Ensure image scales down if too wide */
-  max-height: 100% !important; /* Ensure image scales down if too tall */
-  width: auto !important; /* Allow intrinsic width */
-  height: auto !important; /* Allow intrinsic height */
+  width: 100% !important;
+  height: 100% !important;
   min-width: 1px !important;
   min-height: 1px !important;
-  object-fit: contain !important; /* Changed to 'contain' to show full image, fit to bounds */
+  object-fit: cover !important;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }

@@ -1,70 +1,11 @@
-
-**slideshow.js**
-
-```javascript
 function createEl(tag, dataRole) {
   const el = document.createElement(tag);
   if (dataRole) el.setAttribute('data-role', dataRole);
   return el;
 }
 
-function injectCoreStylesOnce(fadeMs = 1500) {
-  if (document.querySelector('style[data-slideshow-core]')) return;
-  const s = document.createElement('style');
-  s.setAttribute('data-slideshow-core', '1');
-  s.textContent = `
-    .slideshow {
-      width: 100%; /* Take full width of its parent */
-      height: 100%; /* Take full height of its parent */
-      margin: 0; /* Remove auto margin */
-      position: relative;
-    }
-
-    .slideshow [data-role="stage"]{
-      position: relative;
-      aspect-ratio: unset; /* Remove aspect ratio */
-      min-height: unset; /* Remove min-height */
-      width: 100%;
-      height: 100%;
-      background:var(--slideshow-background); overflow:hidden; border-radius:0; /* No border-radius for full viewport */
-      box-shadow:none; /* No box-shadow for full viewport */
-      display:grid; place-items:center;
-      isolation:isolate;
-    }
-    .slideshow [data-role="stage"] img{
-      position:absolute;
-      /* inset:0; REMOVED to allow intrinsic sizing */
-      margin:auto; display:block;
-      max-width:100%; /* Ensure image scales down if too wide */
-      max-height:100%; /* Ensure image scales down if too tall */
-      width:auto; /* Allow intrinsic width */
-      height:auto; /* Allow intrinsic height */
-      min-width:1px; min-height:1px;
-      object-fit:contain; /* Changed to 'contain' to show full image, fit to bounds */
-      opacity:0; transition:opacity ${fadeMs}ms ease-in-out;
-    }
-    .slideshow [data-role="caption-wrap"]{
-      position:absolute; bottom:0; left:0; right:0; text-align:center;
-      padding:.75rem; color:#fff; font-style:italic;
-      background:rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-      z-index:10;
-    }
-    .slideshow [data-role="previous"], .slideshow [data-role="next"]{
-      position:absolute; top:50%; transform:translateY(-50%); z-index:11;
-    }
-    .slideshow [data-role="previous"]{ left:1rem; } /* Adjust button position */
-    .slideshow [data-role="next"]{ right:1rem; } /* Adjust button position */
-    .slideshow button[data-action]{
-      background:#8b0000; color:#fff; border:0; border-radius:50%;
-      width:56px; height:56px; display:grid; place-items:center; cursor:pointer;
-      transition: background-color 0.2s ease;
-      box-shadow:0 2px 5px rgb(0 0 0 / 0.3); /* Add subtle shadow */
-    }
-    .slideshow button[data-action]:hover{ background:#c53030; }
-    .slideshow button[data-action]:focus{ outline:2px solid #c53030; outline-offset:2px; }
-  `;
-  document.head.appendChild(s);
-}
+// REMOVED injectCoreStylesOnce function entirely.
+// All core styles should be managed in slideshow-style.css.
 
 class Slideshow {
   constructor(rootEl, opts = {}) {
@@ -85,7 +26,9 @@ class Slideshow {
     this.timer = null;
     this.isPausedByHoverOrTouch = false;
 
-    injectCoreStylesOnce(this.opts.fadeMs);
+    // The core styles are now assumed to be loaded via the external CSS file.
+    // No dynamic style injection from JS.
+
     this._prepareDOM();
     this._loadSlides()
       .then(() => {
@@ -311,23 +254,3 @@ function initSlideshows(root = document) {
     })
     .filter(Boolean);
 }
-
-/* Optional header swap via ?showSlideshow=true */
-function swapHeadersViaQueryParam() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('showSlideshow') !== 'true') return;
-  const siteHeader = document.querySelector('.site-header');
-  const slideshowHeader =
-    document.querySelector('.slideshow-site-header') ||
-    document.querySelector('.slideshow-site-header');
-  if (siteHeader) siteHeader.style.visibility = 'hidden';
-  if (slideshowHeader) slideshowHeader.style.visibility = 'visible';
-  document.body.classList.add('is-slideshow');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initSlideshows();
-  swapHeadersViaQueryParam();
-});
-window.addEventListener('hashchange', () => initSlideshows());
-window.addEventListener('app:navigate', () => initSlideshows());

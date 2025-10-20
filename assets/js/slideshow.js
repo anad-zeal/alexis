@@ -22,7 +22,7 @@ function injectCoreStylesOnce(fadeMs = 1500) {
       min-height: unset; /* Remove min-height */
       width: 100%;
       height: 100%;
-      background:var(--cream:); overflow:hidden; border-radius:0; /* No border-radius for full viewport */
+      background:var(--cream); overflow:hidden; border-radius:0; /* No border-radius for full viewport */
       box-shadow:none; /* No box-shadow for full viewport */
       display:grid; place-items:center;
       isolation:isolate;

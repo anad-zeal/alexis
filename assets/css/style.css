@@ -422,7 +422,6 @@ h2.sub-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 1px red;
 }
 
 .slideshow {
@@ -438,7 +437,6 @@ h2.sub-title {
   width: var(--wide);
   max-height: 90vh;
   overflow: hidden;
-  border: solid 1px rgb(157, 0, 255);
 }
 
 /* Prev/Next buttons (base) */
@@ -502,7 +500,6 @@ h2.sub-title {
   min-height: unset;
   width: 100%; /* Fill available width */
   height: 100%; /* Fill available height */
-  background-color: purple;
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -516,7 +513,6 @@ h2.sub-title {
   height: 100% !important;
   min-width: 1px !important;
   min-height: 1px !important;
-  /* Use object-fit: cover to make images fill the stage while maintaining aspect ratio */
   object-fit: cover !important;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
@@ -653,4 +649,8 @@ h2.sub-title {
   background: hsl(60, 100%, 91%);
   transform: scale(1.125);
   transition: color 250ms ease, transform 250ms ease;
+}
+
+.slideshow-section {
+  border: none;
 }

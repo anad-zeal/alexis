@@ -666,3 +666,7 @@ q .slideshow-section {
 .slideshow {
   background: none;
 }
+
+.main-nav-menu::nth-child(1) {
+  display: none;
+}

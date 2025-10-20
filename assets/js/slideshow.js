@@ -4,57 +4,52 @@ function createEl(tag, dataRole) {
   return el;
 }
 
-// Reinstating injectCoreStylesOnce, but only for essential functional styles,
-// not image sizing/object-fit which is handled by external CSS.
 function injectCoreStylesOnce(fadeMs = 1500) {
   if (document.querySelector('style[data-slideshow-core]')) return;
   const s = document.createElement('style');
   s.setAttribute('data-slideshow-core', '1');
   s.textContent = `
     .slideshow {
-      width: 100%;
-      height: 100%;
-      margin: 0;
+      width: 100%; /* Take full width of its parent */
+      height: 100%; /* Take full height of its parent */
+      margin: 0; /* Remove auto margin */
       position: relative;
     }
 
     .slideshow [data-role="stage"]{
       position: relative;
+      aspect-ratio: unset; /* Remove aspect ratio */
+      min-height: unset; /* Remove min-height */
       width: 100%;
       height: 100%;
-      background:var(--slideshow-background);
-      overflow:hidden;
+      background:var(--slideshow-background); overflow:hidden; border-radius:0; /* No border-radius for full viewport */
+      box-shadow:none; /* No box-shadow for full viewport */
       display:grid; place-items:center;
       isolation:isolate;
     }
     .slideshow [data-role="stage"] img{
-      /* These are the critical functional styles for the slideshow behavior */
-      position:absolute;
-      opacity:0;
-      transition:opacity ${fadeMs}ms ease-in-out;
-
-      /* Image sizing/positioning details are now expected from slideshow-style.css */
-      /* So, we explicitly remove potential conflicting 'inset:0', 'width:100%', 'height:100%' */
-      /* These ensure the CSS rules for max-width/height, width:auto/height:auto, object-fit:contain take precedence */
-      margin: auto; /* Center image within the stage */
-      top: 0; bottom: 0; left: 0; right: 0; /* Ensures 'margin:auto' works for centering */
+      position:absolute; inset:0; margin:auto; display:block;
+      width:100%; height:100%; /* Fill the stage */
+      min-width:1px; min-height:1px;
+      object-fit:cover; /* Use cover to fill and maintain aspect ratio */
+      opacity:0; transition:opacity ${fadeMs}ms ease-in-out;
     }
     .slideshow [data-role="caption-wrap"]{
       position:absolute; bottom:0; left:0; right:0; text-align:center;
       padding:.75rem; color:#fff; font-style:italic;
-      background:rgba(0, 0, 0, 0.5);
+      background:rgba(0, 0, 0, 0.5); /* Semi-transparent background */
       z-index:10;
     }
     .slideshow [data-role="previous"], .slideshow [data-role="next"]{
       position:absolute; top:50%; transform:translateY(-50%); z-index:11;
     }
-    .slideshow [data-role="previous"]{ left:1rem; }
-    .slideshow [data-role="next"]{ right:1rem; }
+    .slideshow [data-role="previous"]{ left:1rem; } /* Adjust button position */
+    .slideshow [data-role="next"]{ right:1rem; } /* Adjust button position */
     .slideshow button[data-action]{
       background:#8b0000; color:#fff; border:0; border-radius:50%;
       width:56px; height:56px; display:grid; place-items:center; cursor:pointer;
       transition: background-color 0.2s ease;
-      box-shadow:0 2px 5px rgb(0 0 0 / 0.3);
+      box-shadow:0 2px 5px rgb(0 0 0 / 0.3); /* Add subtle shadow */
     }
     .slideshow button[data-action]:hover{ background:#c53030; }
     .slideshow button[data-action]:focus{ outline:2px solid #c53030; outline-offset:2px; }
@@ -81,23 +76,17 @@ class Slideshow {
     this.timer = null;
     this.isPausedByHoverOrTouch = false;
 
-    // Call the style injection again with the refined minimal styles
     injectCoreStylesOnce(this.opts.fadeMs);
-
     this._prepareDOM();
     this._loadSlides()
       .then(() => {
-        if (!this.slides.length) {
-          console.warn('Slideshow: No slides loaded from JSON.');
-          this.root.innerHTML = `<p style="text-align:center; padding:20px; color:#555;">No images to display.</p>`;
-          return;
-        }
+        if (!this.slides.length) return;
         this._createSlides();
         this._fadeInFirst(); // starts autoplay after first fade if enabled
       })
       .catch((e) => {
         console.error('Slideshow: failed to load slides JSON:', e);
-        this.root.innerHTML = `<p style="text-align:center; padding:20px; color:#b00;">Failed to load slideshow: ${e.message}</p>`;
+        this.root.innerHTML = `<p style="text-align:center; padding:20px; color:#b00;">Failed to load slideshow. ${e.message}</p>`;
       });
   }
 
@@ -139,7 +128,13 @@ class Slideshow {
 
     this.stage = this.root.querySelector('[data-role="stage"]') || createEl('div', 'stage');
     if (!this.stage.parentNode) this.root.appendChild(this.stage);
-    // Removed aspect-ratio and min-height here as it's now fully CSS controlled.
+    // Remove the explicit aspect-ratio and min-height setting here
+    // as it's handled by CSS and we want it to be dynamic
+    // const ar = getComputedStyle(this.stage).aspectRatio;
+    // if (!ar || ar === 'auto') {
+    //   this.stage.style.aspectRatio = '16 / 9';
+    //   if (!this.stage.style.minHeight) this.stage.style.minHeight = '320px';
+    // }
 
     let capWrap = this.root.querySelector('[data-role="caption-wrap"]');
     if (!capWrap) capWrap = createEl('div', 'caption-wrap');
@@ -229,7 +224,7 @@ class Slideshow {
     if (!this.images.length) return;
     const first = this.images[0];
     const reveal = () => {
-      first.style.opacity = '1'; // Set opacity for the first slide to be visible
+      first.style.opacity = '1';
       this._setCaption(0);
       if (this.opts.autoplay) setTimeout(() => this._start(), this.opts.fadeMs + 200);
     };
@@ -238,11 +233,9 @@ class Slideshow {
       first.addEventListener('load', () => requestAnimationFrame(reveal), { once: true });
       first.addEventListener(
         'error',
-        (e) => {
-          console.error('Slideshow: failed to load image', first.src, e);
+        () => {
+          console.error('Slideshow: failed image', first.src);
           this._setCaption(0);
-          // If the first image fails, try to show the next one, or a fallback.
-          // For now, we'll just log and proceed.
         },
         { once: true }
       );

@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = Array.from(document.querySelectorAll('nav a'));
   const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
   const mainContentArea = document.getElementById('main-content-area');
-
+  // Removed: const loadingSpinner = document.getElementById('loading-spinner');
   let isTransitioning = false;
 
   // --- Event listeners for font size changes ---

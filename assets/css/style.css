@@ -42,7 +42,7 @@ body {
 }
 
 html {
-  /* height: 100%; */
+  height: 100%;
   scroll-behavior: smooth;
 }
 
@@ -184,11 +184,11 @@ h3 {
   font-family: var(--font-display);
 }
 
-#dynamic-page-wrapper [data-page='artworks'] {
+/* #dynamic-page-wrapper [data-page='artworks'] {
   position: relative;
   z-index: 1;
   background-color: red;
-}
+} */
 
 p.page-title {
   font-family: var(--font-title);
@@ -427,7 +427,7 @@ h2.sub-title {
 
 .slideshow {
   align-items: center;
-  /* aspect-ratio: 16/9; REMOVED to allow dynamic image sizing */
+  aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -508,16 +508,13 @@ h2.sub-title {
 
 .slideshow [data-role='stage'] img {
   position: absolute !important;
-  /* inset: 0 !important; REMOVED to allow intrinsic sizing */
-  margin: auto !important; /* Center the image */
+  inset: 0 !important;
   display: block !important;
-  max-width: 100% !important; /* Ensure image scales down if too wide */
-  max-height: 100% !important; /* Ensure image scales down if too tall */
-  width: auto !important; /* Allow intrinsic width */
-  height: auto !important; /* Allow intrinsic height */
+  width: 100% !important;
+  height: 100% !important;
   min-width: 1px !important;
   min-height: 1px !important;
-  object-fit: contain !important; /* Changed to 'contain' to show full image, fit to bounds */
+  object-fit: cover !important;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }

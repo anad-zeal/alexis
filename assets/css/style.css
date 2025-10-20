@@ -9,9 +9,10 @@
   --soft: hsl(0 0% 96%);
   --brand: rgb(122, 1, 1);
   --focus-ring: hsl(0, 2%, 55%);
-  --navajo-white-light: hsl(43, 40%, 92%);
+  --navajo-white-light: hsl(45, 22%, 96%);
   --navajo-white-dark: hsl(38, 45%, 75%);
   --ivory-inspired: hsl(45, 30%, 94%);
+  --slideshow-background: hsl(57, 10%, 99%);
 
   /* Typography */
   --font-body: 'Montserrat', sans-serif;
@@ -426,7 +427,7 @@ h2.sub-title {
 
 .slideshow {
   align-items: center;
-  aspect-ratio: 16/9;
+  /* aspect-ratio: 16/9; REMOVED to allow dynamic image sizing */
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -507,13 +508,16 @@ h2.sub-title {
 
 .slideshow [data-role='stage'] img {
   position: absolute !important;
-  inset: 0 !important;
+  /* inset: 0 !important; REMOVED to allow intrinsic sizing */
+  margin: auto !important; /* Center the image */
   display: block !important;
-  width: 100% !important;
-  height: 100% !important;
+  max-width: 100% !important; /* Ensure image scales down if too wide */
+  max-height: 100% !important; /* Ensure image scales down if too tall */
+  width: auto !important; /* Allow intrinsic width */
+  height: auto !important; /* Allow intrinsic height */
   min-width: 1px !important;
   min-height: 1px !important;
-  object-fit: cover !important;
+  object-fit: contain !important; /* Changed to 'contain' to show full image, fit to bounds */
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
@@ -659,6 +663,6 @@ q .slideshow-section {
   background: none;
 }
 
-.slideshow- {
+.slideshow {
   background: none;
 }

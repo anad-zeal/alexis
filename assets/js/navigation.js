@@ -2,7 +2,7 @@
 // Fixed to work with the actual page structure
 
 // Declare subTitleElement at a higher scope so all functions can access it
-let subTitleElement; // Use 'let' because it will be assigned later in DOMContentLoaded
+//let subTitleElement; // Use 'let' because it will be assigned later in DOMContentLoaded
 
 // --- Start of existing helper functions (loadingSpinner references removed) ---
 function parseDurationValue(value) {

@@ -1,668 +1,331 @@
-/* =========================================
-   Design Tokens
-========================================= */
-:root {
-  /* Colors */
-  --ink: hsl(0 0% 10%);
-  --ink-muted: hsl(0 0% 45%);
-  --paper: hsl(36, 21%, 65%);
-  --soft: hsl(0 0% 96%);
-  --brand: rgb(122, 1, 1);
-  --focus-ring: hsl(0, 2%, 55%);
-  --navajo-white-light: hsl(45, 22%, 96%);
-  --navajo-white-dark: hsl(38, 45%, 75%);
-  --ivory-inspired: hsl(45, 30%, 94%);
-  --slideshow-background: hsl(57, 10%, 99%);
-
-  /* Typography */
-  --font-body: 'Montserrat', sans-serif;
-  --font-ui: 'Inter', sans-serif;
-  --font-display: 'Montserrat', sans-serif;
-  --font-title: 'Playfair Display', sans-serif;
-  --font-script: 'Bonheur Royale', cursive;
-
-  /* Layout */
-  --gutter: 0.5rem;
-  --gap: clamp(0.75rem, 2vw, 1.25rem);
-  --wide: 100vw;
-  --narrow-max: 90ch;
-
-  /* Motion */
-  --speed: 280ms;
-  --easing: cubic-bezier(0.22, 0.61, 0.36, 1);
+function createEl(tag, dataRole) {
+  const el = document.createElement(tag);
+  if (dataRole) el.setAttribute('data-role', dataRole);
+  return el;
 }
 
-/* =========================================
-   Base / Reset
-========================================= */
-html,
-body {
-  box-sizing: border-box;
-  background-color: var(--ivory-inspired);
+// Reinstating injectCoreStylesOnce, but only for essential functional styles,
+// not image sizing/object-fit which is handled by external CSS.
+function injectCoreStylesOnce(fadeMs = 1500) {
+  if (document.querySelector('style[data-slideshow-core]')) return;
+  const s = document.createElement('style');
+  s.setAttribute('data-slideshow-core', '1');
+  s.textContent = `
+    .slideshow {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      position: relative;
+    }
+
+    .slideshow [data-role="stage"]{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background:var(--slideshow-background);
+      overflow:hidden;
+      display:grid; place-items:center;
+      isolation:isolate;
+    }
+    .slideshow [data-role="stage"] img{
+      /* These are the critical functional styles for the slideshow behavior */
+      position:absolute;
+      opacity:0;
+      transition:opacity ${fadeMs}ms ease-in-out;
+
+      /* Image sizing/positioning details are now expected from slideshow-style.css */
+      /* So, we explicitly remove potential conflicting 'inset:0', 'width:100%', 'height:100%' */
+      /* These ensure the CSS rules for max-width/height, width:auto/height:auto, object-fit:contain take precedence */
+      margin: auto; /* Center image within the stage */
+      top: 0; bottom: 0; left: 0; right: 0; /* Ensures 'margin:auto' works for centering */
+    }
+    .slideshow [data-role="caption-wrap"]{
+      position:absolute; bottom:0; left:0; right:0; text-align:center;
+      padding:.75rem; color:#fff; font-style:italic;
+      background:rgba(0, 0, 0, 0.5);
+      z-index:10;
+    }
+    .slideshow [data-role="previous"], .slideshow [data-role="next"]{
+      position:absolute; top:50%; transform:translateY(-50%); z-index:11;
+    }
+    .slideshow [data-role="previous"]{ left:1rem; }
+    .slideshow [data-role="next"]{ right:1rem; }
+    .slideshow button[data-action]{
+      background:#8b0000; color:#fff; border:0; border-radius:50%;
+      width:56px; height:56px; display:grid; place-items:center; cursor:pointer;
+      transition: background-color 0.2s ease;
+      box-shadow:0 2px 5px rgb(0 0 0 / 0.3);
+    }
+    .slideshow button[data-action]:hover{ background:#c53030; }
+    .slideshow button[data-action]:focus{ outline:2px solid #c53030; outline-offset:2px; }
+  `;
+  document.head.appendChild(s);
 }
 
-html {
-  height: 100%;
-  scroll-behavior: smooth;
-}
+class Slideshow {
+  constructor(rootEl, opts = {}) {
+    if (!rootEl) throw new Error('Slideshow root element is required.');
+    this.root = rootEl;
+    this.opts = {
+      jsonUrl: opts.jsonUrl,
+      interval: Number(opts.interval ?? 5000),
+      fadeMs: Number(opts.fadeMs ?? 1500),
+      autoplay: opts.autoplay ?? true,
+      pauseOnHover: opts.pauseOnHover ?? true,
+    };
+    if (!this.opts.jsonUrl) throw new Error('opts.jsonUrl is required.');
 
-body {
-  min-height: 100%;
-  background-color: var(--ivory-inspired);
-  color: var(--ink);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  text-rendering: optimizeLegibility;
-}
+    this.slides = [];
+    this.images = [];
+    this.current = 0;
+    this.timer = null;
+    this.isPausedByHoverOrTouch = false;
 
-body p {
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-}
+    // Call the style injection again with the refined minimal styles
+    injectCoreStylesOnce(this.opts.fadeMs);
 
-img,
-svg,
-video {
-  height: auto;
-  max-width: 100%;
-}
+    this._prepareDOM();
+    this._loadSlides()
+      .then(() => {
+        if (!this.slides.length) {
+          console.warn('Slideshow: No slides loaded from JSON.');
+          this.root.innerHTML = `<p style="text-align:center; padding:20px; color:#555;">No images to display.</p>`;
+          return;
+        }
+        this._createSlides();
+        this._fadeInFirst(); // starts autoplay after first fade if enabled
+      })
+      .catch((e) => {
+        console.error('Slideshow: failed to load slides JSON:', e);
+        this.root.innerHTML = `<p style="text-align:center; padding:20px; color:#b00;">Failed to load slideshow: ${e.message}</p>`;
+      });
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
+  next() {
+    if (this.slides.length) {
+      this._show((this.current + 1) % this.slides.length);
+      this._resetAutoplay();
+    }
+  }
+  prev() {
+    if (this.slides.length) {
+      this._show((this.current - 1 + this.slides.length) % this.slides.length);
+      this._resetAutoplay();
+    }
+  }
+  pause() {
+    clearInterval(this.timer);
+    this.timer = null;
+  }
+  resume() {
+    if (this.opts.autoplay && !this.isPausedByHoverOrTouch && !this.timer) this._start();
+  }
+  destroy() {
+    this.pause();
+  }
+
+  async _loadSlides() {
+    const res = await fetch(this.opts.jsonUrl, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`HTTP ${res.status} for ${this.opts.jsonUrl}`);
+    const data = await res.json();
+    this.slides = Array.isArray(data) ? data : [];
+  }
+
+  _prepareDOM() {
+    this.root.classList.add('slideshow');
+    if (!this.root.style.position) this.root.style.position = 'relative';
+    this.root.setAttribute('aria-live', 'polite');
+    if (!this.root.hasAttribute('tabindex')) this.root.tabIndex = 0;
+
+    this.stage = this.root.querySelector('[data-role="stage"]') || createEl('div', 'stage');
+    if (!this.stage.parentNode) this.root.appendChild(this.stage);
+    // Removed aspect-ratio and min-height here as it's now fully CSS controlled.
+
+    let capWrap = this.root.querySelector('[data-role="caption-wrap"]');
+    if (!capWrap) capWrap = createEl('div', 'caption-wrap');
+    this.captionEl = this.root.querySelector('[data-role="caption"]') || createEl('p', 'caption');
+    if (!this.captionEl.parentNode) capWrap.appendChild(this.captionEl);
+    if (!capWrap.parentNode) this.root.appendChild(capWrap);
+
+    this.prevBtn =
+      this.root.querySelector('[data-action="prev"]') || this._makeButton('prev', 'Previous slide');
+    this.nextBtn =
+      this.root.querySelector('[data-action="next"]') || this._makeButton('next', 'Next slide');
+    if (!this.prevBtn.parentNode) {
+      const w = createEl('div', 'previous');
+      w.appendChild(this.prevBtn);
+      this.root.appendChild(w);
+    }
+    if (!this.nextBtn.parentNode) {
+      const w = createEl('div', 'next');
+      w.appendChild(this.nextBtn);
+      this.root.appendChild(w);
+    }
+
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+    this.root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        this.prev();
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        this.next();
+      }
+    });
+
+    if (this.opts.pauseOnHover) {
+      this.root.addEventListener('mouseenter', () => {
+        this.isPausedByHoverOrTouch = true;
+        this.pause();
+      });
+      this.root.addEventListener('mouseleave', () => {
+        this.isPausedByHoverOrTouch = false;
+        this.resume();
+      });
+      this.root.addEventListener(
+        'touchstart',
+        () => {
+          this.isPausedByHoverOrTouch = true;
+          this.pause();
+        },
+        { passive: true }
+      );
+      this.root.addEventListener(
+        'touchend',
+        () => {
+          this.isPausedByHoverOrTouch = false;
+          this.resume();
+        },
+        { passive: true }
+      );
+    }
+  }
+
+  _makeButton(action, label) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.setAttribute('data-action', action);
+    btn.setAttribute('aria-label', label);
+    btn.innerHTML = action === 'prev' ? '&#9664;' : '&#9654;';
+    return btn;
+  }
+
+  _createSlides() {
+    this.images = this.slides.map((item, idx) => {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = item.alt ?? item.caption ?? '';
+      img.decoding = 'async';
+      img.loading = idx === 0 ? 'eager' : 'lazy';
+      img.setAttribute('aria-hidden', idx === 0 ? 'false' : 'true');
+      this.stage.appendChild(img);
+      return img;
+    });
+  }
+
+  _fadeInFirst() {
+    if (!this.images.length) return;
+    const first = this.images[0];
+    const reveal = () => {
+      first.style.opacity = '1'; // Set opacity for the first slide to be visible
+      this._setCaption(0);
+      if (this.opts.autoplay) setTimeout(() => this._start(), this.opts.fadeMs + 200);
+    };
+    if (first.complete && first.naturalWidth > 0) requestAnimationFrame(reveal);
+    else {
+      first.addEventListener('load', () => requestAnimationFrame(reveal), { once: true });
+      first.addEventListener(
+        'error',
+        (e) => {
+          console.error('Slideshow: failed to load image', first.src, e);
+          this._setCaption(0);
+          // If the first image fails, try to show the next one, or a fallback.
+          // For now, we'll just log and proceed.
+        },
+        { once: true }
+      );
+    }
+  }
+
+  _show(index) {
+    if (!this.images.length) return;
+    const target = this.images[index];
+    const paint = () => {
+      this.images.forEach((img, i) => {
+        img.style.opacity = i === index ? '1' : '0';
+        img.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+      this._setCaption(index);
+      this.current = index;
+    };
+    if (target.complete && target.naturalWidth > 0) paint();
+    else target.addEventListener('load', paint, { once: true });
+  }
+
+  _setCaption(index) {
+    const cap = this.slides[index]?.caption ?? '';
+    this.captionEl.style.opacity = '0';
+    setTimeout(() => {
+      this.captionEl.textContent = cap;
+      this.captionEl.style.transition = `opacity ${Math.min(this.opts.fadeMs, 1000)}ms ease-in-out`;
+      this.captionEl.style.opacity = '1';
+    }, 180);
+  }
+
+  _start() {
+    this.pause();
+    this.timer = setInterval(() => {
+      const nextIdx = (this.current + 1) % this.slides.length;
+      this._show(nextIdx);
+    }, this.opts.interval);
+  }
+
+  _resetAutoplay() {
+    if (this.opts.autoplay) {
+      this.pause();
+      this.resume();
+    }
   }
 }
 
-/* =========================================
-   Utilities
-========================================= */
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-.full-bleed {
-  margin-inline: calc(50% - 50vw);
-  width: 100vw;
-}
-
-/* Accessible focus outline */
-:where(a, button, [tabindex], input, textarea, select):focus-visible {
-  outline: 1px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-
-/* Skip link */
-.skip-link {
-  position: absolute;
-  left: 0.5rem;
-  top: 0.5rem;
-  transform: translateY(-200%);
-  background: #000;
-  color: #fff;
-  padding: 0.5rem 0.75rem;
-  z-index: 1000;
-  border-radius: 0.25rem;
-  text-decoration: none;
-}
-.skip-link:focus-visible {
-  transform: none;
-}
-
-/* =========================================
-   Page Shell
-========================================= */
-
-.site-header {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 1vh;
-}
-
-/* =========================================
-   Navigation
-========================================= */
-
-.main-nav-menu {
-  display: flex;
-  justify-content: space-between;
-  width: 80vw;
-  height: 2rem;
-  margin: 0 auto;
-  align-items: center;
-  font-family: var(--font-ui);
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  min-height: 2.5rem;
-}
-
-.main-nav-menu a {
-  padding: 10px 15px; /* Adjust padding as needed */
-  text-decoration: none; /* Removes underline from links */
-  color: var(--ink);
-  white-space: nowrap; /* Prevents text from wrapping within a link */
-}
-
-.main-nav-menu a.is-active,
-.main-nav-menu a:hover {
-  color: var(--brand);
-  transform: scale(1.25);
-  transition: color 250ms ease, transform 250ms ease;
-}
-
-.category a.is-active,
-.category a:hover {
-  color: var(--brand);
-  transform: scale(1.25);
-  transition: color 250ms ease, transform 250ms ease;
-}
-
-/* Optional: Add media queries for even better responsiveness on very small screens */
-@media (max-width: 600px) {
-  .main-nav-menu {
-    flex-direction: column; /* Stack items vertically on small screens */
-    align-items: center; /* Center items when stacked vertically */
-  }
-}
-
-/* =========================================
-   Typography
-========================================= */
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-}
-
-#dynamic-page-wrapper [data-page='artworks'] {
-  position: relative;
-  z-index: 1;
-  background-color: red;
-}
-
-p.page-title {
-  font-family: var(--font-title);
-  font-size: clamp(2.5rem, 7vw, 4rem);
-  font-weight: 100;
-  line-height: 1;
-  text-align: center;
-  margin: 0;
-  color: var(--ink);
-}
-
-p.page-title.small-title {
-  display: none;
-}
-
-h1.title {
-  font-family: var(--font-title);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 100;
-  text-align: center;
-  color: var(--brand);
-  margin: 0;
-  line-height: 1;
-}
-
-h3.title {
-  font-family: var(--font-title);
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  font-weight: 500;
-  text-align: center;
-  color: var(--brand);
-  margin: 0;
-  line-height: 1;
-}
-
-h2.sub-title {
-  /* position: relative;
-  top: 1vh; */
-  font-family: var(--font-script);
-  font-size: clamp(1.75rem, 4.5vw, 3rem);
-  font-weight: 200;
-  letter-spacing: -0.02em;
-  text-align: center;
-  margin: 1vh 0px;
-}
-/*
-.body-paragraphs {
-  position: relative;
-  left: 12vw;
-  top: 0;
-} */
-
-.body-paragraphs {
-  position: relative;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: min(100% - 2rem, var(--narrow-max));
-  margin-inline: auto;
-  font-family: var(--font-body);
-}
-
-.section-format p,
-.body-paragraphs p {
-  font-weight: 400;
-  text-align: start;
-  max-width: 80%;
-  font-size: 1.25rem;
-}
-
-.dropcap {
-  float: left;
-  font-family: var(--font-script);
-  font-weight: 700;
-  font-size: clamp(3.2rem, 8vw, 5rem);
-  line-height: 0.9;
-  margin-right: 0.25em;
-  padding-top: 0.08em;
-  color: var(--brand);
-  min-width: 1ch;
-  text-decoration: none;
-  font-variant-ligatures: none;
-}
-.dropcap:hover {
-  color: var(--focus-ring);
-}
-.dropcap:focus-visible {
-  outline: 3px solid var(--focus-ring);
-  outline-offset: 3px;
-  border-radius: 0.2rem;
-}
-
-/* =========================================
-   Main Layout & Components (Container, Slideshow, Footer)
-/* ========================================= */
-
-.page-menu {
-  width: 60vw;
-  height: 60vh;
-  margin: 2vh auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    'restoration decorative'
-    'artworks landing-image';
-  justify-items: center;
-  align-items: start;
-}
-
-.page-menu div {
-  width: 25vw;
-  height: 24vh;
-}
-
-.page-menu p {
-  text-align: left;
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  color: var(--ink-muted);
-  margin-top: 0.5rem;
-}
-
-.page-menu a {
-  text-decoration: none;
-  font-family: var(--font-ui);
-  font-size: 1.25rem;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--ink);
-  white-space: nowrap; /* Prevents text from wrapping within a link */
-}
-
-.page-menu a:is-active,
-.page-menu a:hover {
-  color: var(--brand);
-  transform: scale(1.25);
-  transition: color 250ms ease, transform 250ms ease;
-}
-
-.last-item p {
-  width: 25vw;
-  text-align: center;
-}
-
-.restoration {
-  grid-area: restoration;
-}
-
-.decorative {
-  grid-area: decorative;
-}
-
-.artworks {
-  grid-area: artworks;
-}
-
-.landing-image {
-  grid-area: landing-image;
-}
-
-.gallery-menu {
-  width: 60vw;
-  height: 49vh;
-  margin: 2vh auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    'black-and-white encaustic'
-    'project-series drips-series';
-  justify-items: center;
-  align-items: center;
-}
-
-.gallery-menu p {
-  text-align: left;
-  font-family: var(--font-body);
-  font-size: 1.25rem;
-  color: var(--ink-muted);
-  margin-top: 0.5rem;
-}
-
-.gallery-menu a {
-  text-decoration: none;
-  font-family: var(--font-ui);
-  font-size: 1.25rem;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--ink);
-  white-space: nowrap; /* Prevents text from wrapping within a link */
-}
-
-.gallery-menu a.is-active,
-.gallery-menu a:hover {
-  color: var(--brand);
-  transform: scale(1.25);
-  transition: color 250ms ease, transform 250ms ease;
-}
-
-.black-and-white {
-  grid-area: black-and-white;
-}
-
-.encaustic {
-  grid-area: encaustic;
-}
-
-.project-series {
-  grid-area: project-series;
-}
-
-.drips-series {
-  grid-area: drips-series;
-}
-
-/* =========================================
-   Slideshow — Hardened Overrides (put last)
-   Ensures stage has height and images never collapse to 0×0.
-========================================= */
-
-.slideshow-section {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slideshow {
-  align-items: center;
-  /* aspect-ratio: 16/9; REMOVED to allow dynamic image sizing */
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  font-size: 2em;
-  height: auto;
-  justify-content: center;
-  position: relative;
-  width: var(--wide);
-  max-height: 90vh;
-  overflow: hidden;
-}
-
-/* Prev/Next buttons (base) */
-.prev-next.circle {
-  background-color: var(--brand);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.5em;
-  padding: 0;
-  transition: background-color var(--speed) var(--easing);
-  z-index: 10;
-}
-
-.prev-next.circle:hover {
-  background-color: var(--focus-ring);
-}
-
-.prev-next-icon {
-  width: 30px;
-  height: auto;
-  filter: invert(100%);
-}
-
-.caption {
-  text-align: center;
-  padding: 1rem 0;
-  font-style: italic;
-  color: var(--ink-muted);
-}
-
-.slideshow-section {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Add height 100vh to make the section fill the viewport height */
-  height: 100vh;
-}
-
-.slideshow-container.slideshow {
-  /* Allow the slideshow container to take up more space */
-  width: 100%;
-  height: 100%;
-  max-width: unset; /* Remove max-width constraint */
-  margin: 0; /* Remove auto margins */
-}
-
-.slideshow [data-role='stage'] {
-  position: relative;
-  /* Remove aspect-ratio and min-height to allow dynamic sizing */
-  aspect-ratio: unset;
-  min-height: unset;
-  width: 100%; /* Fill available width */
-  height: 100%; /* Fill available height */
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-}
-
-.slideshow [data-role='stage'] img {
-  position: absolute !important;
-  /* inset: 0 !important; REMOVED to allow intrinsic sizing */
-  margin: auto !important; /* Center the image */
-  display: block !important;
-  max-width: 100% !important; /* Ensure image scales down if too wide */
-  max-height: 100% !important; /* Ensure image scales down if too tall */
-  width: auto !important; /* Allow intrinsic width */
-  height: auto !important; /* Allow intrinsic height */
-  min-width: 1px !important;
-  min-height: 1px !important;
-  object-fit: contain !important; /* Changed to 'contain' to show full image, fit to bounds */
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
-
-.slideshow [data-role='caption-wrap'] {
-  position: absolute; /* Position caption over the image */
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 0.75rem;
-  color: #fff; /* Make caption text white for better contrast on images */
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
-  font-style: italic;
-  z-index: 10; /* Ensure caption is above the image */
-}
-
-/* Adjust button positioning for full-viewport slideshow */
-.slideshow [data-role='previous'],
-.slideshow [data-role='next'] {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 11; /* Above caption */
-  background: #8b0000;
-  color: #fff;
-  border: 0;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  padding: 0; /* Remove default padding from buttons */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-}
-.slideshow [data-role='previous'] {
-  left: 1rem;
-}
-.slideshow [data-role='next'] {
-  right: 1rem;
-}
-
-.slideshow-site-header {
-  visibility: hidden;
-}
-
-/* =========================================
-   Media Queries for Responsiveness
-========================================= */
-@media (max-width: 768px) {
-  .main-menu ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .prev-next.circle {
-    width: 50px;
-    height: 50px;
-  }
-
-  .prev-next-icon {
-    width: 25px;
-  }
-}
-
-.site-footer {
-  padding-block: 3rem 2rem;
-  color: var(--ink-muted);
-  text-align: center;
-  font-size: 0.95rem;
-  border-top: 1px solid #eaeaea;
-  margin-top: 4rem;
-}
-.site-footer p {
-  margin: 0;
-}
-
-.contact-form-wrapper {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-/* Form CSS*/
-.ccform {
-  margin: 0 auto;
-  width: 800px;
-}
-.ccfield-prepend {
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-.ccform-addon {
-  color: #f8ae45;
-  float: left;
-  padding: 8px;
-  width: 8%;
-  background: #ffffff;
-  text-align: center;
-}
-
-.ccformfield {
-  color: var(--brand);
-  background: hsl(60, 100%, 100%);
-  border: none;
-  padding: 15.5px;
-  width: 91.9%;
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 1.125rem;
-  font-weight: 200;
-}
-
-.ccformfield {
-  font-family: var(--font-ui);
-}
-.ccbtn {
-  display: block;
-  background: hsl(60, 100%, 100%);
-  color: var(--brand);
-  padding: 12px 25px;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: var(--font-ui);
-  font-weight: 200;
-  font-size: 1.125rem;
-  border-radius: 10px;
-  border: none;
-}
-.ccbtn:hover {
-  background: hsl(60, 100%, 91%);
-  transform: scale(1.125);
-  transition: color 250ms ease, transform 250ms ease;
-}
-q .slideshow-section {
-  background: none;
-  border: none;
-}
-
-.slideshow-container {
-  background: none;
-}
-
-.slideshow {
-  background: none;
-}
+function initSlideshows(root = document) {
+  const nodes = [...root.querySelectorAll('[data-slides]')];
+  return nodes
+    .map((el) => {
+      const jsonUrl = el.getAttribute('data-slides');
+      const interval = Number(el.getAttribute('data-interval') || 5000);
+      const fadeMs = Number(el.getAttribute('data-fade') || 1500);
+      const autoplay = el.getAttribute('data-autoplay') !== 'false';
+      const pauseOnHover = el.getAttribute('data-pause-on-hover') !== 'false';
+      try {
+        return new Slideshow(el, { jsonUrl, interval, fadeMs, autoplay, pauseOnHover });
+      } catch (e) {
+        console.error('Error initializing slideshow:', e);
+        el.innerHTML = `<p style="text-align:center; padding: 20px; color:#b00;">Failed to load slideshow: ${e.message}</p>`;
+        return null;
+      }
+    })
+    .filter(Boolean);
+}
+
+/* Optional header swap via ?showSlideshow=true */
+function swapHeadersViaQueryParam() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('showSlideshow') !== 'true') return;
+  const siteHeader = document.querySelector('.site-header');
+  const slideshowHeader =
+    document.querySelector('.slideshow-site-header') ||
+    document.querySelector('.slideshow-site-header');
+  if (siteHeader) siteHeader.style.visibility = 'hidden';
+  if (slideshowHeader) slideshowHeader.style.visibility = 'visible';
+  document.body.classList.add('is-slideshow');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSlideshows();
+  swapHeadersViaQueryParam();
+});
+window.addEventListener('hashchange', () => initSlideshows());
+window.addEventListener('app:navigate', () => initSlideshows());

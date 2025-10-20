@@ -51,7 +51,7 @@ const pageTitles = {
   '/contact': 'Contact Me',
   '/drips': 'Drip Series Paintings',
   '/encaustic': 'Encaustic Paintings',
-  '/projects': 'Project Series Paintings',
+  '/project-series': 'Project Series Paintings',
   '/restoration': 'Restoration Projects',
   '/decorative': 'Decorative Painting',
   '/black-and-white': 'Black and White Paintings',

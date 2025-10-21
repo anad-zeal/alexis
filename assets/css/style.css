@@ -170,7 +170,6 @@ video {
   transition: color 250ms ease, transform 250ms ease; /* Retained */
 }
 
-/* New .main-nav-menu a.active */
 .main-nav-menu a.active {
   color: #601c17; /* Active page color */
 }

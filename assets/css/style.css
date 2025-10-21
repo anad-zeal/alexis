@@ -161,6 +161,22 @@ video {
   transition: color 250ms ease, transform 250ms ease;
 }
 
+.main-nav-menu a {
+  border: solid 1px red;
+}
+
+.main-nav-menu a:nth-of-type(2) {
+  text-align: left;
+  position: relative;
+  left: -20px;
+}
+
+.main-nav-menu a:nth-of-type(3) {
+  text-align: right;
+  position: relative;
+  left: 20px;
+}
+
 .category a.is-active,
 .category a:hover {
   color: var(--brand);
@@ -666,16 +682,4 @@ q .slideshow-section {
 
 .slideshow {
   background: none;
-}
-
-.main-nav-menu a {
-  border: solid 1px red;
-}
-
-.main-nav-menu a:nth-of-type(2) {
-  text-align: left;
-}
-
-.main-nav-menu a:nth-of-type(3) {
-  text-align: right;
 }

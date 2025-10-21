@@ -667,6 +667,10 @@ q .slideshow-section {
   background: none;
 }
 
-.main-nav-menu:nth-child(1) {
-  display: none;
+.main-nav-menu a:nth-of-type(2) {
+  text-align: left;
+}
+
+.main-nav-menu a:nth-of-type(3) {
+  text-align: right;
 }

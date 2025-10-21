@@ -147,7 +147,7 @@ video {
 }
 
 .main-nav-menu a {
-  padding: 10px 15px; /* Adjust padding as needed */
+  padding: 10px 20px; /* Adjust padding as needed */
   text-decoration: none; /* Removes underline from links */
   color: var(--ink);
   white-space: nowrap; /* Prevents text from wrapping within a link */

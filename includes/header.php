@@ -58,11 +58,6 @@ $life_title = "<h2 class='sub-title fade-title'>The Life of an Artist</h2>";
             <div class="main-nav-menu">
                 <?= nav_item("home", "HOME", "/home") ?>
                 <?= nav_item("artworks", "ARTWORKS", "/artworks") ?>
-                <div class="main-nav-center">
-                    <?php if ($active_page === "life") {
-                        echo $life_title;
-                    } ?>
-                </div>
                 <?= nav_item("biography", "BIOGRAPHY", "/biography") ?>
                 <?= nav_item("contact", "CONTACT", "/contact") ?>
             </div>

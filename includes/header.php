@@ -30,7 +30,7 @@ $is404 = $active_page === "404";
  * @param string $href The URL for the link (e.g., "/home").
  * @return string The generated HTML <a> tag.
  */
-function nav_item(string $slug, string $label, string $href): string
+function nav_item(string $slug, string $label, string $href, bool $escape = true): string
 {
     global $active_page; // Access the global active_page variable
     $isActive = $active_page === $slug;
@@ -43,12 +43,14 @@ function nav_item(string $slug, string $label, string $href): string
 
     $aria = $isActive ? ' aria-current="page"' : "";
 
+    $labelHtml = $escape ? htmlspecialchars($label, ENT_QUOTES, "UTF-8") : $label;
+
     return sprintf(
         '<a href="%s" class="%s"%s>%s</a>',
         htmlspecialchars($href, ENT_QUOTES, "UTF-8"),
         trim($classes), // Use trim to clean up any extra spaces if 'is-active' isn't added
         $aria,
-        htmlspecialchars($label, ENT_QUOTES, "UTF-8"),
+        $labelHtml
     );
 }
 ?>
@@ -84,9 +86,9 @@ function nav_item(string $slug, string $label, string $href): string
         <nav class="main-nav" aria-label="Primary">
             <div class="main-nav-menu">
                 <!-- Using the nav_item helper function for cleaner code -->
-                <?= nav_item("home", "HOME", "/home") ?>
+                <?= nav_item("name", "<h2 class='sub-title'>The Life of an Artist</h2>", "/artworks", false) ?>
                 <?= nav_item("artworks", "ARTWORKS", "/artworks") ?>
-                <?= nav_item("name", " <h2 class='sub-title'>The Life of an Artist</h2>", "/artworks") ?>
+                <?= nav_item("name", <h2 class='sub-title'>The Life of an Artist</h2>, "/artworks") ?>
                 <?= nav_item("biography", "BIOGRAPHY", "/biography") ?>
                 <?= nav_item("contact", "CONTACT", "/contact") ?>
             </div>

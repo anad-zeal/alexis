@@ -86,9 +86,9 @@ function nav_item(string $slug, string $label, string $href): string
                 <!-- Using the nav_item helper function for cleaner code -->
                 <?= nav_item("home", "HOME", "/home") ?>
                 <?= nav_item("artworks", "ARTWORKS", "/artworks") ?>
+                <?= nav_item("name", "NAME", "/artworks") ?>
                 <?= nav_item("biography", "BIOGRAPHY", "/biography") ?>
                 <?= nav_item("contact", "CONTACT", "/contact") ?>
-                <!-- Add other navigation links if desired -->
             </div>
         </nav>
     </header>

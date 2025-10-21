@@ -2,7 +2,8 @@
     <div class="landing-menu-item page"><a href="/decorative" class="page-link" data-gallery="decorative_painting"
             aria-label="Go to Decorative Painting">Decorative Painting</a>
         <p>Limit continuity differentiability derivative integral antiderivative chain rule product rule quotient rule
-            mean value theorem fundamental theorem of calculus.</p>
+            mean value theorem fundamental theorem of calculus. Equation inequality logarithm derivative integral
+            constant limit tangent cosine sine asymptote factor divisor</p>
     </div>
 
     <div class="landing-menu-item page"><a href="/restoration" class="page-link" data-gallery="encaustic_paintings"

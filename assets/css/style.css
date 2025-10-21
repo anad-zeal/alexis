@@ -1,3 +1,8 @@
+I can help with that! It looks like you want to merge some new CSS navigation styles into your existing CSS. I'll combine the `main-nav`, `main-nav-menu`, `main-nav-menu a`, `main-nav-menu a.active`, `nav-title`, and `nav-title .sub-title` rules into your existing stylesheet, prioritizing the new values where they conflict.
+
+Here's the merged CSS:
+
+```css
 /* =========================================
    Design Tokens
 ========================================= */
@@ -133,37 +138,50 @@ video {
    Navigation
 ========================================= */
 
+/* New .main-nav */
+.main-nav {
+  background-color: #f6f5ef;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
 .main-nav-menu {
   display: flex;
-  justify-content: space-between;
-  width: 80vw;
-  height: 2rem;
+  justify-content: center; /* Changed from space-between to center */
+  width: 80vw; /* Retained */
+  height: 2rem; /* Retained */
   margin: 0 auto;
   align-items: center;
-  font-family: var(--font-ui);
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  min-height: 2.5rem;
+  font-family: 'Helvetica Neue', sans-serif; /* Updated font */
+  gap: 3rem; /* Updated gap */
+  flex-wrap: wrap; /* Retained */
+  min-height: 2.5rem; /* Retained */
 }
 
 .main-nav-menu a {
-  margin: 0 35px;
+  margin: 0; /* Removed margin 0 35px */
   padding: 10px 0; /* Adjust padding as needed */
   text-decoration: none; /* Removes underline from links */
-  color: var(--ink);
+  color: #000; /* Updated color */
   white-space: nowrap; /* Prevents text from wrapping within a link */
+  font-family: 'Helvetica Neue', sans-serif; /* Updated font */
+  font-weight: 500; /* Updated font-weight */
+  transition: color 0.3s ease; /* Updated transition */
 }
 
 .main-nav-menu a.is-active,
 .main-nav-menu a:hover {
-  color: var(--brand);
-  transform: scale(1.25);
-  transition: color 250ms ease, transform 250ms ease;
+  color: var(
+    --brand
+  ); /* Retained existing hover color for consistency unless .active takes precedence */
+  transform: scale(1.25); /* Retained */
+  transition: color 250ms ease, transform 250ms ease; /* Retained */
 }
-/*
-.main-nav-menu a {
-  border: solid 1px red;
-} */
+
+/* New .main-nav-menu a.active */
+.main-nav-menu a.active {
+  color: #601c17; /* Active page color */
+}
 
 .category a.is-active,
 .category a:hover {
@@ -285,6 +303,31 @@ h2.sub-title {
   outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
   border-radius: 0.2rem;
+}
+
+/* New .nav-title */
+.nav-title {
+  position: relative;
+  min-width: 250px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* New .nav-title .sub-title (overrides existing h2.sub-title if used in this context) */
+.nav-title .sub-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  line-height: 1.2;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* Crossfade effect */
+.nav-title.fade-out .sub-title {
+  opacity: 0;
 }
 
 /* =========================================

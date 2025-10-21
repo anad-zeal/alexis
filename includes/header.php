@@ -14,22 +14,24 @@ $scheme = $https ? "https" : "http";
 $canonicalPath = "/" . ltrim($active_page, "/");
 $canonicalUrl = sprintf("%s://%s%s", $scheme, $host, $canonicalPath);
 
-// Helper for nav items - ONLY creates navigation links
+// Helper for nav items
 function nav_item(string $slug, string $label, string $href): string
 {
     global $active_page;
     $isActive = $active_page === $slug;
     $classes = "landing-mnu" . ($isActive ? " is-active" : "");
     $aria = $isActive ? ' aria-current="page"' : "";
-
     return sprintf(
         '<a href="%s" class="%s"%s>%s</a>',
         htmlspecialchars($href, ENT_QUOTES, "UTF-8"),
         trim($classes),
         $aria,
-        htmlspecialchars($label, ENT_QUOTES, "UTF-8")
+        htmlspecialchars($label, ENT_QUOTES, "UTF-8"),
     );
 }
+
+// Dynamic center title
+$life_title = "<h2 class='sub-title fade-title'>The Life of an Artist</h2>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -492,7 +492,7 @@ h2.sub-title {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform var(--speed) var(--easing);
   max-width: auto%;
-  height: 150px;
+  height: 200px;
 }
 
 .img-home:hover {

@@ -1,9 +1,9 @@
 <div class="page-menu">
     <div class="landing-menu-item page"><a href="/decorative" class="page-link" data-gallery="decorative_painting"
             aria-label="Go to Decorative Painting">Decorative Painting</a>
-        <p>LDesire is the quiet architect of human behavior, and the orectic impulse—our innate drive toward what we
+        <p>Desire is the quiet architect of human behavior, and the orectic impulse—our innate drive toward what we
             crave—shapes every facet of life. From the hunger that fuels survival to the yearning for connection,
-            beauty, or truth, orectic energy.
+            beauty, or truth, orectic energy pulses beneath our choices.
         </p>
     </div>
 

@@ -22,7 +22,7 @@
 
     <div class="landing-menu-item last-item">
         <p>
-            <img src="https://elzalive.com/assets/images/misc-images/bridge.jpg" class="img-home" height="70">
+            <img src="https://elzalive.com/assets/images/misc-images/bridge.jpg" class="img-home">
         </p>
     </div>
 </div>

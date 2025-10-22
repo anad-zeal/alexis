@@ -611,7 +611,7 @@ h2.sub-title {
   min-width: 1px !important;
   min-height: 1px !important;
   object-fit: contain !important; /* Changed to 'contain' to show full image, fit to bounds */
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1.5s ease-in-out;
 }
 

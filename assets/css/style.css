@@ -192,7 +192,6 @@ h3 {
 main {
   position: relative;
   z-index: 1;
-  background-color: rgb(179, 0, 255);
 }
 
 p.page-title {
@@ -206,7 +205,7 @@ p.page-title {
 }
 
 .slideshow-section {
-  background-color: rgb(255, 234, 0);
+  background-color: transparent;
 }
 
 p.page-title.small-title {
@@ -589,7 +588,6 @@ h2.sub-title {
   height: 100%;
   max-width: unset; /* Remove max-width constraint */
   margin: 0; /* Remove auto margins */
-  background-color: green;
 }
 
 .slideshow [data-role='stage'] {
@@ -768,7 +766,7 @@ q .slideshow-section {
 css to add and merge
 /* === Navigation Styles === */
 .main-nav {
-  background-color: #f6f5ef;
+  /* background-color: #f6f5ef; */
   text-align: center;
   padding: 0.5rem 0;
 }

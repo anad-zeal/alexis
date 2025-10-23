@@ -1,8 +1,3 @@
-/**
- * Navigation.js - SPA Navigation Handler
- * Handles client-side routing and page transitions
- */
-
 // Global variables
 let subTitleElement;
 

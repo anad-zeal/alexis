@@ -57,28 +57,27 @@ function normalizePath(href) {
   }
 }
 
-// const mainNav = document.querySelector('.main-nav');
-// const heroDiv = document.querySelector('.hero');
-// mainNav.style.visibility = 'hidden';
-// heroDiv.style.visibility = 'hidden';
+const mainNav = document.querySelector('.main-nav');
+const heroDiv = document.querySelector('.hero');
+const slideshow = document.querySelector('.slideshow-section');
+mainNav.style.visibility = 'hidden';
+heroDiv.style.visibility = 'hidden';
 
-// document.querySelectorAll('div').forEach((div) => {
-//   if (div.id !== 'main-content-area') {
-//     div.style.visibility = 'hidden';
-//   }
-// });
 
-document.querySelectorAll('div').forEach(div => {
-  if (!div.classList.contains('slideshow-section')) {
-    div.style.display = 'none';
-  }
+  if (header) {
+        header.style.display = 'none';
+    }
+    if (hero) {
+        hero.style.display = 'none';
+    }
+    if (footer) {
+        footer.style.display = 'none';
+    }
+
+    if (slideshow) {
+        slideshow.style.display = ‘flex’;    }
 });
 
-document.querySelectorAll(’section’).forEach(section => {
-  if (!section.classList.contains('slideshow-section')) {
-   section.style.display = 'none';
-  }
-});
 
 // Page title mappings
 const PAGE_TITLES = {

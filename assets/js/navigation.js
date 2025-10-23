@@ -1,3 +1,4 @@
+// Global variables
 let subTitleElement;
 
 // --- Utility Functions ---
@@ -56,28 +57,6 @@ function normalizePath(href) {
     return path;
   }
 }
-
-const mainNav = document.querySelector('.main-nav');
-const heroDiv = document.querySelector('.hero');
-const slideshow = document.querySelector('.slideshow-section');
-mainNav.style.visibility = 'hidden';
-heroDiv.style.visibility = 'hidden';
-
-
-  if (header) {
-        header.style.display = 'none';
-    }
-    if (hero) {
-        hero.style.display = 'none';
-    }
-    if (footer) {
-        footer.style.display = 'none';
-    }
-
-    if (slideshow) {
-        slideshow.style.display = ‘flex’;    }
-});
-
 
 // Page title mappings
 const PAGE_TITLES = {

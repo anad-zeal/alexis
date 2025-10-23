@@ -68,9 +68,9 @@ function normalizePath(href) {
 //   }
 // });
 
-document.querySelectorAll('div').forEach((div) => {
-  if (!div.classList.contains('slideshow-section')) {
-    div.style.display = 'none';
+document.querySelectorAll(’section’).forEach(section => {
+  if (!section.classList.contains('slideshow-section')) {
+   section.style.display = 'none';
   }
 });
 

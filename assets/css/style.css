@@ -579,12 +579,13 @@ h2.sub-title {
   height: 100vh;
 }
 
-.slideshow-container.slideshow {
+.slideshow-container .slideshow {
   /* Allow the slideshow container to take up more space */
   width: 100%;
   height: 100%;
   max-width: unset; /* Remove max-width constraint */
   margin: 0; /* Remove auto margins */
+  background-color: green;
 }
 
 .slideshow [data-role='stage'] {

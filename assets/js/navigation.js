@@ -1,4 +1,3 @@
-// Global variables
 let subTitleElement;
 
 // --- Utility Functions ---

@@ -57,7 +57,7 @@ function normalizePath(href) {
   }
 }
 
-const mainNav = document.querySelector('main-nav');
+const mainNav = document.querySelector('.main-nav');
 
 mainNav.style.visibility = 'hidden';
 

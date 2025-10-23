@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new NavigationManager();
 });
 
-co1nst mainNav = document.querySelector('.main-nav');
+const mainNav = document.querySelector('.main-nav');
 const hero = document.querySelector('.hero');
 const header = document.querySelector('header');
 const footer = document.querySelector('footer');

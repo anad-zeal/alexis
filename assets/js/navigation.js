@@ -70,7 +70,7 @@ function normalizePath(href) {
 
 document.querySelectorAll('div').forEach((div) => {
   if (!div.classList.contains('slideshow-section')) {
-    div.style.visibility = 'hidden';
+    div.style.display = 'none';
   }
 });
 

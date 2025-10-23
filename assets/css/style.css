@@ -812,3 +812,28 @@ css to add and merge
 .nav-title.fade-out .sub-title {
   opacity: 0;
 }
+
+.top-grid {
+  display: flex;
+  justify-content: space-between;
+  width: 96vw;
+  height: 4rem;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.top-grid .left {
+  width: 39%;
+  border: solid 1px blue;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.top-grid .right {
+  display: flex;
+  width: 39%;
+  border: solid 1px blue;
+  justify-content: flex-end;
+  align-items: center;
+}

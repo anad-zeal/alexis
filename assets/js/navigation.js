@@ -63,6 +63,12 @@ function normalizePath(href) {
 // heroDiv.style.visibility = 'hidden';
 
 document.querySelectorAll('div').forEach((div) => {
+  if (div.id !== 'main-content-area') {
+    div.style.visibility = 'hidden';
+  }
+});
+
+document.querySelectorAll('div').forEach((div) => {
   if (!div.classList.contains('slideshow-section')) {
     div.style.visibility = 'hidden';
   }

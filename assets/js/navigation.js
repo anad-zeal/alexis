@@ -68,9 +68,9 @@ function normalizePath(href) {
 //   }
 // });
 
-document.querySelectorAll(’section’).forEach(section => {
+document.querySelectorAll(section).forEach((section) => {
   if (!section.classList.contains('slideshow-section')) {
-   section.style.display = 'none';
+    section.style.display = 'none';
   }
 });
 

@@ -606,7 +606,7 @@ h2.sub-title {
   display: block !important;
   max-width: 100% !important; /* Ensure image scales down if too wide */
   max-height: 100% !important; /* Ensure image scales down if too tall */
-  width: auto !important; /* Allow intrinsic width */
+  width: 100% !important; /* Allow intrinsic width */
   height: auto !important; /* Allow intrinsic height */
   min-width: 1px !important;
   min-height: 1px !important;

@@ -68,7 +68,7 @@ const PAGE_TITLES = {
   '/drips': 'Drip Series Paintings',
   '/encaustic': 'Encaustic Paintings',
   '/project-series': 'Project Series Paintings',
-  '/preservation': 'Historical Restoration Projects',
+  '/restoration': 'Historical Restoration Projects',
   '/decorative': 'Decorative Painting',
   '/black-and-white': 'Black and White Paintings',
 };
@@ -104,15 +104,13 @@ class NavigationManager {
     this.mainContentArea = document.getElementById('main-content-area');
     this.dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
 
-    // Debug logging
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Elements cached:', {
-        subTitleElement,
-        navLinksCount: this.navLinks.length,
-        mainContentArea: this.mainContentArea,
-        dynamicPageWrapper: this.dynamicPageWrapper,
-      });
-    }
+    // Debug logging (removed process.env check)
+    console.log('Elements cached:', {
+      subTitleElement,
+      navLinksCount: this.navLinks.length,
+      mainContentArea: this.mainContentArea,
+      dynamicPageWrapper: this.dynamicPageWrapper,
+    });
   }
 
   setupEventListeners() {
@@ -122,11 +120,34 @@ class NavigationManager {
       navElement.addEventListener('click', this.handleNavClick.bind(this));
     }
 
+    // JSON link click handler
+    document.addEventListener('click', this.handleJsonLinkClick.bind(this));
+
     // Browser back/forward handler
     window.addEventListener('popstate', this.handlePopState.bind(this));
 
     // Font size change handlers
     this.setupFontSizeHandlers();
+  }
+
+  // Handle JSON link clicks
+  handleJsonLinkClick(event) {
+    const link = event.target.closest('.json-link');
+
+    if (!link) return;
+
+    event.preventDefault();
+
+    const category = link.getAttribute('data-category');
+    const href = `/${category}`;
+
+    // Create a temporary link element for navigation
+    const tempLink = document.createElement('a');
+    tempLink.href = href;
+    tempLink.setAttribute('href', href);
+    tempLink.textContent = link.textContent; // Add text content for title updates
+
+    this.updatePageContent(tempLink, true);
   }
 
   setupFontSizeHandlers() {
@@ -358,7 +379,7 @@ class NavigationManager {
     }
 
     // Update document title
-    document.title = `${pageTitle} | aepaints`;
+    document.title = `${pageTitle} | AEPaints`;
 
     // Update data-page attribute
     if (this.dynamicPageWrapper) {
@@ -453,40 +474,3 @@ class NavigationManager {
 document.addEventListener('DOMContentLoaded', () => {
   new NavigationManager();
 });
-
-// Add to your existing NavigationManager class
-function setupEventListeners() {
-  // Existing navigation click handler
-  const navElement = document.querySelector('nav');
-  if (navElement) {
-    navElement.addEventListener('click', this.handleNavClick.bind(this));
-  }
-
-  // NEW: JSON link click handler
-  document.addEventListener('click', this.handleJsonLinkClick.bind(this));
-
-  // Browser back/forward handler
-  window.addEventListener('popstate', this.handlePopState.bind(this));
-
-  // Font size change handlers
-  this.setupFontSizeHandlers();
-}
-
-// NEW: Handle JSON link clicks
-function handleJsonLinkClick(event) {
-  const link = event.target.closest('.json-link');
-
-  if (!link) return;
-
-  event.preventDefault();
-
-  const category = link.getAttribute('data-category');
-  const href = `/${category}`;
-
-  // Create a temporary link element for navigation
-  const tempLink = document.createElement('a');
-  tempLink.href = href;
-  tempLink.setAttribute('href', href);
-
-  this.updatePageContent(tempLink, true);
-}

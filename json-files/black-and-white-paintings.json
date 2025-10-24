@@ -1,50 +1,45 @@
-[
-  {
-    "src": "/assets/images/black-and-white-paintings/Tsunami.jpg",
-    "caption": "Tsunami"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/The-Big-Island.jpg",
-    "caption": "The-Big-Island"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/Spartobranchus-tenuis.jpg",
-    "caption": "Spartobranchus-tenuis"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/Serengeti.jpg",
-    "caption": "Serengeti"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/North-by-Northwest.jpg",
-    "caption": "North-by-Northwest"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/NM.jpg",
-    "caption": "NM"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/Low-Tide-Somasian-Shore.jpg",
-    "caption": "Low-Tide-Somalian-Shore"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/How-I-Imagine-Minnesota.jpg",
-    "caption": "How-I-Imagine-Minnesota"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/Green-Pond.jpg",
-    "caption": "Green-Pond"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/Evidence-of-an-Iron-Horse.jpg",
-    "caption": "Evidence-of-an-Iron-Horse"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/Earth,-Wind-and-Fire.jpg",
-    "caption": "Earth,-Wind-and-Fire"
-  },
-  {
-    "src": "/assets/images/black-and-white-paintings/Close-Encounter.jpg",
-    "caption": "Close-Encounter"
+{
+  "images": [
+    {
+      "id": "bw-1",
+      "title": "Urban Shadows",
+      "filename": "urban-shadows.jpg",
+      "description": "Charcoal and graphite study of light and shadow in urban architecture",
+      "medium": "Charcoal on paper",
+      "dimensions": "24\" x 36\"",
+      "year": 2023
+    },
+    {
+      "id": "bw-2",
+      "title": "Portrait Study #3",
+      "filename": "portrait-study-3.jpg",
+      "description": "Classical portrait study emphasizing contrast and emotional depth",
+      "medium": "Graphite on paper",
+      "dimensions": "18\" x 24\"",
+      "year": 2022
+    },
+    {
+      "id": "bw-3",
+      "title": "Abstract Composition",
+      "filename": "abstract-composition.jpg",
+      "description": "Bold abstract work exploring form and texture through monochromatic palette",
+      "medium": "Acrylic on canvas",
+      "dimensions": "30\" x 40\"",
+      "year": 2023
+    },
+    {
+      "id": "bw-4",
+      "title": "Landscape Memory",
+      "filename": "landscape-memory.jpg",
+      "description": "Atmospheric landscape rendered in subtle gradations of black and white",
+      "medium": "Oil on canvas",
+      "dimensions": "36\" x 48\"",
+      "year": 2021
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "basePath": "/assets/images/black-and-white-images/",
+    "lastUpdated": "2025-10-24"
   }
-]
+}

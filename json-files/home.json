@@ -3,24 +3,24 @@
     {
       "category": "decorative",
       "title": "Decorative Painting",
-      "description": "Limit continuity differentiability derivative integral antiderivative chain rule product rule quotient rule mean value theorem fundamental theorem of calculus.",
+      "description": "Desire is the quiet architect of human behavior, and the orectic impulse—our innate drive toward what we crave—shapes every facet of life. From the hunger that fuels survival to the yearning for connection, beauty, or truth, orectic energy pulses beneath our choices.",
       "ariaLabel": "Go to Decorative Painting"
     },
     {
       "category": "artworks",
       "title": "Artworks Pages",
-      "description": "Matrix parabola quotient variable coefficient binomial exponent modulus integer polynomial function domain range axis vector scalar root identity equation inequality.",
+      "description": "Matrix parabola quotient variable coefficient binomial exponent modulus integer polynomial function domain range axis vector scalar root identity equation inequality logarithm derivative integral constant limit tangent cosine sine asymptote factor divisor.",
       "ariaLabel": "Go to the Artworks Page"
     },
     {
       "category": "restoration",
       "title": "Historic Preservation",
-      "description": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter chord arc sector segment angle vertex edge face surface volume.",
+      "description": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter chord arc sector segment angle vertex edge face surface volume area perimeter symmetry congruence similarity tessellation reflection rotation translation dilation coordinate.",
       "ariaLabel": "Go to the Restoration Projects Pages"
     }
   ],
   "imageItem": {
     "src": "https://elzalive.com/assets/images/misc-images/bridge-2.jpg",
-    "alt": "Bridge artwork"
+    "alt": "Historic bridge restoration project"
   }
 }

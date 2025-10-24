@@ -1,34 +1,90 @@
-[
-  {
-    "src": "/assets/images/restoration-projects/homer-1.jpg",
-    "caption": "homer-or-bust"
-  },
-  {
-    "src": "/assets/images/restoration-projects/marble-piece.jpg",
-    "caption": "marble-piece"
-  },
-  {
-    "src": "/assets/images/restoration-projects/office.jpg",
-    "caption": "office"
-  },
-  {
-    "src": "/assets/images/restoration-projects/old-south-church.jpg",
-    "caption": "old-south-church"
-  },
-  {
-    "src": "/assets/images/restoration-projects/painting-ceiling.jpg",
-    "caption": "painting-ceiling-1"
-  },
-  {
-    "src": "/assets/images/restoration-projects/painting-wall.jpg",
-    "caption": "painting-wall"
-  },
-  {
-    "src": "/assets/images/restoration-projects/senate-pres-wall.jpg",
-    "caption": "senate-pres-wall"
-  },
-  {
-    "src": "/assets/images/restoration-projects/stpauls.jpg",
-    "caption": "stpauls"
+{
+  "restorationProjects": [
+    {
+      "id": "homer-or-bust",
+      "title": "Homer or Bust",
+      "filename": "Homer-or-bust.jpg",
+      "description": "Restoration of classical bust sculpture featuring comprehensive cleaning and structural repair",
+      "category": "sculpture",
+      "year": 2023,
+      "techniques": ["cleaning", "structural repair", "surface restoration"]
+    },
+    {
+      "id": "marble-piece",
+      "title": "Marble Piece",
+      "filename": "Marble-piece.jpg",
+      "description": "Complete marble restoration project involving crack repair and surface refinishing",
+      "category": "sculpture",
+      "year": 2022,
+      "techniques": ["marble cleaning", "crack repair", "polishing"]
+    },
+    {
+      "id": "office",
+      "title": "Office Restoration",
+      "filename": "Office.jpg",
+      "description": "Professional office space restoration focusing on period-appropriate decorative elements",
+      "category": "interior",
+      "year": 2023,
+      "techniques": ["wall restoration", "decorative elements", "period research"]
+    },
+    {
+      "id": "old-south-church",
+      "title": "Old South Church",
+      "filename": "Old-South-Church.jpg",
+      "description": "Historic church restoration project preserving original architectural details",
+      "category": "architecture",
+      "year": 2021,
+      "techniques": ["historical preservation", "structural restoration", "decorative arts"]
+    },
+    {
+      "id": "painting-ceiling-1",
+      "title": "Ceiling Fresco Restoration",
+      "filename": "Painting-Ceiling-1.jpg",
+      "description": "Comprehensive ceiling fresco restoration including color matching and structural support",
+      "category": "fresco",
+      "year": 2022,
+      "techniques": ["fresco restoration", "color matching", "structural support"]
+    },
+    {
+      "id": "painting-wall",
+      "title": "Wall Mural Restoration",
+      "filename": "Painting-Wall.jpg",
+      "description": "Historic wall painting restoration with emphasis on color restoration and protective coating",
+      "category": "mural",
+      "year": 2023,
+      "techniques": ["paint restoration", "color restoration", "protective coating"]
+    },
+    {
+      "id": "senate-pres-wall",
+      "title": "Senate Presidential Wall",
+      "filename": "Senate-Pres-Wall.jpg",
+      "description": "Senate presidential wall restoration preserving institutional heritage",
+      "category": "institutional",
+      "year": 2020,
+      "techniques": ["historical restoration", "decorative arts", "preservation"]
+    },
+    {
+      "id": "st-pauls",
+      "title": "St. Paul's Church",
+      "filename": "StPauls.jpg",
+      "description": "Religious art restoration project focusing on conservation and historical preservation",
+      "category": "religious",
+      "year": 2021,
+      "techniques": ["religious art restoration", "conservation", "historical preservation"]
+    }
+  ],
+  "metadata": {
+    "totalProjects": 8,
+    "categories": [
+      "sculpture",
+      "interior",
+      "architecture",
+      "fresco",
+      "mural",
+      "institutional",
+      "religious"
+    ],
+    "basePath": "/assets/images/restoration-images/",
+    "lastUpdated": "2025-10-24"
   }
-]
+}

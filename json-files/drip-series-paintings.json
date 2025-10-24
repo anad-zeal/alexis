@@ -1,70 +1,45 @@
-[
-  {
-    "src": "/assets/images/drip-series-paintings/triptych.jpg",
-    "caption": "triptych"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/this-much-craziness.jpg",
-    "caption": "this-much-craziness"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/tangarine.jpg",
-    "caption": "tangarine"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/szabo.jpg",
-    "caption": "szabo"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/sextet.jpg",
-    "caption": "sextet"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/sextet-all.jpg",
-    "caption": "sextet-all"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/raining-red.jpg",
-    "caption": "raining-red"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/rainforest.jpg",
-    "caption": "rainforest"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/rainforest-iii.jpg",
-    "caption": "rainforest-iii"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/rainforest-ii.jpg",
-    "caption": "rainforest-ii"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/mocha.jpg",
-    "caption": "mocha"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/history-repeats-itself.jpg",
-    "caption": "history-repeats-itself"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/entry-ii.jpg",
-    "caption": "entry-ii"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/drips-06_0.jpg",
-    "caption": "drips-06_0"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/drips-05.jpg",
-    "caption": "drips-05"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/bleu.jpg",
-    "caption": "bleu"
-  },
-  {
-    "src": "/assets/images/drip-series-paintings/andreas-folly.jpg",
-    "caption": "andreas-folly"
+{
+  "images": [
+    {
+      "id": "drip-1",
+      "title": "Cascade #1",
+      "filename": "cascade-1.jpg",
+      "description": "Flowing composition exploring gravity's effect on paint and pigment",
+      "medium": "Acrylic and mixed media on canvas",
+      "dimensions": "48\" x 60\"",
+      "year": 2023
+    },
+    {
+      "id": "drip-2",
+      "title": "Vertical Flow",
+      "filename": "vertical-flow.jpg",
+      "description": "Monumental piece capturing the poetry of controlled chaos in paint application",
+      "medium": "Oil and acrylic on canvas",
+      "dimensions": "72\" x 96\"",
+      "year": 2022
+    },
+    {
+      "id": "drip-3",
+      "title": "Color Gravity",
+      "filename": "color-gravity.jpg",
+      "description": "Vibrant exploration of how different pigments interact when allowed to flow freely",
+      "medium": "Acrylic on canvas",
+      "dimensions": "36\" x 48\"",
+      "year": 2023
+    },
+    {
+      "id": "drip-4",
+      "title": "Temporal Streams",
+      "filename": "temporal-streams.jpg",
+      "description": "Time-based painting process captured in layers of flowing paint",
+      "medium": "Mixed media on canvas",
+      "dimensions": "60\" x 72\"",
+      "year": 2021
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "basePath": "/assets/images/drip-series-images/",
+    "lastUpdated": "2025-10-24"
   }
-]
+}

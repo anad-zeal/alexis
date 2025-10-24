@@ -1,27 +1,50 @@
-[
-  {
-    "src": "/assets/images/project-series-paintings/0800.jpg",
-
-    "caption": "0800"
-  },
-  {
-    "src": "/assets/images/project-series-paintings/calliope.jpg",
-    "caption": "calliope"
-  },
-  {
-    "src": "/assets/images/project-series-paintings/magic-flute.jpg",
-    "caption": "magic-flute"
-  },
-  {
-    "src": "/assets/images/project-series-paintings/morphean.jpg",
-    "caption": "Morphean"
-  },
-  {
-    "src": "/assets/images/project-series-paintings/radish.jpg",
-    "caption": "radish"
-  },
-  {
-    "src": "/assets/images/project-series-paintings/tui.jpg",
-    "caption": "tui"
+{
+  "images": [
+    {
+      "id": "project-1",
+      "title": "Transformation Series #1",
+      "filename": "transformation-1.jpg",
+      "description": "First piece in exploration of metamorphosis through color and form",
+      "medium": "Oil on canvas",
+      "dimensions": "40\" x 50\"",
+      "year": 2023,
+      "series": "Transformation"
+    },
+    {
+      "id": "project-2",
+      "title": "Transformation Series #2",
+      "filename": "transformation-2.jpg",
+      "description": "Continuation of metamorphosis theme with evolving compositional elements",
+      "medium": "Oil on canvas",
+      "dimensions": "40\" x 50\"",
+      "year": 2023,
+      "series": "Transformation"
+    },
+    {
+      "id": "project-3",
+      "title": "Elements Study #1",
+      "filename": "elements-1.jpg",
+      "description": "Investigation of fundamental natural forces through abstract representation",
+      "medium": "Acrylic on canvas",
+      "dimensions": "30\" x 40\"",
+      "year": 2022,
+      "series": "Elements"
+    },
+    {
+      "id": "project-4",
+      "title": "Elements Study #2",
+      "filename": "elements-2.jpg",
+      "description": "Second exploration in the elements series, focusing on earth and water",
+      "medium": "Acrylic on canvas",
+      "dimensions": "30\" x 40\"",
+      "year": 2022,
+      "series": "Elements"
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "series": ["Transformation", "Elements"],
+    "basePath": "/assets/images/project-series-images/",
+    "lastUpdated": "2025-10-24"
   }
-]
+}

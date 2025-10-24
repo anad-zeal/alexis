@@ -1,50 +1,45 @@
-[
-  {
-    "src": "/assets/images/decorative-painting/DSCN0013.JPG",
-    "caption": "DSCN0013"
-  },
-  {
-    "src": "/assets/images/decorative-painting/DSCN0012.JPG",
-    "caption": "DSCN0012"
-  },
-  {
-    "src": "/assets/images/decorative-painting/DSCN0009.JPG",
-    "caption": "DSCN0009"
-  },
-  {
-    "src": "/assets/images/decorative-painting/DSCN0005.JPG",
-    "caption": "DSCN0005"
-  },
-  {
-    "src": "/assets/images/decorative-painting/Box_Stars_on_Blue.jpg",
-    "caption": "Box_Stars_on_Blue"
-  },
-  {
-    "src": "/assets/images/decorative-painting/SideTable.jpg",
-    "caption": "SideTable"
-  },
-  {
-    "src": "/assets/images/decorative-painting/Cross-Cabinet036.jpg",
-    "caption": "Cross Cabinet036"
-  },
-  {
-    "src": "/assets/images/decorative-painting/Cross-Cabinet-039.jpg",
-    "caption": "Cross Cabinet 039"
-  },
-  {
-    "src": "/assets/images/decorative-painting/Bronze.jpg",
-    "caption": "Bronze"
-  },
-  {
-    "src": "/assets/images/decorative-painting/Mirror-trim.jpg",
-    "caption": "Mirror Trim"
-  },
-  {
-    "src": "/assets/images/decorative-painting/Cresh-Arrow-2.jpg",
-    "caption": "Cresh Arrow-2"
-  },
-  {
-    "src": "/assets/images/decorative-painting/Cadoret-Frame.jpg",
-    "caption": "Cadoret Frame"
+{
+  "images": [
+    {
+      "id": "decorative-1",
+      "title": "Venetian Plaster Finish",
+      "filename": "venetian-plaster.jpg",
+      "description": "Hand-applied Venetian plaster with gold leaf accents creating depth and luminosity",
+      "technique": "Venetian Plaster",
+      "year": 2023,
+      "location": "Private Residence"
+    },
+    {
+      "id": "decorative-2",
+      "title": "Trompe-l'oeil Garden Scene",
+      "filename": "garden-scene.jpg",
+      "description": "Realistic garden scene painted directly on interior wall, creating illusion of outdoor space",
+      "technique": "Trompe-l'oeil",
+      "year": 2022,
+      "location": "Historic Estate"
+    },
+    {
+      "id": "decorative-3",
+      "title": "Faux Marble Columns",
+      "filename": "faux-marble.jpg",
+      "description": "Architectural columns painted to simulate Carrara marble with authentic veining patterns",
+      "technique": "Faux Finishing",
+      "year": 2023,
+      "location": "Commercial Building"
+    },
+    {
+      "id": "decorative-4",
+      "title": "Gilded Ceiling Medallion",
+      "filename": "ceiling-medallion.jpg",
+      "description": "Ornate ceiling medallion restored with traditional gold leaf application techniques",
+      "technique": "Gilding",
+      "year": 2021,
+      "location": "Historic Theater"
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "basePath": "/assets/images/decorative-painting-images/",
+    "lastUpdated": "2025-10-24"
   }
-]
+}

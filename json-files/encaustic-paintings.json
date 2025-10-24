@@ -1,106 +1,45 @@
-[
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic XI.jpg",
-    "caption": "Encaustic XI"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic VIII.jpg",
-    "caption": "Encaustic VIII"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic VII.jpg",
-    "caption": "Encaustic VII"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic VI.jpg",
-    "caption": "Encaustic VI"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic IX.jpg",
-    "caption": "Encaustic IX"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic IV.jpg",
-    "caption": "Encaustic IV"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic II.jpg",
-    "caption": "Encaustic II"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic III.jpg",
-    "caption": "Encaustic III"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Encaustic I.jpg",
-    "caption": "Encaustic I"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Wynken, Blynken and Nod.jpg",
-    "caption": "Wynken, Blynken and Nod"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Under the Bridge.jpg",
-    "caption": "Under the Bridge"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Stage Two Over Cosmos.jpg",
-    "caption": "Stage Two Over Cosmos"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Red Line.jpg",
-    "caption": "Red Line"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Microbial II.jpg",
-    "caption": "Microbial II"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Microbial I.jpg",
-    "caption": "Microbial I"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Light Years Away III.jpg",
-    "caption": "Light Years Away III"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Light Years Away II.jpg",
-    "caption": "Light Years Away II"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Light Years Away I.jpg",
-    "caption": "Light Years Away I"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/In the Fog.jpg",
-    "caption": "In the Fog"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Ground Control to Major Tom III.jpg",
-    "caption": "Ground Control to Major Tom III"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Ground Control to Major Tom I.jpg",
-    "caption": "Ground Control to Major Tom I"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Ground Control to Major Tom II.jpg",
-    "caption": "Ground Control to Major Tom II"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Darkness Visible.jpg",
-    "caption": "Darkness Visible"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Dark Side of the Moon.jpg",
-    "caption": "Dark Side of the Moon"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/Birth of a Hunting Tool.jpg",
-    "caption": "Birth of a Hunting Tool"
-  },
-  {
-    "src": "/assets/images/encaustic-paintings/All Thats Left.jpg",
-    "caption": "All Thats Left"
+{
+  "images": [
+    {
+      "id": "encaustic-1",
+      "title": "Wax and Memory",
+      "filename": "wax-memory.jpg",
+      "description": "Layered encaustic work exploring texture and translucency through hot wax medium",
+      "medium": "Encaustic on wood panel",
+      "dimensions": "24\" x 30\"",
+      "year": 2023
+    },
+    {
+      "id": "encaustic-2",
+      "title": "Fossil Impressions",
+      "filename": "fossil-impressions.jpg",
+      "description": "Ancient textures recreated through encaustic techniques and embedded materials",
+      "medium": "Encaustic with found objects",
+      "dimensions": "18\" x 24\"",
+      "year": 2022
+    },
+    {
+      "id": "encaustic-3",
+      "title": "Luminous Depths",
+      "filename": "luminous-depths.jpg",
+      "description": "Multiple layers of translucent wax creating depth and inner illumination",
+      "medium": "Encaustic on canvas",
+      "dimensions": "36\" x 48\"",
+      "year": 2023
+    },
+    {
+      "id": "encaustic-4",
+      "title": "Botanical Preservation",
+      "filename": "botanical-preservation.jpg",
+      "description": "Natural elements preserved in wax, creating eternal botanical specimens",
+      "medium": "Encaustic with botanical elements",
+      "dimensions": "20\" x 26\"",
+      "year": 2021
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "basePath": "/assets/images/encaustic-images/",
+    "lastUpdated": "2025-10-24"
   }
-]
+}

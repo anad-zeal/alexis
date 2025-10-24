@@ -584,16 +584,16 @@ h2.sub-title {
 }
 
 .slideshow-container .slideshow {
-  /* Allow the slideshow container to take up more space */
   width: 100%;
   height: 100%;
   max-width: unset; /* Remove max-width constraint */
   margin: 0; /* Remove auto margins */
+  background-color: var(--ivory-inspired);
 }
 
 .slideshow [data-role='stage'] {
   position: relative;
-  /* Remove aspect-ratio and min-height to allow dynamic sizing */
+  top: -5vh;
   aspect-ratio: unset;
   min-height: unset;
   width: 100%; /* Fill available width */
@@ -825,7 +825,7 @@ css to add and merge
 
 .top-grid .left {
   width: 39%;
-  border: solid 1px blue;
+  /* border: solid 1px blue; */
   text-align: left;
   display: flex;
   align-items: center;
@@ -834,7 +834,7 @@ css to add and merge
 .top-grid .right {
   display: flex;
   width: 39%;
-  border: solid 1px blue;
+  /* border: solid 1px blue; */
   justify-content: flex-end;
   align-items: center;
 }

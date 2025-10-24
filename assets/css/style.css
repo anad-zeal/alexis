@@ -600,7 +600,7 @@ h2.sub-title {
   overflow: hidden;
   display: grid;
   place-items: center;
-  background-color: var(--ivory-inspired);
+  background-color: red;
 }
 
 .slideshow [data-role='stage'] img {

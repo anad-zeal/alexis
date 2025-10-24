@@ -579,6 +579,7 @@ h2.sub-title {
 .slideshow-container {
   position: relative;
   top: -5vh;
+  background-color: red;
 }
 
 .slideshow [data-role='stage'] {

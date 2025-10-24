@@ -169,7 +169,7 @@ class NavigationManager {
       console.warn('Landing menu link clicked, but p.page-title element not found.');
     }
   }
-
+  3;
   setupDefaultTransitions() {
     const defaultTransition = 'opacity 280ms ease-in-out';
 
@@ -454,22 +454,22 @@ document.addEventListener('DOMContentLoaded', () => {
   new NavigationManager();
 });
 
-const mainNav = document.querySelector('.main-nav');
-const hero = document.querySelector('.hero');
-const header = document.querySelector('header');
-const footer = document.querySelector('footer');
-const slideshow = document.querySelector('.slideshow-section');
+// const mainNav = document.querySelector('.main-nav');
+// const hero = document.querySelector('.hero');
+// const header = document.querySelector('header');
+// const footer = document.querySelector('footer');
+// const slideshow = document.querySelector('.slideshow-section');
 
-if (header) {
-  header.style.display = 'none';
-}
-if (hero) {
-  hero.style.display = 'none';
-}
-if (footer) {
-  footer.style.display = 'none';
-}
+// if (header) {
+//   header.style.display = 'none';
+// }
+// if (hero) {
+//   hero.style.display = 'none';
+// }
+// if (footer) {
+//   footer.style.display = 'none';
+// }
 
-if (slideshow) {
-  slideshow.style.display = 'flex';
-}
+// if (slideshow) {
+//   slideshow.style.display = 'flex';
+// }

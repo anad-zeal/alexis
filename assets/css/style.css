@@ -204,10 +204,6 @@ p.page-title {
   color: var(--ink);
 }
 
-.slideshow-section {
-  background-color: transparent;
-}
-
 p.page-title.small-title {
   display: none;
 }
@@ -512,16 +508,6 @@ h2.sub-title {
    Ensures stage has height and images never collapse to 0×0.
 ========================================= */
 
-.slideshow-section {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .slideshow {
   align-items: center;
   /* aspect-ratio: 16/9; REMOVED to allow dynamic image sizing */
@@ -579,8 +565,8 @@ h2.sub-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Add height 100vh to make the section fill the viewport height */
   height: 100vh;
+  background-color: red;
 }
 
 .slideshow-container .slideshow {
@@ -592,7 +578,7 @@ h2.sub-title {
 
 .slideshow [data-role='stage'] {
   position: relative;
-  top: -5vh;
+  top: -15vh;
   aspect-ratio: unset;
   min-height: unset;
   width: 100%; /* Fill available width */
@@ -750,10 +736,6 @@ h2.sub-title {
   background: hsl(60, 100%, 91%);
   transform: scale(1.125);
   transition: color 250ms ease, transform 250ms ease;
-}
-q .slideshow-section {
-  background: none;
-  border: none;
 }
 
 .slideshow-container {

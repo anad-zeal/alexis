@@ -1,6 +1,3 @@
-// Global variables
-let subTitleElement;
-
 // --- Utility Functions ---
 function parseDurationValue(value) {
   const trimmedValue = (value || '').trim();
@@ -80,6 +77,7 @@ class NavigationManager {
     this.navLinks = [];
     this.mainContentArea = null;
     this.dynamicPageWrapper = null;
+    this.subTitleElement = null; // Move inside class
 
     this.init();
   }
@@ -99,14 +97,14 @@ class NavigationManager {
   }
 
   cacheElements() {
-    subTitleElement = document.querySelector('p.page-title');
+    this.subTitleElement = document.querySelector('p.page-title'); // Use this.subTitleElement
     this.navLinks = Array.from(document.querySelectorAll('nav a'));
     this.mainContentArea = document.getElementById('main-content-area');
     this.dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
 
-    // Debug logging (removed process.env check)
+    // Debug logging
     console.log('Elements cached:', {
-      subTitleElement,
+      subTitleElement: this.subTitleElement,
       navLinksCount: this.navLinks.length,
       mainContentArea: this.mainContentArea,
       dynamicPageWrapper: this.dynamicPageWrapper,
@@ -145,7 +143,7 @@ class NavigationManager {
     const tempLink = document.createElement('a');
     tempLink.href = href;
     tempLink.setAttribute('href', href);
-    tempLink.textContent = link.textContent; // Add text content for title updates
+    tempLink.textContent = link.textContent;
 
     this.updatePageContent(tempLink, true);
   }
@@ -168,8 +166,8 @@ class NavigationManager {
     const categoryLink = event.currentTarget;
     const gallery = categoryLink.getAttribute('data-gallery');
 
-    if (subTitleElement) {
-      subTitleElement.style.fontSize = '5vw';
+    if (this.subTitleElement) {
+      this.subTitleElement.style.fontSize = '5vw';
     } else {
       console.warn('Category link clicked, but p.page-title element not found.');
     }
@@ -180,11 +178,11 @@ class NavigationManager {
   handleLandingMenuClick(event) {
     event.preventDefault();
 
-    if (subTitleElement) {
-      const currentFontSize = subTitleElement.style.fontSize;
+    if (this.subTitleElement) {
+      const currentFontSize = this.subTitleElement.style.fontSize;
 
       if (currentFontSize === '5vw') {
-        subTitleElement.style.fontSize = '10vw';
+        this.subTitleElement.style.fontSize = '10vw';
       }
     } else {
       console.warn('Landing menu link clicked, but p.page-title element not found.');
@@ -198,8 +196,8 @@ class NavigationManager {
       this.mainContentArea.style.transition = defaultTransition;
     }
 
-    if (subTitleElement && !getTransitionDuration(subTitleElement)) {
-      subTitleElement.style.transition = defaultTransition;
+    if (this.subTitleElement && !getTransitionDuration(this.subTitleElement)) {
+      this.subTitleElement.style.transition = defaultTransition;
     }
   }
 
@@ -217,7 +215,6 @@ class NavigationManager {
     const scripts = Array.from(container.querySelectorAll('script'));
 
     scripts.forEach((oldScript) => {
-      // Skip module scripts and already processed scripts
       if (oldScript.type === 'module' || oldScript.dataset.processed === 'true') {
         return;
       }
@@ -232,7 +229,6 @@ class NavigationManager {
         newScript.textContent = oldScript.textContent;
       }
 
-      // Copy attributes
       Array.from(oldScript.attributes).forEach((attr) => {
         if (attr.name !== 'src') {
           newScript.setAttribute(attr.name, attr.value);
@@ -263,14 +259,9 @@ class NavigationManager {
       }
 
       const html = await response.text();
-
-      // Insert content
       targetElement.innerHTML = html;
-
-      // Execute any scripts in the new content
       this.executeScriptsFromNode(targetElement);
 
-      // Dispatch navigation event
       window.dispatchEvent(
         new CustomEvent('app:navigate', {
           detail: { targetElement, path },
@@ -304,27 +295,16 @@ class NavigationManager {
       const rawHref = activeLink.getAttribute('href') || activeLink.href;
       const cleanHref = normalizePath(rawHref);
 
-      // Fade out content
       await this.fadeOutContent();
-
-      // Update navigation state
       this.updateNavigationState(activeLink);
 
-      // Update browser history
       if (pushState) {
         history.pushState({ path: cleanHref }, '', cleanHref);
       }
 
-      // Update page title and metadata
       this.updatePageMetadata(cleanHref, activeLink);
-
-      // Load new content
       await this.loadPageContent(cleanHref, this.mainContentArea);
-
-      // Fade in content
       await this.fadeInContent();
-
-      // Handle focus management
       this.manageFocus();
     } catch (error) {
       console.error('Error updating page content:', error);
@@ -339,11 +319,10 @@ class NavigationManager {
     const fadeDuration = getTransitionDuration(this.mainContentArea);
 
     this.mainContentArea.style.opacity = '0';
-    if (subTitleElement) {
-      subTitleElement.style.opacity = '0';
+    if (this.subTitleElement) {
+      this.subTitleElement.style.opacity = '0';
     }
 
-    // Wait for transition to complete
     await new Promise((resolve) => setTimeout(resolve, fadeDuration + 50));
   }
 
@@ -352,20 +331,18 @@ class NavigationManager {
 
     requestAnimationFrame(() => {
       this.mainContentArea.style.opacity = '1';
-      if (subTitleElement) {
-        subTitleElement.style.opacity = '1';
+      if (this.subTitleElement) {
+        this.subTitleElement.style.opacity = '1';
       }
     });
   }
 
   updateNavigationState(activeLink) {
-    // Remove active state from all links
     this.navLinks.forEach((link) => {
       link.classList.remove('is-active');
       link.removeAttribute('aria-current');
     });
 
-    // Set active state on current link
     activeLink.classList.add('is-active');
     activeLink.setAttribute('aria-current', 'page');
   }
@@ -373,15 +350,12 @@ class NavigationManager {
   updatePageMetadata(path, activeLink) {
     const pageTitle = PAGE_TITLES[path] || activeLink.textContent.trim();
 
-    // Update subtitle element
-    if (subTitleElement) {
-      subTitleElement.textContent = pageTitle;
+    if (this.subTitleElement) {
+      this.subTitleElement.textContent = pageTitle;
     }
 
-    // Update document title
     document.title = `${pageTitle} | AEPaints`;
 
-    // Update data-page attribute
     if (this.dynamicPageWrapper) {
       const dataPageValue = path.replace('/', '') || 'home';
       this.dynamicPageWrapper.setAttribute('data-page', dataPageValue);
@@ -408,10 +382,8 @@ class NavigationManager {
   handleNavClick(event) {
     const link = event.target.closest('a');
 
-    // Validate link
     if (!link || !link.closest('nav') || !link.href) return;
 
-    // Check if it's an external link
     try {
       const linkUrl = new URL(link.href, window.location.origin);
       if (linkUrl.origin !== window.location.origin) return;
@@ -419,7 +391,6 @@ class NavigationManager {
       return;
     }
 
-    // Check if it's just a hash link on the same page
     const targetPath = normalizePath(link.href);
     const currentPath = normalizePath(window.location.pathname);
 
@@ -436,7 +407,6 @@ class NavigationManager {
     if (activeLink) {
       this.updatePageContent(activeLink, false);
     } else {
-      // Fallback: load content directly
       this.loadPageContent(path, this.mainContentArea);
       this.fadeInContent();
     }
@@ -451,12 +421,10 @@ class NavigationManager {
       this.updatePageMetadata(initialPath, initialLink);
     }
 
-    // Ensure initial content is visible
     if (this.mainContentArea) {
       this.mainContentArea.style.opacity = '1';
       this.executeScriptsFromNode(this.mainContentArea);
 
-      // Dispatch initial navigation event
       window.dispatchEvent(
         new CustomEvent('app:navigate', {
           detail: { targetElement: this.mainContentArea, path: initialPath },
@@ -464,8 +432,8 @@ class NavigationManager {
       );
     }
 
-    if (subTitleElement) {
-      subTitleElement.style.opacity = '1';
+    if (this.subTitleElement) {
+      this.subTitleElement.style.opacity = '1';
     }
   }
 }

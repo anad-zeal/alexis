@@ -574,11 +574,11 @@ h2.sub-title {
   height: 100%;
   max-width: unset; /* Remove max-width constraint */
   margin: 0; /* Remove auto margins */
+  position: relative;
+  top: -15vh;
 }
 
 .slideshow [data-role='stage'] {
-  position: relative;
-  top: -15vh;
   aspect-ratio: unset;
   min-height: unset;
   width: 100%; /* Fill available width */

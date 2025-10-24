@@ -68,7 +68,7 @@ const PAGE_TITLES = {
   '/drips': 'Drip Series Paintings',
   '/encaustic': 'Encaustic Paintings',
   '/project-series': 'Project Series Paintings',
-  '/restoration': 'Restoration Projects',
+  '/restoration': 'Historical Restoration Projects',
   '/decorative': 'Decorative Painting',
   '/black-and-white': 'Black and White Paintings',
 };

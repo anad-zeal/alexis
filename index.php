@@ -2,13 +2,17 @@
 
 // filepath: /Users/tal/Library/Mobile Documents/com~apple~CloudDocs/Website_Projects/elzalive/index.php
 
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Category to JSON file mapping
 $category_map = [
     "home" => "json-files/home.json",
     "artworks" => "json-files/artworks.json",
     "biography" => "json-files/biography.json",
     "contact" => "json-files/contact.json",
-    "preservation" => "json-files/historical-preservation.json",
+    "restoration" => "json-files/restoration-projects.json",
     "decorative" => "json-files/decorative-painting.json",
     "black-and-white" => "json-files/black-and-white-paintings.json",
     "drips" => "json-files/drip-series-paintings.json",
@@ -22,7 +26,7 @@ $label_map = [
     "artworks" => "Artworks Page",
     "biography" => "Biography",
     "contact" => "Contact Me",
-    "preservation" => "Historic Preservation",
+    "restoration" => "Historic Preservation",
     "decorative" => "Decorative Painting",
     "black-and-white" => "Black and White Paintings",
     "drips" => "Drip Series Paintings",
@@ -35,8 +39,14 @@ $request_uri = $_SERVER['REQUEST_URI'] ?? '/';
 $path = parse_url($request_uri, PHP_URL_PATH);
 $category = trim($path, '/') ?: 'home';
 
+// DEBUG: Add this to see what's happening
+echo "<!-- DEBUG: Request URI: $request_uri -->";
+echo "<!-- DEBUG: Path: $path -->";
+echo "<!-- DEBUG: Category: $category -->";
+
 // Validate category exists
 if (!isset($category_map[$category])) {
+    echo "<!-- DEBUG: Category not found, defaulting to home -->";
     $category = 'home';
 }
 
@@ -50,11 +60,12 @@ $is_ajax = !empty($_SERVER['HTTP_X_FETCHED_WITH']) && $_SERVER['HTTP_X_FETCHED_W
 if ($is_ajax) {
     // For AJAX requests, only return the content
     $json_file = __DIR__ . "/" . $category_map[$category];
+    echo "<!-- DEBUG AJAX: Looking for file: $json_file -->";
     if (file_exists($json_file)) {
         $page_data = json_decode(file_get_contents($json_file), true);
         echo generatePageContent($page_data, $category);
     } else {
-        echo '<p>Page not found</p>';
+        echo '<p>Page not found: ' . $json_file . '</p>';
     }
     exit;
 }
@@ -65,11 +76,23 @@ require __DIR__ . "/includes/hero.php";
 
 // Load and display page content
 $json_file = __DIR__ . "/" . $category_map[$category];
+echo "<!-- DEBUG: Looking for file: $json_file -->";
+echo "<!-- DEBUG: File exists: " . (file_exists($json_file) ? 'YES' : 'NO') . " -->";
+
 if (file_exists($json_file)) {
-    $page_data = json_decode(file_get_contents($json_file), true);
-    echo generatePageContent($page_data, $category);
+    $content = file_get_contents($json_file);
+    echo "<!-- DEBUG: Raw JSON content length: " . strlen($content) . " -->";
+
+    $page_data = json_decode($content, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        echo "<!-- DEBUG: JSON Error: " . json_last_error_msg() . " -->";
+        echo '<p>JSON Error: ' . json_last_error_msg() . '</p>';
+    } else {
+        echo "<!-- DEBUG: JSON parsed successfully -->";
+        echo generatePageContent($page_data, $category);
+    }
 } else {
-    echo '<p>Page not found</p>';
+    echo '<p>Page not found: ' . htmlspecialchars($json_file) . '</p>';
 }
 
 require __DIR__ . "/includes/footer.php";
@@ -77,7 +100,10 @@ require __DIR__ . "/includes/footer.php";
 // Content generation function
 function generatePageContent($data, $category)
 {
+    echo "<!-- DEBUG: generatePageContent called with category: $category -->";
+
     if (!$data) {
+        echo "<!-- DEBUG: No data provided -->";
         return '<p>No content available</p>';
     }
 
@@ -85,23 +111,29 @@ function generatePageContent($data, $category)
 
     switch ($category) {
         case 'home':
+            echo "<!-- DEBUG: Generating home content -->";
             $output = generateHomeContent($data);
             break;
         case 'artworks':
+            echo "<!-- DEBUG: Generating artworks content -->";
             $output = generateArtworksContent($data);
             break;
         case 'biography':
+            echo "<!-- DEBUG: Generating biography content -->";
             $output = generateBiographyContent($data);
             break;
         case 'contact':
+            echo "<!-- DEBUG: Generating contact content -->";
             $output = generateContactContent($data);
             break;
         default:
             // Gallery pages
+            echo "<!-- DEBUG: Generating gallery content for: $category -->";
             $output = generateGalleryContent($data, $category);
             break;
     }
 
+    echo "<!-- DEBUG: Generated output length: " . strlen($output) . " -->";
     return $output;
 }
 
@@ -180,22 +212,36 @@ function generateContactContent($data)
 {
     $output = '<div class="contact-form-wrapper">';
 
+    if (isset($data['heading'])) {
+        $output .= '<h2>' . htmlspecialchars($data['heading']) . '</h2>';
+    }
+
+    if (isset($data['description'])) {
+        $output .= '<p>' . htmlspecialchars($data['description']) . '</p>';
+    }
+
     if (isset($data['form'])) {
         $output .= '<form class="ccform">';
         foreach ($data['form']['fields'] as $field) {
             $output .= '<div class="ccfield-prepend">';
             $output .= sprintf('<span class="ccform-addon">%s</span>', htmlspecialchars($field['label']));
-            $output .= sprintf(
-                '<%s class="ccformfield" name="%s" placeholder="%s"%s></%s>',
-                $field['type'] === 'textarea' ? 'textarea' : 'input',
-                htmlspecialchars($field['name']),
-                htmlspecialchars($field['placeholder']),
-                $field['type'] !== 'textarea' ? ' type="' . htmlspecialchars($field['type']) . '"' : '',
-                $field['type'] === 'textarea' ? 'textarea' : 'input'
-            );
+            if ($field['type'] === 'textarea') {
+                $output .= sprintf(
+                    '<textarea class="ccformfield" name="%s" placeholder="%s"></textarea>',
+                    htmlspecialchars($field['name']),
+                    htmlspecialchars($field['placeholder'])
+                );
+            } else {
+                $output .= sprintf(
+                    '<input type="%s" class="ccformfield" name="%s" placeholder="%s">',
+                    htmlspecialchars($field['type']),
+                    htmlspecialchars($field['name']),
+                    htmlspecialchars($field['placeholder'])
+                );
+            }
             $output .= '</div>';
         }
-        $output .= '<button type="submit" class="ccbtn">Send Message</button>';
+        $output .= '<button type="submit" class="ccbtn">' . htmlspecialchars($data['form']['submitText'] ?? 'Send Message') . '</button>';
         $output .= '</form>';
     }
 
@@ -208,15 +254,20 @@ function generateGalleryContent($data, $category)
     $output = '<div class="slideshow-section">';
     $output .= '<div class="slideshow" data-category="' . htmlspecialchars($category) . '">';
 
-    if (isset($data['images']) || isset($data['restorationProjects'])) {
-        $items = $data['images'] ?? $data['restorationProjects'] ?? [];
+    $items = [];
+    if (isset($data['images'])) {
+        $items = $data['images'];
+    } elseif (isset($data['restorationProjects'])) {
+        $items = $data['restorationProjects'];
+    }
 
+    if (!empty($items)) {
         $output .= '<div data-role="stage">';
         foreach ($items as $index => $item) {
             $display = $index === 0 ? 'block' : 'none';
             $imageSrc = isset($item['filename']) ?
                 "/assets/images/" . $category . "-images/" . $item['filename'] :
-                $item['src'];
+                ($item['src'] ?? '');
 
             $output .= sprintf(
                 '<img src="%s" alt="%s" style="display: %s;" data-index="%d">',
@@ -242,6 +293,8 @@ function generateGalleryContent($data, $category)
             }
         }
         $output .= '</div>';
+    } else {
+        $output .= '<p>No images available for this gallery.</p>';
     }
 
     $output .= '</div>';

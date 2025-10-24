@@ -579,17 +579,17 @@ h2.sub-title {
 .slideshow-container {
   position: relative;
   top: -5vh;
-  background-color: red;
-}
 
-.slideshow [data-role='stage'] {
-  aspect-ratio: unset;
-  min-height: unset;
-  width: 100%; /* Fill available width */
-  height: 100%; /* Fill available height */
-  overflow: hidden;
-  display: grid;
-  place-items: center;
+  .slideshow [data-role='stage'] {
+    aspect-ratio: unset;
+    min-height: unset;
+    width: 100%; /* Fill available width */
+    height: 100%; /* Fill available height */
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background-color: red;
+  }
 }
 
 .slideshow [data-role='stage'] img {

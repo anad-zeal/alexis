@@ -8,7 +8,7 @@
     </div>
 
     <div class="right ss-category">
-        <p class="page-title"></p>
+        <p class="page-title"><?= htmlspecialchars($full_page_title) ?></p>
     </div>
 </div>
 <div id="main-content-area">

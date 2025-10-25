@@ -1,117 +1,110 @@
-{
-  "paintings": [
-    {
-      "id": "decorative-1",
-      "title": "DSCN0013",
-      "filename": "DSCN0013.JPG",
-      "description": "Decorative painting technique showcasing artistic detail and craftsmanship",
-      "technique": "Decorative Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-2",
-      "title": "DSCN0012",
-      "filename": "DSCN0012.JPG",
-      "description": "Fine decorative work demonstrating traditional painting methods",
-      "technique": "Decorative Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-3",
-      "title": "DSCN0009",
-      "filename": "DSCN0009.JPG",
-      "description": "Artistic decorative painting with attention to detail and color",
-      "technique": "Decorative Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-4",
-      "title": "DSCN0005",
-      "filename": "DSCN0005.JPG",
-      "description": "Skilled decorative painting work showcasing traditional techniques",
-      "technique": "Decorative Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-5",
-      "title": "Box Stars on Blue",
-      "filename": "Box_Stars_on_Blue.jpg",
-      "description": "Decorative box with star pattern on blue background",
-      "technique": "Decorative Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-6",
-      "title": "Side Table",
-      "filename": "SideTable.jpg",
-      "description": "Decoratively painted side table with artistic detailing",
-      "technique": "Furniture Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-7",
-      "title": "Cross Cabinet 036",
-      "filename": "Cross-Cabinet036.jpg",
-      "description": "Cabinet with decorative cross design and artistic painting",
-      "technique": "Furniture Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-8",
-      "title": "Cross Cabinet 039",
-      "filename": "Cross-Cabinet-039.jpg",
-      "description": "Continuation of decorative cabinet work with cross motif",
-      "technique": "Furniture Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-9",
-      "title": "Bronze",
-      "filename": "Bronze.jpg",
-      "description": "Bronze finish decorative painting technique",
-      "technique": "Faux Finishing",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-10",
-      "title": "Mirror Trim",
-      "filename": "Mirror-Trim.jpg",
-      "description": "Decorative mirror frame with painted trim details",
-      "technique": "Decorative Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-11",
-      "title": "Cresh Arrow 2",
-      "filename": "Cresh-Arrow-2.jpg",
-      "description": "Decorative arrow design with artistic painting technique",
-      "technique": "Decorative Painting",
-      "year": null,
-      "location": null
-    },
-    {
-      "id": "decorative-12",
-      "title": "Cadoret Frame",
-      "filename": "Cadoret-Frame.jpg",
-      "description": "Ornate decorative frame with detailed painted finish",
-      "technique": "Frame Restoration",
-      "year": null,
-      "location": null
-    }
-  ],
-  "metadata": {
-    "totalImages": 12,
-    "basePath": "/assets/images/decorative-painting/",
-    "lastUpdated": "2025-10-24"
+[
+  {
+    "id": "decorative-1",
+    "title": "DSCN0013",
+    "filename": "DSCN0013.JPG",
+    "description": "Decorative painting technique showcasing artistic detail and craftsmanship",
+    "technique": "Decorative Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-2",
+    "title": "DSCN0012",
+    "filename": "DSCN0012.JPG",
+    "description": "Fine decorative work demonstrating traditional painting methods",
+    "technique": "Decorative Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-3",
+    "title": "DSCN0009",
+    "filename": "DSCN0009.JPG",
+    "description": "Artistic decorative painting with attention to detail and color",
+    "technique": "Decorative Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-4",
+    "title": "DSCN0005",
+    "filename": "DSCN0005.JPG",
+    "description": "Skilled decorative painting work showcasing traditional techniques",
+    "technique": "Decorative Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-5",
+    "title": "Box Stars on Blue",
+    "filename": "Box_Stars_on_Blue.jpg",
+    "description": "Decorative box with star pattern on blue background",
+    "technique": "Decorative Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-6",
+    "title": "Side Table",
+    "filename": "SideTable.jpg",
+    "description": "Decoratively painted side table with artistic detailing",
+    "technique": "Furniture Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-7",
+    "title": "Cross Cabinet 036",
+    "filename": "Cross-Cabinet036.jpg",
+    "description": "Cabinet with decorative cross design and artistic painting",
+    "technique": "Furniture Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-8",
+    "title": "Cross Cabinet 039",
+    "filename": "Cross-Cabinet-039.jpg",
+    "description": "Continuation of decorative cabinet work with cross motif",
+    "technique": "Furniture Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-9",
+    "title": "Bronze",
+    "filename": "Bronze.jpg",
+    "description": "Bronze finish decorative painting technique",
+    "technique": "Faux Finishing",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-10",
+    "title": "Mirror Trim",
+    "filename": "Mirror-Trim.jpg",
+    "description": "Decorative mirror frame with painted trim details",
+    "technique": "Decorative Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-11",
+    "title": "Cresh Arrow 2",
+    "filename": "Cresh-Arrow-2.jpg",
+    "description": "Decorative arrow design with artistic painting technique",
+    "technique": "Decorative Painting",
+    "year": null,
+    "location": null
+  },
+  {
+    "id": "decorative-12",
+    "title": "Cadoret Frame",
+    "filename": "Cadoret-Frame.jpg",
+    "description": "Ornate decorative frame with detailed painted finish",
+    "technique": "Frame Restoration",
+    "year": null,
+    "location": null
   }
-}
+]

@@ -1,3 +1,4 @@
+javascript;
 document.addEventListener('DOMContentLoaded', () => {
   // ==============================
   // Configuration
@@ -17,7 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!menuLinks.length || !contentArea) {
     console.error('Menu links or content area not found.');
-    return;
+    // Don't return here if you want JS to still work for some dynamic content later
+    // Just ensure contentArea gets an error message
+    contentArea.innerHTML =
+      '<p class="error">Critical elements (menu or content area) not found. Dynamic content will not load.</p>';
+    return; // Prevents further JS errors if these crucial elements are missing
   }
 
   // ==============================
@@ -69,6 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show loading indicator
     contentArea.innerHTML = '<p class="loading">Loading…</p>';
 
+    // --- Special handling for 'home' page (which now has the grid menu) ---
+    if (pageId === DEFAULT_PAGE) {
+      const homeData = await loadJson(`${JSON_BASE_PATH}/${DEFAULT_PAGE}.json`);
+      if (
+        homeData &&
+        homeData.pageContent &&
+        homeData.pageContent[0] &&
+        homeData.pageContent[0].type === 'landingMenu'
+      ) {
+        renderLandingMenu(homeData.pageContent[0].items);
+        updateActiveLink(pageId);
+      } else {
+        contentArea.innerHTML = `<p class="error">Failed to load home page content or invalid structure.</p>`;
+      }
+      return;
+    }
+
     // Special handling for the 'artworks' page as it loads an index of categories
     if (pageId === 'artworks') {
       const artworkIndexData = await loadJson(`${JSON_BASE_PATH}/artworks.json`);
@@ -82,18 +104,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Special handling for the 'decorative-painting' page
-    if (pageId === 'decorative-painting') {
-      const decorativeData = await loadJson(`${JSON_BASE_PATH}/decorative-painting.json`);
-      if (decorativeData) {
-        renderDecorativeSlideshow(decorativeData.pageContent[0]); // Assuming content is within pageContent
+    if (pageId === 'decorative') {
+      // Corrected to 'decorative' to match your menu link data-page
+      const decorativeData = await loadJson(`${JSON_BASE_PATH}/decorative-painting.json`); // Filename
+      if (
+        decorativeData &&
+        decorativeData.pageContent &&
+        decorativeData.pageContent[0] &&
+        decorativeData.pageContent[0].type === 'slideshow'
+      ) {
+        renderDecorativeSlideshow(decorativeData.pageContent[0]);
         updateActiveLink(pageId);
       } else {
-        contentArea.innerHTML = `<p class="error">Failed to load decorative painting content.</p>`;
+        contentArea.innerHTML = `<p class="error">Failed to load decorative painting content or invalid structure.</p>`;
       }
       return;
     }
 
-    // Standard page loading for home, biography, contact, etc.
+    // Special handling for the 'restoration' page
+    if (pageId === 'restoration') {
+      // Corrected to 'restoration'
+      const restorationData = await loadJson(`${JSON_BASE_PATH}/restoration-projects.json`);
+      if (
+        restorationData &&
+        restorationData.pageContent &&
+        restorationData.pageContent[0] &&
+        restorationData.pageContent[0].type === 'restorationProjects'
+      ) {
+        renderRestorationProjects(restorationData.pageContent[0]); // Assuming a dedicated renderer for this
+        updateActiveLink(pageId);
+      } else {
+        contentArea.innerHTML = `<p class="error">Failed to load restoration projects content or invalid structure.</p>`;
+      }
+      return;
+    }
+
+    // Standard page loading for biography, contact, etc.
     const pageData = await loadJson(`${JSON_BASE_PATH}/${pageId}.json`);
 
     if (pageData && pageData.pageContent) {
@@ -163,6 +209,75 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
+   * Renders the specific landing page menu grid from home.json.
+   * @param {Array<Object>} menuItems - Array of menu item objects for the landing grid.
+   */
+  function renderLandingMenu(menuItems) {
+    contentArea.innerHTML = ''; // Clear previous content
+
+    const landingMenuDiv = document.createElement('div');
+    landingMenuDiv.className = 'landing-menu';
+
+    menuItems.forEach((item) => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = `landing-menu-item ${item.id}`; // Add ID as class for grid-area styling
+
+      const link = document.createElement('a');
+      link.href = item.href || '#';
+      link.className = 'category';
+      // Use history.pushState for internal links, direct assignment for external
+      // if (item.href && item.href.startsWith('/')) { // Assuming internal links start with /
+      //     link.addEventListener('click', (e) => {
+      //         e.preventDefault();
+      //         history.pushState({ page: item.id }, '', item.href);
+      //         loadPage(item.id);
+      //     });
+      // } else {
+      //     link.target = '_blank'; // Open external links in new tab
+      // }
+
+      // For simplicity, let's assume all / links are handled by loadPage.
+      // The main menuLinks already have data-page, so this is for internal links in landingMenu
+      // We'll rely on the main menuLinks for navigation, or make these internal as well.
+      // For now, let's make these behave like external if they link to actual main pages
+      if (
+        item.href &&
+        item.href.startsWith('/') &&
+        menuLinks.some((ml) => ml.dataset.page === item.id)
+      ) {
+        link.dataset.page = item.id; // Mark as internal for click handler
+        link.addEventListener('click', handleInternalLandingLinkClick);
+      } else {
+        // If it's a content link like /decorative, let it go to the page handler
+        link.dataset.page = item.id;
+        link.addEventListener('click', handleInternalLandingLinkClick);
+      }
+
+      if (item.data_gallery) link.setAttribute('data-gallery', item.data_gallery);
+      if (item.aria_label) link.setAttribute('aria-label', item.aria_label);
+
+      if (item.type === 'imageLink') {
+        const img = document.createElement('img');
+        img.src = item.image_src || '';
+        img.alt = item.image_alt || '';
+        if (item.image_height) img.height = item.image_height;
+        link.appendChild(img);
+      } else {
+        link.textContent = item.title || '';
+      }
+      itemDiv.appendChild(link);
+
+      const descriptionP = document.createElement('p');
+      descriptionP.textContent = item.description || '';
+      itemDiv.appendChild(descriptionP);
+
+      landingMenuDiv.appendChild(itemDiv);
+    });
+
+    contentArea.appendChild(landingMenuDiv);
+  }
+
+  /**
    * Renders the menu of artwork categories from artworks.json.
    * @param {Array<Object>} categories - Array of artwork category objects.
    */
@@ -170,21 +285,22 @@ document.addEventListener('DOMContentLoaded', () => {
     contentArea.innerHTML = ''; // Clear previous content
 
     const artworksSection = document.createElement('div');
-    artworksSection.className = 'gallery-menu';
-    // Add an H2 for accessibility if appropriate, e.g., "Our Artworks"
-    // const heading = document.createElement('h2');
-    // heading.textContent = "Browse Our Artworks";
-    // artworksSection.appendChild(heading);
+    artworksSection.className = 'gallery-menu'; // You might want a different class for this vs. landing-menu
+
+    const heading = document.createElement('h2');
+    heading.textContent = 'Browse Our Artworks'; // Add a title for the categories page
+    artworksSection.appendChild(heading);
 
     categories.forEach((category) => {
       const categoryDiv = document.createElement('div');
-      categoryDiv.className = `${category.id} gallery`; // e.g., "black-and-white gallery"
+      // Using id as class for specific styling, ensure it doesn't conflict with main landing menu
+      categoryDiv.className = `${category.id} artwork-category-item`;
 
       const link = document.createElement('a');
-      link.href = '#'; // Handled by JS, no default navigation
-      link.className = 'gallery-link';
-      link.setAttribute('data-category-id', category.id); // For JS to know what to load
-      link.setAttribute('data-content-file', category.contentFile); // File name for category details
+      link.href = '#'; // Handled by JS
+      link.className = 'category-link'; // Specific class for these links
+      link.setAttribute('data-category-id', category.id);
+      link.setAttribute('data-content-file', category.contentFile);
       link.setAttribute('aria-label', category.ariaLabel || `Go to ${category.title} gallery`);
       link.textContent = category.title;
 
@@ -199,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     contentArea.appendChild(artworksSection);
 
     // Attach event listeners to the new category links
-    artworksSection.querySelectorAll('.gallery-link').forEach((link) => {
+    artworksSection.querySelectorAll('.category-link').forEach((link) => {
       link.addEventListener('click', handleArtworkCategoryClick);
     });
   }
@@ -294,46 +410,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * Renders the decorative painting slideshow from decorative-painting.json.
-   * @param {Object} decorativePageContent - The content object for decorative painting.
+   * @param {Object} decorativeContentBlock - The content block object for decorative painting (from pageContent).
    */
-  function renderDecorativeSlideshow(decorativePageContent) {
+  function renderDecorativeSlideshow(decorativeContentBlock) {
     const imageBasePath = DECORATIVE_IMAGES_BASE_URL; // Fixed base URL for decorative images
 
     let slideshowHtml = `
-          <div class="slideshow-section">
-              <h2>${decorativePageContent.title || 'Decorative Painting'}</h2>
-              <p>${decorativePageContent.description || ''}</p>
-              <div class="slideshow" data-category="decorative">
-                  <div data-role="stage">
-      `;
+        <div class="slideshow-section">
+            <h2>${decorativeContentBlock.title || 'Decorative Painting'}</h2>
+            <p>${decorativeContentBlock.description || ''}</p>
+            <div class="slideshow" data-category="decorative">
+                <div data-role="stage">
+    `;
 
-    if (decorativePageContent.images && decorativePageContent.images.length > 0) {
-      decorativePageContent.images.forEach((image, index) => {
+    if (decorativeContentBlock.images && decorativeContentBlock.images.length > 0) {
+      decorativeContentBlock.images.forEach((image, index) => {
         const imageSrc = imageBasePath + image.filename;
         slideshowHtml += `
-                  <img src="${imageSrc}"
-                       alt="${image.title}"
-                       style="display: ${index === 0 ? 'block' : 'none'};"
-                       data-index="${index}">
-              `;
+                <img src="${imageSrc}"
+                     alt="${image.title}"
+                     style="display: ${index === 0 ? 'block' : 'none'};"
+                     data-index="${index}">
+            `;
       });
     } else {
       slideshowHtml += `<p>No decorative images found.</p>`;
     }
 
     slideshowHtml += `
-                  </div>
-                  <!-- Add navigation buttons here for the slideshow -->
-                  <div class="slideshow-nav">
-                    <button class="slideshow-prev">Previous</button>
-                    <button class="slideshow-next">Next</button>
-                  </div>
-              </div>
-          </div>
-      `;
+                </div>
+                <div class="slideshow-nav">
+                  <button class="slideshow-prev">Previous</button>
+                  <button class="slideshow-next">Next</button>
+                </div>
+            </div>
+        </div>
+    `;
     contentArea.innerHTML = slideshowHtml;
 
-    // --- Slideshow Logic (client-side manipulation of 'display' style) ---
+    // --- Slideshow Logic ---
     const slideshowContainer = contentArea.querySelector('.slideshow');
     if (slideshowContainer) {
       const images = slideshowContainer.querySelectorAll('img');
@@ -348,7 +463,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (images.length > 0) {
-        // Only enable controls if there are images
         prevButton.addEventListener('click', () => {
           currentIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
           showImage(currentIndex);
@@ -367,25 +481,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Placeholder for restoration projects rendering (if different from standard content)
+  function renderRestorationProjects(restorationContentBlock) {
+    // This function would be similar to renderDecorativeSlideshow or renderArtworksInGallery
+    // depending on how you want to display restoration projects (e.g., gallery, list, slideshow)
+    contentArea.innerHTML = `
+          <h2>${restorationContentBlock.title || 'Restoration Projects'}</h2>
+          <p>${restorationContentBlock.description || 'Details coming soon for this section.'}</p>
+          <!-- Render specific restoration project content here -->
+      `;
+    // You'll need to define the structure of restoration-projects.json and implement rendering
+  }
+
   /**
-   * Updates the 'is-active' class on menu links.
+   * Updates the 'is-active' class on main menu links.
    * @param {string} activePage - The data-page attribute value of the currently active link.
    */
   function updateActiveLink(activePage) {
     menuLinks.forEach((link) => {
-      // For main navigation, ensure 'artworks' link stays active when viewing artwork sub-categories
-      const isArtworksSubpage = [
+      // Check if the current active page is a sub-page of 'artworks' or 'decorative'
+      const isArtworkSubpage = [
         'black-and-white',
         'drip-series',
         'encaustic',
         'project-series',
-        'decorative-painting',
       ].includes(activePage);
 
-      if (activePage === link.dataset.page) {
+      // If the link's data-page matches the activePage (e.g., 'home', 'biography')
+      // OR if the link is 'artworks' AND we are on an artwork subpage
+      // OR if the link is 'decorative' AND we are on the decorative page
+      if (
+        activePage === link.dataset.page ||
+        (link.dataset.page === 'artworks' && isArtworkSubpage) ||
+        (link.dataset.page === 'decorative' && activePage === 'decorative')
+      ) {
+        // Fixed 'decorative' handling
         link.classList.add('is-active');
-      } else if (link.dataset.page === 'artworks' && isArtworksSubpage) {
-        link.classList.add('is-active'); // Keep 'artworks' active for sub-pages
       } else {
         link.classList.remove('is-active');
       }
@@ -410,6 +541,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Handle clicks on internal links within the landing menu (home page)
+  function handleInternalLandingLinkClick(event) {
+    event.preventDefault();
+    const link = event.currentTarget;
+    const page = link.dataset.page; // Use data-page from the landing menu link
+    if (page) {
+      // Update URL and load content as if it was a main menu link
+      history.pushState({ page }, '', link.getAttribute('href'));
+      loadPage(page);
+    }
+  }
+
   // Handle browser back/forward buttons
   window.addEventListener('popstate', (event) => {
     // Use event.state.page if available, otherwise try to get from URL
@@ -428,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function getPageFromURL() {
     const path = window.location.pathname;
     // Remove leading/trailing slashes and potential .html, then get the last segment
-    const segments = path.split('/').filter((s) => s !== '' && s !== '.html');
+    const segments = path.split('/').filter((s) => s !== '' && !s.endsWith('.html'));
     const pageName = segments.length > 0 ? segments[segments.length - 1] : DEFAULT_PAGE;
     return pageName || DEFAULT_PAGE;
   }

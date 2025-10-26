@@ -1,0 +1,39 @@
+{
+  "heading": "Get In Touch",
+  "description": "Whether you're interested in commissioning a piece, discussing a restoration project, or simply want to learn more about the work, I'd love to hear from you.",
+  "form": {
+    "fields": [
+      {
+        "type": "text",
+        "name": "name",
+        "label": "Name",
+        "placeholder": "Your full name"
+      },
+      {
+        "type": "email",
+        "name": "email",
+        "label": "Email",
+        "placeholder": "your.email@example.com"
+      },
+      {
+        "type": "text",
+        "name": "subject",
+        "label": "Subject",
+        "placeholder": "Project inquiry, commission, etc."
+      },
+      {
+        "type": "textarea",
+        "name": "message",
+        "label": "Message",
+        "placeholder": "Please describe your project or inquiry in detail..."
+      }
+    ],
+    "submitText": "Send Message"
+  },
+  "contactInfo": {
+    "studio": "Artist Studio",
+    "location": "New England",
+    "email": "hello@elzalive.com",
+    "phone": "+1 (555) 123-4567"
+  }
+}

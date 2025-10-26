@@ -1,0 +1,45 @@
+{
+  "images": [
+    {
+      "id": "encaustic-1",
+      "title": "All Thats Left",
+      "filename": "/assets/images/encaustic-paintings/All-Thats-Left.jpg",
+      "description": "Layered encaustic work exploring texture and translucency through hot wax medium",
+      "medium": "Encaustic on wood panel",
+      "dimensions": "24\" x 30\"",
+      "year": 2023
+    },
+    {
+      "id": "encaustic-2",
+      "title": "Birth of a Hunting Tool",
+      "filename": "/assets/images/encaustic-paintings/Birth-of-a-Hunting Tool.jpg",
+      "description": "Ancient textures recreated through encaustic techniques and embedded materials",
+      "medium": "Encaustic with found objects",
+      "dimensions": "18\" x 24\"",
+      "year": 2022
+    },
+    {
+      "id": "encaustic-3",
+      "title": "In the Fogs",
+      "filename": "In-the-Fog.jpg",
+      "description": "Multiple layers of translucent wax creating depth and inner illumination",
+      "medium": "Encaustic on canvas",
+      "dimensions": "36\" x 48\"",
+      "year": 2023
+    },
+    {
+      "id": "encaustic-4",
+      "title": "Red Line",
+      "filename": "/assets/images/encaustic-paintings/Red-Line.jpg",
+      "description": "Natural elements preserved in wax, creating eternal botanical specimens",
+      "medium": "Encaustic with botanical elements",
+      "dimensions": "20\" x 26\"",
+      "year": 2021
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "basePath": "/assets/images/encaustic-paintings/",
+    "lastUpdated": "2025-10-24"
+  }
+}

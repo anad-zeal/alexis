@@ -1,0 +1,44 @@
+{
+  "images": [
+    {
+      "id": "bw-1",
+      "title": "Close-Encounter",
+      "filename": "Close-Encounter.jpg",
+      "description": "Charcoal and graphite study of light and shadow in urban architecture",
+      "medium": "Charcoal on paper",
+      "dimensions": "24\" x 36\"",
+      "year": 2023
+    },
+    {
+      "id": "bw-2",
+      "title": "Evidence-of-an-Iron-Horse",
+      "filename": "CEvidence-of-an-Iron-Horse.jpg",
+      "description": "Classical portrait study emphasizing contrast and emotional depth",
+      "medium": "Graphite on paper",
+      "dimensions": "18\" x 24\"",
+      "year": 2022
+    },
+    {
+      "id": "bw-3",
+      "title": "How-I-Imagine-Minnesota",
+      "filename": "How-I-Imagine-Minnesota.jpg",
+      "description": "Bold abstract work exploring form and texture through monochromatic palette",
+      "medium": "Acrylic on canvas",
+      "dimensions": "30\" x 40\"",
+      "year": 2023
+    },
+    {
+      "id": "bw-4",
+      "title": "The-Big-Island",
+      "filename": "The-Big-Island.jpg",
+      "description": "Atmospheric landscape rendered in subtle gradations of black and white",
+      "medium": "Oil on canvas",
+      "dimensions": "36\" x 48\"",
+      "year": 2021
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "lastUpdated": "2025-10-24"
+  }
+}

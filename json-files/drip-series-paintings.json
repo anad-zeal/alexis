@@ -1,0 +1,45 @@
+{
+  "images": [
+    {
+      "id": "drip-1",
+      "title": "Cascade #1",
+      "filename": "cascade-1.jpg",
+      "description": "Flowing composition exploring gravity's effect on paint and pigment",
+      "medium": "Acrylic and mixed media on canvas",
+      "dimensions": "48\" x 60\"",
+      "year": 2023
+    },
+    {
+      "id": "drip-2",
+      "title": "Vertical Flow",
+      "filename": "vertical-flow.jpg",
+      "description": "Monumental piece capturing the poetry of controlled chaos in paint application",
+      "medium": "Oil and acrylic on canvas",
+      "dimensions": "72\" x 96\"",
+      "year": 2022
+    },
+    {
+      "id": "drip-3",
+      "title": "Color Gravity",
+      "filename": "color-gravity.jpg",
+      "description": "Vibrant exploration of how different pigments interact when allowed to flow freely",
+      "medium": "Acrylic on canvas",
+      "dimensions": "36\" x 48\"",
+      "year": 2023
+    },
+    {
+      "id": "drip-4",
+      "title": "Temporal Streams",
+      "filename": "temporal-streams.jpg",
+      "description": "Time-based painting process captured in layers of flowing paint",
+      "medium": "Mixed media on canvas",
+      "dimensions": "60\" x 72\"",
+      "year": 2021
+    }
+  ],
+  "metadata": {
+    "totalImages": 4,
+    "basePath": "/assets/images/drip-series-images/",
+    "lastUpdated": "2025-10-24"
+  }
+}

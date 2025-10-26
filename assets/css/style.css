@@ -254,6 +254,7 @@ body {
 
   .landing-menu-item {
     min-height: unset; /* Allow height to adjust */
+    background: none;
   }
 
   .landing-menu-item.landing-image .category::before {

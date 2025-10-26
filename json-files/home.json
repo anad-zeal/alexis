@@ -1,18 +1,21 @@
-[
-  {
-    "type": "heading",
-    "text": "Welcome to Elza Live"
-  },
-  {
-    "type": "paragraph",
-    "text": "Decorative painting transforms ordinary surfaces into extraordinary works of visual texture, depth, and illusion. Each finish captures the artist’s balance of technique, color, and light."
-  },
-  {
-    "type": "paragraph",
-    "text": "Explore Dana Elza’s studio practice through projects that range from historical restorations to contemporary works on canvas."
-  },
-  {
-    "title": "Artworks & Restoration",
-    "description": "Browse galleries showcasing Black & White, the Drip Series, Encaustic, and more — each series revealing a unique exploration of surface, gesture, and material."
-  }
-]
+{
+  "pageContent": [
+    {
+      "type": "heading",
+      "text": "Welcome to Elza Live"
+    },
+    {
+      "type": "paragraph",
+      "text": "Decorative painting transforms ordinary surfaces into extraordinary works of visual texture, depth, and illusion. Each finish captures the artist’s balance of technique, color, and light."
+    },
+    {
+      "type": "paragraph",
+      "text": "Explore Dana Elza’s studio practice through projects that range from historical restorations to contemporary works on canvas."
+    },
+    {
+      "type": "contentBlock",
+      "title": "Artworks & Restoration",
+      "description": "Browse galleries showcasing Black & White, the Drip Series, Encaustic, and more — each series revealing a unique exploration of surface, gesture, and material."
+    }
+  ]
+}

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==============================
   // Configuration
   // ==============================
-  const BASE_PATH = '/aep/json-files'; // Change if you move JSON directory
+  const BASE_PATH = '../json-files';
   const DEFAULT_PAGE = 'home';
 
   // ==============================

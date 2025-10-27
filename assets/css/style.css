@@ -41,6 +41,12 @@ body {
   width: 100%; /* Ensure it takes full width up to max-width */
 }
 
+/* Global link styles */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color by default */
+}
+
 /* Landing Menu (Header) Styles */
 .landing-menu {
   display: flex;
@@ -50,15 +56,17 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   padding: 15px 0; /* Add vertical padding */
   border-bottom: solid 1px #eee;
+  flex-wrap: wrap; /* Allow menu items to wrap on smaller screens */
+  gap: 10px; /* Space between menu items */
 }
 
 .landing-menu a {
-  text-decoration: none;
   color: #555;
   font-weight: bold;
   padding: 10px 20px;
   transition: color 0.3s ease, background-color 0.3s ease;
   position: relative; /* For the active indicator */
+  white-space: nowrap; /* Prevent menu items from breaking */
 }
 
 .landing-menu a:hover {
@@ -91,48 +99,33 @@ main#page-content {
   padding: 20px 0; /* Add some vertical padding around the content */
 }
 
-/* Site Footer Styles */
-.site-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: #eee;
-  font-size: 0.9em;
-  margin-top: auto; /* Push footer to the bottom */
-}
-
-/* Global link styles for all 'a' elements in the structure */
-a {
-  text-decoration: none;
-  color: inherit; /* Inherit color by default */
-}
-
-/* Page Menu Wrapper for Injected Content */
+/* Page Menu Wrapper for Injected Content (Home Page) */
 .page-menu-wrapper {
   display: flex;
   justify-content: center;
   width: 100%; /* Take full width of its parent (#page-content) */
-  /* Remove position: relative and top: 5vh from here,
-       as main#page-content handles vertical centering/spacing */
+  /* No relative positioning or top offset needed here */
 }
 
 .home-page-menu {
   width: 90vw; /* Adjust as needed */
   max-width: 1200px; /* Optional: max width for larger screens */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack rows vertically */
   gap: 20px; /* Space between rows */
-  padding: 20px 0; /* Internal padding for the menu group */
+  padding: 0 10px; /* Add slight horizontal padding for very small screens */
 }
 
 .flex-grid-page {
   display: flex;
   justify-content: space-between;
   gap: 20px; /* Space between columns in a row */
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
 }
 
 .flex-grid-page .col {
-  flex: 1;
+  flex: 1; /* Allow columns to grow and shrink */
+  min-width: 280px; /* Ensure a minimum width before wrapping */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,6 +136,7 @@ a {
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center; /* Center text within cards */
 }
 
 .flex-grid-page .col:hover {
@@ -151,7 +145,8 @@ a {
 }
 
 .landing-menu-item {
-  text-align: center;
+  width: 100%; /* Ensure item takes full width within col */
+  max-width: 300px; /* Constrain content width within card */
 }
 
 a.category {
@@ -159,7 +154,7 @@ a.category {
   font-weight: bold;
   color: #007bff; /* Specific color for category links */
   margin-bottom: 10px;
-  display: block;
+  display: block; /* Make the link a block to control margin */
 }
 
 a.category:hover {
@@ -174,18 +169,29 @@ a.category:hover {
 }
 
 .landing-menu-item img {
-  max-width: 100%;
-  height: auto;
+  max-width: 100%; /* Ensure image is responsive within its container */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 4px;
-  display: block;
-  margin: 0 auto;
+  display: block; /* Remove extra space below image */
+  margin: 0 auto; /* Center the image */
+}
+
+/* Site Footer Styles */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: #eee;
+  font-size: 0.9em;
+  margin-top: auto; /* Push footer to the bottom */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .landing-menu {
-    flex-direction: column;
+    flex-direction: column; /* Stack menu items vertically */
     align-items: center;
+    padding: 10px 0;
   }
   .landing-menu a {
     padding: 8px 15px;
@@ -198,13 +204,45 @@ a.category:hover {
 
   .home-page-menu {
     width: 95vw;
+    padding: 0; /* Remove internal padding on very small screens */
   }
 
   .flex-grid-page {
-    flex-direction: column;
+    flex-direction: column; /* Stack columns vertically on smaller screens */
+    gap: 15px;
+  }
+
+  .flex-grid-page .col {
+    min-width: unset; /* Remove min-width for full stacking */
+    width: 100%; /* Take full width */
+    padding: 15px;
   }
 
   a.category {
     font-size: 1.2em;
+  }
+
+  .site-footer {
+    padding: 15px;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-menu a {
+    font-size: 0.9em;
+    padding: 7px 10px;
+  }
+  .home-page-menu {
+    gap: 15px;
+  }
+  .flex-grid-page .col {
+    padding: 15px;
+  }
+  a.category {
+    font-size: 1.1em;
+  }
+  .landing-menu-item p {
+    font-size: 0.85em;
   }
 }

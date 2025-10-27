@@ -33,6 +33,13 @@ body {
 }
 
 /* Global Layout */
+#page-content {
+  flex: 1; /* Allows content area to grow and push footer down */
+  max-width: 1200px; /* Max width for content */
+  margin: 20px auto; /* Center content with vertical margin */
+  padding: 0 20px; /* Horizontal padding */
+  width: 100%; /* Ensure it takes full width up to max-width */
+}
 
 /* Global link styles */
 a {

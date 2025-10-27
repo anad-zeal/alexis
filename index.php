@@ -1,6 +1,6 @@
 <?php
 
-$file = "includes/home.php";
+$file = "json-files/home.json";
 
 require __DIR__ . "/includes/header.php";
 require __DIR__ . "/includes/hero.php";

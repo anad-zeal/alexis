@@ -22,179 +22,145 @@ css
 }
 
 body {
-  margin: 0;
-  font-family: sans-serif;
-  color: #333;
-  background-color: #f8f8f8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--primary-bg);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure body takes full viewport height */
 }
 
-/* Landing Menu (Header) Styles */
+/* Global Layout */
+#page-content {
+  flex: 1; /* Allows content area to grow and push footer down */
+  max-width: 1200px; /* Max width for content */
+  margin: 20px auto; /* Center content with vertical margin */
+  padding: 0 20px; /* Horizontal padding */
+  width: 100%; /* Ensure it takes full width up to max-width */
+}
+
 .landing-menu {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  padding: 15px 0; /* Add vertical padding */
-  border-bottom: solid 1px #eee;
+  width: 60vw;
+  height: 100vh; /* Adjust height for better visibility of content, or keep 10vw if that's the desired compact size */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(200px, 1fr)); /* Use minmax for flexible height */
+  gap: 20px; /* Increased gap for better spacing */
+  grid-auto-flow: row;
+  /* Corrected grid-template-areas syntax and order to match your desired layout from the JSON items */
+  grid-template-areas:
+    'restoration decorative'
+    'artworks landing-image';
+  justify-items: center;
+  align-items: start; /* Aligns content to the top of each grid item */
+  padding: 20px; /* Add some padding around the grid */
+  box-sizing: border-box; /* Include padding in the element's total width */
 }
 
-.landing-menu a {
-  text-decoration: none;
-  color: #555;
-  font-weight: bold;
-  padding: 10px 20px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  position: relative; /* For the active indicator */
-}
-
-.landing-menu a:hover {
-  color: #007bff;
-  background-color: #f0f8ff;
-  border-radius: 5px;
-}
-
-.landing-menu a.is-active {
-  color: #007bff;
-}
-
-.landing-menu a.is-active::after {
-  content: '';
-  position: absolute;
-  bottom: -5px; /* Position below the text */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px; /* Short line */
-  height: 3px;
-  background-color: #007bff;
-  border-radius: 2px;
-}
-
-/* Main Content Area */
-main#page-content {
-  flex-grow: 1; /* Allow main content to take up available space */
-  display: flex;
-  justify-content: center; /* Center the injected content horizontally */
-  padding: 20px 0; /* Add some vertical padding around the content */
-}
-
-/* Site Footer Styles */
-.site-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: #eee;
-  font-size: 0.9em;
-  margin-top: auto; /* Push footer to the bottom */
-}
-
-/* Global link styles for all 'a' elements in the structure */
-a {
-  text-decoration: none;
-  color: inherit; /* Inherit color by default */
-}
-
-/* Page Menu Wrapper for Injected Content */
-.page-menu-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%; /* Take full width of its parent (#page-content) */
-  /* Remove position: relative and top: 5vh from here,
-       as main#page-content handles vertical centering/spacing */
-}
-
-.home-page-menu {
-  width: 90vw; /* Adjust as needed */
-  max-width: 1200px; /* Optional: max width for larger screens */
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Space between rows */
-  padding: 20px 0; /* Internal padding for the menu group */
-}
-
-.flex-grid-page {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px; /* Space between columns in a row */
-}
-
-.flex-grid-page .col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Center content vertically too */
-  padding: 20px;
-  border: solid 1px #e0e0e0;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.flex-grid-page .col:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
+/* Base style for all landing menu items */
 .landing-menu-item {
-  text-align: center;
+  width: 100%; /* Make items fill their grid cell width */
+  height: 100%; /* Make items fill their grid cell height */
+  display: flex; /* Use flexbox within each grid item for content layout */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center; /* Center horizontally within the item */
+  border: 1px solid #ddd; /* Example border */
+  padding: 15px;
+  box-sizing: border-box; /* Include padding and border in width/height */
+  text-align: center; /* Center text within the item */
+}
+
+/* Assign grid areas using the IDs from JSON */
+.restoration {
+  grid-area: restoration;
+}
+.decorative {
+  grid-area: decorative;
+}
+.artworks {
+  grid-area: artworks;
+}
+.landing-image {
+  grid-area: landing-image;
 }
 
 a.category {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #007bff; /* Specific color for category links */
-  margin-bottom: 10px;
-  display: block;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: 600;
+  color: #333; /* Default link color */
+  white-space: nowrap; /* Prevents text from wrapping within a link title */
+  margin-bottom: 10px; /* Space between title and description/image */
+  display: block; /* Make the anchor tag a block to apply margin */
 }
 
-a.category:hover {
-  text-decoration: underline;
+a.category img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  margin: 0 auto; /* Center image if it's smaller than its container */
 }
 
 .landing-menu-item p {
   font-size: 0.9em;
+  line-height: 1.4;
   color: #666;
-  line-height: 1.5;
   margin-top: 10px;
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis for hidden text */
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
 }
 
-.landing-menu-item img {
+/* Styling for the additional image block, if it's placed as in your HTML */
+.col.bottom-right {
+  width: 60vw; /* Match the main grid width for consistency if desired */
+  margin: 20px auto; /* Center it below the main grid */
+  text-align: center;
+}
+
+.col.bottom-right .landing-menu-item {
+  border: none; /* No border for this one, or style as needed */
+  padding: 0;
+  height: auto;
+}
+
+.col.bottom-right img {
   max-width: 100%;
   height: auto;
-  border-radius: 4px;
   display: block;
   margin: 0 auto;
 }
 
-/* Responsive Adjustments */
+/* Basic Responsive Adjustments for the Grid */
 @media (max-width: 768px) {
   .landing-menu {
-    flex-direction: column;
-    align-items: center;
-  }
-  .landing-menu a {
-    padding: 8px 15px;
-    margin: 5px 0;
-  }
-  .landing-menu a.is-active::after {
-    bottom: 0;
-    height: 2px;
-  }
-
-  .home-page-menu {
-    width: 95vw;
+    width: 90vw; /* Wider on smaller screens */
+    grid-template-columns: 1fr; /* Stack into a single column */
+    grid-template-rows: repeat(4, minmax(200px, auto)); /* Adjust row heights */
+    grid-template-areas:
+      'decorative'
+      'restoration'
+      'artworks'
+      'landing-image'; /* Re-order for single column */
+    height: auto; /* Allow height to adjust naturally */
   }
 
-  .flex-grid-page {
-    flex-direction: column;
+  .col.bottom-right {
+    width: 90vw;
   }
+}
 
-  a.category {
-    font-size: 1.2em;
+@media (max-width: 480px) {
+  .landing-menu {
+    gap: 15px; /* Smaller gap on very small screens */
+  }
+  .landing-menu-item {
+    padding: 10px;
   }
 }

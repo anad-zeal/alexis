@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Your code here runs only after the DOM has fully loaded
-
+  alert('test links');
   // Select elements
   const buttons = document.querySelectorAll('button');
   const links = document.querySelectorAll('a');

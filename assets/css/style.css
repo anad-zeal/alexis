@@ -262,3 +262,73 @@ body {
     background-color: rgba(0, 0, 0, 0.5); /* Lighter overlay */
   }
 }
+.menu-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.flex-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line if space is limited */
+  gap: 10px; /* Adds space between grid items */
+}
+
+/* Styles for each menu item (decorative, restoration, artworks) */
+.flex-grid .col {
+  display: flex;
+  flex: 1; /* Allows columns to grow and shrink */
+  min-width: 200px; /* Ensures items don't get too small on smaller screens */
+  width: 25vw; /* Original width for larger screens, adjusted with min-width */
+  border: solid 1px red;
+  padding: 15px; /* Increased padding for better readability */
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit text color */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.flex-grid .col h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.flex-grid .col p {
+  font-size: 0.9em;
+  line-height: 1.5;
+  /* Limit description length or make it scrollable if needed */
+  /* max-height: 100px; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+}
+
+/* Specific styles for the image link if it also uses .col */
+.flex-grid .col.image-link {
+  /* You might want different styling for the image item */
+  justify-content: center;
+  align-items: center;
+  padding: 5px; /* Less padding for images */
+}
+
+.flex-grid .col.image-link img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Remove extra space below the image */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flex-grid .col {
+    width: 45vw; /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .flex-grid .col {
+    width: 90vw; /* Single column on small screens */
+  }
+}

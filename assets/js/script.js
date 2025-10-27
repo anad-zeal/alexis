@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded and parsed.');
 
   function initializePage() {
-    alert('Initializing page logic…');
+    console.log('Initializing page logic…');
   }
 
   initializePage();

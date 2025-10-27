@@ -22,84 +22,97 @@ css
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--primary-bg);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Global Layout */
-#page-content {
-  flex: 1; /* Allows content area to grow and push footer down */
-  max-width: 1200px; /* Max width for content */
-  margin: 20px auto; /* Center content with vertical margin */
-  padding: 0 20px; /* Horizontal padding */
-  width: 100%; /* Ensure it takes full width up to max-width */
-}
-
-body {
   margin: 0;
   font-family: sans-serif;
   color: #333;
   background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body takes full viewport height */
 }
 
-/* Top Menu Styles */
-.top-menu-wrapper {
+/* Landing Menu (Header) Styles */
+.landing-menu {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 15px 0; /* Add vertical padding */
+  border-bottom: solid 1px #eee;
 }
 
-.flex-grid-top {
-  display: flex;
-  width: 90vw; /* Adjust as needed */
-  height: 60px; /* Fixed height for the menu bar */
-  align-items: center; /* Vertically center menu items */
-  justify-content: space-around; /* Distribute items evenly */
-  border-bottom: solid 1px #eee; /* Lighter border */
-}
-
-.flex-grid-top .col {
-  flex: 1;
-  text-align: center;
-  max-width: 200px; /* Limit width of menu items */
-}
-
-.landing-mnu {
+.landing-menu a {
   text-decoration: none;
   color: #555;
   font-weight: bold;
-  padding: 10px 15px;
+  padding: 10px 20px;
   transition: color 0.3s ease, background-color 0.3s ease;
+  position: relative; /* For the active indicator */
 }
 
-.landing-mnu:hover {
+.landing-menu a:hover {
   color: #007bff;
   background-color: #f0f8ff;
   border-radius: 5px;
 }
 
-/* Page Menu Styles */
+.landing-menu a.is-active {
+  color: #007bff;
+}
+
+.landing-menu a.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Position below the text */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px; /* Short line */
+  height: 3px;
+  background-color: #007bff;
+  border-radius: 2px;
+}
+
+/* Main Content Area */
+main#page-content {
+  flex-grow: 1; /* Allow main content to take up available space */
+  display: flex;
+  justify-content: center; /* Center the injected content horizontally */
+  padding: 20px 0; /* Add some vertical padding around the content */
+}
+
+/* Site Footer Styles */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: #eee;
+  font-size: 0.9em;
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Global link styles for all 'a' elements in the structure */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color by default */
+}
+
+/* Page Menu Wrapper for Injected Content */
 .page-menu-wrapper {
   display: flex;
   justify-content: center;
-  width: 100vw;
-  padding: 40px 0; /* Add some vertical padding */
+  width: 100%; /* Take full width of its parent (#page-content) */
+  /* Remove position: relative and top: 5vh from here,
+       as main#page-content handles vertical centering/spacing */
 }
 
 .home-page-menu {
-  width: 90vw; /* Match top menu width */
+  width: 90vw; /* Adjust as needed */
   max-width: 1200px; /* Optional: max width for larger screens */
   display: flex;
-  flex-direction: column; /* Stack rows vertically */
+  flex-direction: column;
   gap: 20px; /* Space between rows */
+  padding: 20px 0; /* Internal padding for the menu group */
 }
 
 .flex-grid-page {
@@ -109,11 +122,11 @@ body {
 }
 
 .flex-grid-page .col {
-  flex: 1; /* Allow columns to grow and shrink */
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Center content vertically too */
   padding: 20px;
   border: solid 1px #e0e0e0;
   border-radius: 8px;
@@ -134,9 +147,9 @@ body {
 a.category {
   font-size: 1.5em;
   font-weight: bold;
-  color: #007bff;
+  color: #007bff; /* Specific color for category links */
   margin-bottom: 10px;
-  display: block; /* Make the link a block to control margin */
+  display: block;
 }
 
 a.category:hover {
@@ -151,26 +164,34 @@ a.category:hover {
 }
 
 .landing-menu-item img {
-  max-width: 100%; /* Ensure image is responsive within its container */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 100%;
+  height: auto;
   border-radius: 4px;
-  display: block; /* Remove extra space below image */
-  margin: 0 auto; /* Center the image */
+  display: block;
+  margin: 0 auto;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .flex-grid-top,
+  .landing-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+  .landing-menu a {
+    padding: 8px 15px;
+    margin: 5px 0;
+  }
+  .landing-menu a.is-active::after {
+    bottom: 0;
+    height: 2px;
+  }
+
   .home-page-menu {
     width: 95vw;
   }
 
   .flex-grid-page {
-    flex-direction: column; /* Stack columns vertically on smaller screens */
-  }
-
-  .flex-grid-top .col {
-    max-width: none; /* Remove max-width on smaller screens */
+    flex-direction: column;
   }
 
   a.category {

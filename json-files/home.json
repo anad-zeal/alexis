@@ -1,186 +1,267 @@
 {
-  "head": {
-    "meta": [{ "charset": "UTF-8" }],
-    "title": "Easy Flexbox Grid",
-    "link": [{ "rel": "stylesheet", "href": "./style.css" }]
-  },
-  "body": [
-    {
-      "type": "div",
-      "class": "top-menu-wrapper",
-      "children": [
+    "type": "div",
+    "class": "page-menu-wrapper",
+    "children": [
         {
-          "type": "div",
-          "class": "flex-grid-top",
-          "children": [
-            {
-              "type": "div",
-              "class": "col",
-              "children": [
+            "type": "div",
+            "class": "home-page-menu",
+            "children": [
                 {
-                  "type": "a",
-                  "href": "/",
-                  "class": "landing-mnu",
-                  "data-page": "home",
-                  "content": "HOME"
-                }
-              ]
-            },
-            {
-              "type": "div",
-              "class": "col",
-              "children": [
-                {
-                  "type": "a",
-                  "href": "/artworks",
-                  "class": "landing-mnu",
-                  "data-page": "artworks",
-                  "content": "ARTWORKS"
-                }
-              ]
-            },
-            {
-              "type": "div",
-              "class": "col",
-              "children": [
-                {
-                  "type": "a",
-                  "href": "/biography",
-                  "class": "landing-mnu",
-                  "data-page": "biography",
-                  "content": "BIOGRAPHY"
-                }
-              ]
-            },
-            {
-              "type": "div",
-              "class": "col",
-              "children": [
-                {
-                  "type": "a",
-                  "href": "/contact",
-                  "class": "landing-mnu",
-                  "data-page": "contact",
-                  "content": "CONTACT"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "div",
-      "class": "page-menu-wrapper",
-      "children": [
-        {
-          "type": "div",
-          "class": "home-page-menu",
-          "children": [
-            {
-              "type": "div",
-              "class": "top-row flex-grid-page",
-              "children": [
-                {
-                  "type": "div",
-                  "class": "col top-left",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
+                    "type": "div",
+                    "class": "top-row flex-grid-page",
+                    "children": [
                         {
-                          "type": "a",
-                          "href": "/decorative",
-                          "class": "category",
-                          "data-gallery": "decorative_painting",
-                          "aria-label": "Go to Decorative Painting",
-                          "content": "Decorative Painting"
+                            "type": "div",
+                            "class": "col top-left",
+                            "children": [
+                                {
+                                    "type": "div",
+                                    "class": "landing-menu-item",
+                                    "children": [
+                                        { "type": "a", "href": "/decorative", "class": "category", "data-gallery": "decorative_painting", "aria-label": "Go to Decorative Painting", "content": "Decorative Painting" },
+                                        { "type": "p", "content": "Limit continuity differentiability derivative integral antiderivative chain rule product rule..." }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                          "type": "p",
-                          "content": "Limit continuity differentiability derivative integral antiderivative chain rule product rule..."
+                            "type": "div",
+                            "class": "col top-right",
+                            "children": [
+                                {
+                                    "type": "div",
+                                    "class": "landing-menu-item",
+                                    "children": [
+                                        { "type": "a", "href": "/restoration", "class": "category", "data-gallery": "encaustic_paintings", "aria-label": "Go to Restoration Projects", "content": "Restoration Projects" },
+                                        { "type": "p", "content": "Matrix parabola quotient variable coefficient binomial exponent modulus integer polynomial..." }
+                                    ]
+                                }
+                            ]
                         }
-                      ]
-                    }
-                  ]
+                    ]
                 },
                 {
-                  "type": "div",
-                  "class": "col top-right",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
+                    "type": "div",
+                    "class": "bottom-row flex-grid-page",
+                    "children": [
                         {
-                          "type": "a",
-                          "href": "/restoration",
-                          "class": "category",
-                          "data-gallery": "encaustic_paintings",
-                          "aria-label": "Go to Restoration Projects",
-                          "content": "Restoration Projects"
+                            "type": "div",
+                            "class": "col bottom-left",
+                            "children": [
+                                {
+                                    "type": "div",
+                                    "class": "landing-menu-item",
+                                    "children": [
+                                        { "type": "a", "href": "/artworks", "class": "category", "data-gallery": "project_series_paintings", "aria-label": "Go to Artworks Category Page", "content": "Artworks Category Page" },
+                                        { "type": "p", "content": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter..." }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                          "type": "p",
-                          "content": "Matrix parabola quotient variable coefficient binomial exponent modulus integer polynomial..."
+                            "type": "div",
+                            "class": "col bottom-right",
+                            "children": [
+                                {
+                                    "type": "div",
+                                    "class": "landing-menu-item",
+                                    "children": [
+                                        { "type": "img", "src": "https://elzalive.com/assets/images/misc-images/bridge-2.jpg", "height": "100" }
+                                    ]
+                                }
+                            ]
                         }
-                      ]
-                    }
-                  ]
+                    ]
                 }
-              ]
-            },
-            {
-              "type": "div",
-              "class": "bottom-row flex-grid-page",
-              "children": [
-                {
-                  "type": "div",
-                  "class": "col bottom-left",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
-                        {
-                          "type": "a",
-                          "href": "/artworks",
-                          "class": "category",
-                          "data-gallery": "project_series_paintings",
-                          "aria-label": "Go to Artworks Category Page",
-                          "content": "Artworks Category Page"
-                        },
-                        {
-                          "type": "p",
-                          "content": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter..."
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "div",
-                  "class": "col bottom-right",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
-                        {
-                          "type": "img",
-                          "src": "https://elzalive.com/assets/images/misc-images/bridge-2.jpg",
-                          "height": "100"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+            ]
         }
-      ]
+    ]
+}
+```
+
+And here's the CSS, separated for `index.php` (for the header and footer) and `home.json` (for the injected content).
+
+**`style.css` (for `index.php` and the overall layout):**
+
+```css
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Landing Menu (Header) Styles */
+.landing-menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 15px 0; /* Add vertical padding */
+    border-bottom: solid 1px #eee;
+}
+
+.landing-menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    position: relative; /* For the active indicator */
+}
+
+.landing-menu a:hover {
+    color: #007bff;
+    background-color: #f0f8ff;
+    border-radius: 5px;
+}
+
+.landing-menu a.is-active {
+    color: #007bff;
+}
+
+.landing-menu a.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Position below the text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px; /* Short line */
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+
+/* Main Content Area */
+main#page-content {
+    flex-grow: 1; /* Allow main content to take up available space */
+    display: flex;
+    justify-content: center; /* Center the injected content horizontally */
+    padding: 20px 0; /* Add some vertical padding around the content */
+}
+
+/* Site Footer Styles */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #eee;
+    font-size: 0.9em;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Global link styles for all 'a' elements in the structure */
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit color by default */
+}
+```
+
+**Additional CSS for the injected content (`home.json`), assuming it would be included in the same `style.css`:**
+
+```css
+/* Page Menu Wrapper for Injected Content */
+.page-menu-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Take full width of its parent (#page-content) */
+    /* Remove position: relative and top: 5vh from here,
+       as main#page-content handles vertical centering/spacing */
+}
+
+.home-page-menu {
+    width: 90vw; /* Adjust as needed */
+    max-width: 1200px; /* Optional: max width for larger screens */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between rows */
+    padding: 20px 0; /* Internal padding for the menu group */
+}
+
+.flex-grid-page {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between columns in a row */
+}
+
+.flex-grid-page .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically too */
+    padding: 20px;
+    border: solid 1px #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flex-grid-page .col:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.landing-menu-item {
+    text-align: center;
+}
+
+a.category {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff; /* Specific color for category links */
+    margin-bottom: 10px;
+    display: block;
+}
+
+a.category:hover {
+    text-decoration: underline;
+}
+
+.landing-menu-item p {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.landing-menu-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .landing-menu {
+        flex-direction: column;
+        align-items: center;
     }
-  ]
+    .landing-menu a {
+        padding: 8px 15px;
+        margin: 5px 0;
+    }
+    .landing-menu a.is-active::after {
+        bottom: 0;
+        height: 2px;
+    }
+
+    .home-page-menu {
+        width: 95vw;
+    }
+
+    .flex-grid-page {
+        flex-direction: column;
+    }
+
+    a.category {
+        font-size: 1.2em;
+    }
 }

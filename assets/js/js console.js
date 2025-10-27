@@ -1,1 +1,0 @@
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/c-kick/mobileConsole/hnl.mobileconsole.min.js?ver=1.4.0" id="con-js"></script>

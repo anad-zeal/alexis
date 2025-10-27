@@ -1,28 +1,18 @@
-{
-  "content": [
-    {
-      "type": "heading",
-      "text": "Artist Biography"
-    },
-    {
-      "type": "paragraph",
-      "text": "Born in the heart of New England, the artist's journey began with a fascination for light, shadow, and the stories that surfaces could tell. From early childhood, there was an innate understanding that art was not merely decoration, but a language—one that could speak across centuries and cultures."
-    },
-    {
-      "type": "paragraph",
-      "text": "The formal education in fine arts provided technical foundation, but it was the years spent in European workshops, learning traditional restoration techniques, that truly shaped the artistic vision. Working alongside master craftsmen in Florence and Paris, the artist developed an appreciation for the delicate balance between preservation and creative expression."
-    },
-    {
-      "type": "heading",
-      "text": "Artistic Philosophy"
-    },
-    {
-      "type": "paragraph",
-      "text": "Every brushstroke carries intention. Whether breathing new life into centuries-old frescoes or creating contemporary works that challenge perception, the approach remains constant: respect for the medium, understanding of historical context, and an unwavering commitment to craftsmanship."
-    },
-    {
-      "type": "paragraph",
-      "text": "The work spans multiple disciplines—from large-scale architectural restorations to intimate encaustic paintings. Each project, whether preserving the past or creating for the future, reflects a deep belief that art serves as a bridge between generations, carrying forward the collective memory of human creativity."
-    }
-  ]
-}
+[
+  {
+    "type": "heading",
+    "text": "Biography"
+  },
+  {
+    "type": "paragraph",
+    "text": "Dana Elza is a decorative artist whose work bridges traditional craftsmanship and contemporary surface design. Her studio practice reflects decades of experience in both fine and applied arts."
+  },
+  {
+    "type": "paragraph",
+    "text": "Her projects include historic restorations, custom finishes, and large-scale installations for private and public spaces. Each piece explores how texture, color, and light define visual character."
+  },
+  {
+    "title": "Studio Philosophy",
+    "description": "Rooted in the belief that beauty and material honesty are inseparable, Dana’s work celebrates the dialogue between time-honored technique and modern sensibility."
+  }
+]

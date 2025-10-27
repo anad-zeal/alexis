@@ -3,30 +3,44 @@
     {
       "id": "black-and-white",
       "title": "Black and White Paintings",
-      "description": "Bruschetta soufflé mango chutney pancetta. Tiramisu radicchio simmered gnocchi flambé. Umami croissant drizzle saffron aioli, marinate biscotti. Poached truffle risotto, caramelized shallots, fig compote. Zest roux paprika, seared scallops with crème fraîche. Baste tempura",
-      "ariaLabel": "Go to Black and White Paintings",
+      "description": "A striking collection of monochrome artworks.",
+      "ariaLabel": "Go to Black and White Paintings gallery",
       "contentFile": "black-and-white-paintings.json"
+    },
+    {
+      "id": "drip-series",
+      "title": "Drip Series Paintings",
+      "description": "Explorations of fluid motion and color.",
+      "ariaLabel": "Go to Drip Series Paintings gallery",
+      "contentFile": "drip-series-paintings.json"
     },
     {
       "id": "encaustic",
       "title": "Encaustic Paintings",
-      "description": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter chord arc sector segment angle vertex edge face surface volume area perimeter symmetry congruence similarity tessellation reflection rotation translation dilation coordinate.",
-      "ariaLabel": "Go to Encaustic Paintings",
+      "description": "Ancient techniques meet modern expression.",
+      "ariaLabel": "Go to Encaustic Paintings gallery",
       "contentFile": "encaustic-paintings.json"
     },
     {
       "id": "project-series",
       "title": "Project Series Paintings",
-      "description": "Sourdough béchamel, roasted chestnuts, lemon verbena glaze. Infused gazpacho, heirloom tomatoes, miso broth. Pickled ramps, velvety mousse, charred leeks. Caviar quenelle, pistachio brittle, braised lamb. Tarragon reduction.",
-      "ariaLabel": "Go to Project Series Paintings",
+      "description": "Diverse works developed over various long-term projects.",
+      "ariaLabel": "Go to Project Series Paintings gallery",
       "contentFile": "project-series-paintings.json"
     },
     {
-      "id": "drips-series",
-      "title": "Drips Series Paintings",
-      "description": "Caviar quenelle, pistachio brittle, braised lamb. Tarragon reduction, Poached truffle risotto, caramelized shallots, fig compote. Zest roux paprika, seared scallops with crème fraîche. Baste tempura, fennel purée.",
-      "ariaLabel": "Go to Drips Series Paintings",
-      "contentFile": "drip-series-paintings.json"
+      "id": "decorative-painting",
+      "title": "Decorative Painting",
+      "description": "Transforming spaces with bespoke artistic finishes.",
+      "ariaLabel": "Go to Decorative Painting gallery",
+      "contentFile": "decorative-painting.json"
+    },
+    {
+      "id": "restoration-projects",
+      "title": "Restoration Projects",
+      "description": "Bringing historical pieces back to life with meticulous care.",
+      "ariaLabel": "Go to Restoration Projects gallery",
+      "contentFile": "restoration-projects.json"
     }
   ]
 }

@@ -1,6 +1,39 @@
 {
   "pageContent": [
     {
+      "type": "topNavigation",
+      "items": [
+        {
+          "id": "nav-home",
+          "title": "HOME",
+          "href": "/",
+          "data_page": "home",
+          "is_active": true
+        },
+        {
+          "id": "nav-artworks",
+          "title": "ARTWORKS",
+          "href": "/artworks",
+          "data_page": "artworks",
+          "is_active": false
+        },
+        {
+          "id": "nav-biography",
+          "title": "BIOGRAPHY",
+          "href": "/biography",
+          "data_page": "biography",
+          "is_active": false
+        },
+        {
+          "id": "nav-contact",
+          "title": "CONTACT",
+          "href": "/contact",
+          "data_page": "contact",
+          "is_active": false
+        }
+      ]
+    },
+    {
       "type": "landingMenu",
       "items": [
         {

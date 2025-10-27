@@ -567,3 +567,77 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialPage = getPageFromURL();
   loadPage(initialPage);
 });
+
+// Function to recursively build HTML elements from JSON
+function buildElementFromJson(jsonElement) {
+  if (!jsonElement || !jsonElement.type) {
+    console.error('Invalid JSON element:', jsonElement);
+    return null;
+  }
+
+  const el = document.createElement(jsonElement.type);
+
+  // Set attributes (class, href, data attributes, aria-label, src, height)
+  if (jsonElement.class) el.className = jsonElement.class;
+  if (jsonElement.id) el.id = jsonElement.id;
+  if (jsonElement.href) el.href = jsonElement.href;
+  if (jsonElement.src) el.src = jsonElement.src;
+  if (jsonElement.height) el.height = jsonElement.height;
+
+  for (const key in jsonElement) {
+    if (key.startsWith('data-')) {
+      el.setAttribute(key, jsonElement[key]);
+    }
+    if (key.startsWith('aria-')) {
+      el.setAttribute(key, jsonElement[key]);
+    }
+  }
+
+  // Set text content
+  if (jsonElement.content) {
+    el.textContent = jsonElement.content;
+  }
+
+  // Handle children
+  if (jsonElement.children && Array.isArray(jsonElement.children)) {
+    jsonElement.children.forEach((childJson) => {
+      const childEl = buildElementFromJson(childJson);
+      if (childEl) {
+        el.appendChild(childEl);
+      }
+    });
+  }
+
+  return el;
+}
+
+// New function to render the complex home page structure
+function renderHomePageLayout(pageContentJson) {
+  contentArea.innerHTML = ''; // Clear existing content
+
+  // Expecting pageContentJson to be an array containing the single page-menu-wrapper object
+  if (!Array.isArray(pageContentJson) || pageContentJson.length === 0) {
+    contentArea.innerHTML = '<p class="error">Home page content structure is invalid.</p>';
+    return;
+  }
+
+  pageContentJson.forEach((rootElementJson) => {
+    const renderedElement = buildElementFromJson(rootElementJson);
+    if (renderedElement) {
+      contentArea.appendChild(renderedElement);
+    }
+  });
+
+  // Re-attach event listeners if necessary for dynamically added elements
+  // For example, if categories within the home page need dynamic loading like artworks
+  contentArea.querySelectorAll('.category[data-gallery]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const gallery = link.getAttribute('data-gallery');
+      // This is a placeholder; you'd need to define how these links should behave
+      // e.g., load a specific artwork category page
+      console.log(`Clicked on category link: ${gallery}`);
+      // Example: loadPage(gallery); // If 'decorative_painting' is a valid pageId
+    });
+  });
+}

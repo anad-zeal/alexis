@@ -807,7 +807,7 @@ h2.sub-title {
 .top-grid .right {
   display: flex;
   width: 39%;
-  /* border: solid 1px blue; */
+  border: solid 1px blue;
   justify-content: flex-end;
   align-items: center;
 }

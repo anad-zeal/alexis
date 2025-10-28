@@ -1,117 +1,57 @@
 {
-  "pageContent": [
-    {
-      "type": "div",
-      "class": "page-menu-wrapper",
-      "children": [
+  "main": {
+    "id": "main",
+    "class": "page-content-wrapper",
+    "tabindex": "-1",
+    "section": {
+      "class": "body-paragraphs",
+      "aria-labelledby": "home-page-heading",
+      "headings": [
         {
-          "type": "div",
-          "class": "home-page-menu",
-          "children": [
-            {
-              "type": "div",
-              "class": "top-row flex-grid-page",
-              "children": [
-                {
-                  "type": "div",
-                  "class": "col top-left",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
-                        {
-                          "type": "a",
-                          "href": "/decorative",
-                          "class": "category",
-                          "data-gallery": "decorative_painting",
-                          "aria-label": "Go to Decorative Painting",
-                          "content": "Decorative Painting"
-                        },
-                        {
-                          "type": "p",
-                          "content": "Limit continuity differentiability derivative integral antiderivative chain rule product rule..."
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "div",
-                  "class": "col top-right",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
-                        {
-                          "type": "a",
-                          "href": "/restoration",
-                          "class": "category",
-                          "data-gallery": "encaustic_paintings",
-                          "aria-label": "Go to Restoration Projects",
-                          "content": "Restoration Projects"
-                        },
-                        {
-                          "type": "p",
-                          "content": "Matrix parabola quotient variable coefficient binomial exponent modulus integer polynomial..."
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "div",
-              "class": "bottom-row flex-grid-page",
-              "children": [
-                {
-                  "type": "div",
-                  "class": "col bottom-left",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
-                        {
-                          "type": "a",
-                          "href": "/artworks",
-                          "class": "category",
-                          "data-gallery": "project_series_paintings",
-                          "aria-label": "Go to Artworks Category Page",
-                          "content": "Artworks Category Page"
-                        },
-                        {
-                          "type": "p",
-                          "content": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter..."
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "div",
-                  "class": "col bottom-right",
-                  "children": [
-                    {
-                      "type": "div",
-                      "class": "landing-menu-item",
-                      "children": [
-                        {
-                          "type": "img",
-                          "src": "https://elzalive.com/assets/images/misc-images/bridge-2.jpg",
-                          "height": "100"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "type": "h1",
+          "id": "home-page-heading",
+          "class": "page-title",
+          "text": "Home"
+        },
+        {
+          "type": "h2",
+          "id": "portfolio-heading",
+          "class": "visually-hidden",
+          "text": "Portfolio"
+        }
+      ],
+      "paragraphs": [
+        {
+          "link": {
+            "href": "/restoration?showSlideshow=true",
+            "class": "dropcap",
+            "data-gallery": "restoration",
+            "aria-label": "Go to Restoration Projects",
+            "text": "R"
+          },
+          "text": "estoration Projects — Astral DOGs travel to any point in the universe is now possible via the implementation of hyperbolic sub-resonant variations, combined with isomorphic silicon overlays manifesting dolor sit amet consectetur adipiscing elit."
+        },
+        {
+          "link": {
+            "href": "/decorative?showSlideshow=true",
+            "class": "dropcap",
+            "data-gallery": "decorative",
+            "aria-label": "Go to Decorative Painting",
+            "text": "D"
+          },
+          "text": "ecorative Painting — The woodsman saved the day by capturing the robber. Next time the orphan went for a stroll in the forest they would call the small child first!"
+        },
+        {
+          "link": {
+            "href": "/artworks?showSlideshow=true",
+            "class": "dropcap",
+            "data-gallery": "artworks",
+            "aria-label": "Go to Artworks",
+            "text": "A"
+          },
+          "text": "rtworks — Chicharrones irony kogi enamel pin paleo la croix kinfolk banjo meggings voluptate. Viral etsy occaecat DSA dreamcatcher prism commodo coloring book tilde."
         }
       ]
     }
-  ]
+  }
 }

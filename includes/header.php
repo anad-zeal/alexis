@@ -7,7 +7,7 @@ $full_page_title = $page_title . " | " . $site_name;
 
 // Canonical URL builder
 $host = $_SERVER["HTTP_HOST"] ?? "example.com";
-$https =
+$https =    (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ||
     (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ||
     (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] == 443);
 $scheme = $https ? "https" : "http";

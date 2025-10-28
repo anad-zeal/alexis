@@ -3,5 +3,6 @@
 
 require __DIR__ . "/includes/header.php";
 require __DIR__ . "/includes/hero.php";
-// require __DIR__ . $json_file;
+echo '<div id="dynamic-content-area">';
+echo '</div>'; // End dynamic content area
 require __DIR__ . "/includes/footer.php";

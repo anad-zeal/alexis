@@ -14,6 +14,5 @@
 <div id="main-content-area">
 
 </div>
-</div>
 <!-- Initial page content will be inserted here by index.php -->
 <!-- Dynamic content will be loaded here by navigation.js -->

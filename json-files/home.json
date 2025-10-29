@@ -6,7 +6,7 @@
         "type": "landingMenuItem",
         "class": "page",
         "link": {
-          "href": "/slideshow",
+          "href": "/decorative",
           "class": "page-link",
           "dataGallery": "decorative_painting",
           "ariaLabel": "Go to Decorative Painting",

@@ -1,25 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // These elements are created by script.js before this script runs.
   const slideshow = document.querySelector('.slideshow');
   const caption = document.getElementById('caption-text');
   const prevBtn = document.getElementById('prev-slide');
   const nextBtn = document.getElementById('next-slide');
 
-  let slides = [],
-    current = 0,
-    timer;
+  // Exit if the necessary slideshow elements don't exist on the page.
+  if (!slideshow || !caption || !prevBtn || !nextBtn) {
+    // console.log("Slideshow elements not found. Halting slideshow script.");
+    return;
+  }
+
+  let slides = [];
+  let current = 0;
+  let timer;
   let isPausedByHoverOrTouch = false;
 
-  // Load slides from JSON
+  // This script fetches its OWN data for the images and captions.
   fetch('js/slides.json')
     .then((res) => res.json())
     .then((data) => {
       slides = data;
       createSlides();
       fadeInFirstSlide();
-    });
+    })
+    .catch((error) => console.error('Error loading slides.json:', error));
 
   function createSlides() {
-    slides.forEach(({ src }, index) => {
+    slides.forEach(({ src }) => {
       const img = document.createElement('img');
       img.src = src;
       img.className = 'slide';
@@ -37,41 +45,32 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       slideshow.appendChild(img);
     });
-    slideshow.style.position = 'relative';
+    slideshow.style.position = 'relative'; // Important for absolute positioning of slides
   }
 
   function fadeInFirstSlide() {
-    const firstSlide = document.querySelectorAll('.slide')[0];
+    const firstSlide = document.querySelector('.slide');
+    if (!firstSlide) return;
 
-    // Ensure it starts at opacity 0 and transition is set
     firstSlide.style.opacity = 0;
-    firstSlide.style.transition = 'opacity 2s ease-in-out';
-
-    // Apply visibility after a tiny delay to allow transition to kick in
     setTimeout(() => {
       firstSlide.style.opacity = 1;
       caption.textContent = slides[0].caption;
       caption.style.transition = 'opacity 1.5s ease-in-out';
       caption.style.opacity = 0;
-
       setTimeout(() => {
         caption.style.opacity = 1;
       }, 300);
-    }, 50); // slight delay for reliable transition
+    }, 50);
 
-    // Start autoplay after the fade
     setTimeout(() => {
-      showSlide(0); // sync caption logic
       startAutoPlay();
     }, 2000);
   }
 
   function showSlide(index) {
     const slidesDOM = document.querySelectorAll('.slide');
-
-    // Fade out caption
     caption.style.opacity = 0;
-
     setTimeout(() => {
       caption.textContent = slides[index].caption;
       caption.style.opacity = 1;
@@ -93,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startAutoPlay() {
+    clearInterval(timer); // Clear any existing timer
     timer = setInterval(nextSlide, 5000);
   }
 
@@ -101,7 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resumeAutoPlay() {
-    if (!isPausedByHoverOrTouch) startAutoPlay();
+    if (!isPausedByHoverOrTouch) {
+      startAutoPlay();
+    }
   }
 
   function resetAutoPlay() {

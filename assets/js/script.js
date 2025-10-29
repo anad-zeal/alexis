@@ -1,44 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // --- 1. DOM Element References ---
   const navLinks = document.querySelectorAll('.main-nav-menu .landing-mnu');
   const dynamicContentArea = document.getElementById('dynamic-content-area');
   const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
   const pageTitleElement = document.querySelector('.hero .page-title');
 
+  // --- 2. Helper Functions ---
+
   /**
-   * Renders a grid of cards from a JSON object into the dynamic content area.
-   * This version now correctly creates the <section class="card-grid"> wrapper.
-   * @param {Array} cardGrid - An array of card objects from the JSON file.
+   * Dynamically loads and executes a script. Ensures script isn't loaded more than once.
+   * @param {string} path - The path to the JavaScript file.
+   */
+  function loadScript(path) {
+    // If a script with this source already exists, don't add it again.
+    if (document.querySelector(`script[src="${path}"]`)) {
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = path;
+    script.defer = true;
+    // Add an attribute to make it easy to find and remove later if needed
+    script.setAttribute('data-dynamic-script', 'true');
+    document.body.appendChild(script);
+  }
+
+  // --- 3. HTML Rendering Functions ---
+
+  /**
+   * Renders a grid of cards (e.g., for the homepage).
+   * @param {Array} cardGrid - An array of card objects.
    */
   function renderCardGrid(cardGrid) {
-    // *** NEW: Create the main section wrapper element ***
     const sectionWrapper = document.createElement('section');
     sectionWrapper.className = 'card-grid';
 
     cardGrid.forEach((item) => {
-      // Create the main container for the card
       const card = document.createElement('div');
-      card.className = item.type; // e.g., "card"
+      card.className = item.type; // "card"
 
       const content = item.content;
       const cardContent = document.createElement('div');
-      cardContent.className = content.type; // e.g., "landingMenuItem"
+      cardContent.className = content.type;
       if (content.class) {
         cardContent.classList.add(...content.class.split(' '));
       }
 
-      // If there's a link object, create the link element
       if (content.link) {
-        const link = content.link;
         const linkElement = document.createElement('a');
-        linkElement.href = link.href;
-        linkElement.textContent = link.text;
-        linkElement.className = link.class;
-        linkElement.setAttribute('data-gallery', link.dataGallery);
-        linkElement.setAttribute('aria-label', link.ariaLabel);
+        linkElement.href = content.link.href;
+        linkElement.textContent = content.link.text;
+        linkElement.className = content.link.class;
+        linkElement.setAttribute('data-gallery', content.link.dataGallery);
+        linkElement.setAttribute('aria-label', content.link.ariaLabel);
         cardContent.appendChild(linkElement);
       }
 
-      // If there's a paragraph, handle it
       if (content.paragraph) {
         if (typeof content.paragraph === 'object' && content.paragraph.type === 'image') {
           const img = document.createElement('img');
@@ -52,18 +68,145 @@ document.addEventListener('DOMContentLoaded', () => {
           cardContent.appendChild(p);
         }
       }
-
       card.appendChild(cardContent);
-      // *** MODIFIED: Append the card to the section wrapper, not a fragment ***
       sectionWrapper.appendChild(card);
     });
 
-    // Clear any previous content
     dynamicContentArea.innerHTML = '';
-    // *** MODIFIED: Append the single, complete section wrapper to the DOM ***
     dynamicContentArea.appendChild(sectionWrapper);
   }
 
+  /**
+   * Renders a simple content section with paragraphs (e.g., for a biography page).
+   * @param {object} sectionData - The contentSection object from JSON.
+   */
+  function renderContentSection(sectionData) {
+    const wrapperElement = document.createElement(sectionData.tag);
+    for (const key in sectionData.attributes) {
+      wrapperElement.setAttribute(key, sectionData.attributes[key]);
+    }
+    sectionData.paragraphs.forEach((pText) => {
+      const p = document.createElement('p');
+      p.textContent = pText;
+      wrapperElement.appendChild(p);
+    });
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(wrapperElement);
+  }
+
+  /**
+   * Renders a contact form from a JSON object.
+   * @param {object} formData - The contactForm object from JSON.
+   */
+  function renderContactForm(formData) {
+    const sectionWrapper = document.createElement(formData.wrapper.tag);
+    for (const key in formData.wrapper.attributes) {
+      sectionWrapper.setAttribute(key, formData.wrapper.attributes[key]);
+    }
+    const formWrapper = document.createElement('div');
+    formWrapper.className = 'contact-form-wrapper';
+    const formElement = document.createElement('form');
+    for (const key in formData.form.attributes) {
+      formElement.setAttribute(key, formData.form.attributes[key]);
+    }
+    formData.fields.forEach((field) => {
+      const fieldContainer = document.createElement('div');
+      fieldContainer.className = 'ccfield-prepend';
+      if (field.type === 'submit') {
+        const submitInput = document.createElement('input');
+        submitInput.className = 'ccbtn';
+        submitInput.type = 'submit';
+        submitInput.value = field.value;
+        fieldContainer.appendChild(submitInput);
+      } else {
+        const addon = document.createElement('span');
+        addon.className = 'ccform-addon';
+        const icon = document.createElement('i');
+        icon.className = `fa ${field.icon} fa-2x`;
+        addon.appendChild(icon);
+        let inputElement =
+          field.type === 'textarea'
+            ? document.createElement('textarea')
+            : document.createElement('input');
+        if (field.type === 'textarea') {
+          inputElement.name = field.name;
+          inputElement.rows = field.rows;
+        } else {
+          inputElement.type = field.type;
+        }
+        inputElement.className = 'ccformfield';
+        inputElement.placeholder = field.placeholder;
+        if (field.required) inputElement.required = true;
+        fieldContainer.appendChild(addon);
+        fieldContainer.appendChild(inputElement);
+      }
+      formElement.appendChild(fieldContainer);
+    });
+    formWrapper.appendChild(formElement);
+    sectionWrapper.appendChild(formWrapper);
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(sectionWrapper);
+  }
+
+  /**
+   * Renders the structural HTML for a slideshow.
+   * After rendering, it dynamically loads the script needed to activate the slideshow.
+   * @param {object} template - The slideshowTemplate object from JSON.
+   */
+  function renderSlideshow(template) {
+    const wrapper = document.createElement(template.wrapper.tag);
+    wrapper.className = template.wrapper.class;
+    const slideContainer = document.createElement('div');
+    slideContainer.className = template.slideContainerClass;
+    const createNavButton = (btnData) => {
+      const div = document.createElement('div');
+      div.className = btnData.wrapperClass;
+      const button = document.createElement('button');
+      button.id = btnData.buttonId;
+      button.className = 'prev-next circle';
+      const img = document.createElement('img');
+      img.src = btnData.imgSrc;
+      img.alt = btnData.imgAlt;
+      img.className = 'prev-nexts';
+      img.width = 50;
+      button.appendChild(img);
+      div.appendChild(button);
+      return div;
+    };
+    const prevButton = createNavButton(template.previousButton);
+    const nextButton = createNavButton(template.nextButton);
+    const captionWrapper = document.createElement('div');
+    captionWrapper.className = template.caption.wrapperClass;
+    const captionText = document.createElement('p');
+    captionText.id = template.caption.paragraphId;
+    captionWrapper.appendChild(captionText);
+    const footerWrapper = document.createElement('div');
+    footerWrapper.className = template.footer.wrapperClass;
+    const siteFooter = document.createElement('footer');
+    siteFooter.className = 'site-footer';
+    const footerText = document.createElement('p');
+    footerText.textContent = template.footer.copyrightText;
+    siteFooter.appendChild(footerText);
+    footerWrapper.appendChild(siteFooter);
+    wrapper.appendChild(slideContainer);
+    wrapper.appendChild(prevButton);
+    wrapper.appendChild(nextButton);
+    wrapper.appendChild(captionWrapper);
+    wrapper.appendChild(footerWrapper);
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(wrapper);
+    if (template.scriptToLoad) {
+      loadScript(template.scriptToLoad);
+    }
+  }
+
+  // --- 4. Main Page Content Controller ---
+
+  /**
+   * The main router that decides which rendering function to call based on JSON content.
+   * @param {object} data - The fetched JSON data.
+   * @param {string} pageName - The name of the page being loaded.
+   */
   function renderPageContent(data, pageName) {
     const title = data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
     document.title = `${title} | AEPaints`;
@@ -71,15 +214,16 @@ document.addEventListener('DOMContentLoaded', () => {
       pageTitleElement.textContent = title;
     }
 
-    // *** ADD THIS 'ELSE IF' BLOCK FOR THE FORM ***
     if (data.cardGrid) {
       renderCardGrid(data.cardGrid);
     } else if (data.contentSection) {
       renderContentSection(data.contentSection);
     } else if (data.contactForm) {
-      // CHECK FOR THE NEW STRUCTURE
-      renderContactForm(data.contactForm); // CALL THE NEW FUNCTION
+      renderContactForm(data.contactForm);
+    } else if (data.slideshowTemplate) {
+      renderSlideshow(data.slideshowTemplate);
     } else if (data.contentHtml) {
+      // Fallback for old method
       dynamicContentArea.innerHTML = data.contentHtml;
     } else {
       dynamicContentArea.innerHTML = `<p>No content available for "${title}".</p>`;
@@ -89,47 +233,22 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // --- 5. Core Navigation and Data Loading Logic ---
+
   /**
-   * Renders a content section with paragraphs from a JSON object.
-   * @param {object} sectionData - The contentSection object from the JSON file.
+   * Fetches and loads content for a given page.
+   * @param {string} pageName - The name of the page to load (e.g., "home").
+   * @param {boolean} addToHistory - Whether to push a new state to the browser history.
    */
-  function renderContentSection(sectionData) {
-    // 1. Create the main wrapper element (e.g., <section>)
-    const wrapperElement = document.createElement(sectionData.tag);
-
-    // 2. Set all attributes from the JSON onto the wrapper element
-    for (const key in sectionData.attributes) {
-      wrapperElement.setAttribute(key, sectionData.attributes[key]);
-    }
-
-    // 3. Create and append each paragraph
-    sectionData.paragraphs.forEach((pText) => {
-      const p = document.createElement('p');
-      p.textContent = pText; // Use textContent for security
-      wrapperElement.appendChild(p);
-    });
-
-    // 4. Clear the old content and append the new, fully-built element
-    dynamicContentArea.innerHTML = '';
-    dynamicContentArea.appendChild(wrapperElement);
-  }
-
   async function loadJsonContent(pageName, addToHistory = true) {
-    const jsonFileName = `${pageName}.json`;
-    const url = `/json-files/${jsonFileName}`;
-
+    const url = `/json-files/${pageName}.json`;
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
-    if (pageTitleElement) {
-      pageTitleElement.textContent = '';
-    }
+    if (pageTitleElement) pageTitleElement.textContent = '';
 
     try {
       const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status} for ${url}`);
-      }
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status} for ${url}`);
       const data = await response.json();
-
       renderPageContent(data, pageName);
 
       navLinks.forEach((link) => {
@@ -142,102 +261,24 @@ document.addEventListener('DOMContentLoaded', () => {
         activeLink.setAttribute('aria-current', 'page');
       }
 
-      if (dynamicPageWrapper) {
-        dynamicPageWrapper.dataset.page = pageName;
-      }
-
+      if (dynamicPageWrapper) dynamicPageWrapper.dataset.page = pageName;
       if (addToHistory) {
-        const title = data.title || pageName;
-        history.pushState({ page: pageName, title: title }, title, `/${pageName}`);
+        history.pushState({ page: pageName }, data.title || pageName, `/${pageName}`);
       }
     } catch (error) {
       console.error(`Error loading JSON file for ${pageName}:`, error);
       dynamicContentArea.innerHTML = `<p>Error loading content for "${pageName}". Please try again.</p>`;
       document.title = `Error | AEPaints`;
-      if (pageTitleElement) {
-        pageTitleElement.textContent = `Error Loading Page`;
-      }
+      if (pageTitleElement) pageTitleElement.textContent = `Error Loading Page`;
     }
   }
 
-  /**
-   * Renders a contact form from a JSON object.
-   * @param {object} formData - The contactForm object from the JSON file.
-   */
-  function renderContactForm(formData) {
-    // 1. Create the main <section> wrapper
-    const sectionWrapper = document.createElement(formData.wrapper.tag);
-    for (const key in formData.wrapper.attributes) {
-      sectionWrapper.setAttribute(key, formData.wrapper.attributes[key]);
-    }
-
-    // 2. Create the form container and the <form> element
-    const formWrapper = document.createElement('div');
-    formWrapper.className = 'contact-form-wrapper';
-
-    const formElement = document.createElement('form');
-    for (const key in formData.form.attributes) {
-      formElement.setAttribute(key, formData.form.attributes[key]);
-    }
-
-    // 3. Loop through the fields array to build each input
-    formData.fields.forEach((field) => {
-      const fieldContainer = document.createElement('div');
-      fieldContainer.className = 'ccfield-prepend';
-
-      // Handle the submit button differently since it has no icon/span
-      if (field.type === 'submit') {
-        const submitInput = document.createElement('input');
-        submitInput.className = 'ccbtn';
-        submitInput.type = 'submit';
-        submitInput.value = field.value;
-        fieldContainer.appendChild(submitInput);
-      } else {
-        // Build the standard field with icon and input/textarea
-        const addon = document.createElement('span');
-        addon.className = 'ccform-addon';
-        const icon = document.createElement('i');
-        icon.className = `fa ${field.icon} fa-2x`;
-        addon.appendChild(icon);
-
-        let inputElement;
-        if (field.type === 'textarea') {
-          inputElement = document.createElement('textarea');
-          inputElement.name = field.name;
-          inputElement.rows = field.rows;
-        } else {
-          inputElement = document.createElement('input');
-          inputElement.type = field.type;
-        }
-
-        inputElement.className = 'ccformfield';
-        inputElement.placeholder = field.placeholder;
-        if (field.required) {
-          inputElement.required = true;
-        }
-
-        fieldContainer.appendChild(addon);
-        fieldContainer.appendChild(inputElement);
-      }
-      formElement.appendChild(fieldContainer);
-    });
-
-    // 4. Assemble the final structure
-    formWrapper.appendChild(formElement);
-    sectionWrapper.appendChild(formWrapper);
-
-    // 5. Clear old content and render the new form
-    dynamicContentArea.innerHTML = '';
-    dynamicContentArea.appendChild(sectionWrapper);
-  }
-
+  // --- 6. Event Listeners and Initial Load ---
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
       const pageName = event.target.dataset.page;
-      if (pageName) {
-        loadJsonContent(pageName);
-      }
+      if (pageName) loadJsonContent(pageName);
     });
   });
 
@@ -245,30 +286,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const statePage = event.state
       ? event.state.page
       : window.location.pathname.substring(1) || 'home';
-    if (statePage) {
-      loadJsonContent(statePage, false);
-    }
+    loadJsonContent(statePage, false);
   });
 
-  const initialPath = window.location.pathname.substring(1);
-  const initialPage = initialPath || 'home';
-
+  const initialPage = window.location.pathname.substring(1) || 'home';
   loadJsonContent(initialPage, false).then(() => {
-    const currentTitle = document.title;
-    history.replaceState(
-      { page: initialPage, title: currentTitle },
-      currentTitle,
-      `/${initialPage}`
-    );
-
-    const activeLink = document.querySelector(`.main-nav-menu a[data-page="${initialPage}"]`);
-    if (activeLink) {
-      activeLink.classList.add('is-active');
-      activeLink.setAttribute('aria-current', 'page');
-    }
-
-    if (dynamicPageWrapper) {
-      dynamicPageWrapper.dataset.page = initialPage;
-    }
+    history.replaceState({ page: initialPage }, document.title, `/${initialPage}`);
   });
 });

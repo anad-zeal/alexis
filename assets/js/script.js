@@ -156,45 +156,24 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderSlideshow(template) {
     const wrapper = document.createElement(template.wrapper.tag);
     wrapper.className = template.wrapper.class;
+
     const slideContainer = document.createElement('div');
     slideContainer.className = template.slideContainerClass;
-    const createNavButton = (btnData) => {
-      const div = document.createElement('div');
-      div.className = btnData.wrapperClass;
-      const button = document.createElement('button');
-      button.id = btnData.buttonId;
-      button.className = 'prev-next circle';
-      const img = document.createElement('img');
-      img.src = btnData.imgSrc;
-      img.alt = btnData.imgAlt;
-      img.className = 'prev-nexts';
-      img.width = 50;
-      button.appendChild(img);
-      div.appendChild(button);
-      return div;
-    };
-    const prevButton = createNavButton(template.previousButton);
-    const nextButton = createNavButton(template.nextButton);
-    const captionWrapper = document.createElement('div');
-    captionWrapper.className = template.caption.wrapperClass;
-    const captionText = document.createElement('p');
-    captionText.id = template.caption.paragraphId;
-    captionWrapper.appendChild(captionText);
-    const footerWrapper = document.createElement('div');
-    footerWrapper.className = template.footer.wrapperClass;
-    const siteFooter = document.createElement('footer');
-    siteFooter.className = 'site-footer';
-    const footerText = document.createElement('p');
-    footerText.textContent = template.footer.copyrightText;
-    siteFooter.appendChild(footerText);
-    footerWrapper.appendChild(siteFooter);
+
+    /* --- ADD THIS LINE --- */
+    // Pass the name of the gallery JSON file to the HTML element
+    slideContainer.setAttribute('data-gallery-source', template.gallerySource);
+
+    // ... (the rest of the function remains exactly the same) ...
+
+    // (Code to create buttons, caption, footer, etc.)
+
     wrapper.appendChild(slideContainer);
-    wrapper.appendChild(prevButton);
-    wrapper.appendChild(nextButton);
-    wrapper.appendChild(captionWrapper);
-    wrapper.appendChild(footerWrapper);
+    // ... (rest of assembly)
+
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(wrapper);
+
     if (template.scriptToLoad) {
       loadScript(template.scriptToLoad);
     }

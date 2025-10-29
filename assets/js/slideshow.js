@@ -6,10 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('next-slide');
 
   // Exit if the necessary slideshow elements don't exist on the page.
-  if (!slideshow || !caption || !prevBtn || !nextBtn) {
-    // console.log("Slideshow elements not found. Halting slideshow script.");
+  if (!slideshow) return;
+
+  // --- THIS IS THE UPDATED DYNAMIC LOGIC ---
+  const gallerySource = slideshow.dataset.gallerySource; // Reads "data-gallery-source" attribute
+  if (!gallerySource) {
+    console.error("Slideshow is missing a 'data-gallery-source' attribute!");
     return;
   }
+
+  const fetchUrl = `/json-files/${gallerySource}`;
+  // --- END OF UPDATE --
 
   let slides = [];
   let current = 0;

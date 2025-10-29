@@ -1,11 +1,11 @@
 {
   "title": "Decorative Painting",
   "slideshowTemplate": {
-    "wrapper": {
-      "tag": "section",
-      "class": "slideshow-wrapper"
-    },
+    "gallerySource": "decorative-painting-slides.json",
+    "scriptToLoad": "js/slideshow.js",
+    "wrapper": { "tag": "section", "class": "slideshow-wrapper" },
     "slideContainerClass": "slideshow",
+
     "previousButton": {
       "wrapperClass": "previous",
       "buttonId": "prev-slide",
@@ -22,10 +22,9 @@
       "wrapperClass": "caption",
       "paragraphId": "caption-text"
     },
-    "footer": {
-      "wrapperClass": "footer",
-      "copyrightText": "© 2025 elzalive • All rights reserved."
-    },
-    "scriptToLoad": "js/slideshow.js"
+    "description": {
+      "wrapperClass": "description",
+      "paragraphId": "description-text"
+    }
   }
 }

@@ -87,6 +87,31 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  /**
+   * Renders a content section with paragraphs from a JSON object.
+   * @param {object} sectionData - The contentSection object from the JSON file.
+   */
+  function renderContentSection(sectionData) {
+    // 1. Create the main wrapper element (e.g., <section>)
+    const wrapperElement = document.createElement(sectionData.tag);
+
+    // 2. Set all attributes from the JSON onto the wrapper element
+    for (const key in sectionData.attributes) {
+      wrapperElement.setAttribute(key, sectionData.attributes[key]);
+    }
+
+    // 3. Create and append each paragraph
+    sectionData.paragraphs.forEach((pText) => {
+      const p = document.createElement('p');
+      p.textContent = pText; // Use textContent for security
+      wrapperElement.appendChild(p);
+    });
+
+    // 4. Clear the old content and append the new, fully-built element
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(wrapperElement);
+  }
+
   async function loadJsonContent(pageName, addToHistory = true) {
     const jsonFileName = `${pageName}.json`;
     const url = `/json-files/${jsonFileName}`;

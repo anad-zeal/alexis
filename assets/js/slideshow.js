@@ -23,15 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let timer;
   let isPausedByHoverOrTouch = false;
 
-  // This script fetches its OWN data for the images and captions.
-  fetch('js/slides.json')
+  / fetch(fetchUrl)
     .then((res) => res.json())
     .then((data) => {
       slides = data;
       createSlides();
       fadeInFirstSlide();
     })
-    .catch((error) => console.error('Error loading slides.json:', error));
+    .catch(error => console.error(`Error loading ${fetchUrl}:`, error));
 
   function createSlides() {
     slides.forEach(({ src }) => {

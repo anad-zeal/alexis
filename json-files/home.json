@@ -1,4 +1,61 @@
 {
-  "title": "AEPaints | Home",
-  "contentHtml": "<div class=\"home-dynamic-content\">\n\n  <div class=\"body-paragraphs\">\n    <h1 class=\"title\">The Art of Elza Live</h1>\n    <p>Welcome to the official gallery of Elza Live, where every canvas tells a story and every brushstroke breathes life into moments. Here, you'll discover a world painted with passion, detail, and a unique perspective on the beauty surrounding us.</p>\n    <p>Explore our collections, delve into the artist's journey, and find a piece that resonates with your soul. We invite you to experience art that truly moves.</p>\n  </div>\n\n  <section class=\"page-menu\">\n    <div class=\"restoration landing-menu-item\">\n      <a href=\"/artworks\" data-page=\"artworks\" class=\"page-link\">Artworks</a>\n      <p>Discover a diverse portfolio spanning various themes and techniques, from vibrant landscapes to intricate portraits.</p>\n    </div>\n\n    <div class=\"decorative landing-menu-item\">\n      <a href=\"/biography\" data-page=\"biography\" class=\"page-link\">Biography</a>\n      <p>Delve into the inspiring life and artistic evolution of Elza Live, understanding the stories behind the art.</p>\n    </div>\n\n    <div class=\"artworks landing-menu-item\">\n      <a href=\"/contact\" data-page=\"contact\" class=\"page-link\">Contact</a>\n      <p>Interested in a commission, have a question, or simply want to say hello? Reach out to us!</p>\n    </div>\n\n    <div class=\"landing-image last-item landing-menu-item\">\n      <img src=\"/assets/images/elza-portrait-home.jpg\" alt=\"Portrait of the artist, Elza Live\" class=\"img-home\">\n    </div>\n  </section>\n\n  <div class=\"body-paragraphs\">\n    <h2 class=\"sub-title\">New Arrivals & Exhibitions</h2>\n    <p>Stay tuned for our latest creations and upcoming shows. We regularly update our gallery with fresh perspectives and exciting new ventures. Don't miss out on the opportunity to experience art in person.</p>\n  </div>\n\n</div>"
+  "cardGrid": [
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "page",
+        "link": {
+          "href": "/decorative",
+          "class": "page-link",
+          "dataGallery": "decorative_painting",
+          "ariaLabel": "Go to Decorative Painting",
+          "text": "Decorative Painting"
+        },
+        "paragraph": "Limit continuity differentiability derivative integral antiderivative chain rule product rule quotient rule mean value theorem fundamental theorem of calculus. Equation inequality logarithm derivative integral constant limit tangent cosine sine asymptote factor divisor"
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "page",
+        "link": {
+          "href": "/restoration",
+          "class": "page-link",
+          "dataGallery": "encaustic_paintings",
+          "ariaLabel": "Go to Restoration Projects",
+          "text": "Restoration Projects"
+        },
+        "paragraph": "Matrix parabola quotient variable coefficient binomial exponent modulus integer polynomial function domain range axis vector scalar root identity equation inequality logarithm derivative integral constant limit tangent cosine sine asymptote factor divisor."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "page",
+        "link": {
+          "href": "/artworks",
+          "class": "page-link",
+          "dataGallery": "project_series_paintings",
+          "ariaLabel": "Go to the Artworks Page",
+          "text": "Artwork Pages"
+        },
+        "paragraph": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter chord arc sector segment angle vertex edge face surface volume area perimeter symmetry congruence similarity tessellation reflection rotation translation dilation coordinate."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "last-item",
+        "paragraph": {
+          "type": "image",
+          "src": "https://elzalive.com/assets/images/encaustic-paintings/Encaustic VIII.jpg",
+          "class": "img-home"
+        }
+      }
+    }
+  ]
 }

@@ -1,18 +1,15 @@
-[
-  {
-    "type": "heading",
-    "text": "Biography"
-  },
-  {
-    "type": "paragraph",
-    "text": "Dana Elza is a decorative artist whose work bridges traditional craftsmanship and contemporary surface design. Her studio practice reflects decades of experience in both fine and applied arts."
-  },
-  {
-    "type": "paragraph",
-    "text": "Her projects include historic restorations, custom finishes, and large-scale installations for private and public spaces. Each piece explores how texture, color, and light define visual character."
-  },
-  {
-    "title": "Studio Philosophy",
-    "description": "Rooted in the belief that beauty and material honesty are inseparable, Dana’s work celebrates the dialogue between time-honored technique and modern sensibility."
+{
+  "title": "Biography",
+  "contentSection": {
+    "tag": "section",
+    "attributes": {
+      "class": "body-paragraphs",
+      "aria-labelledby": "biography-page-heading"
+    },
+    "paragraphs": [
+      "As a child I spent many hours in my father's wood shop. He was a master cabinet maker, restorer of antique furniture, and a wood sculptor. My mother was an inventor and patent holder. It is no surprise, given the talent I was exposed to at such an early age, that I made the decision to attend art school. It was at the School of the Worcester Art Museum in Worcester Massachusetts that I began my formal education in the arts",
+      "While at that school I was honored to receive the Frances Kinnicutt Foreign Travel Award for Women, which gave me the opportunity to study Minoan and Mycenaean art history and architecture on the island of Crete. I went on to earn a BA at Clark University in Worcester, Massachusetts.",
+      "It was serendipity that brought me to my career in historic conservation and restoration While visiting an 1848 Gothic Revival house that was undergoing decorative painting and plaster restoration I realized what a joy it would be to apply my art training to such endeavors. That same day I convinced the project supervisor to hire me, and so began my twenty-five year adventure in historic conservation and restoration."
+    ]
   }
-]
+}

@@ -1,10 +1,7 @@
  <section class="hero">
-        <h2 class="sub-title">The Life of an Artist</h2>
-        <p class="page-title"></p>
-    </section>
+     <h2 class="sub-title">The Life of an Artist</h2>
+     <p class="page-title"></p>
+ </section>
 
-    <main id="dynamic-page-wrapper" data-page="<?= htmlspecialchars($active_page) ?>" tabindex="-1">
-        <div id="dynamic-content-area">
-            <!-- Dynamic content will be loaded here by script.js -->
-        </div>
-    </main>
+ <main id="dynamic-content-area" data-page="<?= htmlspecialchars($active_page) ?>" tabindex="-1">
+ </main>

@@ -2,7 +2,7 @@
   "title": "Decorative Painting",
   "slideshowTemplate": {
     "gallerySource": "decorative-painting-slides.json",
-    "scriptToLoad": "js/slideshow.js",
+    "scriptToLoad": "assets/js/slideshow.js",
     "wrapper": { "tag": "section", "class": "slideshow-wrapper" },
     "slideContainerClass": "slideshow",
 

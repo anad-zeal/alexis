@@ -3,9 +3,11 @@
   "slideshowTemplate": {
     "gallerySource": "decorative-painting-slides.json",
     "scriptToLoad": "assets/js/slideshow.js",
-    "wrapper": { "tag": "section", "class": "slideshow-wrapper" },
+    "wrapper": {
+      "tag": "section",
+      "class": "slideshow-wrapper"
+    },
     "slideContainerClass": "slideshow",
-
     "previousButton": {
       "wrapperClass": "previous",
       "buttonId": "prev-slide",
@@ -25,6 +27,10 @@
     "description": {
       "wrapperClass": "description",
       "paragraphId": "description-text"
+    },
+    "footer": {
+      "wrapperClass": "footer",
+      "copyrightText": "© 2025 elzalive • All rights reserved."
     }
   }
 }

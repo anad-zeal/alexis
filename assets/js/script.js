@@ -200,9 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (data.contactForm) {
       renderContactForm(data.contactForm);
     } else if (data.slideshowTemplate) {
+      // This key MUST match the JSON exactly
       renderSlideshow(data.slideshowTemplate);
     } else if (data.contentHtml) {
-      // Fallback for old method
       dynamicContentArea.innerHTML = data.contentHtml;
     } else {
       dynamicContentArea.innerHTML = `<p>No content available for "${title}".</p>`;

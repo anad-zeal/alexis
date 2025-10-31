@@ -2,61 +2,61 @@
   {
     "caption": "Box: Stars on Blue",
     "description": "A decorative box featuring star motifs on a blue background.",
-    "src": "/assets/images/decorative-painting/Box_Stars_on_Blue.jpg"
+    "src": "assets/images/decorative-painting/Box_Stars_on_Blue.jpg"
   },
   {
     "caption": "Bronze Finish",
     "description": "Rich bronze texture, possibly used for metallic accents or patina effects.",
-    "src": "/assets/images/decorative-painting/Bronze.jpg"
+    "src": "assets/images/decorative-painting/Bronze.jpg"
   },
   {
     "caption": "Cadoret Frame",
     "description": "An ornate frame with detailed decorative painting, possibly gilded or antiqued.",
-    "src": "/assets/images/decorative-painting/cadoret-frame.jpg"
+    "src": "assets/images/decorative-painting/cadoret-frame.jpg"
   },
   {
     "caption": "Cresh Arrow Detail",
     "description": "Arrow motif from the Cresh series, emphasizing geometric linework.",
-    "src": "/assets/images/decorative-painting/Cresh-Arrow-2.jpg"
+    "src": "assets/images/decorative-painting/Cresh-Arrow-2.jpg"
   },
   {
     "caption": "Cross Cabinet 039",
     "description": "Decorative cabinet featuring cross motifs and layered paint effects.",
-    "src": "/assets/images/decorative-painting/Cross-Cabinet-039.jpg"
+    "src": "assets/images/decorative-painting/Cross-Cabinet-039.jpg"
   },
   {
     "caption": "Cross Cabinet 036",
     "description": "Companion piece to 039, showcasing alternate decorative treatments.",
-    "src": "/assets/images/decorative-painting/Cross-Cabinet036.jpg"
+    "src": "assets/images/decorative-painting/Cross-Cabinet036.jpg"
   },
   {
     "caption": "Studio Snapshot 0005",
     "description": "In-progress or finished piece captured in studio lighting.",
-    "src": "/assets/images/decorative-painting/DSCN0005.JPG"
+    "src": "assets/images/decorative-painting/DSCN0005.JPG"
   },
   {
     "caption": "Studio Snapshot 0009",
     "description": "Another angle or project detail from the studio series.",
-    "src": "/assets/images/decorative-painting/DSCN0009.JPG"
+    "src": "assets/images/decorative-painting/DSCN0009.JPG"
   },
   {
     "caption": "Studio Snapshot 0012",
     "description": "Close-up of decorative texture or brushwork.",
-    "src": "/assets/images/decorative-painting/DSCN0012.JPG"
+    "src": "assets/images/decorative-painting/DSCN0012.JPG"
   },
   {
     "caption": "Studio Snapshot 0013",
     "description": "Final detail or alternate view of painted surface.",
-    "src": "/assets/images/decorative-painting/DSCN0013.JPG"
+    "src": "assets/images/decorative-painting/DSCN0013.JPG"
   },
   {
     "caption": "Mirror Trim",
     "description": "Decorative edging for a mirror, possibly gilded or stenciled.",
-    "src": "/assets/images/decorative-painting/Mirror-Trim.jpg"
+    "src": "assets/images/decorative-painting/Mirror-Trim.jpg"
   },
   {
     "caption": "Side Table",
     "description": "Painted side table with decorative motifs or distressed finish.",
-    "src": "/assets/images/decorative-painting/SideTable.jpg"
+    "src": "assets/images/decorative-painting/SideTable.jpg"
   }
 ]

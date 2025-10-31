@@ -228,20 +228,25 @@ main {
    ========================================================================== */
 
 /* --- Component: Card Grid (Homepage) --- */
+
 .card-grid {
+  /* Use Grid to create the 2x2 layout */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+  grid-template-rows: repeat(2, auto); /* Two rows that size to their content */
   gap: 2rem;
-  padding: 2rem;
-  width: min(100% - 2rem, 1200px);
-  margin-inline: auto;
+
+  /* Sizing and centering the grid container */
+  width: clamp(320px, 80vw, 1100px); /* Responsive width */
+  margin-inline: auto; /* Center the grid on the page */
+  padding: 2rem 0;
 }
 
 .card {
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  padding: 2rem;
   transition: all var(--speed) var(--easing);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -253,7 +258,7 @@ main {
 }
 
 .card p {
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   color: var(--ink-muted);
 }
 
@@ -267,60 +272,18 @@ main {
   text-decoration: none;
 }
 
+/* The card that only contains the image */
+.card:last-of-type {
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+}
+
 .card .img-home {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Ensure the whole image is visible */
   border-radius: 8px;
-}
-
-/* --- Component: Contact Form --- */
-.contact-form-wrapper {
-  margin: 2rem auto;
-  width: min(100% - 2rem, 800px);
-}
-
-.ccfield-prepend {
-  margin-bottom: 10px;
-  width: 100%;
-  display: flex;
-}
-
-.ccform-addon {
-  color: var(--brand);
-  padding: 8px;
-  background: #ffffff;
-  text-align: center;
-  border-right: 1px solid #eee;
-}
-
-.ccformfield {
-  color: var(--ink);
-  background: #ffffff;
-  border: none;
-  padding: 15.5px;
-  width: 100%;
-  font-family: var(--font-ui);
-  font-size: 1.125rem;
-}
-
-.ccbtn {
-  display: block;
-  width: 100%;
-  border: none;
-  background: var(--brand);
-  color: white;
-  padding: 12px 25px;
-  cursor: pointer;
-  font-family: var(--font-ui);
-  font-size: 1.125rem;
-  border-radius: 4px;
-  transition: background-color 250ms ease, transform 250ms ease;
-}
-
-.ccbtn:hover {
-  background: var(--ink);
-  transform: scale(1.02);
 }
 
 /* --- Component: Slideshow --- */
@@ -328,7 +291,7 @@ main {
 .slideshow-wrapper {
   /* Make the slideshow take up the full screen */
   position: fixed;
-  top: 0;
+  top: -2vh;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -354,8 +317,8 @@ main {
   /* The images are now grid items, not absolutely positioned */
   /* They will all stack in the same grid cell */
   grid-area: 1 / 1; /* Explicitly stack them */
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   object-fit: contain; /* Show the whole image, scaled to fit */
 }
 
@@ -405,6 +368,7 @@ main {
   z-index: 101;
   background-color: transparent;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  display: none;
 }
 
 .caption {

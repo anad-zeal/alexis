@@ -291,7 +291,7 @@ main {
 .slideshow-wrapper {
   /* Make the slideshow take up the full screen */
   position: fixed;
-  top: -2vh;
+  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;

@@ -129,12 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.appendChild(sectionWrapper);
   }
 
+  // In /assets/js/script.js
+
   function renderSlideshow(template) {
     const wrapper = document.createElement(template.wrapper.tag);
     wrapper.className = template.wrapper.class;
+
     const slideContainer = document.createElement('div');
     slideContainer.className = template.slideContainerClass;
     slideContainer.setAttribute('data-gallery-source', template.gallerySource);
+
     const createNavButton = (btnData) => {
       const div = document.createElement('div');
       div.className = btnData.wrapperClass;
@@ -150,18 +154,24 @@ document.addEventListener('DOMContentLoaded', () => {
       div.appendChild(button);
       return div;
     };
+
     const prevButton = createNavButton(template.previousButton);
     const nextButton = createNavButton(template.nextButton);
+
     const captionWrapper = document.createElement('div');
     captionWrapper.className = template.caption.wrapperClass;
     const captionText = document.createElement('p');
     captionText.id = template.caption.paragraphId;
     captionWrapper.appendChild(captionText);
+
+    // --- THIS PART IS CRITICAL ---
     const descriptionWrapper = document.createElement('div');
     descriptionWrapper.className = template.description.wrapperClass;
     const descriptionText = document.createElement('p');
-    descriptionText.id = template.description.paragraphId;
+    descriptionText.id = template.description.paragraphId; // This must be "description-text"
     descriptionWrapper.appendChild(descriptionText);
+    // --- END CRITICAL PART ---
+
     const footerWrapper = document.createElement('div');
     footerWrapper.className = template.footer.wrapperClass;
     const siteFooter = document.createElement('footer');
@@ -170,14 +180,17 @@ document.addEventListener('DOMContentLoaded', () => {
     footerText.textContent = template.footer.copyrightText;
     siteFooter.appendChild(footerText);
     footerWrapper.appendChild(siteFooter);
+
     wrapper.appendChild(slideContainer);
     wrapper.appendChild(prevButton);
     wrapper.appendChild(nextButton);
     wrapper.appendChild(captionWrapper);
-    wrapper.appendChild(descriptionWrapper);
+    wrapper.appendChild(descriptionWrapper); // Make sure it's added
     wrapper.appendChild(footerWrapper);
+
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(wrapper);
+
     if (template.scriptToLoad) {
       loadScript(template.scriptToLoad);
     }

@@ -4,8 +4,6 @@ const description = document.getElementById('description-text');
 const prevBtn = document.getElementById('prev-slide');
 const nextBtn = document.getElementById('next-slide');
 
-const fetchUrl = `/json-files/${gallerySource}`;
-
 // --- State variables ---
 let slides = [];
 let current = 0;

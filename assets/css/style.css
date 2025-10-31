@@ -868,3 +868,66 @@ a.page-link {
   padding: 2px;
   border: solid 1px rgba(0, 0, 0, 0.5);
 }
+
+/* --- Slideshow Container Styles --- */
+
+/* 1. The main wrapper for the whole component */
+.slideshow-wrapper {
+  position: relative; /* This is crucial for positioning the buttons */
+  width: 100%;
+  max-width: 900px; /* Optional: set a max width for large screens */
+  margin: 2rem auto; /* Center the slideshow on the page */
+  border: 1px solid #eee; /* Optional: a light border to see the frame */
+}
+
+/* 2. The direct container for the images */
+.slideshow {
+  position: relative;
+  width: 100%;
+  /* Use the "aspect-ratio" trick to maintain a 16:9 ratio.
+     padding-bottom = 9 / 16 * 100% = 56.25% */
+  padding-bottom: 56.25%;
+  height: 0; /* Height is controlled by padding-bottom */
+  background-color: #f0f0f0; /* A light background color while images load */
+  overflow: hidden; /* Ensures images don't spill out */
+}
+
+/* 3. Styles for the Previous and Next buttons */
+.previous,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.previous {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* 4. Ensure the caption and description are positioned correctly */
+.caption,
+.description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.description {
+  /* Position the description above the caption if needed, or style differently */
+  bottom: 40px; /* Adjust as needed */
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  font-size: 0.9em;
+}

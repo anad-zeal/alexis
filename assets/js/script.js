@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const body = document.body;
+  // --- 1. DOM Element References ---
   const navLinks = document.querySelectorAll('.main-nav-menu .landing-mnu');
   const dynamicContentArea = document.getElementById('dynamic-content-area');
   const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
+  const pageTitleElement = document.querySelector('.hero .page-title');
 
+  // --- 2. Helper Functions ---
   function loadScript(path) {
     if (document.querySelector(`script[src="${path}"]`)) return;
     const script = document.createElement('script');
@@ -18,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicScripts.forEach((script) => script.remove());
   }
 
-  // --- HTML Rendering Functions ---
-
+  // --- 3. HTML Rendering Functions ---
   function renderCardGrid(cardGrid) {
     const sectionWrapper = document.createElement('section');
     sectionWrapper.className = 'card-grid';
@@ -125,48 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.appendChild(sectionWrapper);
   }
 
-  function renderSlideshow(template, pageName, pageTitle) {
+  function renderSlideshow(template) {
     const wrapper = document.createElement(template.wrapper.tag);
     wrapper.className = template.wrapper.class;
-
-    const artistTitle = document.createElement('h2');
-    artistTitle.className = 'slideshow-artist-title';
-    artistTitle.textContent = 'The Life of an Artist';
-
-    const slideshowPageTitle = document.createElement('p');
-    slideshowPageTitle.className = 'slideshow-page-title';
-    slideshowPageTitle.textContent = pageTitle;
-
-    const returnLink = document.createElement('a');
-    returnLink.href = '/artworks';
-    returnLink.className = 'slideshow-return-link';
-    const returnImg = document.createElement('img');
-    returnImg.src = '/assets/images/misc-images/arrow-return.png';
-    returnImg.alt = 'Return to previous page';
-    returnLink.appendChild(returnImg);
-
-    const infoBox = document.createElement('div');
-    infoBox.className = 'slideshow-infobox';
-
-    const captionWrapper = document.createElement('div');
-    captionWrapper.className = 'caption';
-    const captionText = document.createElement('p');
-    captionText.id = template.caption.paragraphId;
-    captionWrapper.appendChild(captionText);
-
-    const descriptionWrapper = document.createElement('div');
-    descriptionWrapper.className = 'description';
-    const descriptionText = document.createElement('p');
-    descriptionText.id = template.description.paragraphId;
-    descriptionWrapper.appendChild(descriptionText);
-
-    infoBox.appendChild(captionWrapper);
-    infoBox.appendChild(descriptionWrapper);
-
     const slideContainer = document.createElement('div');
     slideContainer.className = template.slideContainerClass;
     slideContainer.setAttribute('data-gallery-source', template.gallerySource);
-
     const createNavButton = (btnData) => {
       const div = document.createElement('div');
       div.className = btnData.wrapperClass;
@@ -176,20 +141,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = document.createElement('img');
       img.src = btnData.imgSrc;
       img.alt = btnData.imgAlt;
+      img.className = 'prev-nexts';
+      img.width = 50;
       button.appendChild(img);
       div.appendChild(button);
       return div;
     };
     const prevButton = createNavButton(template.previousButton);
     const nextButton = createNavButton(template.nextButton);
+    const captionWrapper = document.createElement('div');
+    captionWrapper.className = template.caption.wrapperClass;
+    const captionText = document.createElement('p');
+    captionText.id = template.caption.paragraphId;
+    captionWrapper.appendChild(captionText);
+    const descriptionWrapper = document.createElement('div');
+    descriptionWrapper.className = template.description.wrapperClass;
+    const descriptionText = document.createElement('p');
+    descriptionText.id = template.description.paragraphId;
+    descriptionWrapper.appendChild(descriptionText);
 
-    wrapper.appendChild(artistTitle);
-    wrapper.appendChild(slideshowPageTitle);
+    // Assemble all parts (NO FOOTER)
     wrapper.appendChild(slideContainer);
     wrapper.appendChild(prevButton);
     wrapper.appendChild(nextButton);
-    wrapper.appendChild(returnLink);
-    wrapper.appendChild(infoBox);
+    wrapper.appendChild(captionWrapper);
+    wrapper.appendChild(descriptionWrapper);
 
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(wrapper);
@@ -199,22 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Main Page Controller ---
+  // --- 4. Main Page Content Controller ---
   function renderPageContent(data, pageName) {
     const title = data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
     document.title = `${title} | AEPaints`;
-
-    if (data.slideshowTemplate) {
-      body.classList.add('slideshow-active');
-    } else {
-      body.classList.remove('slideshow-active');
+    if (pageTitleElement) {
+      pageTitleElement.textContent = title;
     }
-
-    const heroTitleElement = document.querySelector('.hero .page-title');
-    if (heroTitleElement && !data.slideshowTemplate) {
-      heroTitleElement.textContent = title;
-    }
-
     if (data.cardGrid) {
       renderCardGrid(data.cardGrid);
     } else if (data.contentSection) {
@@ -222,41 +189,50 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (data.contactForm) {
       renderContactForm(data.contactForm);
     } else if (data.slideshowTemplate) {
-      renderSlideshow(data.slideshowTemplate, pageName, title);
+      renderSlideshow(data.slideshowTemplate);
+    } else if (data.contentHtml) {
+      dynamicContentArea.innerHTML = data.contentHtml;
     } else {
       dynamicContentArea.innerHTML = `<p>No content available for "${title}".</p>`;
     }
-
     dynamicContentArea.focus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // --- Core Navigation Logic ---
+  // --- 5. Core Navigation and Data Loading Logic ---
   async function loadJsonContent(pageName, addToHistory = true) {
-    cleanupDynamicScripts();
+    cleanupDynamicScripts(); // Clean up old component scripts
+
     const url = `/json-files/${pageName}.json`;
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
+    if (pageTitleElement) pageTitleElement.textContent = '';
     try {
       const response = await fetch(url);
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status} for ${url}`);
       const data = await response.json();
       renderPageContent(data, pageName);
-
-      navLinks.forEach((link) => link.classList.remove('is-active'));
+      navLinks.forEach((link) => {
+        link.classList.remove('is-active');
+        link.removeAttribute('aria-current');
+      });
       const activeLink = document.querySelector(`.main-nav-menu a[data-page="${pageName}"]`);
-      if (activeLink) activeLink.classList.add('is-active');
-
+      if (activeLink) {
+        activeLink.classList.add('is-active');
+        activeLink.setAttribute('aria-current', 'page');
+      }
       if (dynamicPageWrapper) dynamicPageWrapper.dataset.page = pageName;
       if (addToHistory) {
         history.pushState({ page: pageName }, data.title || pageName, `/${pageName}`);
       }
     } catch (error) {
       console.error(`Error loading JSON file for ${pageName}:`, error);
-      dynamicContentArea.innerHTML = `<p>Error loading content for "${pageName}".</p>`;
+      dynamicContentArea.innerHTML = `<p>Error loading content for "${pageName}". Please try again.</p>`;
+      document.title = `Error | AEPaints`;
+      if (pageTitleElement) pageTitleElement.textContent = `Error Loading Page`;
     }
   }
 
-  // --- Event Listeners and Initial Load ---
+  // --- 6. Event Listeners and Initial Load ---
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();

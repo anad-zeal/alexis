@@ -155,6 +155,8 @@ slideshow.addEventListener(
 );
 
 if (template?.rtnArrow) {
+  console.log('[Slideshow] Adding return arrow:', template.rtnArrow);
+
   const rtnWrapper = document.createElement('div');
   rtnWrapper.className = template.rtnArrow.wrapperClass;
 
@@ -163,5 +165,7 @@ if (template?.rtnArrow) {
   rtnImg.alt = template.rtnArrow.imgAlt;
 
   rtnWrapper.appendChild(rtnImg);
-  slideshow.parentElement.appendChild(rtnWrapper); // assumes slideshow is inside .slideshow-wrapper
+
+  const wrapper = slideshow.closest('.slideshow-wrapper') || slideshow.parentElement;
+  wrapper.appendChild(rtnWrapper);
 }

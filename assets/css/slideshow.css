@@ -180,4 +180,5 @@ main {
   position: relative;
   top: 0;
   border: solid 1px red;
+  overflow: scroll;
 }

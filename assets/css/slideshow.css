@@ -179,4 +179,5 @@ body.slideshow-active #dynamic-page-wrapper {
 .dynamic-page-wrapper {
   position: relative;
   top: 0;
+  border: solid 1px red;
 }

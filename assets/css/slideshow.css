@@ -163,3 +163,45 @@ body.slideshow-active #dynamic-page-wrapper {
   line-height: 1.6;
   color: var(--ink-muted);
 }
+
+/* --- Bottom Right: Caption & Description Box --- */
+.slideshow-infobox {
+  grid-area: info-box;
+  align-self: end;
+  justify-self: end;
+
+  border: 1px solid var(--ink-muted);
+  padding: 1.5rem;
+  margin: 1rem;
+  width: 250px;
+  box-sizing: border-box;
+  z-index: 101;
+
+  /* Add this to prevent children from overflowing */
+  overflow: hidden;
+}
+
+.slideshow-infobox .caption p {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  color: var(--ink);
+
+  /* Add these properties to control long text */
+  word-wrap: break-word; /* Allows long words to break */
+  white-space: normal; /* Allows text to wrap naturally */
+}
+
+.slideshow-infobox .description p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+
+  /* Add these properties to control long text */
+  word-wrap: break-word; /* Allows long words to break */
+  white-space: normal; /* Allows text to wrap naturally */
+}

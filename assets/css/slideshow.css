@@ -203,8 +203,10 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 .return-arrow {
+  height: 2vh;
   position: absolute;
   left: 10%;
+  top: 90%;
   transform: translateX(-50%);
   width: min(100% - 4rem, 80ch);
   text-align: left;

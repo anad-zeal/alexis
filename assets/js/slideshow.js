@@ -5,6 +5,7 @@ const caption = document.getElementById('caption-text');
 const description = document.getElementById('description-text'); // Looks for the ID
 const prevBtn = document.getElementById('prev-slide');
 const nextBtn = document.getElementById('next-slide');
+const template = window.slideshowTemplate?.slideshowTemplate;
 
 if (!slideshow || !caption || !description || !prevBtn || !nextBtn) {
   console.warn('[Slideshow] Required DOM elements missing. Halting script.', {
@@ -152,3 +153,15 @@ slideshow.addEventListener(
   },
   { passive: true }
 );
+
+if (template?.rtnArrow) {
+  const rtnWrapper = document.createElement('div');
+  rtnWrapper.className = template.rtnArrow.wrapperClass;
+
+  const rtnImg = document.createElement('img');
+  rtnImg.src = template.rtnArrow.imgSrc;
+  rtnImg.alt = template.rtnArrow.imgAlt;
+
+  rtnWrapper.appendChild(rtnImg);
+  slideshow.parentElement.appendChild(rtnWrapper); // assumes slideshow is inside .slideshow-wrapper
+}

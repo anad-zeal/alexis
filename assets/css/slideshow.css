@@ -32,9 +32,9 @@ body.slideshow-active #dynamic-page-wrapper {
   background-color: var(--soft);
 
   display: grid;
-  /* Define the columns: Let side columns size to content, center takes the rest. */
+  /* Columns: Let side columns size based on content, center takes the rest. */
   grid-template-columns: auto 1fr auto;
-  /* Define the rows: Let top/bottom size to content, middle takes the rest. */
+  /* Rows: Let top/bottom size based on content, middle takes the rest. */
   grid-template-rows: auto 1fr auto;
   padding: 1rem;
   box-sizing: border-box;
@@ -48,15 +48,15 @@ body.slideshow-active #dynamic-page-wrapper {
   width: 100%;
   height: 100%;
   display: grid;
-  place-items: center;
+  place-items: center; /* This centers the image within the available space */
 }
 
 /* All slide images stack in the same grid cell inside the .slideshow container */
 .slideshow img.slide {
-  grid-area: 1 / 1;
+  grid-area: 1 / 1; /* This trick stacks all images on top of each other */
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Scales the image to fit without cropping */
+  object-fit: contain; /* This is key: scales the image to fit without cropping */
 }
 
 /* ==========================================================================
@@ -130,7 +130,7 @@ body.slideshow-active #dynamic-page-wrapper {
   z-index: 101;
 }
 .slideshow-return-link img {
-  width: 50px; /* Give the return arrow a defined size */
+  width: 50px;
   height: auto;
   opacity: 0.8;
   transition: opacity var(--speed) var(--easing), transform var(--speed) var(--easing);
@@ -170,15 +170,4 @@ body.slideshow-active #dynamic-page-wrapper {
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--ink-muted);
-}
-/* ==========================================================================
-   Responsive Adjustments
-   - Ensure usability on smaller screens.
-   ========================================================================== */
-
-main {
-  position: relative;
-  top: 0;
-  border: solid 1px red;
-  overflow: scroll;
 }

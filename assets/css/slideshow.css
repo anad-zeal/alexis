@@ -202,6 +202,14 @@ body.slideshow-active #dynamic-page-wrapper {
   font-size: 1rem;
 }
 
+.return-arrow {
+  position: absolute;
+  left: 10%;
+  transform: translateX(-50%);
+  width: min(100% - 4rem, 80ch);
+  text-align: left;
+}
+
 /* ==========================================================================
    5. Responsive Adjustments
    ========================================================================== */

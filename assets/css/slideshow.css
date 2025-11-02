@@ -209,7 +209,6 @@ body.slideshow-active #dynamic-page-wrapper {
   transform: translateX(-50%);
   width: 10vw;
   height: 2vh;
-  norder
 }
 
 /* ==========================================================================
@@ -239,5 +238,6 @@ body.slideshow-active #dynamic-page-wrapper {
   }
 
   .rtnArrow {
+    bottom: 3rem;
   }
 }

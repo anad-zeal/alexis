@@ -176,7 +176,7 @@ body.slideshow-active #dynamic-page-wrapper {
    - Ensure usability on smaller screens.
    ========================================================================== */
 
-.dynamic-page-wrapper {
+.slideshow-wrapper {
   position: relative;
   top: 0;
   border: solid 1px red;

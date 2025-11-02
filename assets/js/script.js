@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const body = document.body;
+  // --- 1. DOM Element References ---
+  const body = document.body; // Make sure we have a reference to the body tag
   const navLinks = document.querySelectorAll('.main-nav-menu .landing-mnu');
   const dynamicContentArea = document.getElementById('dynamic-content-area');
   const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
 
+  // --- 2. Helper Functions ---
   function loadScript(path) {
     if (document.querySelector(`script[src="${path}"]`)) return;
     const script = document.createElement('script');
@@ -18,7 +20,74 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicScripts.forEach((script) => script.remove());
   }
 
-  // --- HTML Rendering Functions ---
+  // --- 3. HTML Rendering Functions ---
+  function renderCardGrid(cardGrid) {
+    /* ... This function is correct ... */
+  }
+  function renderContentSection(sectionData) {
+    /* ... This function is correct ... */
+  }
+  function renderContactForm(formData) {
+    /* ... This function is correct ... */
+  }
+  function renderSlideshow(template, pageName, pageTitle) {
+    /* ... This function is correct ... */
+  }
+
+  // (The full code for the render functions is below for completeness)
+
+  // --- 4. Main Page Content Controller ---
+  function renderPageContent(data, pageName) {
+    const title = data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
+    document.title = `${title} | AEPaints`;
+
+    // --- THIS IS THE CRITICAL LOGIC THAT IS LIKELY MISSING ---
+    if (data.slideshowTemplate) {
+      body.classList.add('slideshow-active');
+    } else {
+      body.classList.remove('slideshow-active');
+    }
+    // --- END CRITICAL LOGIC ---
+
+    const heroTitleElement = document.querySelector('.hero .page-title');
+    if (heroTitleElement && !data.slideshowTemplate) {
+      heroTitleElement.textContent = title;
+    }
+
+    if (data.cardGrid) {
+      renderCardGrid(data.cardGrid);
+    } else if (data.contentSection) {
+      renderContentSection(data.contentSection);
+    } else if (data.contactForm) {
+      renderContactForm(data.contactForm);
+    } else if (data.slideshowTemplate) {
+      renderSlideshow(data.slideshowTemplate, pageName, title);
+    } else {
+      dynamicContentArea.innerHTML = `<p>No content available for "${title}".</p>`;
+    }
+
+    dynamicContentArea.focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // --- 5. Core Navigation and Data Loading Logic ---
+  async function loadJsonContent(pageName, addToHistory = true) {
+    /* ... This function is correct ... */
+  }
+
+  // --- 6. Event Listeners and Initial Load ---
+  navLinks.forEach((link) => {
+    /* ... This is correct ... */
+  });
+  window.addEventListener('popstate', (event) => {
+    /* ... This is correct ... */
+  });
+  const initialPage = window.location.pathname.substring(1) || 'home';
+  loadJsonContent(initialPage, false).then(() => {
+    /* ... This is correct ... */
+  });
+
+  // --- Full Function Definitions for Pasting ---
 
   function renderCardGrid(cardGrid) {
     const sectionWrapper = document.createElement('section');
@@ -199,39 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Main Page Controller ---
-  function renderPageContent(data, pageName) {
-    const title = data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
-    document.title = `${title} | AEPaints`;
-
-    if (data.slideshowTemplate) {
-      body.classList.add('slideshow-active');
-    } else {
-      body.classList.remove('slideshow-active');
-    }
-
-    const heroTitleElement = document.querySelector('.hero .page-title');
-    if (heroTitleElement && !data.slideshowTemplate) {
-      heroTitleElement.textContent = title;
-    }
-
-    if (data.cardGrid) {
-      renderCardGrid(data.cardGrid);
-    } else if (data.contentSection) {
-      renderContentSection(data.contentSection);
-    } else if (data.contactForm) {
-      renderContactForm(data.contactForm);
-    } else if (data.slideshowTemplate) {
-      renderSlideshow(data.slideshowTemplate, pageName, title);
-    } else {
-      dynamicContentArea.innerHTML = `<p>No content available for "${title}".</p>`;
-    }
-
-    dynamicContentArea.focus();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // --- Core Navigation Logic ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
     const url = `/json-files/${pageName}.json`;
@@ -256,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Event Listeners and Initial Load ---
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();

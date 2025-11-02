@@ -16,8 +16,6 @@ const nextBtn = document.getElementById('next-slide');
 // If any of these elements were not created correctly, stop the script.
 if (!slideshow || !caption || !description || !prevBtn || !nextBtn) {
   console.warn('[Slideshow] Required DOM elements are missing. Halting script.');
-  // This return statement is the most likely reason for the silent failure.
-  return;
 }
 
 // --- 3. Get the data source from the HTML attribute ---

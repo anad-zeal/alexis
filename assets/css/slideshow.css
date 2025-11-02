@@ -203,13 +203,13 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 .return-arrow {
-  height: 2vh;
   position: absolute;
   left: 10%;
   top: 90%;
   transform: translateX(-50%);
-  width: min(100% - 4rem, 80ch);
-  text-align: left;
+  width: 10vw;
+  height: 2vh;
+  border: 1px solid var(--ink-muted);
 }
 
 /* ==========================================================================
@@ -236,5 +236,8 @@ body.slideshow-active #dynamic-page-wrapper {
 
   .description {
     bottom: 0.5rem;
+  }
+
+  .rtnArrow {
   }
 }

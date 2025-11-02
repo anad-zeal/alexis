@@ -41,6 +41,10 @@ body.slideshow-active #dynamic-page-wrapper {
   grid-template-rows: auto 1fr auto;
 }
 
+.slideshow-wrapper div {
+  border: solid 1px red;
+}
+
 /* ==========================================================================
    Assigning Each Element to its Grid Area
    ========================================================================== */

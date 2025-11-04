@@ -90,6 +90,7 @@ body.slideshow-active #dynamic-page-wrapper {
   line-height: 1;
   margin: 0;
   font-family: var(--font-display);
+  display: none;
 }
 
 .prev-arrow,

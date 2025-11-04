@@ -7,7 +7,6 @@ body.slideshow-active .hero,
 body.slideshow-active .site-footer {
   display: none !important;
 }
-
 body.slideshow-active main,
 body.slideshow-active #dynamic-content-area,
 body.slideshow-active #dynamic-page-wrapper {

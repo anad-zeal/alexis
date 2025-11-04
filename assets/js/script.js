@@ -76,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 6. Event Listeners and Initial Load ---
-  navLinks.forEach((link) => {
-    /* ... This is correct ... */
-  });
+
   window.addEventListener('popstate', (event) => {
     /* ... This is correct ... */
   });
@@ -194,74 +192,74 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.appendChild(sectionWrapper);
   }
 
-  // function renderSlideshow(template, pageName, pageTitle) {
-  //   const wrapper = document.createElement(template.wrapper.tag);
-  //   wrapper.className = template.wrapper.class;
+  function renderSlideshow(template, pageName, pageTitle) {
+    const wrapper = document.createElement(template.wrapper.tag);
+    wrapper.className = template.wrapper.class;
 
-  //   const artistTitle = document.createElement('h2');
-  //   artistTitle.className = 'slideshow-artist-title';
-  //   artistTitle.textContent = 'The Life of an Artist';
+    const artistTitle = document.createElement('h2');
+    artistTitle.className = 'slideshow-artist-title';
+    artistTitle.textContent = 'The Life of an Artist';
 
-  //   const slideshowPageTitle = document.createElement('p');
-  //   slideshowPageTitle.className = 'slideshow-page-title';
-  //   slideshowPageTitle.textContent = pageTitle;
+    const slideshowPageTitle = document.createElement('p');
+    slideshowPageTitle.className = 'slideshow-page-title';
+    slideshowPageTitle.textContent = pageTitle;
 
-  //   const returnLink = document.createElement('a');
-  //   returnLink.href = '/artworks';
-  //   returnLink.className = 'slideshow-return-link';
-  //   const returnImg = document.createElement('img');
-  //   returnImg.src = '/assets/images/misc-images/arrow-return.png';
-  //   returnImg.alt = 'Return to previous page';
-  //   returnLink.appendChild(returnImg);
+    const returnLink = document.createElement('a');
+    returnLink.href = '/artworks';
+    returnLink.className = 'slideshow-return-link';
+    const returnImg = document.createElement('img');
+    returnImg.src = '/assets/images/misc-images/arrow-return.png';
+    returnImg.alt = 'Return to previous page';
+    returnLink.appendChild(returnImg);
 
-  //   const infoBox = document.createElement('div');
-  //   infoBox.className = 'slideshow-infobox';
+    const infoBox = document.createElement('div');
+    infoBox.className = 'slideshow-infobox';
 
-  //   const captionWrapper = document.createElement('div');
-  //   captionWrapper.className = 'caption';
-  //   const captionText = document.createElement('p');
-  //   captionText.id = template.caption.paragraphId;
-  //   captionWrapper.appendChild(captionText);
+    const captionWrapper = document.createElement('div');
+    captionWrapper.className = 'caption';
+    const captionText = document.createElement('p');
+    captionText.id = template.caption.paragraphId;
+    captionWrapper.appendChild(captionText);
 
-  //   const descriptionWrapper = document.createElement('div');
-  //   descriptionWrapper.className = 'description';
-  //   const descriptionText = document.createElement('p');
-  //   descriptionText.id = template.description.paragraphId;
-  //   descriptionWrapper.appendChild(descriptionText);
+    const descriptionWrapper = document.createElement('div');
+    descriptionWrapper.className = 'description';
+    const descriptionText = document.createElement('p');
+    descriptionText.id = template.description.paragraphId;
+    descriptionWrapper.appendChild(descriptionText);
 
-  //   infoBox.appendChild(captionWrapper);
-  //   infoBox.appendChild(descriptionWrapper);
+    infoBox.appendChild(captionWrapper);
+    infoBox.appendChild(descriptionWrapper);
 
-  //   const slideContainer = document.createElement('div');
-  //   slideContainer.className = template.slideContainerClass;
-  //   slideContainer.setAttribute('data-gallery-source', template.gallerySource);
+    const slideContainer = document.createElement('div');
+    slideContainer.className = template.slideContainerClass;
+    slideContainer.setAttribute('data-gallery-source', template.gallerySource);
 
-  //   const createNavButton = (btnData) => {
-  //     const div = document.createElement('div');
-  //     div.className = btnData.wrapperClass;
-  //     const button = document.createElement('button');
-  //     button.id = btnData.buttonId;
-  //     button.className = 'prev-next circle';
-  //     const img = document.createElement('img');
-  //     img.src = btnData.imgSrc;
-  //     img.alt = btnData.imgAlt;
-  //     button.appendChild(img);
-  //     div.appendChild(button);
-  //     return div;
-  //   };
-  //   const prevButton = createNavButton(template.previousButton);
-  //   const nextButton = createNavButton(template.nextButton);
+    const createNavButton = (btnData) => {
+      const div = document.createElement('div');
+      div.className = btnData.wrapperClass;
+      const button = document.createElement('button');
+      button.id = btnData.buttonId;
+      button.className = 'prev-next circle';
+      const img = document.createElement('img');
+      img.src = btnData.imgSrc;
+      img.alt = btnData.imgAlt;
+      button.appendChild(img);
+      div.appendChild(button);
+      return div;
+    };
+    const prevButton = createNavButton(template.previousButton);
+    const nextButton = createNavButton(template.nextButton);
 
-  //   wrapper.appendChild(artistTitle);
-  //   wrapper.appendChild(slideshowPageTitle);
-  //   wrapper.appendChild(slideContainer);
-  //   wrapper.appendChild(prevButton);
-  //   wrapper.appendChild(nextButton);
-  //   wrapper.appendChild(returnLink);
-  //   wrapper.appendChild(infoBox);
+    wrapper.appendChild(artistTitle);
+    wrapper.appendChild(slideshowPageTitle);
+    wrapper.appendChild(slideContainer);
+    wrapper.appendChild(prevButton);
+    wrapper.appendChild(nextButton);
+    wrapper.appendChild(returnLink);
+    wrapper.appendChild(infoBox);
 
-  //   dynamicContentArea.innerHTML = '';
-  //   dynamicContentArea.appendChild(wrapper);
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(wrapper);
 
     if (template.scriptToLoad) {
       loadScript(template.scriptToLoad);

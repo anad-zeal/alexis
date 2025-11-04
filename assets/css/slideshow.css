@@ -1,6 +1,7 @@
 /* ==========================================================================
    Slideshow View Activation
    ========================================================================== */
+
 body.slideshow-active .site-header,
 body.slideshow-active .hero,
 body.slideshow-active .site-footer {

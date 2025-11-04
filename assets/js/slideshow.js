@@ -19,115 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- HTML Rendering Functions ---
-  function renderCardGrid(cardGrid) {
-    /* Unchanged */
-  }
-  function renderContentSection(sectionData) {
-    /* Unchanged */
-  }
-  function renderContactForm(formData) {
-    /* Unchanged */
-  }
 
-  /**
-   * REWRITTEN RENDERER FOR YOUR NEW GALLERY LAYOUT
-   */
-  function renderSlideshow(template, pageName, pageTitle) {
-    const wrapper = document.createElement(template.wrapper.tag);
-    wrapper.className = template.wrapper.class;
-
-    const logoDiv = document.createElement('div');
-    logoDiv.className = 'logo';
-    const logoP = document.createElement('p');
-    logoP.textContent = 'The Life of an Artist';
-    logoDiv.appendChild(logoP);
-
-    const categoryDiv = document.createElement('div');
-    categoryDiv.className = 'category';
-    const categoryP = document.createElement('p');
-    categoryP.textContent = pageTitle;
-    categoryDiv.appendChild(categoryP);
-
-    const slideContainer = document.createElement('div');
-    slideContainer.className = template.slideContainerClass;
-    slideContainer.setAttribute('data-gallery-source', template.gallerySource);
-
-    const createNavButton = (btnData) => {
-      const div = document.createElement('div');
-      div.className = btnData.wrapperClass;
-      const button = document.createElement('button');
-      button.id = btnData.buttonId;
-      const img = document.createElement('img');
-      img.src = btnData.imgSrc;
-      img.alt = btnData.imgAlt;
-      button.appendChild(img);
-      div.appendChild(button);
-      return div;
-    };
-    const prevButton = createNavButton(template.previousButton);
-    const nextButton = createNavButton(template.nextButton);
-
-    const returnArrowDiv = document.createElement('div');
-    returnArrowDiv.className = template.rtnArrow.wrapperClass;
-    const returnLink = document.createElement('a');
-    returnLink.href = '/artworks';
-    const returnImg = document.createElement('img');
-    returnImg.src = template.rtnArrow.imgSrc;
-    returnImg.alt = template.rtnArrow.imgAlt;
-    returnLink.appendChild(returnImg);
-    returnArrowDiv.appendChild(returnLink);
-
-    const descriptionBox = document.createElement('div');
-    descriptionBox.className = 'description';
-
-    const captionText = document.createElement('p');
-    captionText.id = template.caption.paragraphId;
-
-    const descriptionText = document.createElement('p');
-    descriptionText.id = template.description.paragraphId;
-
-    descriptionBox.appendChild(captionText);
-    descriptionBox.appendChild(descriptionText);
-
-    wrapper.appendChild(logoDiv);
-    wrapper.appendChild(categoryDiv);
-    wrapper.appendChild(prevButton);
-    wrapper.appendChild(slideContainer);
-    wrapper.appendChild(nextButton);
-    wrapper.appendChild(returnArrowDiv);
-    wrapper.appendChild(descriptionBox);
-
-    dynamicContentArea.innerHTML = '';
-    dynamicContentArea.appendChild(wrapper);
-
-    if (template.scriptToLoad) {
-      loadScript(template.scriptToLoad);
-    }
-  }
-
-  // --- Main Page Controller ---
-  function renderPageContent(data, pageName) {
-    /* Unchanged */
-  }
-
-  // --- Core Navigation Logic ---
-  async function loadJsonContent(pageName, addToHistory = true) {
-    /* Unchanged */
-  }
-
-  // --- Event Listeners and Initial Load ---
-  navLinks.forEach((link) => {
-    /* Unchanged */
-  });
-  window.addEventListener('popstate', (event) => {
-    /* Unchanged */
-  });
-  const initialPage = window.location.pathname.substring(1) || 'home';
-  loadJsonContent(initialPage, false).then(() => {
-    history.replaceState({ page: initialPage }, document.title, `/${initialPage}`);
-  });
-
-  // --- Full Unchanged Function Definitions ---
   function renderCardGrid(cardGrid) {
     const sectionWrapper = document.createElement('section');
     sectionWrapper.className = 'card-grid';
@@ -168,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(sectionWrapper);
   }
+
   function renderContentSection(sectionData) {
     const wrapperElement = document.createElement(sectionData.tag);
     for (const key in sectionData.attributes) {
@@ -181,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(wrapperElement);
   }
+
   function renderContactForm(formData) {
     const sectionWrapper = document.createElement(formData.wrapper.tag);
     for (const key in formData.wrapper.attributes) {
@@ -230,6 +124,90 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(sectionWrapper);
   }
+
+  /**
+   * REWRITTEN RENDERER TO MATCH YOUR EXACT HTML BLUEPRINT
+   */
+  function renderSlideshow(template, pageName, pageTitle) {
+    // Create the main grid container with the class ".container"
+    const wrapper = document.createElement(template.wrapper.tag);
+    wrapper.className = template.wrapper.class;
+
+    // Create Logo element with class ".logo"
+    const logoDiv = document.createElement('div');
+    logoDiv.className = 'logo';
+    const logoP = document.createElement('p');
+    logoP.textContent = 'The Life of an Artist';
+    logoDiv.appendChild(logoP);
+
+    // Create Category element with class ".category"
+    const categoryDiv = document.createElement('div');
+    categoryDiv.className = 'category';
+    const categoryP = document.createElement('p');
+    categoryP.textContent = pageTitle;
+    categoryDiv.appendChild(categoryP);
+
+    // Create Slide container with class ".slideshow"
+    const slideContainer = document.createElement('div');
+    slideContainer.className = template.slideContainerClass;
+    slideContainer.setAttribute('data-gallery-source', template.gallerySource);
+
+    // Create Prev/Next buttons with classes ".prev-arrow" and ".next-arrow"
+    const createNavButton = (btnData) => {
+      const div = document.createElement('div');
+      div.className = btnData.wrapperClass; // This will be "prev-arrow" or "next-arrow"
+      const button = document.createElement('button');
+      button.id = btnData.buttonId;
+      const img = document.createElement('img');
+      img.src = btnData.imgSrc;
+      img.alt = btnData.imgAlt;
+      button.appendChild(img);
+      div.appendChild(button);
+      return div;
+    };
+    const prevButton = createNavButton(template.previousButton);
+    const nextButton = createNavButton(template.nextButton);
+
+    // Create Return Arrow with class ".return-arrow"
+    const returnArrowDiv = document.createElement('div');
+    returnArrowDiv.className = template.rtnArrow.wrapperClass;
+    const returnLink = document.createElement('a');
+    returnLink.href = '/artworks';
+    const returnImg = document.createElement('img');
+    returnImg.src = template.rtnArrow.imgSrc;
+    returnImg.alt = template.rtnArrow.imgAlt;
+    returnLink.appendChild(returnImg);
+    returnArrowDiv.appendChild(returnLink);
+
+    // Create Description box with class ".description"
+    const descriptionBox = document.createElement('div');
+    descriptionBox.className = 'description';
+    const captionText = document.createElement('p');
+    captionText.id = template.caption.paragraphId;
+    const descriptionText = document.createElement('p');
+    descriptionText.id = template.description.paragraphId;
+    descriptionBox.appendChild(captionText);
+    descriptionBox.appendChild(descriptionText);
+
+    // Append all elements to the main container in the correct order for the grid
+    wrapper.appendChild(logoDiv);
+    wrapper.appendChild(categoryDiv);
+    wrapper.appendChild(prevButton);
+    wrapper.appendChild(slideContainer);
+    wrapper.appendChild(nextButton);
+    wrapper.appendChild(returnArrowDiv);
+    wrapper.appendChild(descriptionBox);
+
+    // Render to the page
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(wrapper);
+
+    if (template.scriptToLoad) {
+      loadScript(template.scriptToLoad);
+    }
+  }
+
+  // --- Main Page Controller ---
   function renderPageContent(data, pageName) {
     const title = data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
     document.title = `${title} | AEPaints`;
@@ -256,6 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.focus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // --- Core Navigation Logic ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
     const url = `/json-files/${pageName}.json`;
@@ -277,6 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
       dynamicContentArea.innerHTML = `<p>Error loading content for "${pageName}".</p>`;
     }
   }
+
+  // --- Event Listeners and Initial Load ---
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
@@ -284,10 +266,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (pageName) loadJsonContent(pageName);
     });
   });
+
   window.addEventListener('popstate', (event) => {
     const statePage = event.state
       ? event.state.page
       : window.location.pathname.substring(1) || 'home';
     loadJsonContent(statePage, false);
+  });
+
+  const initialPage = window.location.pathname.substring(1) || 'home';
+  loadJsonContent(initialPage, false).then(() => {
+    history.replaceState({ page: initialPage }, document.title, `/${initialPage}`);
   });
 });

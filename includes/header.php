@@ -1,5 +1,4 @@
 <?php
-// Default values
 $page_title = $page_title ?? "Home";
 $active_page = $active_page ?? "home";
 $site_name = "AEPaints";

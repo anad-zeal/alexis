@@ -498,7 +498,7 @@ h2.sub-title {
   margin-bottom: 0;
 }
 
-.lideshow-artist-title {
+.slideshow-artist-title {
   font-family: var(--font-title);
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 200;

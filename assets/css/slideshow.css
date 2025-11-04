@@ -166,3 +166,7 @@ body.slideshow-active #dynamic-page-wrapper {
   color: var(--ink-muted);
   line-height: 1.5;
 }
+
+.slideshow-artist-title {
+  display: none;
+}

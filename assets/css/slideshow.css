@@ -213,6 +213,7 @@ h1.title {
   color: var(--brand);
   margin: 0;
   line-height: 1;
+  white-space: nowrap;
 }
 
 h3.title {
@@ -223,6 +224,7 @@ h3.title {
   color: var(--brand);
   margin: 0;
   line-height: 1;
+  white-space: nowrap;
 }
 
 h2.sub-title {
@@ -235,6 +237,7 @@ h2.sub-title {
   text-align: center;
   margin: 0px;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .body-paragraphs {
@@ -254,6 +257,7 @@ h2.sub-title {
   text-align: start;
   max-width: 80%;
   font-size: 1.25rem;
+  white-space: nowrap;
 }
 
 .dropcap {
@@ -448,6 +452,7 @@ h2.sub-title {
   line-height: 1.2;
   text-decoration: none;
   transition: all var(--speed) var(--easing);
+  white-space: nowrap;
 }
 
 .landing-menu-item .page-link:hover {

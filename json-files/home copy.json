@@ -1,0 +1,61 @@
+{
+  "cardGrid": [
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "page",
+        "link": {
+          "href": "/decorative",
+          "class": "page-link",
+          "dataGallery": "decorative_painting",
+          "ariaLabel": "Go to Decorative Painting",
+          "text": "Decorative Painting"
+        },
+        "paragraph": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter chord arc sector segment angle vertex edge face surface volume area perimeter symmetry."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "page",
+        "link": {
+          "href": "/restoration",
+          "class": "page-link",
+          "dataGallery": "encaustic_paintings",
+          "ariaLabel": "Go to Restoration Projects",
+          "text": "Restoration Projects"
+        },
+        "paragraph": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter chord arc sector segment angle vertex edge face surface volume area perimeter symmetry."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "page",
+        "link": {
+          "href": "/artworks",
+          "class": "page-link",
+          "dataGallery": "project_series_paintings",
+          "ariaLabel": "Go to the Artworks Page",
+          "text": "Artwork Pages"
+        },
+        "paragraph": "Triangle quadrilateral pentagon hexagon octagon dodecagon circle ellipse radius diameter chord arc sector segment angle vertex edge face surface volume area perimeter symmetry."
+      }
+    },
+    {
+      "type": "card",
+      "content": {
+        "type": "landingMenuItem",
+        "class": "last-item",
+        "paragraph": {
+          "type": "image",
+          "src": "https://elzalive.com/assets/images/encaustic-paintings/Encaustic-XI.jpg",
+          "class": "img-home"
+        }
+      }
+    }
+  ]
+}

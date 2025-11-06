@@ -1,9 +1,15 @@
+/**
+ * Main Application Router for the SPA.
+ * Handles page navigation, content fetching, and calls the appropriate renderer.
+ */
 document.addEventListener("DOMContentLoaded", () => {
+  // --- 1. DOM Element References ---
   const body = document.body;
   const navLinks = document.querySelectorAll(".main-nav-menu .landing-mnu");
   const dynamicContentArea = document.getElementById("dynamic-content-area");
   const dynamicPageWrapper = document.getElementById("dynamic-page-wrapper");
 
+  // --- 2. Helper Functions ---
   function loadScript(path) {
     if (document.querySelector(`script[src="${path}"]`)) return;
     const script = document.createElement("script");
@@ -20,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dynamicScripts.forEach((script) => script.remove());
   }
 
-  // --- HTML Rendering Functions ---
+  // --- 3. Generic HTML Rendering Functions ---
 
   function renderCardGrid(cardGrid) {
     const sectionWrapper = document.createElement("section");
@@ -31,9 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const content = item.content;
       const cardContent = document.createElement("div");
       cardContent.className = content.type;
-      if (content.class) {
-        cardContent.classList.add(...content.class.split(" "));
-      }
+      if (content.class) cardContent.classList.add(...content.class.split(" "));
       if (content.link) {
         const linkElement = document.createElement("a");
         linkElement.href = content.link.href;
@@ -130,102 +134,23 @@ document.addEventListener("DOMContentLoaded", () => {
     dynamicContentArea.appendChild(sectionWrapper);
   }
 
-  /**
-   * REWRITTEN RENDERER TO MATCH YOUR EXACT HTML BLUEPRINT
-   */
-  function renderSlideshow(template, pageName, pageTitle) {
-    // Create the main grid container with the class ".container"
-    const wrapper = document.createElement(template.wrapper.tag);
-    wrapper.className = template.wrapper.class;
-
-    // Create Logo element with class ".logo"
-    const logoDiv = document.createElement("div");
-    logoDiv.className = "logo";
-    const logoP = document.createElement("p");
-    logoP.textContent = "The Life of an Artist";
-    logoDiv.appendChild(logoP);
-
-    // Create Category element with class ".category"
-    const categoryDiv = document.createElement("div");
-    categoryDiv.className = "category";
-    const categoryP = document.createElement("p");
-    categoryP.textContent = pageTitle;
-    categoryDiv.appendChild(categoryP);
-
-    // Create Slide container with class ".slideshow"
-    const slideContainer = document.createElement("div");
-    slideContainer.className = template.slideContainerClass;
-    slideContainer.setAttribute("data-gallery-source", template.gallerySource);
-
-    // Create Prev/Next buttons with classes ".prev-arrow" and ".next-arrow"
-    const createNavButton = (btnData) => {
-      const div = document.createElement("div");
-      div.className = btnData.wrapperClass; // This will be "prev-arrow" or "next-arrow"
-      const button = document.createElement("button");
-      button.id = btnData.buttonId;
-      const img = document.createElement("img");
-      img.src = btnData.imgSrc;
-      img.alt = btnData.imgAlt;
-      button.appendChild(img);
-      div.appendChild(button);
-      return div;
-    };
-    const prevButton = createNavButton(template.previousButton);
-    const nextButton = createNavButton(template.nextButton);
-
-    // Create Return Arrow with class ".return-arrow"
-    const returnArrowDiv = document.createElement("div");
-    returnArrowDiv.className = template.rtnArrow.wrapperClass;
-    const returnLink = document.createElement("a");
-    returnLink.href = "/artworks";
-    const returnImg = document.createElement("img");
-    returnImg.src = template.rtnArrow.imgSrc;
-    returnImg.alt = template.rtnArrow.imgAlt;
-    returnLink.appendChild(returnImg);
-    returnArrowDiv.appendChild(returnLink);
-
-    // Create Description box with class ".description"
-    const descriptionBox = document.createElement("div");
-    descriptionBox.className = "description";
-    const captionText = document.createElement("p");
-    captionText.id = template.caption.paragraphId;
-    const descriptionText = document.createElement("p");
-    descriptionText.id = template.description.paragraphId;
-    descriptionBox.appendChild(captionText);
-    descriptionBox.appendChild(descriptionText);
-
-    // Append all elements to the main container in the correct order for the grid
-    wrapper.appendChild(logoDiv);
-    wrapper.appendChild(categoryDiv);
-    wrapper.appendChild(prevButton);
-    wrapper.appendChild(slideContainer);
-    wrapper.appendChild(nextButton);
-    wrapper.appendChild(returnArrowDiv);
-    wrapper.appendChild(descriptionBox);
-
-    // Render to the page
-    dynamicContentArea.innerHTML = "";
-    dynamicContentArea.appendChild(wrapper);
-
-    if (template.scriptToLoad) {
-      loadScript(template.scriptToLoad);
-    }
-  }
-
-  // --- Main Page Controller ---
+  // --- 4. Main Page Content Controller ---
   function renderPageContent(data, pageName) {
     const title =
       data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
     document.title = `${title} | AEPaints`;
+
     if (data.slideshowTemplate) {
       body.classList.add("slideshow-active");
     } else {
       body.classList.remove("slideshow-active");
     }
+
     const heroTitleElement = document.querySelector(".hero .page-title");
     if (heroTitleElement && !data.slideshowTemplate) {
       heroTitleElement.textContent = title;
     }
+
     if (data.cardGrid) {
       renderCardGrid(data.cardGrid);
     } else if (data.contentSection) {
@@ -233,15 +158,19 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (data.contactForm) {
       renderContactForm(data.contactForm);
     } else if (data.slideshowTemplate) {
-      renderSlideshow(data.slideshowTemplate, pageName, title);
+      // For a slideshow, just clear the content and load the component script.
+      // The component will do all the work itself.
+      dynamicContentArea.innerHTML = "";
+      loadScript(data.slideshowTemplate.scriptToLoad);
     } else {
       dynamicContentArea.innerHTML = `<p>No content available for "${title}".</p>`;
     }
+
     dynamicContentArea.focus();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // --- Core Navigation Logic ---
+  // --- 5. Core Navigation Logic ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
     const url = `/json-files/${pageName}.json`;
@@ -252,11 +181,13 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       renderPageContent(data, pageName);
+
       navLinks.forEach((link) => link.classList.remove("is-active"));
       const activeLink = document.querySelector(
         `.main-nav-menu a[data-page="${pageName}"]`,
       );
       if (activeLink) activeLink.classList.add("is-active");
+
       if (dynamicPageWrapper) dynamicPageWrapper.dataset.page = pageName;
       if (addToHistory) {
         history.pushState(
@@ -271,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- Event Listeners and Initial Load ---
+  // --- 6. Event Listeners and Initial Load ---
   navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();

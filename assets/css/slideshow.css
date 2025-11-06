@@ -1,5 +1,6 @@
 /* ==========================================================================
    Slideshow View Activation
+   - Hides standard page elements for the immersive "app mode".
    ========================================================================== */
 
 body.slideshow-active .site-header,
@@ -7,6 +8,7 @@ body.slideshow-active .hero,
 body.slideshow-active .site-footer {
   display: none !important;
 }
+
 body.slideshow-active main,
 body.slideshow-active #dynamic-content-area,
 body.slideshow-active #dynamic-page-wrapper {
@@ -18,170 +20,167 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 /* ==========================================================================
-   Main Slideshow Layout using Grid Template Areas
+   Main Slideshow Grid Layout (To Match Your Design)
    ========================================================================== */
 
-.slideshow-wrapper {
+.container {
   position: fixed;
   inset: 0;
-  background-color: var(--soft);
-  box-sizing: border-box;
-
   display: grid;
-
-  /* Define the layout with named areas */
-  grid-template-areas:
-    'artist-title .    page-title'
-    'prev-arrow   image  next-arrow'
-    'return-arrow .    info-box';
-
-  /* Define the size of the tracks for our named areas */
+  /* Columns: Side gutters are wider, center takes remaining space */
   grid-template-columns: 200px 1fr 200px;
+  /* Rows: Top/bottom size to content, middle takes remaining space */
   grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'logo . category'
+    'prev-arrow slideshow next-arrow'
+    'return-arrow . description';
+  background-color: var(--soft);
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-.slideshow-wrapper div {
-  border: solid 4px red;
+/* --- Assigning elements to their grid areas --- */
+.logo {
+  grid-area: logo;
+}
+.category {
+  grid-area: category;
+}
+.prev-arrow {
+  grid-area: prev-arrow;
+}
+.slideshow {
+  grid-area: slideshow;
+}
+.next-arrow {
+  grid-area: next-arrow;
+}
+.return-arrow {
+  grid-area: return-arrow;
+}
+.description {
+  grid-area: description;
 }
 
 /* ==========================================================================
-   Assigning Each Element to its Grid Area
+   Styling & Alignment for Individual Elements
    ========================================================================== */
 
-.slideshow-artist-title {
-  grid-area: artist-title;
+/* --- Top Left & Right Titles --- */
+.logo,
+.category {
   align-self: start;
-  justify-self: start;
   padding: 1rem;
-  font-family: var(--font-script);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  color: var(--ink);
+}
+.logo {
+  justify-self: start;
+}
+.category {
+  justify-self: end;
+}
+
+.logo p,
+.category p {
+  font-size: 1.5rem;
+  line-height: 1;
+  margin: 0;
   white-space: nowrap;
 }
-
-.slideshow-page-title {
-  grid-area: page-title;
-  align-self: start;
-  justify-self: end;
-  padding: 1rem;
+.logo p {
+  font-family: var(--font-script);
+}
+.category p {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 300;
-  color: var(--ink);
 }
 
-.slideshow {
-  grid-area: image;
-  position: relative; /* Keep for internal positioning of slides */
-  display: grid;
-  place-items: center;
-  /* Add min-height to prevent collapsing before image loads */
-  min-height: 0;
-}
-
-.previous {
-  grid-area: prev-arrow;
+/* --- Middle Left & Right Arrows --- */
+.prev-arrow,
+.next-arrow {
   align-self: center;
   justify-self: center;
 }
 
-.next {
-  grid-area: next-arrow;
-  align-self: center;
-  justify-self: center;
+.prev-arrow button,
+.next-arrow button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+/* Use ::before pseudo-element to create the arrow shape */
+.prev-arrow button::before,
+.next-arrow button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px; /* Size of the chevron */
+  height: 15px;
+  border-style: solid;
+  border-color: var(--ink-muted);
+  border-width: 2px 2px 0 0; /* Creates two sides of a square */
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+.prev-arrow button:hover::before,
+.next-arrow button:hover::before {
+  opacity: 1;
+}
+/* Rotate the square to form the chevron */
+.prev-arrow button::before {
+  transform: translate(-25%, -50%) rotate(-135deg);
+}
+.next-arrow button::before {
+  transform: translate(-75%, -50%) rotate(45deg);
 }
 
-.slideshow-return-link {
-  grid-area: return-arrow;
+/* --- Bottom Left Return Arrow --- */
+.return-arrow {
   align-self: end;
   justify-self: start;
   padding: 1rem;
 }
 
-.slideshow-infobox {
-  grid-area: info-box;
-  align-self: end;
-  justify-self: end;
-
-  border: 1px solid var(--ink-muted);
-  padding: 1.5rem;
-  margin: 1rem;
-  width: 250px;
-  box-sizing: border-box;
+.return-arrow img {
+  width: 40px;
+  height: auto;
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.return-arrow:hover img {
+  transform: translateX(-5px);
+  opacity: 1;
 }
 
-/* ==========================================================================
-   Styling for Individual Elements (No Layout Changes Here)
-   ========================================================================== */
-
+/* --- Central Slideshow Image --- */
+.slideshow {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0; /* Fix for grid sizing bug */
+}
 .slideshow img.slide {
-  grid-area: 1 / 1; /* Stack all images in the same cell */
+  grid-area: 1 / 1;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.prev-next.circle {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-}
-.prev-next.circle img {
-  opacity: 0.3;
-  transition: opacity var(--speed) var(--easing);
-}
-.prev-next.circle:hover img {
-  opacity: 0.8;
-}
-
-.slideshow-return-link img {
-  width: 50px;
-  height: auto;
-  opacity: 0.8;
-  transition: opacity var(--speed) var(--easing), transform var(--speed) var(--easing);
-}
-.slideshow-return-link:hover img {
-  opacity: 1;
-  transform: translateX(-5px);
-}
-
-.slideshow-infobox .caption p {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-  color: var(--ink);
-}
-
-.slideshow-infobox .description p {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--ink-muted);
-}
-
-/* --- Bottom Right: Caption & Description Box --- */
-.slideshow-infobox {
-  grid-area: info-box;
+/* --- Bottom Right Description Box --- */
+.description {
   align-self: end;
   justify-self: end;
-
   border: 1px solid var(--ink-muted);
   padding: 1.5rem;
   margin: 1rem;
   width: 250px;
   box-sizing: border-box;
-  z-index: 101;
-
-  /* Add this to prevent children from overflowing */
-  overflow: hidden;
 }
-
-.slideshow-infobox .caption p {
+.description #caption-text {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 1.1rem;
@@ -189,19 +188,12 @@ body.slideshow-active #dynamic-page-wrapper {
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
   color: var(--ink);
-
-  /* Add these properties to control long text */
-  word-wrap: break-word; /* Allows long words to break */
-  white-space: normal; /* Allows text to wrap naturally */
+  word-wrap: break-word;
 }
-
-.slideshow-infobox .description p {
+.description #description-text {
   font-family: var(--font-body);
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--ink-muted);
-
-  /* Add these properties to control long text */
-  word-wrap: break-word; /* Allows long words to break */
-  white-space: normal; /* Allows text to wrap naturally */
+  word-wrap: break-word;
 }

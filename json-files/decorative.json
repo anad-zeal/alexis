@@ -10,15 +10,11 @@
     "slideContainerClass": "slideshow",
     "previousButton": {
       "wrapperClass": "prev-arrow",
-      "buttonId": "prev-slide",
-      "imgSrc": "https://elzalive.com/assets/images/misc-images/prev.png",
-      "imgAlt": "Previous"
+      "buttonId": "prev-slide"
     },
     "nextButton": {
       "wrapperClass": "next-arrow",
-      "buttonId": "next-slide",
-      "imgSrc": "https://elzalive.com/assets/images/misc-images/next.png",
-      "imgAlt": "Next"
+      "buttonId": "next-slide"
     },
     "caption": {
       "paragraphId": "caption-text"
@@ -29,7 +25,7 @@
     "rtnArrow": {
       "wrapperClass": "return-arrow",
       "imgSrc": "https://elzalive.com/assets/images/misc-images/arrow-return.png",
-      "imgAlt": "Back to Home Page"
+      "imgAlt": "Return to previous page"
     }
   }
 }

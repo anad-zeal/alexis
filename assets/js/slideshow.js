@@ -1,7 +1,7 @@
 /**
  * Self-Contained Slideshow Component.
- * This script is loaded by the main router when a slideshow page is active.
- * It is responsible for fetching its own data, building its HTML, and handling all interactions.
+ * This script is responsible for ALL aspects of the slideshow.
+ * It fetches its own data, builds its HTML, and handles all interactions.
  */
 (async () => {
   const dynamicContentArea = document.getElementById("dynamic-content-area");
@@ -50,10 +50,7 @@
       div.className = btnData.wrapperClass;
       const button = document.createElement("button");
       button.id = btnData.buttonId;
-      const img = document.createElement("img");
-      img.src = btnData.imgSrc;
-      img.alt = btnData.imgAlt;
-      button.appendChild(img);
+      // No image added here, CSS will style the button
       div.appendChild(button);
       return div;
     };
@@ -223,4 +220,4 @@
     },
     { passive: true },
   );
-})(); // Immediately Invoked Function Expression (IIFE) to run the script
+})();

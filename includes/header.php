@@ -39,6 +39,7 @@ $life_title = "<h2 class='sub-title fade-title'>The Life of an Artist</h2>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,12 +52,15 @@ $life_title = "<h2 class='sub-title fade-title'>The Life of an Artist</h2>";
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/assets/css/style.css"/>
-    <!--<link rel="stylesheet" href="/assets/css/slideshow.css"/>-->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/slideshow.css" />
 </head>
+
 <body>
     <header class="site-header">
         <nav class="main-nav" aria-label="Primary">

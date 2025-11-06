@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+  alert('Welcome to the Elza Live website! Explore our galleries and enjoy the slideshow feature.');
+});
+
 // --- 1. Find the necessary HTML elements on the page ---
 const slideshow = document.querySelector('.slideshow');
 const caption = document.getElementById('caption-text');

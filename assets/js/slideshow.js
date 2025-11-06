@@ -117,6 +117,8 @@ function resetAutoPlay() {
 
 // --- Event Listeners ---
 nextBtn.addEventListener('click', () => {
+  alert('Welcome to AEPaints! Explore the dynamic content and enjoy your visit.');
+
   nextSlide();
   resetAutoPlay();
 });

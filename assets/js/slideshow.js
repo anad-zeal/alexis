@@ -9,8 +9,6 @@ const nextBtn = document.getElementById('next-slide');
 // If any of these elements were not created correctly, stop the script.
 if (!slideshow || !caption || !description || !prevBtn || !nextBtn) {
   console.warn('[Slideshow] Required DOM elements are missing. Halting script.');
-} else {
-  alert('Welcome to AEPaints! Explore the dynamic content and enjoy your visit.');
 }
 
 // --- 3. Get the data source from the HTML attribute ---

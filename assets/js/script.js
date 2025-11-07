@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  alert('Welcome to AEPaints! Explore the dynamic content and enjoy your visit.');
+  // alert('Welcome to AEPaints! Explore the dynamic content and enjoy your visit.');
   const body = document.body;
   const navLinks = document.querySelectorAll('.main-nav-menu .landing-mnu');
   const dynamicContentArea = document.getElementById('dynamic-content-area');

@@ -131,17 +131,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Core Navigation Logic & Event Listeners (No changes here) ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
-
-    // const url = `json-files/`+ pageName + `.json`;
-
-    // alert('PAGE NAMEs: ' + url );
-
+    alert('PAGE NAM: ' + pageName);
+    const url = `json-files/${pageName}.json`;
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      renderPageContent(data, url);
+      renderPageContent(data, pageName);
       navLinks.forEach((link) => link.classList.remove('is-active'));
       const activeLink = document.querySelector(`.main-nav-menu a[data-page="${pageName}"]`);
       if (activeLink) activeLink.classList.add('is-active');

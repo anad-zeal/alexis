@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  alert('Welcome to AEPaints! Explore the dynamic content and enjoy your visit.');
   const body = document.body;
   const navLinks = document.querySelectorAll('.main-nav-menu .landing-mnu');
   const dynamicContentArea = document.getElementById('dynamic-content-area');
@@ -165,7 +166,15 @@ document.addEventListener('DOMContentLoaded', () => {
     descriptionBox.className = 'description';
     descriptionBox.innerHTML = `<p id="${template.caption.paragraphId}"></p><p id="${template.description.paragraphId}"></p>`;
 
-    wrapper.append(logoDiv, categoryDiv, prevButton, slideContainer, nextButton, returnArrowDiv, descriptionBox);
+    wrapper.append(
+      logoDiv,
+      categoryDiv,
+      prevButton,
+      slideContainer,
+      nextButton,
+      returnArrowDiv,
+      descriptionBox
+    );
 
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(wrapper);
@@ -175,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof initSlideshow === 'function') {
           initSlideshow();
         } else {
-          console.error("Slideshow script loaded, but initSlideshow() function not found.");
+          console.error('Slideshow script loaded, but initSlideshow() function not found.');
         }
       });
     }
@@ -237,11 +246,11 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
       // Use event.currentTarget to ensure we always get the <a> tag
-      const clickedLink = event.currentTarget; 
+      const clickedLink = event.currentTarget;
       const pageName = clickedLink.dataset.page;
 
       // Update active state
-      navLinks.forEach(lnk => lnk.classList.remove('is-active'));
+      navLinks.forEach((lnk) => lnk.classList.remove('is-active'));
       clickedLink.classList.add('is-active');
 
       if (pageName) {
@@ -251,7 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('popstate', (event) => {
-    const statePage = event.state ? event.state.page : window.location.pathname.substring(1) || 'home';
+    const statePage = event.state
+      ? event.state.page
+      : window.location.pathname.substring(1) || 'home';
     loadJsonContent(statePage, false);
   });
 

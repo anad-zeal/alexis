@@ -2,7 +2,7 @@
   "title": "Decorative",
   "slideshowTemplate": {
     "gallerySource": "decorative-painting-slides.json",
-    "scriptToLoad": "assets/js/slideshow.js",
+    "scriptToLoad": "/assets/js/slideshow.js",
     "wrapper": {
       "tag": "div",
       "class": "container"
@@ -10,11 +10,15 @@
     "slideContainerClass": "slideshow",
     "previousButton": {
       "wrapperClass": "prev-arrow",
-      "buttonId": "prev-slide"
+      "buttonId": "prev-slide",
+      "imgSrc": "/assets/images/misc-images/prev.png",
+      "imgAlt": "Previous Slide"
     },
     "nextButton": {
       "wrapperClass": "next-arrow",
-      "buttonId": "next-slide"
+      "buttonId": "next-slide",
+      "imgSrc": "/assets/images/misc-images/next.png",
+      "imgAlt": "Next Slide"
     },
     "caption": {
       "paragraphId": "caption-text"
@@ -24,8 +28,8 @@
     },
     "rtnArrow": {
       "wrapperClass": "return-arrow",
-      "imgSrc": "https://elzalive.com/assets/images/misc-images/arrow-return.png",
-      "imgAlt": "Return to previous page"
+      "imgSrc": "/assets/images/misc-images/arrow-return.png",
+      "imgAlt": "Return to Artworks"
     }
   }
 }

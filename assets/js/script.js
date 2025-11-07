@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dynamicContentArea = document.getElementById('dynamic-content-area');
   const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
 
+  alert('JS SCRIPT LOADED');
+
   // --- MODIFICATION #1: Added a 'callback' parameter and 'script.onload' ---
   function loadScript(path, callback) {
     const existingScript = document.querySelector(`script[src="${path}"]`);

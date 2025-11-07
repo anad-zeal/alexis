@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // const url = `json-files/`+ pageName + `.json`;
 
-    alert('PAGE NAMEs: ' + url );
+    // alert('PAGE NAMEs: ' + url );
 
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
     try {

@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
-  const navLinks = document.querySelectorAll(".main-nav-menu .landing-mnu");
-  const dynamicContentArea = document.getElementById("dynamic-content-area");
-  const dynamicPageWrapper = document.getElementById("dynamic-page-wrapper");
+  const navLinks = document.querySelectorAll('.main-nav-menu .landing-mnu');
+  const dynamicContentArea = document.getElementById('dynamic-content-area');
+  const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
 
   // --- MODIFICATION #1: Added a 'callback' parameter and 'script.onload' ---
   function loadScript(path, callback) {
@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (callback) callback();
       return;
     }
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src = path;
     script.defer = true;
-    script.setAttribute("data-dynamic-script", "true");
+    script.setAttribute('data-dynamic-script', 'true');
 
     // This is the crucial addition: only run the callback when the script is loaded.
     script.onload = () => {
@@ -26,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function cleanupDynamicScripts() {
-    const dynamicScripts = document.querySelectorAll(
-      '[data-dynamic-script="true"]',
-    );
+    const dynamicScripts = document.querySelectorAll('[data-dynamic-script="true"]');
     dynamicScripts.forEach((script) => script.remove());
   }
 
@@ -47,20 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const wrapper = document.createElement(template.wrapper.tag);
     wrapper.className = template.wrapper.class;
 
-    const logoDiv = document.createElement("div");
-    logoDiv.className = "logo";
-    logoDiv.innerHTML = "<p>The Life of an Artist</p>";
+    const logoDiv = document.createElement('div');
+    logoDiv.className = 'logo';
+    logoDiv.innerHTML = '<p>The Life of an Artist</p>';
 
-    const categoryDiv = document.createElement("div");
-    categoryDiv.className = "category";
+    const categoryDiv = document.createElement('div');
+    categoryDiv.className = 'category';
     categoryDiv.innerHTML = `<p>${pageTitle}</p>`;
 
-    const slideContainer = document.createElement("div");
+    const slideContainer = document.createElement('div');
     slideContainer.className = template.slideContainerClass;
-    slideContainer.setAttribute("data-gallery-source", template.gallerySource);
+    slideContainer.setAttribute('data-gallery-source', template.gallerySource);
 
     const createNavButton = (btnData) => {
-      const div = document.createElement("div");
+      const div = document.createElement('div');
       div.className = btnData.wrapperClass;
       div.innerHTML = `<button id="${btnData.buttonId}"><img src="${btnData.imgSrc}" alt="${btnData.imgAlt}"></button>`;
       return div;
@@ -68,12 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevButton = createNavButton(template.previousButton);
     const nextButton = createNavButton(template.nextButton);
 
-    const returnArrowDiv = document.createElement("div");
+    const returnArrowDiv = document.createElement('div');
     returnArrowDiv.className = template.rtnArrow.wrapperClass;
     returnArrowDiv.innerHTML = `<a href="/"><img src="${template.rtnArrow.imgSrc}" alt="${template.rtnArrow.imgAlt}"></a>`;
 
-    const descriptionBox = document.createElement("div");
-    descriptionBox.className = "description";
+    const descriptionBox = document.createElement('div');
+    descriptionBox.className = 'description';
     descriptionBox.innerHTML = `<p id="${template.caption.paragraphId}"></p><p id="${template.description.paragraphId}"></p>`;
 
     wrapper.append(
@@ -83,22 +81,20 @@ document.addEventListener("DOMContentLoaded", () => {
       slideContainer,
       nextButton,
       returnArrowDiv,
-      descriptionBox,
+      descriptionBox
     );
 
-    dynamicContentArea.innerHTML = "";
+    dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(wrapper);
 
     // --- MODIFICATION #2: Pass the initializer function as the callback ---
     if (template.scriptToLoad) {
       loadScript(template.scriptToLoad, () => {
         // This code will only run AFTER slideshow.js has fully loaded.
-        if (typeof initSlideshow === "function") {
+        if (typeof initSlideshow === 'function') {
           initSlideshow();
         } else {
-          console.error(
-            "Slideshow script loaded, but initSlideshow() function not found.",
-          );
+          console.error('Slideshow script loaded, but initSlideshow() function not found.');
         }
       });
     }
@@ -106,15 +102,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Main Page Controller (No changes here) ---
   function renderPageContent(data, pageName) {
-    const title =
-      data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
+    const title = data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
     document.title = `${title} | AEPaints`;
     if (data.slideshowTemplate) {
-      body.classList.add("slideshow-active");
+      body.classList.add('slideshow-active');
     } else {
-      body.classList.remove("slideshow-active");
+      body.classList.remove('slideshow-active');
     }
-    const heroTitleElement = document.querySelector(".hero .page-title");
+    const heroTitleElement = document.querySelector('.hero .page-title');
     if (heroTitleElement && !data.slideshowTemplate) {
       heroTitleElement.textContent = title;
     }
@@ -130,32 +125,25 @@ document.addEventListener("DOMContentLoaded", () => {
       dynamicContentArea.innerHTML = `<p>No content available for "${title}".</p>`;
     }
     dynamicContentArea.focus();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // --- Core Navigation Logic & Event Listeners (No changes here) ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
-    const url = `json-files/${pageName}.json`;
-    dynamicContentArea.innerHTML = "<p>Loading content...</p>";
+    const url = `/json-files/${pageName}.json`;
+    dynamicContentArea.innerHTML = '<p>Loading content...</p>';
     try {
       const response = await fetch(url);
-      if (!response.ok)
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       renderPageContent(data, pageName);
-      navLinks.forEach((link) => link.classList.remove("is-active"));
-      const activeLink = document.querySelector(
-        `.main-nav-menu a[data-page="${pageName}"]`,
-      );
-      if (activeLink) activeLink.classList.add("is-active");
+      navLinks.forEach((link) => link.classList.remove('is-active'));
+      const activeLink = document.querySelector(`.main-nav-menu a[data-page="${pageName}"]`);
+      if (activeLink) activeLink.classList.add('is-active');
       if (dynamicPageWrapper) dynamicPageWrapper.dataset.page = pageName;
       if (addToHistory) {
-        history.pushState(
-          { page: pageName },
-          data.title || pageName,
-          `/${pageName}`,
-        );
+        history.pushState({ page: pageName }, data.title || pageName, `/${pageName}`);
       }
     } catch (error) {
       console.error(`Error loading JSON file for ${pageName}:`, error);
@@ -164,29 +152,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   navLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
+    link.addEventListener('click', (event) => {
       event.preventDefault();
       const clickedLink = event.currentTarget;
       const pageName = clickedLink.dataset.page;
-      navLinks.forEach((lnk) => lnk.classList.remove("is-active"));
-      clickedLink.classList.add("is-active");
+      navLinks.forEach((lnk) => lnk.classList.remove('is-active'));
+      clickedLink.classList.add('is-active');
       if (pageName) loadJsonContent(pageName);
     });
   });
 
-  window.addEventListener("popstate", (event) => {
+  window.addEventListener('popstate', (event) => {
     const statePage = event.state
       ? event.state.page
-      : window.location.pathname.substring(1) || "home";
+      : window.location.pathname.substring(1) || 'home';
     loadJsonContent(statePage, false);
   });
 
-  const initialPage = window.location.pathname.substring(1) || "home";
+  const initialPage = window.location.pathname.substring(1) || 'home';
   loadJsonContent(initialPage, false).then(() => {
-    history.replaceState(
-      { page: initialPage },
-      document.title,
-      `/${initialPage}`,
-    );
+    history.replaceState({ page: initialPage }, document.title, `/${initialPage}`);
   });
 });

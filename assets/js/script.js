@@ -127,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.focus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   // --- Core Navigation Logic & Event Listeners (No changes here) ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();

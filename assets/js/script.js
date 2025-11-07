@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Core Navigation Logic & Event Listeners (No changes here) ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
-    alert('PAGE NAM: ' + pageName);
+    // alert('PAGE NAMR: ' + pageName);
     const url = `json-files/${pageName}.json`;
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
     try {

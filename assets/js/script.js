@@ -127,10 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicContentArea.focus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
   // --- Core Navigation Logic & Event Listeners (No changes here) ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
-    const url = `/json-files/decorative.json`;
+    const url = `json-files/${pageName}.json`;
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
     try {
       const response = await fetch(url);

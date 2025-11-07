@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      renderPageContent(data, pageName);
+      renderPageContent(data, url);
       navLinks.forEach((link) => link.classList.remove('is-active'));
       const activeLink = document.querySelector(`.main-nav-menu a[data-page="${pageName}"]`);
       if (activeLink) activeLink.classList.add('is-active');

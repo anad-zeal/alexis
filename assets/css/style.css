@@ -354,9 +354,9 @@ h3.title {
   /* transition: transform var(--speed) var(--easing); */
 }
 
-.img-home:hover {
+/* .img-home:hover {
   transform: scale(1.05);
-}
+} */
 
 .site-footer p {
   text-align: center;

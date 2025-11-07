@@ -4,12 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dynamicContentArea = document.getElementById('dynamic-content-area');
   const dynamicPageWrapper = document.getElementById('dynamic-page-wrapper');
 
-  alert('JS SCRIPT LOADED');
-
-  // --- MODIFICATION #1: Added a 'callback' parameter and 'script.onload' ---
   function loadScript(path, callback) {
     const existingScript = document.querySelector(`script[src="${path}"]`);
-    // If script exists, just run the callback immediately.
     if (existingScript) {
       if (callback) callback();
       return;
@@ -18,12 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     script.src = path;
     script.defer = true;
     script.setAttribute('data-dynamic-script', 'true');
-
-    // This is the crucial addition: only run the callback when the script is loaded.
     script.onload = () => {
       if (callback) callback();
     };
-
     document.body.appendChild(script);
   }
 
@@ -32,15 +25,111 @@ document.addEventListener('DOMContentLoaded', () => {
     dynamicScripts.forEach((script) => script.remove());
   }
 
-  // --- HTML Rendering Functions (No changes here) ---
+  // --- HTML Rendering Functions ---
+
   function renderCardGrid(cardGrid) {
-    /* ...unchanged... */
+    const sectionWrapper = document.createElement('section');
+    sectionWrapper.className = 'card-grid';
+    cardGrid.forEach((item) => {
+      const card = document.createElement('div');
+      card.className = item.type;
+      const content = item.content;
+      const cardContent = document.createElement('div');
+      cardContent.className = content.type;
+      if (content.class) {
+        cardContent.classList.add(...content.class.split(' '));
+      }
+      if (content.link) {
+        const linkElement = document.createElement('a');
+        linkElement.href = content.link.href;
+        linkElement.textContent = content.link.text;
+        linkElement.className = content.link.class;
+        linkElement.setAttribute('data-gallery', content.link.dataGallery);
+        linkElement.setAttribute('aria-label', content.link.ariaLabel);
+        cardContent.appendChild(linkElement);
+      }
+      if (content.paragraph) {
+        if (typeof content.paragraph === 'object' && content.paragraph.type === 'image') {
+          const img = document.createElement('img');
+          img.src = content.paragraph.src;
+          img.className = content.paragraph.class;
+          img.alt = '';
+          cardContent.appendChild(img);
+        } else {
+          const p = document.createElement('p');
+          p.textContent = content.paragraph;
+          cardContent.appendChild(p);
+        }
+      }
+      card.appendChild(cardContent);
+      sectionWrapper.appendChild(card);
+    });
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(sectionWrapper);
   }
+
   function renderContentSection(sectionData) {
-    /* ...unchanged... */
+    const wrapperElement = document.createElement(sectionData.tag);
+    for (const key in sectionData.attributes) {
+      wrapperElement.setAttribute(key, sectionData.attributes[key]);
+    }
+    sectionData.paragraphs.forEach((pText) => {
+      const p = document.createElement('p');
+      p.textContent = pText;
+      wrapperElement.appendChild(p);
+    });
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(wrapperElement);
   }
+
   function renderContactForm(formData) {
-    /* ...unchanged... */
+    const sectionWrapper = document.createElement(formData.wrapper.tag);
+    for (const key in formData.wrapper.attributes) {
+      sectionWrapper.setAttribute(key, formData.wrapper.attributes[key]);
+    }
+    const formWrapper = document.createElement('div');
+    formWrapper.className = 'contact-form-wrapper';
+    const formElement = document.createElement('form');
+    for (const key in formData.form.attributes) {
+      formElement.setAttribute(key, formData.form.attributes[key]);
+    }
+    formData.fields.forEach((field) => {
+      const fieldContainer = document.createElement('div');
+      fieldContainer.className = 'ccfield-prepend';
+      if (field.type === 'submit') {
+        const submitInput = document.createElement('input');
+        submitInput.className = 'ccbtn';
+        submitInput.type = 'submit';
+        submitInput.value = field.value;
+        fieldContainer.appendChild(submitInput);
+      } else {
+        const addon = document.createElement('span');
+        addon.className = 'ccform-addon';
+        const icon = document.createElement('i');
+        icon.className = `fa ${field.icon} fa-2x`;
+        addon.appendChild(icon);
+        let inputElement =
+          field.type === 'textarea'
+            ? document.createElement('textarea')
+            : document.createElement('input');
+        if (field.type === 'textarea') {
+          inputElement.name = field.name;
+          inputElement.rows = field.rows;
+        } else {
+          inputElement.type = field.type;
+        }
+        inputElement.className = 'ccformfield';
+        inputElement.placeholder = field.placeholder;
+        if (field.required) inputElement.required = true;
+        fieldContainer.appendChild(addon);
+        fieldContainer.appendChild(inputElement);
+      }
+      formElement.appendChild(fieldContainer);
+    });
+    formWrapper.appendChild(formElement);
+    sectionWrapper.appendChild(formWrapper);
+    dynamicContentArea.innerHTML = '';
+    dynamicContentArea.appendChild(sectionWrapper);
   }
 
   function renderSlideshow(template, pageName, pageTitle) {
@@ -70,39 +159,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const returnArrowDiv = document.createElement('div');
     returnArrowDiv.className = template.rtnArrow.wrapperClass;
-    returnArrowDiv.innerHTML = `<a href="/"><img src="${template.rtnArrow.imgSrc}" alt="${template.rtnArrow.imgAlt}"></a>`;
+    returnArrowDiv.innerHTML = `<a href="/artworks"><img src="${template.rtnArrow.imgSrc}" alt="${template.rtnArrow.imgAlt}"></a>`;
 
     const descriptionBox = document.createElement('div');
     descriptionBox.className = 'description';
     descriptionBox.innerHTML = `<p id="${template.caption.paragraphId}"></p><p id="${template.description.paragraphId}"></p>`;
 
-    wrapper.append(
-      logoDiv,
-      categoryDiv,
-      prevButton,
-      slideContainer,
-      nextButton,
-      returnArrowDiv,
-      descriptionBox
-    );
+    wrapper.append(logoDiv, categoryDiv, prevButton, slideContainer, nextButton, returnArrowDiv, descriptionBox);
 
     dynamicContentArea.innerHTML = '';
     dynamicContentArea.appendChild(wrapper);
 
-    // --- MODIFICATION #2: Pass the initializer function as the callback ---
     if (template.scriptToLoad) {
       loadScript(template.scriptToLoad, () => {
-        // This code will only run AFTER slideshow.js has fully loaded.
         if (typeof initSlideshow === 'function') {
           initSlideshow();
         } else {
-          console.error('Slideshow script loaded, but initSlideshow() function not found.');
+          console.error("Slideshow script loaded, but initSlideshow() function not found.");
         }
       });
     }
   }
 
-  // --- Main Page Controller (No changes here) ---
+  // --- Main Page Controller ---
   function renderPageContent(data, pageName) {
     const title = data.title || pageName.charAt(0).toUpperCase() + pageName.slice(1);
     document.title = `${title} | AEPaints`;
@@ -130,11 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // --- Core Navigation Logic & Event Listeners (No changes here) ---
+  // --- Core Navigation Logic ---
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
-    // alert('PAGE NAMR: ' + pageName);
-    const url = `json-files/${pageName}.json`;
+    const url = `/json-files/${pageName}.json`;
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
     try {
       const response = await fetch(url);
@@ -154,21 +232,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // --- Event Listeners and Initial Load ---
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
-      const clickedLink = event.currentTarget;
+      // Use event.currentTarget to ensure we always get the <a> tag
+      const clickedLink = event.currentTarget; 
       const pageName = clickedLink.dataset.page;
-      navLinks.forEach((lnk) => lnk.classList.remove('is-active'));
+
+      // Update active state
+      navLinks.forEach(lnk => lnk.classList.remove('is-active'));
       clickedLink.classList.add('is-active');
-      if (pageName) loadJsonContent(pageName);
+
+      if (pageName) {
+        loadJsonContent(pageName);
+      }
     });
   });
 
   window.addEventListener('popstate', (event) => {
-    const statePage = event.state
-      ? event.state.page
-      : window.location.pathname.substring(1) || 'home';
+    const statePage = event.state ? event.state.page : window.location.pathname.substring(1) || 'home';
     loadJsonContent(statePage, false);
   });
 

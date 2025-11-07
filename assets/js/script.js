@@ -132,9 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadJsonContent(pageName, addToHistory = true) {
     cleanupDynamicScripts();
 
-    alert('PAGE NAMR: ' + pageName);
+    
 
     const url = `json-files/`+ pageName + `.json`;
+
+    alert('PAGE NAMR: ' + url );
+
     dynamicContentArea.innerHTML = '<p>Loading content...</p>';
     try {
       const response = await fetch(url);

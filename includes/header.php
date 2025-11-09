@@ -35,7 +35,7 @@ function nav_item(string $slug, string $label, string $href): string
 }
 
 // Optional dynamic center title
-$life_title = "<h2 class='sub-title fade-title'>The Life of an Artist</h2>";
+$life_title = "<h2 class='sub-title fade-title'>The Life sof an Artist</h2>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

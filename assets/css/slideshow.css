@@ -1,22 +1,17 @@
-/* ==========================================================================
-   Slideshow View Activation
-   - Hides standard page elements for the immersive "app mode".
-   ========================================================================== */
-
 body.slideshow-active .site-header,
 body.slideshow-active .hero,
 body.slideshow-active .site-footer {
-  display: none !important;
+    display: none !important;
 }
 
 body.slideshow-active main,
 body.slideshow-active #dynamic-content-area,
 body.slideshow-active #dynamic-page-wrapper {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
 }
 
 /* ==========================================================================
@@ -24,43 +19,42 @@ body.slideshow-active #dynamic-page-wrapper {
    ========================================================================== */
 
 .container {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  /* Columns: Side gutters are wider, center takes remaining space */
-  grid-template-columns: 200px 1fr 200px;
-  /* Rows: Top/bottom size to content, middle takes remaining space */
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    'logo . category'
-    'prev-arrow slideshow next-arrow'
-    'return-arrow . description';
-  background-color: var(--soft);
-  padding: 1rem;
-  box-sizing: border-box;
+    position: fixed;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 4vw 90vw 4vw;
+    grid-template-rows: 7vh 80vh 3vh;
+    grid-template-areas:
+        "logo . category"
+        "prev-arrow slideshow next-arrow"
+        "return-arrow . description";
+    background-color: var(--soft);
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 /* --- Assigning elements to their grid areas --- */
 .logo {
-  grid-area: logo;
+    grid-area: logo;
 }
 .category {
-  grid-area: category;
+    grid-area: category;
 }
 .prev-arrow {
-  grid-area: prev-arrow;
+    grid-area: prev-arrow;
 }
 .slideshow {
-  grid-area: slideshow;
+    grid-area: slideshow;
 }
 .next-arrow {
-  grid-area: next-arrow;
+    grid-area: next-arrow;
 }
 .return-arrow {
-  grid-area: return-arrow;
+    grid-area: return-arrow;
 }
 .description {
-  grid-area: description;
+    grid-area: description;
+    background-color: #fff;
 }
 
 /* ==========================================================================
@@ -68,238 +62,200 @@ body.slideshow-active #dynamic-page-wrapper {
    ========================================================================== */
 
 /* --- Top Left & Right Titles --- */
-.logo,
-.category {
-  align-self: start;
-  padding: 1rem;
-}
+
 .logo {
-  justify-self: start;
+    justify-self: start;
 }
 .category {
-  justify-self: end;
+    justify-self: end;
 }
 
 .logo p,
 .category p {
-  line-height: 1;
-  margin: 0;
-  white-space: nowrap;
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap;
 }
 .logo p {
-  font-family: var(--font-script);
-  font-size: 3rem;
+    font-family: var(--font-script);
+    font-size: 3rem;
 }
 .category p {
-  font-family: var(--font-display);
+    font-family: var(--font-display);
+    font-size: 2rem;
 }
 
 /* --- Middle Left & Right Arrows --- */
 .prev-arrow,
 .next-arrow {
-  align-self: center;
-  justify-self: center;
+    align-self: center;
+    justify-self: center;
 }
 
 .prev-arrow button,
 .next-arrow button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 50px;
-  height: 50px;
-  position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    position: relative;
 }
 /* Use ::before pseudo-element to create the arrow shape */
-.prev-arrow button::before,
+/*.prev-arrow button::before,
 .next-arrow button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 15px; /* Size of the chevron */
-  height: 15px;
-  border-style: solid;
-  border-color: var(--ink-muted);
-  border-width: 2px 2px 0 0; /* Creates two sides of a square */
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-style: solid;
+    border-color: var(--ink-muted);
+    border-width: 2px 2px 0 0;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}*/
 .prev-arrow button:hover::before,
 .next-arrow button:hover::before {
-  opacity: 1;
+    opacity: 1;
 }
 /* Rotate the square to form the chevron */
 .prev-arrow button::before {
-  transform: translate(-25%, -50%) rotate(-135deg);
+    transform: translate(-25%, -50%) rotate(-135deg);
 }
 .next-arrow button::before {
-  transform: translate(-75%, -50%) rotate(45deg);
+    transform: translate(-75%, -50%) rotate(45deg);
 }
 
 /* --- Bottom Left Return Arrow --- */
 .return-arrow {
-  align-self: end;
-  justify-self: start;
-  padding: 1rem;
+    align-self: end;
+    justify-self: start;
+    padding: 1rem;
 }
 
 .return-arrow img {
-  width: 40px;
-  height: auto;
-  opacity: 0.8;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+    width: 40px;
+    height: auto;
+    opacity: 0.8;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 .return-arrow:hover img {
-  transform: translateX(-5px);
-  opacity: 1;
+    transform: translateX(-5px);
+    opacity: 1;
 }
 
 /* --- Central Slideshow Image --- */
 .slideshow {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 0; /* Fix for grid sizing bug */
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 0; /* Fix for grid sizing bug */
 }
 .slideshow img.slide {
-  grid-area: 1 / 1;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* --- Bottom Right Description Box --- */
 .description {
-  align-self: end;
-  justify-self: end;
-  border: 1px solid var(--ink-muted);
-  padding: 1.5rem;
-  margin: 1rem;
-  width: 250px;
-  box-sizing: border-box;
+    position: relative;
+    left: -2vw;
+    top: 2rem;
+    align-self: end;
+    justify-self: end;
+    border: 1px solid var(--ink-muted);
+    padding: 1.5rem;
+    /*margin: 1rem;*/
+    width: 250px;
+    box-sizing: border-box;
+    z-index: 99;
 }
 .description #caption-text {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-  color: var(--ink);
-  word-wrap: break-word;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    color: var(--ink);
+    word-wrap: break-word;
 }
 .description #description-text {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--ink-muted);
-  word-wrap: break-word;
-}
-
-/* --- Slideshow Page Specific Styles --- */
-
-/* This activates the grid layout for the slideshow page */
-body.slideshow-active .container {
-  display: grid;
-  height: 100vh; /* Make the container fill the screen height */
-  grid-template-columns: 100px 1fr 100px; /* Side columns for arrows, center for image */
-  grid-template-rows: 100px 1fr 150px; /* Rows for header, image, and description */
-  grid-template-areas:
-    'logo . category'
-    'prev slideshow next'
-    'return description .';
-  gap: 15px;
-  padding: 20px;
-  box-sizing: border-box; /* Ensures padding doesn't add to the size */
-}
-
-/* Assign each element to its named grid area */
-.logo {
-  grid-area: logo;
-}
-.category {
-  grid-area: category;
-  text-align: right;
-}
-.prev-arrow {
-  grid-area: prev;
-}
-.slideshow {
-  grid-area: slideshow;
-}
-.next-arrow {
-  grid-area: next;
-}
-.return-arrow {
-  grid-area: return;
-}
-.description {
-  grid-area: description;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    word-wrap: break-word;
 }
 
 /* Styling for the main slideshow area */
 .slideshow {
-  position: relative; /* Crucial for positioning the slides inside it */
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Hide parts of images that are too big */
-  background-color: #f0f0f0; /* A light grey background to show the area is there */
+    position: relative; /* Crucial for positioning the slides inside it */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide parts of images that are too big */
+    /*background-color: #f0f0f0;  A light grey background to show the area is there */
 }
 
 /* Styling for each individual slide (image) */
 .slide {
-  position: absolute; /* This makes all slides stack on top of each other */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ensures the whole image is visible without stretching */
+    position: absolute; /* This makes all slides stack on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the whole image is visible without stretching */
 }
 
 /* Styling for the navigation buttons to center them */
 .prev-arrow,
 .next-arrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .prev-arrow button,
 .next-arrow button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
 }
 
 .prev-arrow img,
 .next-arrow img {
-  width: 50px; /* Adjust size as needed */
-  opacity: 0.7;
-  transition: opacity 0.3s;
+    width: 50px; /* Adjust size as needed */
+    opacity: 0.7;
+    transition: opacity 0.3s;
 }
 
 .prev-arrow img:hover,
 .next-arrow img:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Styling for the description box */
 .description {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow-y: auto; /* Add a scrollbar if text is too long */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-y: auto; /* Add a scrollbar if text is too long */
 }
 
 .description #caption-text {
-  font-weight: bold;
-  font-size: 1.2em;
-  margin: 0 0 10px 0;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
 }
 
 .description #description-text {
-  margin: 0;
+    margin: 0;
 }

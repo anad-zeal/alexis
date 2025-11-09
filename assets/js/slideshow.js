@@ -5,17 +5,17 @@
  */
 
 function initSlideshow() {
-  // --- 1. Find the necessary HTML elements on the w ---
-  const slideshow = document.querySelector('.slideshow');
-  const caption = document.getElementById('caption-text');
-  const description = document.getElementById('description-text');
-  const prevBtn = document.getElementById('prev-slide');
-  const nextBtn = document.getElementById('next-slide');
+  // --- 1. Find the necessary HTML elements on the page ---
+  const slideshow = document.querySelector(".slideshow");
+  const caption = document.getElementById("caption-text");
+  const description = document.getElementById("description-text");
+  const prevBtn = document.getElementById("prev-slide");
+  const nextBtn = document.getElementById("next-slide");
 
   // --- 2. Safety Check (Guard Clause) ---
   if (!slideshow || !caption || !description || !prevBtn || !nextBtn) {
     console.warn(
-      '[Slideshow] Required DOM elements are missing. Halting component initialization.'
+      "[Slideshow] Required DOM elements are missing. Halting component initialization.",
     );
     return; // Stop execution if the HTML isn't ready.
   }
@@ -44,47 +44,49 @@ function initSlideshow() {
     .then((data) => {
       slides = data;
       if (!Array.isArray(slides) || !slides.length) {
-        console.warn('⚠️ No slides found in the JSON data file.');
+        console.warn("⚠️ No slides found in the JSON data file.");
         return;
       }
       createSlides();
       fadeInFirstSlide();
     })
-    .catch((error) => console.error(`[Slideshow] Error loading ${fetchUrl}:`, error));
+    .catch((error) =>
+      console.error(`[Slideshow] Error loading ${fetchUrl}:`, error),
+    );
 
   // --- Helper Functions for the Slideshow ---
 
   function createSlides() {
     slides.forEach(({ src }) => {
-      const img = document.createElement('img');
+      const img = document.createElement("img");
       img.src = src;
-      img.className = 'slide';
+      img.className = "slide";
       Object.assign(img.style, {
         opacity: 0,
-        transition: 'opacity 1.5s ease-in-out',
+        transition: "opacity 1.5s ease-in-out",
       });
       slideshow.appendChild(img);
     });
   }
 
   function fadeInFirstSlide() {
-    const firstSlide = document.querySelector('.slide');
+    const firstSlide = document.querySelector(".slide");
     if (!firstSlide) return;
     setTimeout(() => {
       firstSlide.style.opacity = 1;
-      caption.textContent = slides[0].caption || '';
-      description.textContent = slides[0].description || '';
+      caption.textContent = slides[0].caption || "";
+      description.textContent = slides[0].description || "";
     }, 50);
     setTimeout(startAutoPlay, 2000);
   }
 
   function showSlide(index) {
-    const slidesDOM = document.querySelectorAll('.slide');
+    const slidesDOM = document.querySelectorAll(".slide");
     if (!slidesDOM.length || index < 0 || index >= slides.length) return;
     slidesDOM.forEach((img) => (img.style.opacity = 0));
     slidesDOM[index].style.opacity = 1;
-    caption.textContent = slides[index].caption || '';
-    description.textContent = slides[index].description || '';
+    caption.textContent = slides[index].caption || "";
+    description.textContent = slides[index].description || "";
     current = index;
   }
 
@@ -110,36 +112,36 @@ function initSlideshow() {
   }
 
   // --- Event Listeners ---
-  nextBtn.addEventListener('click', () => {
+  nextBtn.addEventListener("click", () => {
     nextSlide();
     resetAutoPlay();
   });
-  prevBtn.addEventListener('click', () => {
+  prevBtn.addEventListener("click", () => {
     prevSlideFunc();
     resetAutoPlay();
   });
-  slideshow.addEventListener('mouseenter', () => {
+  slideshow.addEventListener("mouseenter", () => {
     isPausedByHoverOrTouch = true;
     pauseAutoPlay();
   });
-  slideshow.addEventListener('mouseleave', () => {
+  slideshow.addEventListener("mouseleave", () => {
     isPausedByHoverOrTouch = false;
     resumeAutoPlay();
   });
   slideshow.addEventListener(
-    'touchstart',
+    "touchstart",
     () => {
       isPausedByHoverOrTouch = true;
       pauseAutoPlay();
     },
-    { passive: true }
+    { passive: true },
   );
   slideshow.addEventListener(
-    'touchend',
+    "touchend",
     () => {
       isPausedByHoverOrTouch = false;
       resumeAutoPlay();
     },
-    { passive: true }
+    { passive: true },
   );
 }

@@ -14,7 +14,7 @@ $scheme = $https ? "https" : "http";
 $canonicalPath = "/" . ltrim($active_page, "/");
 $canonicalUrl = sprintf("%s://%s%s", $scheme, $host, $canonicalPath);
 
-// Helper for nav items
+// Helper for nav items ???
 function nav_item(string $slug, string $label, string $href): string
 {
     global $active_page;

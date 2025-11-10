@@ -1,13 +1,13 @@
 {
-  "title": "Historic Preservation",
+  "title": "Projects Slideshow",
   "slideshowTemplate": {
-    "gallerySource": "historic-preservation-slides.json",
+    "gallerySource": "projects-slideshow.json",
     "scriptToLoad": "/assets/js/slideshow.js",
     "wrapper": {
       "tag": "div",
       "class": "container",
       "role": "region",
-      "aria-label": "Historic Preservation Slideshow"
+      "aria-label": "Project Series Slideshow"
     }
   }
 }

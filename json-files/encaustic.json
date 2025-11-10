@@ -1,7 +1,7 @@
 {
   "title": "Drip Series",
   "slideshowTemplate": {
-    "gallerySource": "drip-series-slideshow.json",
+    "gallerySource": "drip-series.json",
     "scriptToLoad": "/assets/js/slideshow.js",
     "wrapper": {
       "tag": "div",

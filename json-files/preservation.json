@@ -8,12 +8,6 @@
       "class": "container",
       "role": "region",
       "aria-label": "Historic Preservation Slideshow"
-    },
-    "slideContainerClass": "slideshow",
-    "autoplay": false,
-    "transitionSpeed": 4000,
-    "keyboardControls": true,
-    "captionId": "caption-text",
-    "descriptionId": "description-text"
+    }
   }
 }

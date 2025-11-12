@@ -40,19 +40,19 @@
     },
     "drip-series-paintings": {
       "type": "slideshow",
-      "title": "Drip Series",
+      "title": "Drip Series Paintings",
       "gallerySource": "drip-series-slideshow.json",
       "ariaLabel": "Drip Series Paintings Slideshow"
     },
     "black-and-white-paintings": {
       "type": "slideshow",
-      "title": "Black and White",
+      "title": "Black and White Paintings",
       "gallerySource": "black-and-white-slideshow.json",
       "ariaLabel": "Black and White Paintings Slideshow"
     },
     "project-series-paintings": {
       "type": "slideshow",
-      "title": "Project Series",
+      "title": "Project Series Paintings",
       "gallerySource": "projects-slideshow.json",
       "ariaLabel": "Project Series Paintings Slideshow"
     },

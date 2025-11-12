@@ -35,25 +35,25 @@
     "encaustic-paintings": {
       "type": "slideshow",
       "title": "Encaustic Paintings",
-      "gallerySource": "encaustic-paintings.json",
+      "gallerySource": "encaustic-slideshow.json",
       "ariaLabel": "Encaustic Paintings Slideshow"
     },
     "drip-series-paintings": {
       "type": "slideshow",
       "title": "Drip Series",
-      "gallerySource": "drip-series-paintings.json",
+      "gallerySource": "drip-series-slideshow..json",
       "ariaLabel": "Drip Series Paintings Slideshow"
     },
     "black-and-white-paintings": {
       "type": "slideshow",
       "title": "Black and White",
-      "gallerySource": "black-and-white-paintings.json",
+      "gallerySource": "drip-series-slideshow.json",
       "ariaLabel": "Black and White Paintings Slideshow"
     },
     "project-series-paintings": {
       "type": "slideshow",
       "title": "Project Series",
-      "gallerySource": "project-series-paintings.json",
+      "gallerySource": "drip-series-slideshow.json",
       "ariaLabel": "Project Series Paintings Slideshow"
     },
     "home": {

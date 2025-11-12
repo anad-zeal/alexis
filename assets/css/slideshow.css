@@ -102,21 +102,7 @@ body.slideshow-active #dynamic-page-wrapper {
   height: 50px;
   position: relative;
 }
-/* Use ::before pseudo-element to create the arrow shape */
-/*.prev-arrow button::before,
-.next-arrow button::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 15px;
-    height: 15px;
-    border-style: solid;
-    border-color: var(--ink-muted);
-    border-width: 2px 2px 0 0;
-    opacity: 0.4;
-    transition: opacity 0.3s ease;
-}*/
+
 .prev-arrow button:hover::before,
 .next-arrow button:hover::before {
   opacity: 1;
@@ -162,7 +148,6 @@ body.slideshow-active #dynamic-page-wrapper {
   width: 100%;
   height: 100%;
   object-fit: contain;
-
   border: solid 1px saddlebrown;
   padding: 2px;
 

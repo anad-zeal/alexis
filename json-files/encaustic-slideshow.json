@@ -19,6 +19,15 @@
   },
   {
     "id": "encaustic-3",
+    "title": "Close Encounter",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/close-encounter.jpg",
+    "caption": "Close Encounter",
+    "description": "Description for Close Encounter",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-3",
     "title": "Dark Side Of The Moon",
     "src": "https://elzalive.com/assets/images/encaustic-paintings/dark-side-of-the-moon.jpg",
     "caption": "Dark Side Of The Moon",

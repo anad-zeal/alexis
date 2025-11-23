@@ -19,7 +19,6 @@ body.slideshow-active #dynamic-page-wrapper {
    ========================================================================== */
 
 .container {
-  display: none !important;
   position: fixed;
   inset: 0;
   display: grid;

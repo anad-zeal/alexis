@@ -15,10 +15,11 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 /* ==========================================================================
-   Main Slideshow Grid Layout (To Match Your Design)
+   Main Slideshow Grid Layout
    ========================================================================== */
 
 .container {
+  display: none;
   position: fixed;
   inset: 0;
   display: grid;

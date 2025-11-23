@@ -1,10 +1,55 @@
 [
   {
     "id": "bw-1",
+    "title": "NM",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/NM.jpg",
+    "caption": "NM",
+    "description": "Description for NM",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-2",
+    "title": "Serengeti",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/Serengeti.jpg",
+    "caption": "Serengeti",
+    "description": "Description for Serengeti",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-3",
+    "title": "Tsunami",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/Tsunami.jpg",
+    "caption": "Tsunami",
+    "description": "Description for Tsunami",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-1",
     "title": "Close-Encounter",
     "src": "https://elzalive.com/assets/images/black-and-white-paintings/close-encounter.jpg",
     "caption": "Close Encounter",
     "description": "Charcoal and graphite study of light and shadow in urban architecture"
+  },
+  {
+    "id": "bw-5",
+    "title": "Earth, Wind And Fire",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/earth,-wind-and-fire.jpg",
+    "caption": "Earth, Wind And Fire",
+    "description": "Description for Earth, Wind And Fire",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-6",
+    "title": "Evidence Of An Iron Horse 2",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/evidence-of-an-iron-horse-2.jpg",
+    "caption": "Evidence Of An Iron Horse 2",
+    "description": "Description for Evidence Of An Iron Horse 2",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   },
   {
     "id": "bw-2",
@@ -17,6 +62,15 @@
     "year": 2022
   },
   {
+    "id": "bw-8",
+    "title": "Green Pond",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/green-pond.jpg",
+    "caption": "Green Pond",
+    "description": "Description for Green Pond",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
     "id": "bw-3",
     "title": "How-I-Imagine-Minnesota",
     "src": "https://elzalive.com/assets/images/black-and-white-paintings/how-i-imagine-minnesota.jpg",
@@ -25,6 +79,33 @@
     "medium": "Acrylic on canvas",
     "dimensions": "30\" x 40\"",
     "year": 2023
+  },
+  {
+    "id": "bw-10",
+    "title": "Low Tide Somasian Shore",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/low-tide-somasian-shore.jpg",
+    "caption": "Low Tide Somasian Shore",
+    "description": "Description for Low Tide Somasian Shore",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-11",
+    "title": "North By Northwest",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/north-by-northwest.jpg",
+    "caption": "North By Northwest",
+    "description": "Description for North By Northwest",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "bw-12",
+    "title": "Spartobranchus Tenuis",
+    "src": "https://elzalive.com/assets/images/black-and-white-paintings/spartobranchus-tenuis.jpg",
+    "caption": "Spartobranchus Tenuis",
+    "description": "Description for Spartobranchus Tenuis",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   },
   {
     "id": "bw-4",

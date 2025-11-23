@@ -1,147 +1,90 @@
 /**
- * Slideshow Component Logic.
- * This script DEFINES the slideshow functionality but does not run it
- * until it is explicitly initialized by the main application router.
+ * assets/js/slideshow.js
+ * Handles logic for the specific slideshow view
  */
 
+// Global function called by script.js when the view is loaded
 function initSlideshow() {
-  // --- 1. Find the necessary HTML elements on the page ---
-  const slideshow = document.querySelector(".slideshow");
-  const caption = document.getElementById("caption-text");
-  const description = document.getElementById("description-text");
-  const prevBtn = document.getElementById("prev-slide");
-  const nextBtn = document.getElementById("next-slide");
+  const slideContainer = document.querySelector('.slideshow');
+  const captionEl = document.getElementById('caption-text');
+  const descEl = document.getElementById('description-text');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
 
-  // --- 2. Safety Check (Guard Clause) ---
-  if (!slideshow || !caption || !description || !prevBtn || !nextBtn) {
-    console.warn(
-      "[Slideshow] Required DOM elements are missing. Halting component initialization.",
-    );
-    return; // Stop execution if the HTML isn't ready.
-  }
+  if (!slideContainer) return; // Guard clause
 
-  // --- 3. Get the data source from the HTML attribute ---
-  const gallerySource = slideshow.dataset.gallerySource;
-  if (!gallerySource) {
-    console.error("Slideshow is missing a 'data-gallery-source' attribute!");
-    return;
-  }
-
-  const fetchUrl = `/json-files/${gallerySource}`; // Assuming your data files are in /json-files/
-
-  // --- 4. Initialize State Variables ---
+  const jsonSource = slideContainer.getAttribute('data-gallery-source');
   let slides = [];
-  let current = 0;
-  let timer;
-  let isPausedByHoverOrTouch = false;
+  let currentIndex = 0;
+  let autoPlayInterval;
 
-  // --- 5. Fetch the slide data and start the show ---
-  fetch(fetchUrl)
+  // 1. Fetch the Gallery JSON
+  fetch(`/json-files/${jsonSource}`)
     .then((res) => {
-      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+      if (!res.ok) throw new Error('Gallery not found');
       return res.json();
     })
     .then((data) => {
       slides = data;
-      if (!Array.isArray(slides) || !slides.length) {
-        console.warn("⚠️ No slides found in the JSON data file.");
-        return;
+      if (slides.length > 0) {
+        renderSlide(0);
+        setupControls();
+      } else {
+        slideContainer.innerHTML = '<p>No images in this gallery.</p>';
       }
-      createSlides();
-      fadeInFirstSlide();
     })
-    .catch((error) =>
-      console.error(`[Slideshow] Error loading ${fetchUrl}:`, error),
-    );
-
-  // --- Helper Functions for the Slideshow ---
-
-  function createSlides() {
-    slides.forEach(({ src }) => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.className = "slide";
-      Object.assign(img.style, {
-        opacity: 0,
-        transition: "opacity 1.5s ease-in-out",
-      });
-      slideshow.appendChild(img);
+    .catch((err) => {
+      console.error(err);
+      slideContainer.innerHTML = '<p>Error loading gallery.</p>';
     });
+
+  // 2. Render a specific slide
+  function renderSlide(index) {
+    // Validate index
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+
+    const slideData = slides[currentIndex];
+
+    // Create Image Element with Fade Effect
+    const img = document.createElement('img');
+    img.src = slideData.src;
+    img.alt = slideData.title;
+    img.className = 'slide-image fade-in';
+
+    // Clear container and add new image
+    slideContainer.innerHTML = '';
+    slideContainer.appendChild(img);
+
+    // Update Text
+    if (captionEl) captionEl.textContent = slideData.caption || slideData.title;
+    if (descEl) {
+      // Combine details if available
+      let details = slideData.description || '';
+      if (slideData.medium) details += ` | ${slideData.medium}`;
+      if (slideData.dimensions) details += ` | ${slideData.dimensions}`;
+      descEl.textContent = details;
+    }
   }
 
-  function fadeInFirstSlide() {
-    const firstSlide = document.querySelector(".slide");
-    if (!firstSlide) return;
-    setTimeout(() => {
-      firstSlide.style.opacity = 1;
-      caption.textContent = slides[0].caption || "";
-      description.textContent = slides[0].description || "";
-    }, 50);
-    setTimeout(startAutoPlay, 4000);
-  }
+  // 3. Setup Event Listeners
+  function setupControls() {
+    // Remove old listeners to prevent duplication (cloning method)
+    const newPrev = prevBtn.cloneNode(true);
+    const newNext = nextBtn.cloneNode(true);
+    prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+    nextBtn.parentNode.replaceChild(newNext, nextBtn);
 
-  function showSlide(index) {
-    const slidesDOM = document.querySelectorAll(".slide");
-    if (!slidesDOM.length || index < 0 || index >= slides.length) return;
-    slidesDOM.forEach((img) => (img.style.opacity = 0));
-    slidesDOM[index].style.opacity = 1;
-    caption.textContent = slides[index].caption || "";
-    description.textContent = slides[index].description || "";
-    current = index;
-  }
+    newPrev.addEventListener('click', () => renderSlide(currentIndex - 1));
+    newNext.addEventListener('click', () => renderSlide(currentIndex + 1));
 
-  function nextSlide() {
-    showSlide((current + 1) % slides.length);
+    // Keyboard Navigation
+    document.onkeydown = (e) => {
+      if (document.body.classList.contains('slideshow-active')) {
+        if (e.key === 'ArrowLeft') renderSlide(currentIndex - 1);
+        if (e.key === 'ArrowRight') renderSlide(currentIndex + 1);
+      }
+    };
   }
-  function prevSlideFunc() {
-    showSlide((current - 1 + slides.length) % slides.length);
-  }
-  function startAutoPlay() {
-    clearInterval(timer);
-    timer = setInterval(nextSlide, 5000);
-  }
-  function pauseAutoPlay() {
-    clearInterval(timer);
-  }
-  function resumeAutoPlay() {
-    if (!isPausedByHoverOrTouch) startAutoPlay();
-  }
-  function resetAutoPlay() {
-    pauseAutoPlay();
-    resumeAutoPlay();
-  }
-
-  // --- Event Listeners ---
-  nextBtn.addEventListener("click", () => {
-    nextSlide();
-    resetAutoPlay();
-  });
-  prevBtn.addEventListener("click", () => {
-    prevSlideFunc();
-    resetAutoPlay();
-  });
-  slideshow.addEventListener("mouseenter", () => {
-    isPausedByHoverOrTouch = true;
-    pauseAutoPlay();
-  });
-  slideshow.addEventListener("mouseleave", () => {
-    isPausedByHoverOrTouch = false;
-    resumeAutoPlay();
-  });
-  slideshow.addEventListener(
-    "touchstart",
-    () => {
-      isPausedByHoverOrTouch = true;
-      pauseAutoPlay();
-    },
-    { passive: true },
-  );
-  slideshow.addEventListener(
-    "touchend",
-    () => {
-      isPausedByHoverOrTouch = false;
-      resumeAutoPlay();
-    },
-    { passive: true },
-  );
 }

@@ -19,12 +19,183 @@
   },
   {
     "id": "encaustic-3",
+    "title": "Dark Side Of The Moon",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/dark-side-of-the-moon.jpg",
+    "caption": "Dark Side Of The Moon",
+    "description": "Description for Dark Side Of The Moon",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-4",
+    "title": "Darkness Visible",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/darkness-visible.jpg",
+    "caption": "Darkness Visible",
+    "description": "Description for Darkness Visible",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-5",
+    "title": "Encaustic I",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-i.jpg",
+    "caption": "Encaustic I",
+    "description": "Description for Encaustic I",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-6",
+    "title": "Encaustic Ii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-ii.jpg",
+    "caption": "Encaustic Ii",
+    "description": "Description for Encaustic Ii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-7",
+    "title": "Encaustic Iii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-iii.jpg",
+    "caption": "Encaustic Iii",
+    "description": "Description for Encaustic Iii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-8",
+    "title": "Encaustic Iv",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-iv.jpg",
+    "caption": "Encaustic Iv",
+    "description": "Description for Encaustic Iv",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-9",
+    "title": "Encaustic Ix",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-ix.jpg",
+    "caption": "Encaustic Ix",
+    "description": "Description for Encaustic Ix",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-10",
+    "title": "Encaustic Vi",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-vi.jpg",
+    "caption": "Encaustic Vi",
+    "description": "Description for Encaustic Vi",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-11",
+    "title": "Encaustic Vii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-vii.jpg",
+    "caption": "Encaustic Vii",
+    "description": "Description for Encaustic Vii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-12",
+    "title": "Encaustic Viii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-viii.jpg",
+    "caption": "Encaustic Viii",
+    "description": "Description for Encaustic Viii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-13",
+    "title": "Encaustic Xi",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/encaustic-xi.jpg",
+    "caption": "Encaustic Xi",
+    "description": "Description for Encaustic Xi",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-14",
+    "title": "Ground Control To Major Tom I",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/ground-control-to-major-tom-i.jpg",
+    "caption": "Ground Control To Major Tom I",
+    "description": "Description for Ground Control To Major Tom I",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-15",
+    "title": "Ground Control To Major Tom Ii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/ground-control-to-major-tom-ii.jpg",
+    "caption": "Ground Control To Major Tom Ii",
+    "description": "Description for Ground Control To Major Tom Ii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-16",
+    "title": "Ground Control To Major Tom Iii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/ground-control-to-major-tom-iii.jpg",
+    "caption": "Ground Control To Major Tom Iii",
+    "description": "Description for Ground Control To Major Tom Iii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-3",
     "title": "In the Fogs",
     "src": "https://elzalive.com/assets/images/encaustic-paintings/in-the-fog.jpg",
     "description": "Multiple layers of translucent wax creating depth and inner illumination",
     "medium": "Encaustic on canvas",
     "dimensions": "36\" x 48\"",
     "year": 2023
+  },
+  {
+    "id": "encaustic-18",
+    "title": "Light Years Away I",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/light-years-away-i.jpg",
+    "caption": "Light Years Away I",
+    "description": "Description for Light Years Away I",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-19",
+    "title": "Light Years Away Ii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/light-years-away-ii.jpg",
+    "caption": "Light Years Away Ii",
+    "description": "Description for Light Years Away Ii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-20",
+    "title": "Light Years Away Iii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/light-years-away-iii.jpg",
+    "caption": "Light Years Away Iii",
+    "description": "Description for Light Years Away Iii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-21",
+    "title": "Microbial I",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/microbial-i.jpg",
+    "caption": "Microbial I",
+    "description": "Description for Microbial I",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-22",
+    "title": "Microbial Ii",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/microbial-ii.jpg",
+    "caption": "Microbial Ii",
+    "description": "Description for Microbial Ii",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   },
   {
     "id": "encaustic-4",
@@ -34,5 +205,32 @@
     "medium": "Encaustic with botanical elements",
     "dimensions": "20\" x 26\"",
     "year": 2025
+  },
+  {
+    "id": "encaustic-24",
+    "title": "Stage Two Over Cosmos",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/stage-two-over-cosmos.jpg",
+    "caption": "Stage Two Over Cosmos",
+    "description": "Description for Stage Two Over Cosmos",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-25",
+    "title": "Under The Bridge",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/under-the-bridge.jpg",
+    "caption": "Under The Bridge",
+    "description": "Description for Under The Bridge",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
+  },
+  {
+    "id": "encaustic-26",
+    "title": "Wynken, Blynken And Nod",
+    "src": "https://elzalive.com/assets/images/encaustic-paintings/wynken,-blynken-and-nod.jpg",
+    "caption": "Wynken, Blynken And Nod",
+    "description": "Description for Wynken, Blynken And Nod",
+    "medium": "Medium TBD",
+    "dimensions": "00\" x 00\""
   }
 ]

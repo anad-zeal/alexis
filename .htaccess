@@ -1,5 +1,6 @@
-# InfinityFree-compatible .htaccess for SPA/static site # 1. Disable MultiViews to prevent conflicts
-Options -MultiViews # 2. Set the default file DirectoryIndex index.html
+ErrorDocument 404 /index.html # InfinityFree-compatible .htaccess for SPA/static site # 1. Disable
+MultiViews to prevent conflicts Options -MultiViews # 2. Set the default file DirectoryIndex
+index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On RewriteBase / # 3. Force HTTPS RewriteCond %{HTTPS} off RewriteRule ^(.*)$

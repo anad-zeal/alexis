@@ -1,5 +1,5 @@
  <section class="hero">
-     <h2 class="sub-title">The Lives of an Artisty</h2>
+     <h2 class="sub-title">Alexis Elza</h2>
      <p class="page-title"></p>
  </section>
 

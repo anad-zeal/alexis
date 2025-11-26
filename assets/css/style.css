@@ -89,7 +89,7 @@ main#dynamic-page-wrapper {
 .main-nav-menu a {
   text-decoration: none;
   font-family: var(--font-body);
-  font-weight: 100;
+  font-weight: 200;
   color: var(--ink);
   padding-bottom: 5px;
   border-bottom: 2px solid transparent;

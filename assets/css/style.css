@@ -118,18 +118,16 @@ main#dynamic-page-wrapper {
 /* ============================================= */
 
 .card-grid {
-  width: 800px; /* Set fixed width */
-  height: 600px; /* Set fixed height */
-  gap: 10px; /* Set specific gap */
+  width: 780px; /* Set fixed width */
+  height: 789px; /* Set fixed height */
+  gap: 5px; /* Set specific gap */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   /* The grid will automatically handle the rows */
 }
 
 .card-grid .card {
-  /* Taspect-ratio:1/ 1; his is the key change to force a square shape */
-  width: 396px; /* Fixed width to ensure square shape */
-  height: 300px; /* Fixed height to ensure square shape */
+  aspect-ratio: 4/ 1; /* This is the key change to force a square shape */
   flex-direction: column; /* Stacks the link and paragraph vertically */
   justify-content: flex-start; /* Vertically centers the content inside the card */
   display: flex;
@@ -161,11 +159,4 @@ main#dynamic-page-wrapper {
   font-size: 1em;
   color: var(--ink-muted);
   line-height: 1.6;
-}
-
-.landing-mnu {
-  font-family: Raleway, sans-serif;
-  font-weight: 100
-  font-size: 1.25rem;
-  letter-spacing: 0.05em;
 }

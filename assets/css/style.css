@@ -161,8 +161,8 @@ main#dynamic-page-wrapper {
 
 .card-grid .page-link {
   font-family: var(--font-title);
-  font-size: 1.5em;
-  font-weight: 500;
+  font-size: 1.75em;
+  font-weight: 100;
   color: var(--brand);
   text-decoration: none;
   margin-bottom: 0.5rem;

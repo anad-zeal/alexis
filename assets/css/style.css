@@ -99,7 +99,7 @@ main#dynamic-page-wrapper {
 .main-nav-menu a:hover,
 .main-nav-menu a.is-active {
   color: var(--brand);
-  font-weight: 800;
+  font-weight: 400;
 }
 
 /* .landing-mnu a {

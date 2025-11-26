@@ -90,7 +90,7 @@ main#dynamic-page-wrapper {
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 100;
-  color: var(--brand);
+  color: var(--ink);
   padding-bottom: 5px;
   border-bottom: 2px solid transparent;
   transition: color 0.3s, border-color 0.3s;

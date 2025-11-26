@@ -141,7 +141,6 @@ main#dynamic-page-wrapper {
   gap: 8px; /* Set specific gap */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border: solid 2px var(--brand);
 }
 
 .card-grid .card {

@@ -101,8 +101,8 @@ main#dynamic-page-wrapper {
   color: var(--brand);
 }
 
-.landing-mnu {
-  font-family: Montserrat, sans-serif;
+.landing-mnu a {
+  font-family: var(--font-title);
   font-weight: 100;
   font-size: 1rem;
   letter-spacing: 1px;

@@ -136,7 +136,7 @@ main#dynamic-page-wrapper {
 /* ============================================= */
 
 .card-grid {
-  width: 50vw; /* Set fixed width */
+  width: 40ch; /* Set fixed width */
   height: 50vh; /* Set fixed height */
   gap: 5px; /* Set specific gap */
   display: grid;

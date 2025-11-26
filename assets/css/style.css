@@ -127,7 +127,7 @@ main#dynamic-page-wrapper {
 }
 
 .card-grid .card {
-  aspect-ratio: 4 / 3; /* This is the key change to force a square shape */
+  aspect-ratio: 2 / 1; /* This is the key change to force a square shape */
   flex-direction: column; /* Stacks the link and paragraph vertically */
   justify-content: flex-start; /* Vertically centers the content inside the card */
   display: flex;

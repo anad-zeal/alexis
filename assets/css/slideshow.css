@@ -189,6 +189,7 @@ body.slideshow-active #dynamic-page-wrapper {
   min-height: 0;
   border: none;
   overflow: hidden;
+  z-index: 999;
 }
 
 /* Styling for each individual slide (image) */

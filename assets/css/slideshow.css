@@ -33,14 +33,6 @@ body.slideshow-active #dynamic-page-wrapper {
   box-sizing: border-box;
 }
 
-#dynamic-content-area {
-  background-color: aqua;
-}
-
-#dynamic-page-wrapper {
-  background-color: yellow;
-}
-back
 /* --- Assigning elements to their grid areas --- */
 .logo {
   grid-area: logo;

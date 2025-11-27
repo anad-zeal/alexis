@@ -24,14 +24,18 @@ body.slideshow-active #dynamic-page-wrapper {
   position: fixed;
   inset: 0;
   display: grid;
-  grid-template-columns: 4vw 90vw 4vw;
-  grid-template-rows: 7vh 90vh 3vh;
+  /*
+     Cols: Left (Auto width for arrow) | Middle (Rest of space) | Right (Auto width for arrow)
+     Rows: Top (Auto height for header) | Middle (Rest of space) | Bottom (Auto height for footer)
+  */
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     'logo . category'
-    'prev-arrow slideshow next-arrow'
+    'prev-arrow . next-arrow'
     'return-arrow . description';
   background-color: var(--soft);
-  padding: 1rem;
+  padding: 0; /* REMOVED padding to allow full-bleed images */
   box-sizing: border-box;
 }
 
@@ -45,9 +49,7 @@ body.slideshow-active #dynamic-page-wrapper {
 .prev-arrow {
   grid-area: prev-arrow;
 }
-.slideshow {
-  grid-area: slideshow;
-}
+/* Note: .slideshow is handled separately below to span all areas */
 .next-arrow {
   grid-area: next-arrow;
 }
@@ -59,12 +61,41 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 /* ==========================================================================
-   Header Elements (Logo & Category)
+   Slideshow Area & Slides (Layer 1 - Background)
+   ========================================================================== */
+.slideshow {
+  /* Spans the entire grid from top-left to bottom-right */
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  z-index: 1; /* Sits behind controls */
+
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  overflow: hidden;
+}
+
+.slideshow .slide,
+.slideshow img.slide {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures entire image is visible */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Header Elements (Layer 2 - UI)
    ========================================================================== */
 .logo,
 .category {
-  /* Alignment within their grid cells */
+  z-index: 10;
   background-color: transparent;
+  padding: 1.5rem; /* Add spacing here since container padding is gone */
 }
 
 .logo {
@@ -93,40 +124,16 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 /* ==========================================================================
-   Slideshow Area & Slides
-   ========================================================================== */
-.slideshow {
-  display: grid;
-  place-items: center; /* Centers content */
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  border: none;
-  overflow: hidden;
-  z-index: 999;
-}
-
-.slideshow .slide,
-.slideshow img.slide {
-  /* Grid Stacking Method: This places all slides in the same cell
-     so they stack on top of each other without needing position: absolute */
-  grid-area: 1 / 1;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 2px;
-  box-sizing: border-box;
-}
-
-/* ==========================================================================
-   Navigation Arrows
+   Navigation Arrows (Layer 2 - UI)
    ========================================================================== */
 .prev-arrow,
 .next-arrow {
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Add margin to pull arrows slightly away from the absolute edge if desired */
+  margin: 0 1rem;
 }
 
 .prev-arrow button,
@@ -134,7 +141,7 @@ body.slideshow-active #dynamic-page-wrapper {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 10px; /* Merged padding */
+  padding: 10px;
   width: 50px;
   height: 50px;
   position: relative;
@@ -143,18 +150,17 @@ body.slideshow-active #dynamic-page-wrapper {
   align-items: center;
 }
 
-/* -- Option A: If using CSS Shapes (::before) -- */
+/* -- Option A: CSS Shapes (::before) -- */
 .prev-arrow button::before,
 .next-arrow button::before {
   content: '';
   display: block;
-  width: 1rem; /* Adjust size of chevron */
+  width: 1rem;
   height: 1rem;
-  border-top: 2px solid var(--ink, #000); /* Fallback to black if var undefined */
+  border-top: 2px solid var(--ink, #000);
   border-right: 2px solid var(--ink, #000);
   opacity: 0.7;
   transition: opacity 0.3s;
-  /* Centering logic for the pseudo-element */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -172,11 +178,10 @@ body.slideshow-active #dynamic-page-wrapper {
   transform: translate(-75%, -50%) rotate(45deg);
 }
 
-/* -- Option B: If using Images (<img>) inside buttons -- */
-/* These styles ensure <img> arrows also look good if present */
+/* -- Option B: Image Tags (<img>) -- */
 .prev-arrow img,
 .next-arrow img {
-  width: 100%; /* Fill the button */
+  width: 100%;
   height: auto;
   opacity: 0.7;
   transition: opacity 0.3s;
@@ -188,12 +193,13 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 /* ==========================================================================
-   Footer Elements (Return & Description)
+   Footer Elements (Layer 2 - UI)
    ========================================================================== */
 .return-arrow {
+  z-index: 10;
   align-self: end;
   justify-self: start;
-  padding: 1rem;
+  padding: 1.5rem; /* Restored spacing */
 }
 
 .return-arrow img {
@@ -209,30 +215,35 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 
 .description {
-  /* Positioning */
+  z-index: 10;
   position: relative;
-  grid-area: description;
+
+  /* Alignment */
   align-self: end;
   justify-self: end;
-  left: -2vw;
-  top: 2rem;
-  z-index: 99;
 
-  /* Sizing & Box Model */
+  /* Spacing */
+  margin: 0 1.5rem 1.5rem 0; /* Bottom-Right spacing */
   width: 250px;
   padding: 1.5rem;
   box-sizing: border-box;
-  overflow-y: auto; /* Scroll if content is too long */
+  overflow-y: auto;
 
   /* Visuals */
-  background-color: transparent;
-  border: 1px solid var(--ink-muted, #ddd); /* Prefer variable, fallback to hex */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Added slight bg opacity for readability over image */
+  border: 1px solid var(--ink-muted, #ddd);
   border-radius: 5px;
+  backdrop-filter: blur(5px); /* Optional: improves readability */
 }
 
 .description #caption-text {
   font-family: var(--font-display);
-  font-weight: 500; /* Merged bold/500 */
+  font-weight: 500;
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;

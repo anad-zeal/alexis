@@ -98,10 +98,10 @@ a.landing-mnu {
 }
 
 a.landing-mnu:hover,
-a.landing-mnu:active,
 a.landing-mnu.active {
   color: var(--brand);
   font-weight: 200;
+  font-size: 2rem;
 }
 
 .hero {

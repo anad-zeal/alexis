@@ -6,10 +6,10 @@
   /* Colors */
   --ink: hsl(0 0% 10%);
   --ink-muted: hsl(0 0% 45%);
-  --paper: hsl(36, 21%, 65%);
+  --paper: hsl(36 21% 65%);
   --soft: hsl(0 0% 96%);
-  --brand: rgb(122, 1, 1);
-  --focus-ring: hsl(0, 2%, 55%);
+  --brand: rgb(122 1 1);
+  --focus-ring: hsl(0 2% 55%);
 
   /* Typography */
   --font-body: 'Montserrat', sans-serif;
@@ -29,13 +29,14 @@
 
 /* Define the custom font */
 @font-face {
-  font-family: 'mort-variable'; /* You choose this name */
+  font-family: 'mort-variable';
   src: url('../fonts/mort-variable.ttf') format('truetype');
-  font-weight: 100; /* Adjust if it's a bold font */
-  font-style: normal; /* Adjust if it's an italic font */
-  font-display: swap; /* Important: Ensures text is visible while font loads */
+  font-weight: normal; /* safer default */
+  font-style: normal;
+  font-display: swap;
 }
 
+/* Reset */
 *,
 *::before,
 *::after {
@@ -50,7 +51,7 @@ body {
 }
 
 /* ============================================= */
-/* 2. Core Layout Structure (CORRECTED)          */
+/* 2. Core Layout Structure                      */
 /* ============================================= */
 
 body {
@@ -81,34 +82,26 @@ main#dynamic-page-wrapper {
 .main-nav-menu {
   display: flex;
   justify-content: center;
-  gap: 12rem;
+  gap: var(--gap); /* use token */
   padding: 0;
   margin-top: 1vh;
 }
 
-.landing-mnu {
-  font-size: 4rem;
+a.landing-mnu {
+  font-size: 1rem;
   font-family: var(--font-title);
   font-weight: 100;
   letter-spacing: 1px;
   text-decoration: none;
   color: var(--ink);
   padding-bottom: 5px;
-  border-bottom: 2px solid transparent;
-  transition: color 0.3s, border-color 0.3s;
 }
 
-.landing-mnu:hover,
-.landing-mnu a.is-active {
+a.landing-mnu:hover,
+a.landing-mnu:active,
+a.landing-mnu.active {
   color: var(--brand);
   font-weight: 200;
-}
-
-.landing-mnu {
-  font-family: var(--font-title);
-  font-weight: 100;
-  font-size: 1rem;
-  letter-spacing: 1px;
 }
 
 .hero {
@@ -133,46 +126,36 @@ main#dynamic-page-wrapper {
 }
 
 /* ============================================= */
-/* 4. Card Grid Styles (MODIFIED)                */
+/* 4. Card Grid Styles                           */
 /* ============================================= */
 
 .card-grid {
-  width: 40vw; /* Set fixed width */
-  height: 50vh; /* Set fixed height */
-  gap: 8px; /* Set specific gap */
+  width: 40vw;
+  height: 50vh;
+  gap: 8px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .card-grid .card {
-  /* aspect-ratio: 1/ 2 This is the key change to force a square shape */
-  flex-direction: column; /* Stacks the link and paragraph vertically */
-  justify-content: flex-start; /* Vertically centers the content inside the card */
+  aspect-ratio: 1 / 1; /* corrected to square */
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transition: transform var(--speed) var(--easing), box-shadow var(--speed) var(--easing);
   padding: 0 1rem;
 }
 
-.card-grid .card {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-}
-
-/* Unique transforms for specific cards*/
-.card:nth-child(1):hover {
-  transform: translateY(5px);
-}
-
+/* Unique transforms for specific cards */
+.card:nth-child(1):hover,
 .card:nth-child(2):hover {
   transform: translateY(5px);
 }
 
-.card:nth-child(3):hover {
-  transform: translateY(-5px);
-}
-
+.card:nth-child(3):hover,
 .card:nth-child(4):hover {
   transform: translateY(-5px);
 }
@@ -188,7 +171,7 @@ main#dynamic-page-wrapper {
   padding-top: 5vh;
 }
 
-.card-grid .landingMenuItem p {
+.card-grid .landing-menu-item p {
   font-family: var(--font-body);
   font-size: 1em;
   color: var(--ink-muted);

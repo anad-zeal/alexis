@@ -161,7 +161,7 @@ main#dynamic-page-wrapper {
 
 /* Unique transforms for specific cards*/
 .card:nth-child(1):hover {
-  transform: translateY(-px);
+  transform: translateY(5px);
 }
 
 .card:nth-child(2):hover {

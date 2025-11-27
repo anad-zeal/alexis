@@ -62,7 +62,7 @@ body {
   background-color: rgba(246, 243, 239, 0.5);
 }
 
-main#dynamic-page-wrapper {
+#dynamic-page-wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-start;

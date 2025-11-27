@@ -39,7 +39,6 @@ body.slideshow-active #dynamic-page-wrapper {
 }
 .category {
   grid-area: category;
-  background-color: tan;
 }
 .prev-arrow {
   grid-area: prev-arrow;

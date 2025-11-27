@@ -64,10 +64,10 @@ body.slideshow-active #dynamic-page-wrapper {
    Slideshow Area & Slides (Layer 1 - Background)
    ========================================================================== */
 .slideshow {
-  /* Spans the entire grid from top-left to bottom-right */
+  /* Spans the entire grid */
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  z-index: 1; /* Sits behind controls */
+  z-index: 1;
 
   display: grid;
   place-items: center;
@@ -80,12 +80,25 @@ body.slideshow-active #dynamic-page-wrapper {
 
 .slideshow .slide,
 .slideshow img.slide {
-  grid-area: 1 / 1;
+  grid-area: 1 / 1; /* Stacks them on top of each other */
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ensures entire image is visible */
+  object-fit: contain;
   padding: 0;
   box-sizing: border-box;
+
+  /* --- CROSS-FADE LOGIC --- */
+  opacity: 0;
+  transition: opacity 1000ms ease-in-out; /* Adjust '1000ms' for fade speed */
+  z-index: 1;
+  pointer-events: none; /* Prevents clicking on hidden slides */
+}
+
+/* The class that makes a slide visible */
+.slideshow .slide.active {
+  opacity: 1;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 /* ==========================================================================

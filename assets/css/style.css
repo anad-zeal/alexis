@@ -86,21 +86,22 @@ main#dynamic-page-wrapper {
   margin-top: 1vh;
 }
 
-.main-nav-menu a {
+.landing-mnu a {
+  font-size: 1rem;
+  font-family: var(--font-title);
+  font-weight: 100;
+  letter-spacing: 1px;
   text-decoration: none;
-  font-family: var(--font-body);
-  font-weight: 300;
   color: var(--ink);
   padding-bottom: 5px;
   border-bottom: 2px solid transparent;
   transition: color 0.3s, border-color 0.3s;
-  letter-spacing: 2px;
 }
 
-.main-nav-menu a:hover,
-.main-nav-menu a.is-active {
+.landing-mnu a:hover,
+.landing-mnu a.is-active {
   color: var(--brand);
-  font-weight: 100;
+  font-weight: 2s00;
 }
 
 .landing-mnu a {

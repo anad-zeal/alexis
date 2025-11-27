@@ -1,35 +1,180 @@
 /* ==========================================================================
-   Global Variables
+   1. Design Tokens
    ========================================================================== */
+
 :root {
-  --soft: #fcfcfc;
-  --brand: #e75116;
-  --ink: #1a1a1a;
-  --ink-muted: #666666;
+  /* Colors */
+  --ink: hsl(0 0% 10%);
+  --ink-muted: hsl(0 0% 45%);
+  --paper: hsl(36, 21%, 65%);
+  --soft: hsl(0 0% 96%);
+  --brand: rgb(122, 1, 1);
+  --focus-ring: hsl(0, 2%, 55%);
 
-  /* Update these with your actual font imports */
-  --font-script: 'Courier New', cursive;
-  --font-display: 'Helvetica', sans-serif;
-  --font-body: 'Georgia', serif;
+  /* Typography */
+  --font-body: 'Montserrat', sans-serif;
+  --font-ui: 'Inter', sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+  --font-title: 'Montserrat', sans-serif;
+  --font-script: 'Bonheur Royale', cursive;
+
+  /* Layout */
+  --gap: clamp(0.75rem, 2vw, 1.25rem);
+  --narrow-max: 90ch;
+
+  /* Motion */
+  --speed: 280ms;
+  --easing: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* ==========================================================================
-   Slideshow State Resets
-   (Hides the standard website header/footer when slideshow is active)
-   ========================================================================== */
-body.slideshow-active .site-header,
-body.slideshow-active .content,
-body.slideshow-active .site-footer {
-  display: none !important;
+/* Define the custom font */
+@font-face {
+  font-family: 'mort-variable'; /* You choose this name */
+  src: url('../fonts/mort-variable.ttf') format('truetype');
+  font-weight: 100; /* Adjust if it's a bold font */
+  font-style: normal; /* Adjust if it's an italic font */
+  font-display: swap; /* Important: Ensures text is visible while font loads */
 }
 
-/* Ensure the main wrapper fills the screen for the slideshow */
-body.slideshow-active main,
-body.slideshow-active #dynamic-content-area,
-body.slideshow-active #dynamic-page-wrapper {
-  padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  width: 100%;
+  padding: 0;
+}
+
+html,
+body {
   height: 100%;
-  max-width: 100%;
+}
+
+/* ============================================= */
+/* 2. Core Layout Structure (CORRECTED)          */
+/* ============================================= */
+
+body {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  height: 100vh;
+  font-family: var(--font-body);
+  background-color: rgba(250, 235, 215, 0.5);
+}
+
+main#dynamic-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+/* ============================================= */
+/* 3. Header, Hero, and Footer Styles            */
+/* ============================================= */
+
+.site-header,
+.site-footer {
+  padding: 1rem 0 0 0;
+  text-align: center;
+}
+
+.main-nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 12rem;
+  padding: 0;
+  margin-top: 1vh;
+}
+
+.main-nav-menu a {
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--ink);
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+  letter-spacing: 2px;
+}
+
+.main-nav-menu a:hover,
+.main-nav-menu a.is-active {
+  color: var(--brand);
+  font-weight: 400;
+}
+
+/* .landing-mnu a {
+  font-family: var(--font-title);
+  font-weight: 100;
+  font-size: 1rem;
+  letter-spacing: 1px;
+} */
+
+.hero {
+  text-align: center;
+  padding: 0;
+}
+
+.hero .sub-title {
+  margin-top: 2rem;
+  font-family: var(--font-script);
+  font-size: 3.5em;
+  font-weight: 500;
+  color: var(--brand);
+}
+
+.hero .page-title {
+  font-family: var(--font-title);
+  font-size: 1.25em;
+  margin-top: 0.5rem;
+  color: #666;
+  display: none;
+}
+
+/* ============================================= */
+/* 4. Card Grid Styles (MODIFIED)                */
+/* ============================================= */
+
+.card-grid {
+  width: 780px; /* Set fixed width */
+  height: 789px; /* Set fixed height */
+  gap: 5px; /* Set specific gap */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* The grid will automatically handle the rows */
+}
+
+.card-grid .card {
+  aspect-ratio: 1/ 1; /* This is the key change to force a square shape */
+  flex-direction: column; /* Stacks the link and paragraph vertically */
+  justify-content: flex-start; /* Vertically centers the content inside the card */
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0 1.5rem;
+}
+
+.card-grid .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card-grid .page-link {
+  font-family: var(--font-title);
+  font-size: 1.75em;
+  font-weight: 100;
+  color: var(--brand);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: block;
+  padding-top: 6rem;
+}
+
+.card-grid .landingMenuItem p {
+  font-family: var(--font-body);
+  font-size: 1em;
+  color: var(--ink-muted);
+  line-height: 1.6;
 }

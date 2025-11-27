@@ -100,15 +100,15 @@ main#dynamic-page-wrapper {
 .main-nav-menu a:hover,
 .main-nav-menu a.is-active {
   color: var(--brand);
-  font-weight: 400;
+  font-weight: 100;
 }
 
-/* .landing-mnu a {
+.landing-mnu a {
   font-family: var(--font-title);
   font-weight: 100;
   font-size: 1rem;
   letter-spacing: 1px;
-} */
+}
 
 .hero {
   text-align: center;

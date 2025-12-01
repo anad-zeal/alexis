@@ -44,16 +44,33 @@
     </section>
 
     <!-- One -->
+    <!-- One -->
     <section id="one" class="main style2 right dark fullscreen">
       <div class="content box style2">
         <header>
           <h2>What I Do</h2>
         </header>
-        <p>
-          Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum. Fusce
-          blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu, id
-          varius justo euismod in. Curabitur egestas consectetur magna.
-        </p>
+
+        <!-- Poptrox Gallery Container -->
+        <div class="mini-gallery">
+          <!-- Image 1 -->
+          <a href="images/fulls/01.jpg" class="image fit">
+            <img src="images/thumbs/01.jpg" title="Project One" alt="" />
+          </a>
+          <!-- Image 2 -->
+          <a href="images/fulls/02.jpg" class="image fit">
+            <img src="images/thumbs/02.jpg" title="Project Two" alt="" />
+          </a>
+          <!-- Image 3 -->
+          <a href="images/fulls/03.jpg" class="image fit">
+            <img src="images/thumbs/03.jpg" title="Project Three" alt="" />
+          </a>
+          <!-- Image 4 -->
+          <a href="images/fulls/04.jpg" class="image fit">
+            <img src="images/thumbs/04.jpg" title="Project Four" alt="" />
+          </a>
+        </div>
+        <!-- End Gallery -->
       </div>
       <a href="#two" class="button style2 down anchored">Next</a>
     </section>
@@ -188,5 +205,23 @@
     <script src="assets/js/breakpoints.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      // Wait for window load to ensure Poptrox is available
+      window.addEventListener('load', function () {
+        // Initialize Poptrox on the .mini-gallery class
+        if (typeof window.Poptrox === 'function') {
+          window.Poptrox('.mini-gallery a', {
+            usePopupCaption: true,
+            usePopupNav: true, // Enables Left/Right arrows
+            usePopupDefaultStyling: false, // Disables inline styles so main.css .poptrox-popup rules apply
+            popupClass: 'poptrox-popup', // Matches the class in your main.css
+            windowMargin: 50,
+            popupPadding: 0,
+          });
+        } else {
+          console.error('Poptrox not loaded.');
+        }
+      });
+    </script>
   </body>
 </html>
